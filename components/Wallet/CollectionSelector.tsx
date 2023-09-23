@@ -9,7 +9,7 @@ const CollectionSelector = (props: { onSelected: (_policyId: PolicyId) => void; 
   // const { populatedWallet } = useWallet()
 
   return (
-    <div className='flex flex-wrap items-center justify-center'>
+    <div className='max-w-[690px] mx-auto flex flex-wrap items-center justify-center'>
       {collectionsFile.map((coll) => {
         const ownsThisCollection = !!withWallet
           ? false // Object.entries(populatedWallet?.assets || {}).find(([policyId, assets]) => coll.policyId === policyId && !!assets.length)
