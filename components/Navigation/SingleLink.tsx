@@ -2,13 +2,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 export interface SingleLinkProps {
+  iconSrc?: string
   label: string
   path?: string
   url?: string
 }
 
 const SingleLink = (props: SingleLinkProps) => {
-  const { label, path, url } = props
+  const { iconSrc, label, path, url } = props
   const router = useRouter()
   const selected = router.asPath === path // || router.pathname === path
   const isNothing = !url && !path
@@ -25,12 +26,13 @@ const SingleLink = (props: SingleLinkProps) => {
       className={
         (selected ? 'text-white' : 'xl:border-0') +
         ' block py-2 px-3 xl:p-0 w-full xl:w-auto text-start xl:text-center text-sm rounded truncate ' +
-        (isNothing
-          ? 'cursor-not-allowed line-through text-gray-600'
-          : 'hover:bg-gray-700 xl:hover:bg-transparent hover:text-white')
+        (isNothing ? 'cursor-not-allowed line-through text-gray-600' : 'hover:bg-gray-700 xl:hover:bg-transparent hover:text-white')
       }
     >
-      {label}
+      <span className='flex items-center'>
+        {iconSrc ? <img src={iconSrc} alt='' className='w-4 h-4 mr-2' /> : null}
+        {label}
+      </span>
     </Link>
   )
 }

@@ -58,7 +58,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
   return (
     <div className='flex flex-col lg:flex-row lg:justify-between md:px-6'>
       <div>
-        {displayedFile.mediaType === 'image/png' ? (
+        {displayedFile.mediaType === 'image/png' || displayedFile.mediaType === 'image/jpeg' ? (
           <button onClick={() => window.open(formatIpfsUrl(displayedFile.src), '_blank', 'noopener noreferrer')} className='w-[80vw] md:w-[555px]'>
             <ImageLoader
               src={formatIpfsUrl(displayedFile.src)}
@@ -109,7 +109,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               onClick={() => setDisplayedFile(file)}
               className='w-32 h-32 m-1 flex items-center justify-center text-xs rounded-2xl border border-gray-700 bg-gray-900/50'
             >
-              {file.mediaType === 'image/png' ? (
+              {file.mediaType === 'image/png' || file.mediaType === 'image/jpeg' ? (
                 <ImageLoader src={formatIpfsUrl(file.src)} alt={file.name} width={150} height={150} style={{ borderRadius: '1rem' }} />
               ) : file.mediaType === 'video/mp4' ? (
                 <video src={formatIpfsUrl(file.src)} playsInline width={150} height={150} style={{ borderRadius: '1rem' }} />

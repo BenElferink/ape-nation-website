@@ -19,14 +19,15 @@ export const navCollections = [
   { label: 'Jungle Juice', path: `/collections/${JUNGLE_JUICE_POLICY_ID}` },
   { label: 'Mutation Nation', path: `/collections/${MUTATION_NATION_POLICY_ID}` },
   { label: 'Mutation Nation - Mega Mutants', path: `/collections/${MUTATION_NATION_MEGA_MUTANTS_POLICY_ID}` },
-  {
-    label: '$NATION Coin',
-    url: 'https://www.taptools.io/charts/token?pairID=0be55d262b29f564998ff81efe21bdc0022621c12f15af08d0f2ddb1.a7ecc694852dba715767f6be7e30c6ac1aab68baa9794815532e0da28b2fd80d',
-  },
   { label: 'OG Club Card', path: `/collections/${OG_CLUB_CARD_POLICY_ID}` },
   { label: 'Ordinal Tokens', path: `/collections/${ORDINAL_TOKENS_POLICY_ID}` },
   { label: 'BLING', path: `/collections/${BLING_POLICY_ID}` },
   { label: 'iHold Music', path: `/collections/${IHOLD_MUSIC_POLICY_ID}` },
+  {
+    iconSrc: '/media/logo/other/taptools.webp',
+    label: '$NATION Coin',
+    url: 'https://www.taptools.io/charts/token?pairID=0be55d262b29f564998ff81efe21bdc0022621c12f15af08d0f2ddb1.a7ecc694852dba715767f6be7e30c6ac1aab68baa9794815532e0da28b2fd80d',
+  },
 ]
 
 export const navTokens = [
@@ -83,12 +84,6 @@ const Navigation = () => {
           <li>
             <MultipleLinks title='Staking' links={navTokens} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
-          <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='Raffles' url='https://labs.mutant-nft.com/projects/apenation?tab=staking' />
-          </li>
-          <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='Mutation Checker' url='https://mutationchecker.yepple.io/apenation' />
-          </li>
           <li>
             <MultipleLinks title='Events' links={limitedEvents} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
@@ -98,7 +93,13 @@ const Navigation = () => {
               setIsNavOpen(false)
             }}
           >
-            <SingleLink label='Wallet' />
+            <SingleLink label='Wallet' path='/wallet' />
+          </li>
+          <li onClick={() => setIsNavOpen(false)}>
+            <SingleLink label='Raffles' url='https://labs.mutant-nft.com/projects/apenation?tab=staking' />
+          </li>
+          <li onClick={() => setIsNavOpen(false)}>
+            <SingleLink label='Mutation Checker' url='https://mutationchecker.yepple.io/apenation' />
           </li>
         </ul>
       </div>
