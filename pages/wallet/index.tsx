@@ -11,7 +11,7 @@ const Page = () => {
       {!connected ? (
         <Fragment>
           <WalletConnect allowManual introText='Connect to view your personal portfolio.' />
-          <p className='pt-[15vh] text-center text-xl text-[var(--accent-2)]'>Not connected.</p>
+          <p className='pt-[15vh] text-center text-xl text-[var(--offline)]'>Not connected.</p>
         </Fragment>
       ) : (
         <Wallet />

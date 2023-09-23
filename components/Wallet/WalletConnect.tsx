@@ -49,7 +49,7 @@ const WalletConnect = (props: { allowManual?: boolean; introText?: string }) => 
             {introText ? <p>{introText}</p> : null}
 
             {availableWallets.length == 0 ? (
-              <p className='my-2 text-[var(--accent-2)]'>No wallets installed</p>
+              <p className='my-2 text-[var(--offline)]'>No wallets installed</p>
             ) : (
               <div className='flex flex-col min-w-[280px] w-[85%] md:w-[75%] '>
                 {availableWallets.map((wallet, idx) => (

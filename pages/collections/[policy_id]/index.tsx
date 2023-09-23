@@ -13,7 +13,7 @@ const Page = () => {
   return (
     <div className='flex flex-col items-center'>
       {!policyOk ? (
-        <p className='pt-[15vh] text-center text-xl text-[var(--accent-2)]'>Policy ID is not permitted.</p>
+        <p className='pt-[15vh] text-center text-xl text-[var(--offline)]'>Policy ID is not permitted.</p>
       ) : (
         <Fragment>
           <RecentMarketActivity policyId={policyId} />

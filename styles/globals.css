@@ -12,11 +12,8 @@
   --online: #44b700;
   --offline: #b74400;
 
-  --cardano-blue: #1231a6;
-  --discord-purple: #7289da;
-
-  --accent-1: rgb(255, 80, 55);
-  --accent-2: rgb(255, 0, 130);
+  --accent-1: rgb(255, 234, 0);
+  --accent-2: rgb(255, 255, 143);
   --gradient: linear-gradient(65deg, var(--accent-1), var(--accent-2));
 }
 
