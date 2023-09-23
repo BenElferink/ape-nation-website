@@ -31,7 +31,7 @@ const TeamCard = (props: TeamCardProps) => {
             url={url}
             color='#d4d4d8' // === 'text-zinc-300'
             size='w-6 h-6'
-            className='p-1 rounded-lg hover:bg-[var(--accent-1)]'
+            className='p-1 rounded-lg hover:bg-zinc-500'
           />
         ))}
       </div>

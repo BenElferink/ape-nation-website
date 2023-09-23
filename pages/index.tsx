@@ -119,7 +119,7 @@ const teamMembers = [
     socials: ['https://x.com/djlewishitmaker', 'https://discord.com/users/578387244839075861'],
   },
   {
-    name: 'Ben Elferink',
+    name: 'Ben',
     title: 'Fullstack Developer',
     description: 'I started my career as Fullstack Developer in 2020 & have been involved in the crypto & NFT space since 2021.',
     profilePicture: '/media/team/ben.jpg',
