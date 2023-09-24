@@ -46,8 +46,8 @@ const AssetFilters = (props: AssetFiltersProps) => {
         if (
           !search ||
           (search &&
-            (asset.tokenName?.display.indexOf(search) !== -1 ||
-              asset.tokenName?.onChain.indexOf(search) !== -1 ||
+            ((asset.tokenName?.display || '').toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
+              (asset.tokenName?.onChain || '').toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
               asset.tokenId.indexOf(search) !== -1 ||
               asset.fingerprint.indexOf(search) !== -1))
         ) {
