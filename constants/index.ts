@@ -25,6 +25,7 @@ export const LINKS = {
   MUTATION_CHECKER: 'https://mutationchecker.yepple.io/apenation',
   MUTANTS_RAFFLES: 'https://labs.mutant-nft.com/projects/apenation?tab=raffles',
   MUTANTS_STAKING: 'https://labs.mutant-nft.com/projects/apenation?tab=staking',
+  MAGIC_EDEN_ORDINALS: 'https://magiceden.io/ordinals/marketplace/ordinals-by-ape-nation',
   TAPTOOLS_NATION:
     'https://www.taptools.io/charts/token?pairID=0be55d262b29f564998ff81efe21bdc0022621c12f15af08d0f2ddb1.a7ecc694852dba715767f6be7e30c6ac1aab68baa9794815532e0da28b2fd80d',
 }

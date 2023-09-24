@@ -20,14 +20,14 @@
     "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162"
   },
   {
-    "name": "OG Club Card",
-    "image": "/media/collections/og_club_card.webp",
-    "policyId": "21a44e25de32d0c2cba0413cb417fa61ed65cd9e2f419cf5c714ca4f"
-  },
-  {
     "name": "Ordinal Tokens",
     "image": "/media/collections/ordinal_tokens.png",
     "policyId": "c9fa37158ded418a5bb18159e4e7d7c1aeadd202ef7eaa84fbf23350"
+  },
+  {
+    "name": "OG Club Card",
+    "image": "/media/collections/og_club_card.webp",
+    "policyId": "21a44e25de32d0c2cba0413cb417fa61ed65cd9e2f419cf5c714ca4f"
   },
   {
     "name": "BLING",

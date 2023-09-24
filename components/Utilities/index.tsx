@@ -3,7 +3,15 @@ import { MinusCircleIcon } from '@heroicons/react/24/outline'
 import useScreenSize from '@/hooks/useScreenSize'
 import styles from './Utilities.module.css'
 
-const data = [
+const data: {
+  checked: boolean
+  chapter: string
+  Icon?: () => JSX.Element
+  events: {
+    checked: boolean
+    title: string
+  }[]
+}[] = [
   {
     checked: true,
     chapter: 'Ape Nation',
@@ -56,6 +64,43 @@ const data = [
   },
   {
     checked: true,
+    chapter: 'Mutation Nation Mega Mutants',
+    events: [
+      {
+        checked: false,
+        title: '38 1:1 Supply (V3 Vials Free Airdrop)',
+      },
+      {
+        checked: false,
+        title: '$NATION Staking Rewards',
+      },
+      {
+        checked: false,
+        title: 'Airdrops / Claims',
+      },
+    ],
+  },
+  {
+    checked: true,
+    chapter: 'Ordinals',
+    Icon: () => <img src='/media/tokens/bitcoin.svg' className='w-8 h-8 ml-2' />,
+    events: [
+      {
+        checked: false,
+        title: '100 Supply / Sub 1 Million Inscriptions',
+      },
+      {
+        checked: false,
+        title: '$NATION Staking Rewards',
+      },
+      {
+        checked: false,
+        title: '20 BTC Mint',
+      },
+    ],
+  },
+  {
+    checked: true,
     chapter: 'OG Club Cards',
     events: [
       {
@@ -82,20 +127,6 @@ const data = [
   },
   {
     checked: true,
-    chapter: 'Ordinals #BTC',
-    events: [
-      {
-        checked: false,
-        title: '100 Supply / Sub 1 Million Inscriptions',
-      },
-      {
-        checked: false,
-        title: '$NATION Staking Rewards',
-      },
-    ],
-  },
-  {
-    checked: true,
     chapter: 'BLING',
     events: [
       {
@@ -113,24 +144,6 @@ const data = [
       {
         checked: false,
         title: 'Future Utility with Ultimate OG 2024',
-      },
-    ],
-  },
-  {
-    checked: true,
-    chapter: 'Mutation Nation Mega Mutants',
-    events: [
-      {
-        checked: false,
-        title: '38 1:1 Supply (V3 Vials Free Airdrop)',
-      },
-      {
-        checked: false,
-        title: '$NATION Staking Rewards',
-      },
-      {
-        checked: false,
-        title: 'Airdrops / Claims',
       },
     ],
   },
@@ -205,9 +218,10 @@ const Utilities = () => {
             key={phase.chapter}
             className={`relative ${styles.chapter} ${!isMobile ? (isLeft ? styles.leftChapter : styles.rightChapter) : styles.mobileChapter}`}
           >
-            <h2 className='text-xl'>
+            <h2 className='text-xl flex items-center'>
               {phase.checked ? <CheckCircleIcon className='w-6 h-6' /> : <MinusCircleIcon className='w-6 h-6' />}
               {phase.chapter}
+              {phase.Icon ? <phase.Icon /> : null}
             </h2>
 
             {phase.events.map((event) => (
