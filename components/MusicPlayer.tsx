@@ -1,9 +1,12 @@
+import { useRender } from '@/contexts/RenderContext'
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, PauseIcon, PlayIcon } from '@heroicons/react/24/solid'
 import { useCallback, useEffect, useState } from 'react'
 
 const songs = ['/media/music/iHold - Ape Nation.mp3'].map((str) => str.replaceAll(' ', '%20'))
 
 const MusicPlayer = () => {
+  const { userClicked } = useRender()
+
   const [player, setPlayer] = useState<HTMLAudioElement>()
   const [playing, setPlaying] = useState(false)
   const volume = 0.5
@@ -76,18 +79,11 @@ const MusicPlayer = () => {
   const [playedOnMount, setPlayedOnMount] = useState(false)
 
   useEffect(() => {
-    const handler = () => {
-      if (player && !playedOnMount) {
-        play()
-        setPlayedOnMount(true)
-      }
+    if (player && !playedOnMount && userClicked) {
+      play()
+      setPlayedOnMount(true)
     }
-
-    window.addEventListener('click', handler)
-    return () => {
-      window.removeEventListener('click', handler)
-    }
-  }, [player, play, playedOnMount])
+  }, [userClicked])
 
   return (
     <div className='flex items-center'>

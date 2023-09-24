@@ -48,7 +48,7 @@ const MusicPlayerWaves = (props: { src: string; w?: string; h?: string }) => {
       const _wave = WaveSurfer.create({
         container: visualRef.current,
         waveColor: 'whitesmoke',
-        progressColor: 'skyblue',
+        progressColor: 'yellow',
         barWidth: 1,
         height: 'auto',
       })
@@ -57,7 +57,7 @@ const MusicPlayerWaves = (props: { src: string; w?: string; h?: string }) => {
         stop()
       })
 
-      _wave.load(src.replace('https://firebasestorage.googleapis.com', '/storage'))
+      _wave.load(src)
       waveRef.current = _wave
       setMounted(true)
 

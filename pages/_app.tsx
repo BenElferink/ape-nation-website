@@ -35,15 +35,16 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
 
       <Toaster />
-      <Header />
-      <main className='w-screen min-h-screen bg-black/30'>
-        <WalletProvider>
-          <RenderProvider>
+
+      <RenderProvider>
+        <Header />
+        <main className='w-screen min-h-screen bg-black/30'>
+          <WalletProvider>
             <Component {...pageProps} />
-          </RenderProvider>
-        </WalletProvider>
-      </main>
-      <Footer />
+          </WalletProvider>
+        </main>
+        <Footer />
+      </RenderProvider>
     </Fragment>
   )
 }
