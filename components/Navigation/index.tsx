@@ -71,13 +71,6 @@ const Navigation = () => {
           </li>
           <li>
             <MultipleLinks
-              title='Events'
-              links={[{ label: 'Bloodline', path: '' }]}
-              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
-            />
-          </li>
-          <li>
-            <MultipleLinks
               title='Collections'
               links={[
                 { label: 'Ape Nation', path: `/collections/${APE_NATION_POLICY_ID}` },
@@ -96,6 +89,13 @@ const Navigation = () => {
           </li>
           <li>
             <MultipleLinks title='Staking' links={navTokens} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
+          </li>
+          <li>
+            <MultipleLinks
+              title='Events'
+              links={[{ label: 'Bloodline', path: '' }]}
+              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
+            />
           </li>
           <li className='relative'>
             <SingleLink
