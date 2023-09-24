@@ -42,13 +42,13 @@ const Navigation = () => {
       <button
         type='button'
         onClick={() => setIsNavOpen((prev) => !prev)}
-        className='xl:hidden flex items-center p-1 mx-1 rounded-lg text-sm hover:bg-zinc-700 focus:outline-none focus:ring-zinc-600 focus:ring-2'
+        className='xl:hidden flex items-center p-1 mx-1 rounded-lg text-sm hover:bg-zinc-700/50 focus:outline-none focus:ring-zinc-600 focus:ring-2'
       >
         <Bars3Icon className='w-7 h-7' />
       </button>
 
       <div className={(isNavOpen ? 'block' : 'hidden') + ' xl:block'}>
-        <ul className='flex flex-col xl:flex-row absolute right-0 xl:static overflow-auto xl:overflow-visible max-h-[80vh] xl:max-h-auto w-80 xl:w-auto mt-8 xl:mt-0 p-4 bg-zinc-700 border xl:border-0 rounded-lg border-zinc-500 xl:space-x-8'>
+        <ul className='flex flex-col xl:flex-row absolute right-0 xl:static overflow-auto xl:overflow-visible max-h-[80vh] xl:max-h-auto w-80 xl:w-auto mt-8 xl:mt-0 p-4 bg-zinc-700/50 border xl:border-0 rounded-lg border-zinc-500 xl:space-x-8'>
           <li
             onClick={() => {
               if (router.pathname === '/') window.scrollTo({ top: 0, left: 0 })

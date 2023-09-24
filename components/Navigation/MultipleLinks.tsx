@@ -26,8 +26,8 @@ const MultipleLinks = (props: MultipleLinksProps) => {
           })
         }
         className={
-          (open ? 'bg-zinc-700 xl:bg-transparent xl:text-white ' : '') +
-          'py-2 px-3 xl:p-0 w-full xl:w-auto flex items-center text-start xl:text-center text-sm truncate rounded xl:border-0 hover:bg-zinc-500 xl:hover:bg-transparent hover:text-white'
+          (open ? 'bg-zinc-700/50 xl:bg-transparent xl:text-white ' : '') +
+          'py-2 px-3 xl:p-0 w-full xl:w-auto flex items-center text-start xl:text-center text-sm truncate rounded xl:border-0 hover:bg-zinc-500/50 xl:hover:bg-transparent hover:text-white'
         }
       >
         {title}
@@ -37,12 +37,12 @@ const MultipleLinks = (props: MultipleLinksProps) => {
       <div className={open ? 'block' : 'hidden'}>
         <ul
           onClick={() => dropdownState.setValue('')}
-          className='xl:flex xl:flex-col xl:items-start xl:absolute xl:top-12 xl:-left-4 xl:overflow-auto xl:w-fit xl:p-4 xl:bg-zinc-700 xl:border-zinc-500 xl:rounded-xl'
+          className='xl:flex xl:flex-col xl:items-start xl:absolute xl:top-12 xl:-left-4 xl:overflow-auto xl:w-fit xl:p-4 xl:bg-zinc-700/50 xl:border-zinc-500 xl:rounded-xl'
         >
           {links.map((obj) => (
             <li
               key={`link-group-${title}-item-${obj.label}`}
-              className='xl:py-1 bg-zinc-600 xl:bg-transparent rounded'
+              className='xl:py-1 bg-zinc-600/50 xl:bg-transparent rounded'
             >
               <SingleLink {...obj} />
             </li>
