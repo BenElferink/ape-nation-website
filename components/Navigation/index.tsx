@@ -16,33 +16,6 @@ import {
 } from '@/constants'
 import Script from 'next/script'
 
-export const navCollections = [
-  { label: 'Ape Nation', path: `/collections/${APE_NATION_POLICY_ID}` },
-  { label: 'Jungle Juice', path: `/collections/${JUNGLE_JUICE_POLICY_ID}` },
-  { label: 'Mutation Nation', path: `/collections/${MUTATION_NATION_POLICY_ID}` },
-  { label: 'Mutation Nation - Mega Mutants', path: `/collections/${MUTATION_NATION_MEGA_MUTANTS_POLICY_ID}` },
-  { label: 'Ordinal Tokens', path: `/collections/${ORDINAL_TOKENS_POLICY_ID}` },
-  { iconSrc: '/media/tokens/bitcoin.svg', label: 'Ordinals', path: LINKS['MAGIC_EDEN_ORDINALS'] },
-  { label: 'OG Club Card', path: `/collections/${OG_CLUB_CARD_POLICY_ID}` },
-  { label: 'BLING', path: `/collections/${BLING_POLICY_ID}` },
-  { label: 'iHold Music', path: `/collections/${IHOLD_MUSIC_POLICY_ID}` },
-  { iconSrc: '/media/logo/other/taptools.webp', label: '$NATION Coin', url: LINKS['TAPTOOLS_NATION'] },
-]
-
-export const navTokens = [
-  { label: 'AWOO', path: '/tokens/awoo' },
-  { label: 'C4', path: '/tokens/c4' },
-  { label: 'CSWAP', path: '/tokens/cswap' },
-  { label: 'HEXO', path: '/tokens/hexo' },
-  { label: 'IDP', path: '/tokens/idp' },
-  { label: 'MD', path: '/tokens/md' },
-  { label: 'NATION', path: '/tokens/nation' },
-  { label: 'RON', path: '/tokens/ron' },
-  { label: 'SOC', path: '/tokens/soc' },
-]
-
-export const limitedEvents = [{ label: 'Bloodline', path: '' }]
-
 const Navigation = () => {
   const router = useRouter()
   const [isNavOpen, setIsNavOpen] = useState(false)
@@ -84,25 +57,47 @@ const Navigation = () => {
           >
             <SingleLink label='Home' path='/' />
           </li>
-          <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='Merch' url={LINKS['MERCH']} />
+          <li>
+            <MultipleLinks
+              title='Events'
+              links={[{ label: 'Bloodline', path: '' }]}
+              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
+            />
           </li>
           <li>
-            <MultipleLinks title='Collections' links={navCollections} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
+            <MultipleLinks
+              title='Collections'
+              links={[
+                { label: 'Ape Nation', path: `/collections/${APE_NATION_POLICY_ID}` },
+                { label: 'Jungle Juice', path: `/collections/${JUNGLE_JUICE_POLICY_ID}` },
+                { label: 'Mutation Nation', path: `/collections/${MUTATION_NATION_POLICY_ID}` },
+                { label: 'Mutation Nation - Mega Mutants', path: `/collections/${MUTATION_NATION_MEGA_MUTANTS_POLICY_ID}` },
+                { label: 'Ordinal Tokens', path: `/collections/${ORDINAL_TOKENS_POLICY_ID}` },
+                { iconSrc: '/media/tokens/bitcoin.svg', label: 'Ordinals', path: LINKS['MAGIC_EDEN_ORDINALS'] },
+                { label: 'OG Club Card', path: `/collections/${OG_CLUB_CARD_POLICY_ID}` },
+                { label: 'BLING', path: `/collections/${BLING_POLICY_ID}` },
+                { label: 'iHold Music', path: `/collections/${IHOLD_MUSIC_POLICY_ID}` },
+                { iconSrc: '/media/logo/other/taptools.webp', label: '$NATION Coin', url: LINKS['NATION_TAPTOOLS'] },
+              ]}
+              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
+            />
           </li>
           <li>
-            <MultipleLinks title='Staking' links={navTokens} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
-          </li>
-          <li>
-            <MultipleLinks title='Events' links={limitedEvents} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
-          </li>
-          <li
-            onClick={() => {
-              window.scroll({ top: 0, left: 0 })
-              setIsNavOpen(false)
-            }}
-          >
-            <SingleLink label='Wallet' path='/wallet' />
+            <MultipleLinks
+              title='Staking'
+              links={[
+                { label: 'AWOO', path: '/tokens/awoo' },
+                { label: 'C4', path: '/tokens/c4' },
+                { label: 'CSWAP', path: '/tokens/cswap' },
+                { label: 'HEXO', path: '/tokens/hexo' },
+                { label: 'IDP', path: '/tokens/idp' },
+                { label: 'MD', path: '/tokens/md' },
+                { label: 'NATION', path: '/tokens/nation' },
+                { label: 'RON', path: '/tokens/ron' },
+                { label: 'SOC', path: '/tokens/soc' },
+              ]}
+              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
+            />
           </li>
           <li className='relative'>
             <SingleLink
@@ -127,11 +122,25 @@ const Navigation = () => {
               {/* Wallets will be injected here */}
             </div>
           </li>
-          <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='Raffles' url={LINKS['MUTANTS_RAFFLES']} />
+          <li
+            onClick={() => {
+              window.scroll({ top: 0, left: 0 })
+              setIsNavOpen(false)
+            }}
+          >
+            <SingleLink label='Wallet' path='/wallet' />
           </li>
-          <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='Mutation Checker' url={LINKS['MUTATION_CHECKER']} />
+          <li>
+            <MultipleLinks
+              title='Other'
+              links={[
+                { label: 'Merch', url: LINKS['MERCH'] },
+                { label: 'Raffles', url: LINKS['MUTANTS_RAFFLES'] },
+                { label: 'Tokenomics', url: LINKS['NATION_TOKENOMICS'] },
+                { label: 'Mutation Checker', url: LINKS['MUTATION_CHECKER'] },
+              ]}
+              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
+            />
           </li>
         </ul>
       </div>

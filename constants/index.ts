@@ -22,10 +22,15 @@ export const IHOLD_MUSIC_POLICY_ID = 'a2e5d9747e27d18cbc03eb2c24222f79675f8c3ada
 
 export const LINKS = {
   MERCH: 'https://nftouchable.com/collections/ape-nation',
+
   MUTATION_CHECKER: 'https://mutationchecker.yepple.io/apenation',
+
   MUTANTS_RAFFLES: 'https://labs.mutant-nft.com/projects/apenation?tab=raffles',
   MUTANTS_STAKING: 'https://labs.mutant-nft.com/projects/apenation?tab=staking',
+
   MAGIC_EDEN_ORDINALS: 'https://magiceden.io/ordinals/marketplace/ordinals-by-ape-nation',
-  TAPTOOLS_NATION:
+
+  NATION_TAPTOOLS:
     'https://www.taptools.io/charts/token?pairID=0be55d262b29f564998ff81efe21bdc0022621c12f15af08d0f2ddb1.a7ecc694852dba715767f6be7e30c6ac1aab68baa9794815532e0da28b2fd80d',
+  NATION_TOKENOMICS: 'https://usdnation-token-by-ape-nation.gitbook.io/usdnation-token-by-ape-nation',
 }
