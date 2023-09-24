@@ -82,7 +82,7 @@ const RecentMarketActivity = (props: { policyId: PolicyId }) => {
                       alt={thisAsset?.tokenName?.display || ''}
                       width={imageSize}
                       height={imageSize}
-                      style={{ width: imageSize, height: imageSize, borderRadius: '100%', objectFit: 'cover' }}
+                      style={{ width: imageSize, height: imageSize, objectFit: 'cover', borderRadius: '100%', backgroundColor: 'black' }}
                     />
                     <p className='px-2 text-black text-xs text-center font-light whitespace-nowrap rounded-lg bg-[var(--accent-2)] absolute -bottom-[1px] left-1/2 -translate-x-1/2 z-20'>
                       <span className='text-sm'>

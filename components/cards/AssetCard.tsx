@@ -31,7 +31,7 @@ const AssetCard = (props: AssetCardProps) => {
           alt={title}
           width={248}
           height={248}
-          style={{ width: 248, height: 248, borderRadius: '0.75rem 0.75rem 0 0', objectFit: 'contain' }}
+          style={{ width: 248, height: 248, objectFit: 'contain', borderRadius: '0.75rem 0.75rem 0 0', backgroundColor: 'black' }}
         />
         {isBurned ? (
           <div className='absolute top-0 left-0 z-10 flex items-center justify-center w-[248px] h-[248px] bg-zinc-900 bg-opacity-50'>
