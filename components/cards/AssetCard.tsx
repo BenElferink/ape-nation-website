@@ -25,16 +25,16 @@ const AssetCard = (props: AssetCardProps) => {
         ' flex flex-col-reverse md:flex-row mx-2 mb-4 mt-0 rounded-xl border border-zinc-950 bg-zinc-950/70 hover:bg-zinc-700/70'
       }
     >
-      <div className='relative flex flex-col items-center truncate w-[248px]' style={style}>
+      <div className='relative flex flex-col items-center truncate w-[269px]' style={style}>
         <ImageLoader
           src={imageSrc}
           alt={title}
-          width={248}
-          height={248}
-          style={{ width: 248, height: 248, objectFit: 'contain', borderRadius: '0.65rem 0.65rem 0 0', backgroundColor: 'black' }}
+          width={269}
+          height={269}
+          style={{ width: 269, height: 269, objectFit: 'contain', borderRadius: '0.65rem 0.65rem 0 0', backgroundColor: 'black' }}
         />
         {isBurned ? (
-          <div className='absolute top-0 left-0 z-10 flex items-center justify-center w-[248px] h-[248px] bg-zinc-900 bg-opacity-50'>
+          <div className='absolute top-0 left-0 z-10 flex items-center justify-center w-[269px] h-[269px] bg-zinc-900 bg-opacity-50'>
             <Image unoptimized src='/media/fire.png' alt='BURNED' sizes='10rem' width={150} height={150} />
           </div>
         ) : null}
