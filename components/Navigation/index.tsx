@@ -16,6 +16,18 @@ import {
 } from '@/constants'
 import Script from 'next/script'
 
+export const navTokens = [
+  { label: 'AWOO', path: '/tokens/awoo' },
+  { label: 'C4', path: '/tokens/c4' },
+  { label: 'CSWAP', path: '/tokens/cswap' },
+  { label: 'HEXO', path: '/tokens/hexo' },
+  { label: 'IDP', path: '/tokens/idp' },
+  { label: 'MD', path: '/tokens/md' },
+  { label: 'NATION', path: '/tokens/nation' },
+  { label: 'RON', path: '/tokens/ron' },
+  { label: 'SOC', path: '/tokens/soc' },
+]
+
 const Navigation = () => {
   const router = useRouter()
   const [isNavOpen, setIsNavOpen] = useState(false)
@@ -83,21 +95,7 @@ const Navigation = () => {
             />
           </li>
           <li>
-            <MultipleLinks
-              title='Staking'
-              links={[
-                { label: 'AWOO', path: '/tokens/awoo' },
-                { label: 'C4', path: '/tokens/c4' },
-                { label: 'CSWAP', path: '/tokens/cswap' },
-                { label: 'HEXO', path: '/tokens/hexo' },
-                { label: 'IDP', path: '/tokens/idp' },
-                { label: 'MD', path: '/tokens/md' },
-                { label: 'NATION', path: '/tokens/nation' },
-                { label: 'RON', path: '/tokens/ron' },
-                { label: 'SOC', path: '/tokens/soc' },
-              ]}
-              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
-            />
+            <MultipleLinks title='Staking' links={navTokens} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
           <li className='relative'>
             <SingleLink
