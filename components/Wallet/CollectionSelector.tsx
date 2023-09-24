@@ -26,20 +26,21 @@ const CollectionSelector = (props: { onSelected: (_policyId: PolicyId) => void; 
             }}
             className={
               'relative flex flex-col items-center w-[200px] m-1 mx-2 rounded-xl border border-zinc-950 bg-zinc-950/70 ' +
-              (ownsThisCollection ? 'hover:border-zinc-400 hover:bg-zinc-700/70' : 'cursor-not-allowed')
+              (ownsThisCollection ? 'hover:bg-zinc-700/70' : 'cursor-not-allowed')
             }
           >
             <ImageLoader
               src={coll.image}
               alt={coll.name}
-              width={198}
-              height={198}
+              width={200}
+              height={200}
               style={{
-                width: 198,
-                height: 198,
-                borderRadius: '0.75rem 0.75rem 0 0',
+                width: 200,
+                height: 200,
                 objectFit: 'contain',
+                borderRadius: '0.75rem 0.75rem 0 0',
                 backgroundColor: 'black',
+                opacity: '0.9',
               }}
             />
             <h6 className='w-full m-1 text-center text-lg font-light truncate'>{coll.name}</h6>

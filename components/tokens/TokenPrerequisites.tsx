@@ -13,7 +13,7 @@ const TokenPrerequisites = (props: {
   const { items, multiItemType } = props
 
   return (
-    <div className='w-full my-2 p-4 px-6 flex flex-col bg-zinc-950/50 rounded-xl'>
+    <div className='w-full my-2 p-4 px-6 flex flex-col bg-zinc-950/70 rounded-xl'>
       <h4 className='mb-2 text-lg text-center'>Prerequisites</h4>
 
       <div className='flex items-center justify-center'>

@@ -22,7 +22,7 @@ const AssetCard = (props: AssetCardProps) => {
       onClick={() => (!!onClick && typeof onClick === 'function' ? onClick() : null)}
       className={
         (!!onClick && typeof onClick === 'function' ? 'cursor-pointer' : '') +
-        ' flex flex-col-reverse md:flex-row mx-2 mb-4 mt-0 rounded-xl border border-zinc-950 hover:border-zinc-200 bg-zinc-950/70 hover:bg-zinc-700/70'
+        ' flex flex-col-reverse md:flex-row mx-2 mb-4 mt-0 rounded-xl border border-zinc-950 bg-zinc-950/70 hover:bg-zinc-700/70'
       }
     >
       <div className='relative flex flex-col items-center truncate w-[248px]' style={style}>
@@ -31,7 +31,7 @@ const AssetCard = (props: AssetCardProps) => {
           alt={title}
           width={248}
           height={248}
-          style={{ width: 248, height: 248, objectFit: 'contain', borderRadius: '0.75rem 0.75rem 0 0', backgroundColor: 'black' }}
+          style={{ width: 248, height: 248, objectFit: 'contain', borderRadius: '0.65rem 0.65rem 0 0', backgroundColor: 'black' }}
         />
         {isBurned ? (
           <div className='absolute top-0 left-0 z-10 flex items-center justify-center w-[248px] h-[248px] bg-zinc-900 bg-opacity-50'>

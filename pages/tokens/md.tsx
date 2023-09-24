@@ -2,7 +2,6 @@ import Link from 'next/link'
 import TokenHeader from '../../components/tokens/TokenHeader'
 import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
 import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
-import TokenStakeMethod from '../../components/tokens/TokenStakeMethod'
 import PageContainer from '../../components/layout/PageContainer'
 
 const TOKEN_IMAGE_SRC = '/media/tokens/md/token.png'
@@ -16,10 +15,9 @@ const Page = () => {
     <PageContainer>
       <TokenHeader projectName={PROJECT_NAME} tokenName={TOKEN_NAME} tokenSrc={TOKEN_IMAGE_SRC} policyId={TOKEN_POLICY_ID} />
       <TokenWhoEarns whoCanEarn={WHO_CAN_EARN} />
-      <TokenStakeMethod method='Non Custodial' />
       <TokenPrerequisites items={[]} />
 
-      <div className='w-full my-2 p-4 px-6 flex flex-col bg-zinc-950/50 rounded-xl'>
+      <div className='w-full my-2 p-4 px-6 flex flex-col bg-zinc-950/70 rounded-xl'>
         <h4 className='mb-2 text-lg text-center'>How to earn?</h4>
 
         <ol className='mx-auto list-decimal list-inside'>

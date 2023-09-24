@@ -26,7 +26,7 @@ const TokenWhoEarns = (props: { whoCanEarn: WhoCanEarn }) => {
   const { whoCanEarn } = props
 
   return (
-    <div className='w-full my-2 p-4 px-6 flex flex-col bg-zinc-950/50 rounded-xl'>
+    <div className='w-full my-2 p-4 px-6 flex flex-col bg-zinc-950/70 rounded-xl'>
       <h4 className='mb-2 text-lg text-center'>Who can earn?</h4>
 
       <ul className='mx-auto flex flex-col md:flex-row md:flex-wrap md:items-center md:justify-center'>
