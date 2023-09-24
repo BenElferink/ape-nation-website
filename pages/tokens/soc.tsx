@@ -27,8 +27,8 @@ const Page = () => {
         ]}
       />
 
-      <div className='w-full my-2 p-4 px-6 flex flex-col bg-gray-400 bg-opacity-20 rounded-xl'>
-        <h4 className='mb-2 text-gray-200 text-lg text-center'>How to earn?</h4>
+      <div className='w-full my-2 p-4 px-6 flex flex-col bg-zinc-950/50 rounded-xl'>
+        <h4 className='mb-2 text-lg text-center'>How to earn?</h4>
 
         <ol className='mx-auto list-decimal list-inside'>
           <li className='text-sm'>

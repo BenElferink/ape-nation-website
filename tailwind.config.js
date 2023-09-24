@@ -11,14 +11,6 @@ const config = {
       fontFamily: {
         roboto: ['Roboto', ...defaultTheme.fontFamily.sans],
       },
-      dropShadow: {
-        landinglogo: ['0 0 4px rgb(255 255 255 / 0.5)'],
-        footeritem: ['0 1px 0 rgb(255 255 255 / 0.5)'],
-        loader: ['0 0 2px rgb(255 255 255 / 1)'],
-      },
-      animation: {
-        'spin-slow': 'spin 2s linear infinite',
-      },
     },
   },
   plugins: [],

@@ -89,7 +89,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           </button>
         ) : (
           <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
-            <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-2xl border border-gray-700'>
+            <div className='w-[100%] h-[80vw] md:w-[555px] md:h-[555px] flex items-center justify-center bg-zinc-900 bg-opacity-50 rounded-2xl border border-zinc-700'>
               Unhandled file type:
               <br />
               {displayedFile.mediaType}
@@ -107,7 +107,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
             <button
               key={`file-${file.src}`}
               onClick={() => setDisplayedFile(file)}
-              className='w-32 h-32 m-1 flex items-center justify-center text-xs rounded-2xl border border-gray-700 bg-gray-900/50'
+              className='w-32 h-32 m-1 flex items-center justify-center text-xs rounded-2xl border border-zinc-700 bg-zinc-900/50'
             >
               {file.mediaType === 'image/png' || file.mediaType === 'image/jpeg' ? (
                 <ImageLoader src={formatIpfsUrl(file.src)} alt={file.name} width={150} height={150} style={{ borderRadius: '1rem' }} />
@@ -148,7 +148,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                   setBoughtAtPrice(val)
                 }
               }}
-              className='w-full p-3 rounded-lg bg-gray-900 border border-gray-700 text-sm hover:bg-gray-700 hover:border-gray-500 hover:text-white'
+              className='w-full p-3 rounded-lg bg-zinc-900 border border-zinc-700 text-sm hover:bg-zinc-700 hover:border-zinc-500 hover:text-white'
             />
           </div>
         ) : null}
@@ -174,7 +174,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           <Fragment>
             <button
               onClick={() => window.open(`https://pool.pm/${asset.fingerprint}`, '_blank', 'noopener noreferrer')}
-              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-zinc-700 border border-zinc-600 rounded hover:bg-zinc-500 hover:border-zinc-400 hover:text-zinc-200'
             >
               <Image unoptimized src='/media/logo/other/poolpm.png' alt='' width={30} height={30} className='mr-2' />
               pool.pm
@@ -182,7 +182,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
             <button
               onClick={() => window.open(`https://www.jpg.store/asset/${asset.tokenId}`, '_blank', 'noopener noreferrer')}
-              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+              className='w-full my-1 py-2 px-4 flex items-center justify-start bg-zinc-700 border border-zinc-600 rounded hover:bg-zinc-500 hover:border-zinc-400 hover:text-zinc-200'
             >
               <Image unoptimized src='/media/logo/other/jpgstore.png' alt='' width={30} height={30} className='mr-2' />
               JPG Store
@@ -197,7 +197,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
                     'noopener noreferrer'
                   )
                 }
-                className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+                className='w-full my-1 py-2 px-4 flex items-center justify-start bg-zinc-700 border border-zinc-600 rounded hover:bg-zinc-500 hover:border-zinc-400 hover:text-zinc-200'
               >
                 <Image unoptimized src='/media/logo/other/cnfttools.png' alt='' width={30} height={30} className='mr-2' />
                 CNFT Tools
@@ -208,7 +208,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
         <button
           onClick={() => window.open(`https://cardanoscan.io/token/${asset.tokenId}`, '_blank', 'noopener noreferrer')}
-          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-zinc-700 border border-zinc-600 rounded hover:bg-zinc-500 hover:border-zinc-400 hover:text-zinc-200'
         >
           <Image unoptimized src='/media/logo/other/cardanoscan.png' alt='' width={30} height={30} className='mr-2' />
           Cardanoscan
@@ -216,7 +216,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
 
         <button
           onClick={() => window.open(`https://cexplorer.io/asset/${asset.fingerprint}`, '_blank', 'noopener noreferrer')}
-          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 rounded hover:bg-gray-500 hover:border-gray-400 hover:text-gray-200'
+          className='w-full my-1 py-2 px-4 flex items-center justify-start bg-zinc-700 border border-zinc-600 rounded hover:bg-zinc-500 hover:border-zinc-400 hover:text-zinc-200'
         >
           <Image unoptimized src='/media/logo/other/cexplorer.png' alt='' width={30} height={30} className='mr-2' />
           Cexplorer
@@ -326,7 +326,17 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
   })
 
   return (
-    <div className='w-screen flex flex-col-reverse md:flex-row items-center md:items-start'>
+    <div className='w-screen flex flex-col md:flex-row items-center md:items-start'>
+      {!fetching ? (
+        <AssetFilters
+          policyId={policyId}
+          traitsData={traitsFile}
+          assetsData={assetsFile}
+          withListed={withListed && fetched}
+          callbackRendered={(arr) => setRendered(arr)}
+        />
+      ) : null}
+
       <div className='w-full'>
         <div className='flex flex-row flex-wrap items-center justify-center'>
           {fetching ? (
@@ -372,14 +382,6 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
 
         <div ref={bottomRef} />
       </div>
-
-      <AssetFilters
-        policyId={policyId}
-        traitsData={traitsFile}
-        assetsData={assetsFile}
-        withListed={withListed && fetched}
-        callbackRendered={(arr) => setRendered(arr)}
-      />
 
       {selectedAsset ? (
         <Modal title={selectedAsset.tokenName?.display} open onClose={() => setSelectedAsset(null)}>

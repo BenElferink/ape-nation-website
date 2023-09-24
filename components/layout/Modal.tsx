@@ -37,7 +37,7 @@ const Modal = (props: ModalProps) => {
       <div className='animate__animated animate__fadeIn'>
         <section
           className={
-            (noModal ? 'bg-transparent overflow-hidden' : 'bg-gray-800 overflow-auto') +
+            (noModal ? 'bg-transparent overflow-hidden' : 'bg-zinc-800 overflow-auto') +
             ' relative flex flex-col items-center min-w-screen md:min-w-[420px] max-w-screen md:max-w-[90vw] w-screen md:w-fit min-h-screen md:min-h-fit max-h-screen md:max-h-[90vh] p-4 md:rounded-3xl  ' +
             className
           }
@@ -45,7 +45,7 @@ const Modal = (props: ModalProps) => {
         >
           {onClose ? (
             <button
-              className='w-6 h-6 rounded-full bg-gray-400 hover:bg-gray-300 text-gray-800 flex items-center justify-center absolute top-3 right-3'
+              className='w-6 h-6 rounded-full bg-zinc-400 hover:bg-zinc-300 text-zinc-800 flex items-center justify-center absolute top-3 right-3'
               onClick={onClose}
             >
               &#10005;

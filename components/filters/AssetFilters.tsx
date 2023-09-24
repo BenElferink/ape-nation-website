@@ -114,7 +114,7 @@ const AssetFilters = (props: AssetFiltersProps) => {
       <button
         type='button'
         onClick={() => setOpenOnMobile((prev) => !prev)}
-        className='w-2/3 p-3 my-4 md:m-0 flex md:hidden items-center justify-between rounded-lg bg-gray-900 hover:bg-gray-700 hover:text-white border border-gray-700 hover:border-gray-500'
+        className='w-2/3 p-3 my-4 md:m-0 flex md:hidden items-center justify-between rounded-lg bg-zinc-900 hover:bg-zinc-700 hover:text-white border border-zinc-700 hover:border-zinc-500'
       >
         <span>Filters</span>
         <AdjustmentsVerticalIcon className='w-6 h-6' />
@@ -123,32 +123,26 @@ const AssetFilters = (props: AssetFiltersProps) => {
       <div
         className={
           (openOnMobile ? 'block' : 'hidden md:block') +
-          ' fixed md:sticky top-0 md:top-28 right-0 z-40 md:z-30 overflow-auto w-2/3 md:w-72 h-screen md:h-[calc(100vh-7rem)] pt-20 px-10 md:p-4 md:rounded-xl bg-gray-900 md:bg-opacity-50 border border-gray-700'
+          ' fixed md:sticky top-0 md:top-28 left-0 z-40 md:z-30 overflow-auto w-2/3 md:w-72 h-screen md:h-[calc(100vh-7rem)] pt-20 px-10 md:p-4 md:rounded-xl border border-zinc-700 bg-zinc-950/70'
         }
       >
         <button
-          className='md:hidden flex items-center justify-center absolute top-7 right-7 w-6 h-6 rounded-full bg-gray-400 hover:bg-gray-300 text-gray-800'
+          className='md:hidden flex items-center justify-center absolute top-7 right-7 w-6 h-6 rounded-full bg-zinc-400 hover:bg-zinc-300 text-zinc-800'
           onClick={() => setOpenOnMobile((prev) => !prev)}
         >
           &#10005;
         </button>
 
         <input
-          placeholder='Search #ID'
+          placeholder='Search:'
           value={search}
-          onChange={(e) => {
-            const v = e.target.value
-
-            if (!isNaN(Number(v))) {
-              setSearch(v)
-            }
-          }}
-          className='w-full my-2 p-3 rounded-lg bg-gray-900 border border-gray-700 text-sm hover:bg-gray-700 hover:border-gray-500 hover:text-white'
+          onChange={(e) => setSearch(e.target.value)}
+          className='w-full my-2 p-3 rounded-lg bg-zinc-900 border border-zinc-700 text-sm hover:bg-zinc-700 hover:border-zinc-500 hover:text-white'
         />
 
         <label className='w-fit my-2 mx-auto relative flex items-center cursor-pointer'>
           <input type='checkbox' checked={!!ascending} onChange={() => setAscending((prev) => !prev)} className='sr-only peer' />
-          <div className="w-9 h-5 bg-gray-700 rounded-full peer peer-focus:outline-none after:content-[''] after:h-4 after:w-4 after:bg-white after:border-gray-300 after:border after:rounded-full after:absolute after:top-[2px] after:left-[2px] peer-checked:after:translate-x-full after:transition-all"></div>
+          <div className="w-9 h-5 bg-zinc-700 rounded-full peer peer-focus:outline-none after:content-[''] after:h-4 after:w-4 after:bg-white after:border-zinc-300 after:border after:rounded-full after:absolute after:top-[2px] after:left-[2px] peer-checked:after:translate-x-full after:transition-all"></div>
           <span className='ml-2 text-sm w-16'>{ascending ? 'Ascend' : 'Descend'}</span>
         </label>
 
@@ -220,7 +214,7 @@ const AssetFilters = (props: AssetFiltersProps) => {
                     [category]: typeof prev[category] === 'boolean' ? !prev[category] : true,
                   }))
                 }}
-                className='w-full my-2 p-3 flex items-center justify-between rounded-lg bg-gray-900 border border-gray-700 text-sm hover:bg-gray-700 hover:border-gray-500 hover:text-white'
+                className='w-full my-2 p-3 flex items-center justify-between rounded-lg bg-zinc-900 border border-zinc-700 text-sm hover:bg-zinc-700 hover:border-zinc-500 hover:text-white'
               >
                 <span>{category}</span>
                 <ChevronDownIcon className={(!!filterComponents[category] ? 'rotate-180 text-white' : 'rotate-0') + ' ml-1 w-4 h-4'} />
@@ -251,8 +245,8 @@ const AssetFilters = (props: AssetFiltersProps) => {
                     className={
                       'w-[30%] my-1 p-1 text-xs rounded-lg border ' +
                       (filters[category]?.find((str) => str === label)
-                        ? 'bg-gray-700 border-gray-500 text-white'
-                        : 'bg-gray-900 border-gray-700 hover:bg-gray-700 hover:border-gray-500 hover:text-white')
+                        ? 'bg-zinc-700 border-zinc-500 text-white'
+                        : 'bg-zinc-900 border-zinc-700 hover:bg-zinc-700 hover:border-zinc-500 hover:text-white')
                     }
                   >
                     <p className='truncate'>{label}</p>
@@ -272,7 +266,7 @@ const AssetFilters = (props: AssetFiltersProps) => {
             setFilters({})
             setSearch('')
           }}
-          className='w-full mt-4 p-2 px-4 text-xs rounded-lg border border-red-900 bg-red-900 bg-opacity-20 hover:border-red-700 hover:bg-opacity-50 hover:text-gray-200'
+          className='w-full mt-4 p-2 px-4 text-xs rounded-lg border border-red-700 bg-red-950 hover:border-red-500 hover:bg-red-900'
         >
           Clear all
         </button>

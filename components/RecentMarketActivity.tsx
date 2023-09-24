@@ -70,7 +70,7 @@ const RecentMarketActivity = (props: { policyId: PolicyId }) => {
 
             return (
               <SwiperSlide key={`recently-sold-${item.tokenId}-${idx}`}>
-                <div className='relative rounded-full border border-gray-900 shadow-inner' style={{ width: imageSize, height: imageSize }}>
+                <div className='relative rounded-full border border-zinc-900 shadow-inner' style={{ width: imageSize, height: imageSize }}>
                   <Link
                     href={`https://jpg.store/asset/${item.tokenId}`}
                     target='_blank'
@@ -84,12 +84,12 @@ const RecentMarketActivity = (props: { policyId: PolicyId }) => {
                       height={imageSize}
                       style={{ width: imageSize, height: imageSize, borderRadius: '100%', objectFit: 'cover' }}
                     />
-                    <p className='whitespace-nowrap px-1 rounded-lg bg-gray-900 text-xs text-center font-light absolute bottom-0 left-1/2 -translate-x-1/2 z-20'>
-                      <span className='text-sm text-gray-200'>
+                    <p className='px-2 text-black text-xs text-center font-light whitespace-nowrap rounded-lg bg-[var(--accent-2)] absolute -bottom-[1px] left-1/2 -translate-x-1/2 z-20'>
+                      <span className='text-sm'>
                         {item.activityType === 'LIST' ? 'Listed' : item.activityType === 'SELL' ? 'Bought' : item.activityType}
                       </span>{' '}
                       {format(new Date(item.date))},{' '}
-                      <span className='text-sm text-gray-200'>
+                      <span className='text-sm'>
                         {ADA_SYMBOL}
                         {formatBigNumber(item.price)}
                       </span>

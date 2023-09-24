@@ -25,20 +25,21 @@ const CollectionSelector = (props: { onSelected: (_policyId: PolicyId) => void; 
               }
             }}
             className={
-              'relative flex flex-col items-center w-[200px] m-1 mx-2 bg-gray-900 bg-opacity-50 rounded-xl border border-gray-700  ' +
-              (ownsThisCollection ? 'hover:bg-gray-700 hover:bg-opacity-50 hover:border-gray-500 hover:text-white' : 'cursor-not-allowed')
+              'relative flex flex-col items-center w-[200px] m-1 mx-2 rounded-xl border border-zinc-950 bg-zinc-950/70 ' +
+              (ownsThisCollection ? 'hover:border-zinc-400 hover:bg-zinc-700/70' : 'cursor-not-allowed')
             }
           >
             <ImageLoader
               src={coll.image}
               alt={coll.name}
-              width={200}
-              height={200}
+              width={198}
+              height={198}
               style={{
-                width: 200,
-                height: 200,
+                width: 198,
+                height: 198,
                 borderRadius: '0.75rem 0.75rem 0 0',
                 objectFit: 'contain',
+                backgroundColor: 'black',
               }}
             />
             <h6 className='w-full m-1 text-center text-lg font-light truncate'>{coll.name}</h6>
@@ -47,10 +48,10 @@ const CollectionSelector = (props: { onSelected: (_policyId: PolicyId) => void; 
               className={
                 ownsThisCollection
                   ? 'hidden'
-                  : 'w-full h-full absolute top-0 left-0 z-20 flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-xl'
+                  : 'w-full h-full absolute top-0 left-0 z-20 flex items-center justify-center bg-zinc-900 bg-opacity-50 rounded-xl'
               }
             >
-              <LockClosedIcon className='w-3/4 h-3/4 text-gray-200' />
+              <LockClosedIcon className='w-3/4 h-3/4' />
             </div>
           </button>
         )

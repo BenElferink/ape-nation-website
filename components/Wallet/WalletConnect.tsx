@@ -42,14 +42,14 @@ const WalletConnect = (props: { allowManual?: boolean; introText?: string }) => 
         {connected ? (
           <p>
             You&apos;ve succesfully connected with {connectedName}:<br />
-            <span className='text-sm text-[var(--online)]'>{populatedWallet?.stakeKey}</span>
+            <span className='text-sm text-green-400'>{populatedWallet?.stakeKey}</span>
           </p>
         ) : (
           <Fragment>
             {introText ? <p>{introText}</p> : null}
 
             {availableWallets.length == 0 ? (
-              <p className='my-2 text-[var(--offline)]'>No wallets installed</p>
+              <p className='my-2 text-red-400'>No wallets installed</p>
             ) : (
               <div className='flex flex-col min-w-[280px] w-[85%] md:w-[75%] '>
                 {availableWallets.map((wallet, idx) => (
@@ -57,7 +57,7 @@ const WalletConnect = (props: { allowManual?: boolean; introText?: string }) => 
                     key={`connect-wallet-${wallet.name}`}
                     onClick={() => connectWallet(wallet.name)}
                     disabled={connecting || connected}
-                    className='w-full mt-1 mx-auto py-2 px-4 flex items-center justify-start bg-gray-700 border border-gray-600 hover:text-white hover:bg-gray-600 hover:border hover:border-gray-500'
+                    className='w-full mt-1 mx-auto py-2 px-4 flex items-center justify-start bg-zinc-700 border border-zinc-600 hover:text-white hover:bg-zinc-600 hover:border hover:border-zinc-500'
                     style={{
                       borderRadius:
                         idx === 0 && idx === availableWallets.length - 1
@@ -90,13 +90,13 @@ const WalletConnect = (props: { allowManual?: boolean; introText?: string }) => 
                     placeholder='$handle / addr1... / stake1...'
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    className='w-full p-3 rounded-lg bg-gray-800 border border-gray-700 outline-none'
+                    className='w-full p-3 rounded-lg bg-zinc-800 border border-zinc-700 outline-none'
                   />
                   <button
                     type='submit'
                     disabled={connecting}
                     className={
-                      (input ? 'block' : 'hidden') + ' absolute top-1/2 right-1 -translate-y-1/2 p-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-sm'
+                      (input ? 'block' : 'hidden') + ' absolute top-1/2 right-1 -translate-y-1/2 p-2 rounded-lg bg-zinc-700 hover:bg-zinc-600 text-sm'
                     }
                   >
                     CONNECT

@@ -22,19 +22,19 @@ const AssetCard = (props: AssetCardProps) => {
       onClick={() => (!!onClick && typeof onClick === 'function' ? onClick() : null)}
       className={
         (!!onClick && typeof onClick === 'function' ? 'cursor-pointer' : '') +
-        ' flex flex-col-reverse md:flex-row mx-2 mb-4 mt-0 bg-gray-900 hover:bg-gray-700 bg-opacity-50 hover:bg-opacity-50 rounded-xl border border-gray-800'
+        ' flex flex-col-reverse md:flex-row mx-2 mb-4 mt-0 rounded-xl border border-zinc-950 hover:border-zinc-200 bg-zinc-950/70 hover:bg-zinc-700/70'
       }
     >
-      <div className='relative flex flex-col items-center truncate w-[250px]' style={style}>
+      <div className='relative flex flex-col items-center truncate w-[248px]' style={style}>
         <ImageLoader
           src={imageSrc}
           alt={title}
-          width={250}
-          height={250}
-          style={{ width: 250, height: 250, borderRadius: '0.5rem 0.5rem 0 0', objectFit: 'contain' }}
+          width={248}
+          height={248}
+          style={{ width: 248, height: 248, borderRadius: '0.75rem 0.75rem 0 0', objectFit: 'contain' }}
         />
         {isBurned ? (
-          <div className='absolute top-0 left-0 z-10 flex items-center justify-center w-[250px] h-[250px] bg-gray-900 bg-opacity-50'>
+          <div className='absolute top-0 left-0 z-10 flex items-center justify-center w-[248px] h-[248px] bg-zinc-900 bg-opacity-50'>
             <Image unoptimized src='/media/fire.png' alt='BURNED' sizes='10rem' width={150} height={150} />
           </div>
         ) : null}
@@ -44,7 +44,7 @@ const AssetCard = (props: AssetCardProps) => {
 
           {subTitles && subTitles.length ? (
             <Fragment>
-              <div className='h-[1px] my-2 bg-gray-400' />
+              <div className='h-[1px] my-2 bg-zinc-400' />
 
               {subTitles.map((str) =>
                 str ? (

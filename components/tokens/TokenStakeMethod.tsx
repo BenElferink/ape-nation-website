@@ -6,8 +6,8 @@ const TokenStakeMethod = (props: { method: Method }) => {
   const { method } = props
 
   return (
-    <div className='w-full my-2 p-4 px-6 flex flex-col bg-gray-400 bg-opacity-20 rounded-xl'>
-      <h4 className='mb-2 text-gray-200 text-lg text-center'>Staking Method</h4>
+    <div className='w-full my-2 p-4 px-6 flex flex-col bg-zinc-950/50 rounded-xl'>
+      <h4 className='mb-2 text-lg text-center'>Staking Method</h4>
 
       <div className='flex items-center justify-center'>
         <p className='text-center'>

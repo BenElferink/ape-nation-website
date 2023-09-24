@@ -36,7 +36,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
       <Toaster />
       <Header />
-      <main className='w-screen min-h-screen bg-black bg-opacity-50'>
+      <main className='w-screen min-h-screen bg-black/30'>
         <WalletProvider>
           <RenderProvider>
             <Component {...pageProps} />

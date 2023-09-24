@@ -72,9 +72,9 @@ const MusicPlayerWaves = (props: { src: string; w?: string; h?: string }) => {
 
   return (
     <div className={`${w} ${h} flex items-center`}>
-      <button onClick={() => (mounted ? (playing ? pause() : play()) : null)} className='relative mx-1 p-1 rounded-full border border-gray-400'>
+      <button onClick={() => (mounted ? (playing ? pause() : play()) : null)} className='relative mx-1 p-1 rounded-full border border-zinc-400'>
         {playing ? <PauseIcon className='w-4 h-4' /> : <PlayIcon className='w-4 h-4' />}
-        <div className='absolute top-1 animate-ping w-4 h-4 rounded-full border border-gray-200' />
+        <div className='absolute top-1 animate-ping w-4 h-4 rounded-full border border-zinc-200' />
       </button>
 
       <div ref={visualRef} className={`${w} ${h}`} />

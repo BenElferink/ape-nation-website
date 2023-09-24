@@ -1,13 +1,11 @@
-import Banana from '@/icons/Banana'
+import { LoaderIcon } from 'react-hot-toast'
 
 const Loader = (props: { size?: string | number }) => {
   const { size = 150 } = props
 
   return (
     <div className='flex flex-col items-center justify-center'>
-      <div className='animate-spin-slow motion-safe:animate-spin-slow drop-shadow-loader'>
-        <Banana size={size} />
-      </div>
+      <LoaderIcon style={{ width: size, height: size }} />
     </div>
   )
 }

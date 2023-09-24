@@ -11,9 +11,9 @@ const partnerships = [
     logoUrl: '/media/logo/other/yepple.png',
   },
   {
-    name: 'Cardano Lands',
-    url: 'https://cardanolands.com',
-    logoUrl: '/media/logo/other/cardanolands.png',
+    name: 'iHold',
+    url: 'https://linktr.ee/ihold',
+    logoUrl: '/media/logo/other/ihold.png',
   },
   {
     name: 'CSWAP DEX',
@@ -26,9 +26,9 @@ const partnerships = [
     logoUrl: '/media/logo/other/badfoxmc.png',
   },
   {
-    name: 'IDO Pass DAO',
-    url: 'https://idopass.finance',
-    logoUrl: '/media/logo/other/idopassdao.png',
+    name: 'Cardano Lands',
+    url: 'https://cardanolands.com',
+    logoUrl: '/media/logo/other/cardanolands.png',
   },
   {
     name: 'Ron Coin',
@@ -56,9 +56,9 @@ const partnerships = [
     logoUrl: '/media/logo/other/maddogcarclub.png',
   },
   {
-    name: 'iHold',
-    url: 'https://linktr.ee/ihold',
-    logoUrl: '/media/logo/other/ihold.webp',
+    name: 'IDO Pass DAO',
+    url: 'https://idopass.finance',
+    logoUrl: '/media/logo/other/idopassdao.png',
   },
 ]
 
@@ -142,10 +142,10 @@ const Page = () => {
               href={url}
               target='_blank'
               rel='noopener noreferrer'
-              className='group w-20 h-10 my-8 mx-4 flex flex-col items-center justify-center relative'
+              className='group w-24 h-12 my-8 mx-4 flex flex-col items-center justify-center relative'
             >
               <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain drop-shadow-footeritem' />
-              <h6 className='absolute -bottom-7 text-gray-500 group-hover:text-gray-400 text-xs whitespace-nowrap'>{name}</h6>
+              <h6 className='absolute -bottom-7 group-hover:text-white text-xs whitespace-nowrap'>{name}</h6>
             </Link>
           ))}
         </div>

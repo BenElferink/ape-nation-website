@@ -9,7 +9,7 @@ const Page = () => {
         {navTokens.map(({ label, path }) =>
           path ? (
             <Link key={`token_${label}`} scroll={false} href={path}>
-              <div className='w-44 h-44 m-2 py-6 flex flex-col justify-between rounded-xl bg-gray-400 hover:bg-gray-200 bg-opacity-20 hover:bg-opacity-20 hover:text-gray-200'>
+              <div className='w-44 h-44 m-2 py-6 flex flex-col justify-between rounded-xl bg-zinc-950/70 hover:bg-zinc-700/70'>
                 <div className='flex items-center justify-center'>
                   <ImageLoader
                     src={`/media/${path.charAt(0) === '/' ? path.slice(1) : path}/token.png`}

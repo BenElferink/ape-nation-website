@@ -13,11 +13,11 @@ const data = [
         title: '9999 Supply',
       },
       {
-        checked: true,
+        checked: false,
         title: 'Canopy Club Monthly Royalty Raffle',
       },
       {
-        checked: true,
+        checked: false,
         title: '$NATION + 8 Partner Staking Rewards',
       },
     ],
@@ -31,7 +31,7 @@ const data = [
         title: '9999 Supply (Free Airdrop)',
       },
       {
-        checked: true,
+        checked: false,
         title: '1 Partner Staking Reward',
       },
     ],
@@ -45,11 +45,11 @@ const data = [
         title: '5500 Supply',
       },
       {
-        checked: true,
+        checked: false,
         title: '$NATION + 3 Partner Staking Rewards',
       },
       {
-        checked: true,
+        checked: false,
         title: '*Quarterly Royalty Raffle',
       },
     ],
@@ -63,19 +63,19 @@ const data = [
         title: '200 Supply (Free Airdrop)',
       },
       {
-        checked: true,
+        checked: false,
         title: '$NATION Staking Rewards (Not Subject Halvings)',
       },
       {
-        checked: true,
+        checked: false,
         title: 'Quarterly 100% Royalty Raffle',
       },
       {
-        checked: true,
+        checked: false,
         title: 'Airdrops / Claims & WL',
       },
       {
-        checked: true,
+        checked: false,
         title: 'Future Utility',
       },
     ],
@@ -89,7 +89,7 @@ const data = [
         title: '100 Supply / Sub 1 Million Inscriptions',
       },
       {
-        checked: true,
+        checked: false,
         title: '$NATION Staking Rewards',
       },
     ],
@@ -103,15 +103,15 @@ const data = [
         title: 'TBD Supply (Phase 1 Free Airdrop, Phase 4 Free Claim)',
       },
       {
-        checked: true,
+        checked: false,
         title: '$NATION Staking Rewards',
       },
       {
-        checked: true,
+        checked: false,
         title: 'Future Staking Reward Multipliers',
       },
       {
-        checked: true,
+        checked: false,
         title: 'Future Utility with Ultimate OG 2024',
       },
     ],
@@ -125,11 +125,11 @@ const data = [
         title: '38 1:1 Supply (V3 Vials Free Airdrop)',
       },
       {
-        checked: true,
+        checked: false,
         title: '$NATION Staking Rewards',
       },
       {
-        checked: true,
+        checked: false,
         title: 'Airdrops / Claims',
       },
     ],
@@ -194,7 +194,7 @@ const Utilities = () => {
   const { isMobile } = useScreenSize()
 
   return (
-    <div className='w-full my-12 text-gray-400'>
+    <div className='w-full my-12'>
       <h1 className='mb-8 text-3xl text-center'>Collections & Utilities</h1>
 
       {data.map((phase, idx) => {
@@ -213,11 +213,11 @@ const Utilities = () => {
             {phase.events.map((event) => (
               <div
                 key={event.title}
-                className={`rounded-xl bg-gray-600/30 ${styles.event} ${
+                className={`rounded-xl bg-zinc-950/50 ${styles.event} ${
                   !isMobile ? (isLeft ? styles.leftEvent : styles.rightEvent) : styles.mobileEvent
                 }`}
               >
-                <h3 className='text-zinc-400'>
+                <h3 className='text-sm'>
                   {event.checked ? <CheckCircleIcon className='w-6 h-6' /> : <MinusCircleIcon className='w-6 h-6' />}
                   {event.title}
                 </h3>

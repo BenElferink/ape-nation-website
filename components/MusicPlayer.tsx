@@ -92,18 +92,18 @@ const MusicPlayer = () => {
   return (
     <div className='flex items-center'>
       {songs.length > 1 ? (
-        <button onClick={() => playPrev()} className='mx-[0.2rem] p-[0.2rem] rounded-full border border-gray-400'>
+        <button onClick={() => playPrev()} className='mx-[0.2rem] p-[0.2rem] rounded-full border border-zinc-400'>
           <ChevronDoubleLeftIcon className='w-4 h-4' />
         </button>
       ) : null}
 
-      <button onClick={() => (playing ? pause() : play())} className='relative mx-1 p-1 rounded-full border border-gray-400'>
+      <button onClick={() => (playing ? pause() : play())} className='relative mx-1 p-1 rounded-full border border-zinc-400'>
         {playing ? <PauseIcon className='w-4 h-4' /> : <PlayIcon className='w-4 h-4' />}
-        <div className='absolute top-1 animate-ping w-4 h-4 rounded-full border border-gray-200' />
+        <div className='absolute top-1 animate-ping w-4 h-4 rounded-full border border-zinc-200' />
       </button>
 
       {songs.length > 1 ? (
-        <button onClick={() => playNext()} className='mx-[0.2rem] p-[0.2rem] rounded-full border border-gray-400'>
+        <button onClick={() => playNext()} className='mx-[0.2rem] p-[0.2rem] rounded-full border border-zinc-400'>
           <ChevronDoubleRightIcon className='w-4 h-4' />
         </button>
       ) : null}
