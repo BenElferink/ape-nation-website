@@ -3,8 +3,19 @@ import Image from 'next/image'
 import Landing from '@/components/Landing'
 import Utilities from '@/components/Utilities'
 import TeamCard from '@/components/cards/TeamCard'
+import { LINKS } from '@/constants'
 
 const partnerships = [
+  {
+    name: 'The Ape Society',
+    url: 'https://theapesociety.io',
+    logoUrl: '/media/logo/other/theapesociety.png',
+  },
+  {
+    name: 'Cardano Crocs Club',
+    url: 'https://cardanocrocsclub.com',
+    logoUrl: '/media/logo/other/cardanocrocsclub.png',
+  },
   {
     name: 'Yepple',
     url: 'https://yepple.io',
@@ -14,6 +25,16 @@ const partnerships = [
     name: 'iHold',
     url: 'https://linktr.ee/ihold',
     logoUrl: '/media/logo/other/ihold.png',
+  },
+  {
+    name: 'Mutant Labs',
+    url: 'https://labs.mutant-nft.com',
+    logoUrl: '/media/logo/other/mutantlabs.png',
+  },
+  {
+    name: 'NFTouchable',
+    url: LINKS['MERCH'],
+    logoUrl: '/media/logo/other/nftouchable.png',
   },
   {
     name: 'CSWAP DEX',
@@ -34,16 +55,6 @@ const partnerships = [
     name: 'Ron Coin',
     url: 'https://www.roncoinada.com',
     logoUrl: '/media/tokens/ron/token.png',
-  },
-  {
-    name: 'The Ape Society',
-    url: 'https://theapesociety.io',
-    logoUrl: '/media/logo/other/theapesociety.png',
-  },
-  {
-    name: 'Cardano Crocs Club',
-    url: 'https://cardanocrocsclub.com',
-    logoUrl: '/media/logo/other/cardanocrocsclub.png',
   },
   {
     name: 'Unbothered Wolves',
