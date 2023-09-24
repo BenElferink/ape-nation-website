@@ -12,6 +12,7 @@ import {
   BLING_POLICY_ID,
   IHOLD_MUSIC_POLICY_ID,
   JUNGLE_JUICE_POLICY_ID,
+  LINKS,
 } from '@/constants'
 
 export const navCollections = [
@@ -23,11 +24,7 @@ export const navCollections = [
   { label: 'Ordinal Tokens', path: `/collections/${ORDINAL_TOKENS_POLICY_ID}` },
   { label: 'BLING', path: `/collections/${BLING_POLICY_ID}` },
   { label: 'iHold Music', path: `/collections/${IHOLD_MUSIC_POLICY_ID}` },
-  {
-    iconSrc: '/media/logo/other/taptools.webp',
-    label: '$NATION Coin',
-    url: 'https://www.taptools.io/charts/token?pairID=0be55d262b29f564998ff81efe21bdc0022621c12f15af08d0f2ddb1.a7ecc694852dba715767f6be7e30c6ac1aab68baa9794815532e0da28b2fd80d',
-  },
+  { iconSrc: '/media/logo/other/taptools.webp', label: '$NATION Coin', url: LINKS['TAPTOOLS_NATION'] },
 ]
 
 export const navTokens = [
@@ -76,7 +73,7 @@ const Navigation = () => {
             <SingleLink label='Home' path='/' />
           </li>
           <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='Merch' url='https://nftouchable.com/collections/ape-nation' />
+            <SingleLink label='Merch' url={LINKS['MERCH']} />
           </li>
           <li>
             <MultipleLinks title='Collections' links={navCollections} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
@@ -96,10 +93,10 @@ const Navigation = () => {
             <SingleLink label='Wallet' path='/wallet' />
           </li>
           <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='Raffles' url='https://labs.mutant-nft.com/projects/apenation?tab=raffles' />
+            <SingleLink label='Raffles' url={LINKS['MUTANTS_RAFFLES']} />
           </li>
           <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='Mutation Checker' url='https://mutationchecker.yepple.io/apenation' />
+            <SingleLink label='Mutation Checker' url={LINKS['MUTATION_CHECKER']} />
           </li>
         </ul>
       </div>

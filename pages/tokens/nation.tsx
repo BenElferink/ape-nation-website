@@ -3,7 +3,7 @@ import TokenHeader from '../../components/tokens/TokenHeader'
 import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
 import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
 import PageContainer from '../../components/layout/PageContainer'
-import { NATION_COIN_POLICY_ID } from '@/constants'
+import { LINKS, NATION_COIN_POLICY_ID } from '@/constants'
 
 const TOKEN_IMAGE_SRC = '/media/tokens/nation/token.png'
 const TOKEN_POLICY_ID = NATION_COIN_POLICY_ID
@@ -33,12 +33,7 @@ const Page = () => {
         <ol className='mx-auto list-decimal list-inside'>
           <li className='text-sm'>
             Connect your wallet to the{' '}
-            <Link
-              href='https://labs.mutant-nft.com/projects/apenation?tab=staking'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-blue-400'
-            >
+            <Link href={LINKS['MUTANTS_STAKING']} target='_blank' rel='noopener noreferrer' className='text-blue-400'>
               ML Staking Dashboard
             </Link>
             .

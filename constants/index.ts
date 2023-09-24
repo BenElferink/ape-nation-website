@@ -19,3 +19,12 @@ export const OG_CLUB_CARD_POLICY_ID = '21a44e25de32d0c2cba0413cb417fa61ed65cd9e2
 export const ORDINAL_TOKENS_POLICY_ID = 'c9fa37158ded418a5bb18159e4e7d7c1aeadd202ef7eaa84fbf23350'
 export const BLING_POLICY_ID = 'b0fd2efcb7e8b5d0dd6fce7403e31afc7919efe4e68a66570a5ee055'
 export const IHOLD_MUSIC_POLICY_ID = 'a2e5d9747e27d18cbc03eb2c24222f79675f8c3adae33cf4de9ac2bc'
+
+export const LINKS = {
+  MERCH: 'https://nftouchable.com/collections/ape-nation',
+  MUTATION_CHECKER: 'https://mutationchecker.yepple.io/apenation',
+  MUTANTS_RAFFLES: 'https://labs.mutant-nft.com/projects/apenation?tab=raffles',
+  MUTANTS_STAKING: 'https://labs.mutant-nft.com/projects/apenation?tab=staking',
+  TAPTOOLS_NATION:
+    'https://www.taptools.io/charts/token?pairID=0be55d262b29f564998ff81efe21bdc0022621c12f15af08d0f2ddb1.a7ecc694852dba715767f6be7e30c6ac1aab68baa9794815532e0da28b2fd80d',
+}
