@@ -96,7 +96,7 @@ const Navigation = () => {
             <SingleLink label='Wallet' path='/wallet' />
           </li>
           <li onClick={() => setIsNavOpen(false)}>
-            <SingleLink label='Raffles' url='https://labs.mutant-nft.com/projects/apenation?tab=staking' />
+            <SingleLink label='Raffles' url='https://labs.mutant-nft.com/projects/apenation?tab=raffles' />
           </li>
           <li onClick={() => setIsNavOpen(false)}>
             <SingleLink label='Mutation Checker' url='https://mutationchecker.yepple.io/apenation' />
