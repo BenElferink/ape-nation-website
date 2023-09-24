@@ -213,7 +213,7 @@ const Utilities = () => {
             {phase.events.map((event) => (
               <div
                 key={event.title}
-                className={`rounded-xl bg-zinc-950/50 ${styles.event} ${
+                className={`rounded-xl bg-zinc-950/70 ${styles.event} ${
                   !isMobile ? (isLeft ? styles.leftEvent : styles.rightEvent) : styles.mobileEvent
                 }`}
               >
