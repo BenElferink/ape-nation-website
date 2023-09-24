@@ -27,7 +27,7 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className='my-4 mx-auto max-w-2xl p-4 bg-zinc-950/70 rounded-xl border border-[var(--accent-2)] shadow-[0_0_3px_0_var(--accent-1)]'>
+      <div className='my-4 mx-auto max-w-2xl p-4 bg-zinc-950/70 rounded-xl shadow-[-1px_-1px_0.3rem_0_rgba(255,255,255,0.5)]'>
         <h1 className='text-xl mb-4'>About Us:</h1>
         <p className='text-xs'>
           Welcome to Ape Nation, a leading OG Project in the CNFT Space. We have built a solid foundation that enables us to maximize utility for our

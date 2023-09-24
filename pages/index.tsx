@@ -134,7 +134,7 @@ const Page = () => {
       <Utilities />
 
       <div className='my-20 flex flex-col items-center justify-center'>
-        <h5 className='text-2xl'>Partnerships</h5>
+        <h5 className='text-3xl mb-4'>Partnerships</h5>
         <div className='flex flex-wrap items-center justify-center'>
           {partnerships.map(({ name, url, logoUrl }) => (
             <Link
@@ -142,10 +142,12 @@ const Page = () => {
               href={url}
               target='_blank'
               rel='noopener noreferrer'
-              className='group w-24 h-12 my-8 mx-4 flex flex-col items-center justify-center relative'
+              className='group w-32 m-2 p-4 bg-zinc-200/20 hover:bg-zinc-200/30 rounded-xl shadow-[-1px_-1px_0.3rem_0_rgba(255,255,255,0.5)] flex flex-col items-center justify-center'
             >
-              <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain drop-shadow-footeritem' />
-              <h6 className='absolute -bottom-7 group-hover:text-white text-xs whitespace-nowrap'>{name}</h6>
+              <div className='w-20 h-10 relative'>
+                <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain' />
+              </div>
+              <span className='mt-2 group-hover:text-white text-xs whitespace-nowrap'>{name}</span>
             </Link>
           ))}
         </div>
