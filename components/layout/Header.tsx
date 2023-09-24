@@ -6,7 +6,7 @@ import SocialIcon from '../SocialIcon'
 
 const Header = () => {
   return (
-    <header className='w-screen py-3 md:py-4 px-2 md:px-2 bg-black/30 flex items-center justify-between sticky top-0 z-40'>
+    <header className='w-screen xl:h-36 py-3 md:py-4 px-2 md:px-2 bg-black/30 flex items-center justify-between sticky top-0 z-40'>
       <div className='xl:w-[180px] mx-4 flex flex-col items-center'>
         <Link href='/' onClick={() => window.scroll({ top: 0, left: 0 })} className='h-20 w-20 relative'>
           <Image src='/media/logo/ape_nation.png' alt='logo' priority fill sizes='5rem' className='object-contain rounded-full' />

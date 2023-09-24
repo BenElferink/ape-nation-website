@@ -123,7 +123,7 @@ const AssetFilters = (props: AssetFiltersProps) => {
       <div
         className={
           (openOnMobile ? 'block' : 'hidden md:block') +
-          ' fixed md:sticky top-0 md:top-28 left-0 z-40 md:z-30 overflow-auto w-2/3 md:w-72 h-screen md:h-[calc(100vh-7rem)] pt-20 px-10 md:p-4 md:rounded-xl border border-zinc-700 bg-zinc-950/70'
+          ' fixed md:sticky top-0 md:top-28 xl:top-36 left-0 z-40 md:z-30 overflow-auto w-2/3 md:w-72 h-screen md:h-[calc(100vh-7rem)] pt-20 px-10 md:p-4 md:rounded-r-xl border border-zinc-700 bg-zinc-950/90'
         }
       >
         <button
