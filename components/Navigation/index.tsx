@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 import MultipleLinks from './MultipleLinks'
 import SingleLink from './SingleLink'
@@ -14,6 +14,7 @@ import {
   JUNGLE_JUICE_POLICY_ID,
   LINKS,
 } from '@/constants'
+import Script from 'next/script'
 
 export const navCollections = [
   { label: 'Ape Nation', path: `/collections/${APE_NATION_POLICY_ID}` },
@@ -46,6 +47,7 @@ const Navigation = () => {
   const router = useRouter()
   const [isNavOpen, setIsNavOpen] = useState(false)
   const [openDropdownName, setOpenDropdownName] = useState('')
+  const pollsSdkRef = useRef(null)
 
   useEffect(() => {
     if (!openDropdownName) {
@@ -55,6 +57,15 @@ const Navigation = () => {
 
   return (
     <nav className='flex items-center'>
+      <Script
+        src='https://labs.badfoxmc.com/sdk.min.js'
+        onReady={() => {
+          // @ts-ignore
+          const pollsSdk = new BadLabsSDK({ product: 'polls', creatorStakeKey: 'stake1u9z9h0sy9s5mddue9634vkgmnnnpdrruwmppwnx7ups29uqv68tvp' })
+          pollsSdkRef.current = pollsSdk
+        }}
+      />
+
       <button
         type='button'
         onClick={() => setIsNavOpen((prev) => !prev)}
@@ -92,6 +103,29 @@ const Navigation = () => {
             }}
           >
             <SingleLink label='Wallet' path='/wallet' />
+          </li>
+          <li className='relative'>
+            <SingleLink
+              label='Governance'
+              onClick={() => {
+                const injectEl = document.getElementById('polls-inject-wallets')
+
+                if (injectEl?.children.length) {
+                  injectEl.innerText = ''
+                } else if (pollsSdkRef.current) {
+                  // @ts-ignore
+                  pollsSdkRef.current.loadWallets({
+                    injectId: 'polls-inject-wallets',
+                    buttonBackgroundColor: 'rgb(63,63,70)',
+                    buttonTextColor: 'rgb(228,228,231)',
+                  })
+                }
+              }}
+            />
+
+            <div id='polls-inject-wallets' className='sm:absolute sm:top-12 sm:-right-1/2 flex flex-col'>
+              {/* Wallets will be injected here */}
+            </div>
           </li>
           <li onClick={() => setIsNavOpen(false)}>
             <SingleLink label='Raffles' url={LINKS['MUTANTS_RAFFLES']} />

@@ -6,13 +6,14 @@ export interface SingleLinkProps {
   label: string
   path?: string
   url?: string
+  onClick?: () => void
 }
 
 const SingleLink = (props: SingleLinkProps) => {
-  const { iconSrc, label, path, url } = props
+  const { iconSrc, label, path, url, onClick } = props
   const router = useRouter()
   const selected = router.asPath === path // || router.pathname === path
-  const isNothing = !url && !path
+  const isNothing = !url && !path && !onClick
 
   return (
     <Link
@@ -22,6 +23,7 @@ const SingleLink = (props: SingleLinkProps) => {
       rel={!!url ? 'noopener noreferrer' : ''}
       onClick={() => {
         if (!isNothing) window.scroll({ top: 0, left: 0 })
+        if (onClick) onClick()
       }}
       className={
         (selected ? 'text-white' : 'xl:border-0') +
