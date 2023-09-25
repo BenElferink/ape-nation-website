@@ -36,6 +36,6 @@ body {
     background-size: 100%;
     background-position: top;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: local;
   }
 }
