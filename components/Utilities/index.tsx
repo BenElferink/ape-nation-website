@@ -208,7 +208,7 @@ const Utilities = () => {
 
   return (
     <div className='w-full my-12'>
-      <h1 className='mb-8 text-3xl text-center'>Collections & Utilities</h1>
+      <h2 className='mb-8 text-3xl text-center'>Collections & Utilities</h2>
 
       {data.map((phase, idx) => {
         const isLeft = idx % 2 !== 0

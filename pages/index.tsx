@@ -145,7 +145,7 @@ const Page = () => {
       <Utilities />
 
       <div className='my-20 flex flex-col items-center justify-center'>
-        <h5 className='text-3xl mb-4'>Partnerships</h5>
+        <h2 className='text-3xl mb-4'>Partnerships</h2>
         <div className='flex flex-wrap items-center justify-center'>
           {partnerships.map(({ name, url, logoUrl }) => (
             <Link
