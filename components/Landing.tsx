@@ -9,7 +9,7 @@ const Landing = () => {
 
   if (!screenWidth) {
     return (
-      <div id='home' className='w-screen h-[75vh] md:h-[90vh] mt-60 lg:mt-20 flex flex-col items-center'>
+      <div id='home' className='w-screen h-[90vh] mt-60 lg:mt-20 flex flex-col items-center'>
         <Loader />
       </div>
     )
@@ -17,7 +17,7 @@ const Landing = () => {
 
   if (isMobile) {
     return (
-      <div id='home' className='w-screen h-[75vh] px-6 flex flex-col items-center'>
+      <div id='home' className='w-screen h-[90vh] px-6 flex flex-col items-center'>
         <div className='my-32 animate__animated animate__infinite animate__slower animate__pulse'>
           <Image
             src='/media/logo/ape_nation.png'
