@@ -160,7 +160,7 @@ const teamMembers = [
   {
     name: 'JimmyRubberBoots',
     title: 'Community Manager',
-    description: '-',
+    description: 'Engineering Professional serving in the Fluid Power Industry for 23+ years. Husband / Father / CNFT Degen. Dedicated Team member committed to the growth and support of the Ape Nation Community.',
     profilePicture: '/media/team/jimmy.jpg',
     socials: ['https://x.com/Jimmy_Rbr_Boots', 'https://discord.com/users/934872168095965295'],
   },
@@ -206,7 +206,7 @@ const Page = () => {
           ))}
         </div>
 
-        <div className='my-4' />
+        <div className='my-8' />
 
         <h2 className='text-center text-3xl mb-4'>Featured by Content Creators</h2>
         <div className='flex flex-wrap items-center justify-center'>
