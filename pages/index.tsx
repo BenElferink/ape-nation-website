@@ -73,6 +73,49 @@ const partnerships = [
   },
 ]
 
+const featuredBy = [
+  {
+    name: 'CNFT Tools',
+    url: 'https://www.youtube.com/@cnfttools',
+    logoUrl: '/media/logo/other/cnfttools.png',
+  },
+  {
+    name: 'Block Is Hot',
+    url: 'https://www.youtube.com/@blockishot971',
+    logoUrl: '/media/logo/other/block.png',
+  },
+  {
+    name: 'Atlanick',
+    url: 'https://www.youtube.com/@Atlanick',
+    logoUrl: '/media/logo/other/atlanick.png',
+  },
+  {
+    name: 'Freedom 35ers',
+    url: 'https://www.youtube.com/@Freedom35ers',
+    logoUrl: '/media/logo/other/freedom35ers.png',
+  },
+  {
+    name: 'Florida Man Investing',
+    url: 'https://www.youtube.com/@floridamaninvesting',
+    logoUrl: '/media/logo/other/floridamaninvesting.png',
+  },
+  {
+    name: 'J Speak',
+    url: 'https://www.youtube.com/@j_speak',
+    logoUrl: '/media/logo/other/jspeak.png',
+  },
+  {
+    name: 'CNFT DOODLES',
+    url: 'https://www.youtube.com/@cnftdoodles4549',
+    logoUrl: '/media/logo/other/cnftdoodles.png',
+  },
+  {
+    name: 'Krypto Labs',
+    url: 'https://www.youtube.com/@KryptoLabs',
+    logoUrl: '/media/logo/other/kryptolabs.png',
+  },
+]
+
 const teamMembers = [
   {
     name: 'TheWolf',
@@ -150,6 +193,26 @@ const Page = () => {
           {partnerships.map(({ name, url, logoUrl }) => (
             <Link
               key={`PARTNER: ${name}`}
+              href={url}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='group w-32 m-2 p-4 bg-zinc-200/20 hover:bg-zinc-200/30 rounded-xl shadow-[-1px_-1px_0.3rem_0_rgba(255,255,255,0.5)] flex flex-col items-center justify-center'
+            >
+              <div className='w-20 h-10 relative'>
+                <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain' />
+              </div>
+              <span className='mt-2 group-hover:text-white text-xs whitespace-nowrap'>{name}</span>
+            </Link>
+          ))}
+        </div>
+
+        <div className='my-4' />
+
+        <h2 className='text-3xl mb-4'>Featured by Content Creators</h2>
+        <div className='flex flex-wrap items-center justify-center'>
+          {featuredBy.map(({ name, url, logoUrl }) => (
+            <Link
+              key={`FEATURED: ${name}`}
               href={url}
               target='_blank'
               rel='noopener noreferrer'
