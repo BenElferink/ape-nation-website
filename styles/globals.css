@@ -25,13 +25,6 @@ body {
 
   background-image: url('/media/bg.png');
   background-size: cover;
-  background-position: top;
   background-repeat: no-repeat;
-  background-attachment: unset;
-}
-
-@media only screen and (min-width: 768px) {
-  body {
-    background-attachment: fixed;
-  }
+  background-attachment: fixed;
 }
