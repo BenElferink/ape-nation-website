@@ -9,7 +9,7 @@ const Landing = () => {
 
   if (!screenWidth) {
     return (
-      <div id='home' className='w-screen h-[90vh] mt-60 lg:mt-20 flex flex-col items-center'>
+      <div id='home' className='w-screen min-h-[90vh] mt-60 lg:mt-20 flex flex-col items-center'>
         <Loader />
       </div>
     )
@@ -17,7 +17,7 @@ const Landing = () => {
 
   if (isMobile) {
     return (
-      <div id='home' className='w-screen h-[90vh] px-6 flex flex-col items-center'>
+      <div id='home' className='w-screen min-h-[90vh] px-6 flex flex-col items-center'>
         <div className='my-32 animate__animated animate__infinite animate__slower animate__pulse'>
           <Image
             src='/media/logo/ape_nation.png'
@@ -45,7 +45,7 @@ const Landing = () => {
   }
 
   return (
-    <div id='home' className='w-screen h-[90vh] flex flex-col items-center'>
+    <div id='home' className='w-screen min-h-[90vh] flex flex-col items-center'>
       <div className='relative max-w-xl mt-64 lg:mt-28 lg:ml-[125px] p-6 lg:pl-28 bg-zinc-950/70 rounded-xl shadow-[-1px_-1px_0.3rem_0_rgba(255,255,255,0.5)]'>
         <div className='absolute -top-[130%] lg:top-1/2 left-1/2 lg:-left-40 -translate-x-1/2 lg:-translate-x-0 lg:-translate-y-1/2'>
           <div className='animate__animated animate__infinite animate__slower animate__pulse'>

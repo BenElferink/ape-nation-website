@@ -33,9 +33,6 @@ body {
 @media only screen and (max-width: 768px) {
   body {
     background-image: url('/media/bg_mobile.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-position: bottom;
   }
 }
