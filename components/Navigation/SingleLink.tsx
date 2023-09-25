@@ -28,12 +28,12 @@ const SingleLink = (props: SingleLinkProps) => {
       className={
         (selected ? 'text-white' : 'xl:border-0') +
         ' block py-2 px-3 xl:p-0 w-full xl:w-auto text-start xl:text-center text-sm rounded truncate ' +
-        (isNothing ? 'cursor-not-allowed line-through text-zinc-500' : 'hover:bg-zinc-500/50 xl:hover:bg-transparent xl:hover:underline')
+        (isNothing ? 'cursor-not-allowed line-through text-zinc-500' : 'hover:bg-zinc-500/70 xl:hover:bg-transparent xl:hover:underline')
       }
     >
       <span className='flex items-center'>
-        {iconSrc ? <img src={iconSrc} alt='' className='w-4 h-4 mr-2' /> : null}
         {label}
+        {iconSrc ? <img src={iconSrc} alt='' className='w-4 h-4 ml-2' /> : null}
       </span>
     </Link>
   )

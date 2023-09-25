@@ -54,13 +54,13 @@ const Navigation = () => {
       <button
         type='button'
         onClick={() => setIsNavOpen((prev) => !prev)}
-        className='xl:hidden flex items-center p-1 mx-1 rounded-lg text-sm hover:bg-zinc-700/50 focus:outline-none focus:ring-zinc-600 focus:ring-2'
+        className='xl:hidden flex items-center p-1 mx-1 rounded-lg text-sm hover:bg-zinc-700/70 focus:outline-none focus:ring-zinc-600 focus:ring-2'
       >
         <Bars3Icon className='w-7 h-7' />
       </button>
 
       <div className={(isNavOpen ? 'block' : 'hidden') + ' xl:block'}>
-        <ul className='flex flex-col xl:flex-row absolute right-0 xl:static overflow-auto xl:overflow-visible max-h-[80vh] xl:max-h-auto w-80 xl:w-auto mt-8 xl:mt-0 p-4 bg-zinc-700/50 border xl:border-0 rounded-lg border-zinc-500 xl:space-x-8'>
+        <ul className='flex flex-col xl:flex-row absolute right-0 xl:static overflow-auto xl:overflow-visible max-h-[80vh] xl:max-h-auto w-80 xl:w-auto mt-8 xl:mt-0 p-4 bg-zinc-700/70 border xl:border-0 rounded-lg border-zinc-500 xl:space-x-8'>
           <li
             onClick={() => {
               if (router.pathname === '/') window.scrollTo({ top: 0, left: 0 })
@@ -78,11 +78,11 @@ const Navigation = () => {
                 { label: 'Mutation Nation', path: `/collections/${MUTATION_NATION_POLICY_ID}` },
                 { label: 'Mutation Nation - Mega Mutants', path: `/collections/${MUTATION_NATION_MEGA_MUTANTS_POLICY_ID}` },
                 { label: 'Ordinal Tokens', path: `/collections/${ORDINAL_TOKENS_POLICY_ID}` },
-                { iconSrc: '/media/tokens/bitcoin.svg', label: 'Ordinals', path: LINKS['MAGIC_EDEN_ORDINALS'] },
+                { label: 'Ordinals', iconSrc: '/media/tokens/bitcoin.svg', path: LINKS['MAGIC_EDEN_ORDINALS'] },
                 { label: 'OG Club Card', path: `/collections/${OG_CLUB_CARD_POLICY_ID}` },
                 { label: 'BLING', path: `/collections/${BLING_POLICY_ID}` },
                 { label: 'iHold Music', path: `/collections/${IHOLD_MUSIC_POLICY_ID}` },
-                { iconSrc: '/media/logo/other/taptools.webp', label: '$NATION Coin', url: LINKS['NATION_TAPTOOLS'] },
+                { label: '$NATION', iconSrc: '/media/logo/other/taptools.webp', url: LINKS['NATION_TAPTOOLS'] },
               ]}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
