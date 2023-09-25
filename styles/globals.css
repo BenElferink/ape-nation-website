@@ -27,15 +27,11 @@ body {
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: unset;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
   body {
-    background-image: url('/media/bg_mobile.png');
-    background-size: 100vh;
-    background-position: unset;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-attachment: fixed;
   }
 }
