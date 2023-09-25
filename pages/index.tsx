@@ -188,7 +188,7 @@ const Page = () => {
       <Utilities />
 
       <div className='my-20 flex flex-col items-center justify-center'>
-        <h2 className='text-3xl mb-4'>Partnerships</h2>
+        <h2 className='text-center text-3xl mb-4'>Partnerships</h2>
         <div className='flex flex-wrap items-center justify-center'>
           {partnerships.map(({ name, url, logoUrl }) => (
             <Link
@@ -208,7 +208,7 @@ const Page = () => {
 
         <div className='my-4' />
 
-        <h2 className='text-3xl mb-4'>Featured by Content Creators</h2>
+        <h2 className='text-center text-3xl mb-4'>Featured by Content Creators</h2>
         <div className='flex flex-wrap items-center justify-center'>
           {featuredBy.map(({ name, url, logoUrl }) => (
             <Link
