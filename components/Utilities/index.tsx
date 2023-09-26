@@ -1,7 +1,19 @@
-import { CheckCircleIcon } from '@heroicons/react/24/solid'
+import { CheckCircleIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/solid'
 import { MinusCircleIcon } from '@heroicons/react/24/outline'
 import useScreenSize from '@/hooks/useScreenSize'
+import MediaWrapper from './MediaWrapper'
+import ImageLoader from '../Loader/ImageLoader'
 import styles from './Utilities.module.css'
+import collections from '@/data/collections.json'
+import {
+  APE_NATION_POLICY_ID,
+  BLING_POLICY_ID,
+  JUNGLE_JUICE_POLICY_ID,
+  MUTATION_NATION_MEGA_MUTANTS_POLICY_ID,
+  MUTATION_NATION_POLICY_ID,
+  OG_CLUB_CARD_POLICY_ID,
+  ORDINAL_TOKENS_POLICY_ID,
+} from '@/constants'
 
 const data: {
   checked: boolean
@@ -11,6 +23,7 @@ const data: {
     checked: boolean
     title: string
   }[]
+  renderMedia?: (isLeft: any) => JSX.Element
 }[] = [
   {
     checked: true,
@@ -29,6 +42,18 @@ const data: {
         title: '$NATION + 8 Partner Staking Rewards',
       },
     ],
+    renderMedia: (isLeft) => (
+      <MediaWrapper isLeft={isLeft} size={128} posTop='50px'>
+        <ImageLoader
+          src={collections.find(({ policyId }) => policyId === APE_NATION_POLICY_ID)?.image || ''}
+          alt=''
+          width={128}
+          height={128}
+          loaderSize={50}
+          style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black', objectFit: 'contain' }}
+        />
+      </MediaWrapper>
+    ),
   },
   {
     checked: true,
@@ -43,6 +68,18 @@ const data: {
         title: '1 Partner Staking Reward',
       },
     ],
+    renderMedia: (isLeft) => (
+      <MediaWrapper isLeft={isLeft} size={128} posTop='20px'>
+        <ImageLoader
+          src={collections.find(({ policyId }) => policyId === JUNGLE_JUICE_POLICY_ID)?.image || ''}
+          alt=''
+          width={128}
+          height={128}
+          loaderSize={50}
+          style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black', objectFit: 'contain' }}
+        />
+      </MediaWrapper>
+    ),
   },
   {
     checked: true,
@@ -61,6 +98,18 @@ const data: {
         title: '*Quarterly Royalty Raffle',
       },
     ],
+    renderMedia: (isLeft) => (
+      <MediaWrapper isLeft={isLeft} size={128} posTop='50px'>
+        <ImageLoader
+          src={collections.find(({ policyId }) => policyId === MUTATION_NATION_POLICY_ID)?.image || ''}
+          alt=''
+          width={128}
+          height={128}
+          loaderSize={50}
+          style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black', objectFit: 'contain' }}
+        />
+      </MediaWrapper>
+    ),
   },
   {
     checked: true,
@@ -79,6 +128,18 @@ const data: {
         title: 'Airdrops / Claims',
       },
     ],
+    renderMedia: (isLeft) => (
+      <MediaWrapper isLeft={isLeft} size={128} posTop='50px'>
+        <ImageLoader
+          src={collections.find(({ policyId }) => policyId === MUTATION_NATION_MEGA_MUTANTS_POLICY_ID)?.image || ''}
+          alt=''
+          width={128}
+          height={128}
+          loaderSize={50}
+          style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black', objectFit: 'contain' }}
+        />
+      </MediaWrapper>
+    ),
   },
   {
     checked: true,
@@ -98,6 +159,18 @@ const data: {
         title: '20 BTC Mint',
       },
     ],
+    renderMedia: (isLeft) => (
+      <MediaWrapper isLeft={isLeft} size={128} posTop='50px'>
+        <ImageLoader
+          src={collections.find(({ policyId }) => policyId === ORDINAL_TOKENS_POLICY_ID)?.image || ''}
+          alt=''
+          width={128}
+          height={128}
+          loaderSize={50}
+          style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black', objectFit: 'contain' }}
+        />
+      </MediaWrapper>
+    ),
   },
   {
     checked: true,
@@ -124,6 +197,18 @@ const data: {
         title: 'Future Utility',
       },
     ],
+    renderMedia: (isLeft) => (
+      <MediaWrapper isLeft={isLeft} size={128} posTop='120px'>
+        <ImageLoader
+          src={collections.find(({ policyId }) => policyId === OG_CLUB_CARD_POLICY_ID)?.image || ''}
+          alt=''
+          width={128}
+          height={128}
+          loaderSize={50}
+          style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black', objectFit: 'contain' }}
+        />
+      </MediaWrapper>
+    ),
   },
   {
     checked: true,
@@ -146,6 +231,18 @@ const data: {
         title: 'Future Utility with Ultimate OG 2024',
       },
     ],
+    renderMedia: (isLeft) => (
+      <MediaWrapper isLeft={isLeft} size={128} posTop='100px'>
+        <ImageLoader
+          src={collections.find(({ policyId }) => policyId === BLING_POLICY_ID)?.image || ''}
+          alt=''
+          width={128}
+          height={128}
+          loaderSize={50}
+          style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black', objectFit: 'contain' }}
+        />
+      </MediaWrapper>
+    ),
   },
   {
     checked: false,
@@ -168,6 +265,11 @@ const data: {
         title: '*Quarterly Royalty Raffle',
       },
     ],
+    renderMedia: (isLeft) => (
+      <MediaWrapper isLeft={isLeft} size={128} posTop='100px'>
+        <QuestionMarkCircleIcon style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black' }} />
+      </MediaWrapper>
+    ),
   },
   {
     checked: false,
@@ -182,6 +284,11 @@ const data: {
         title: 'Additional $NATION Liquidity',
       },
     ],
+    renderMedia: (isLeft) => (
+      <MediaWrapper isLeft={isLeft} size={128} posTop='20px'>
+        <QuestionMarkCircleIcon style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black' }} />
+      </MediaWrapper>
+    ),
   },
   {
     checked: false,
@@ -200,6 +307,11 @@ const data: {
         title: 'Upgrade & Customize your Ape Nation',
       },
     ],
+    renderMedia: (isLeft) => (
+      <MediaWrapper isLeft={isLeft} size={128} posTop='50px'>
+        <QuestionMarkCircleIcon style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black' }} />
+      </MediaWrapper>
+    ),
   },
 ]
 
@@ -238,6 +350,7 @@ const Utilities = () => {
               </div>
             ))}
 
+            {phase.renderMedia ? phase.renderMedia(isLeft) : null}
             {isMobile ? <br /> : null}
           </div>
         )
