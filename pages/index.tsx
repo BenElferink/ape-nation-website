@@ -12,19 +12,39 @@ const partnerships = [
     logoUrl: '/media/logo/other/theapesociety.png',
   },
   {
+    name: 'Bad Fox MC',
+    url: 'https://badfoxmc.com',
+    logoUrl: '/media/logo/other/badfoxmc.png',
+  },
+  {
     name: 'Cardano Crocs Club',
     url: 'https://cardanocrocsclub.com',
     logoUrl: '/media/logo/other/cardanocrocsclub.png',
   },
   {
-    name: 'Yepple',
-    url: 'https://yepple.io',
-    logoUrl: '/media/logo/other/yepple.png',
+    name: 'Cardano Lands',
+    url: 'https://cardanolands.com',
+    logoUrl: '/media/logo/other/cardanolands.png',
+  },
+  {
+    name: 'CSWAP DEX',
+    url: 'https://www.cswap.fi',
+    logoUrl: '/media/tokens/cswap/token.png',
+  },
+  {
+    name: 'IDO Pass DAO',
+    url: 'https://idopass.finance',
+    logoUrl: '/media/logo/other/idopassdao.png',
   },
   {
     name: 'iHold',
     url: 'https://linktr.ee/ihold',
     logoUrl: '/media/logo/other/ihold.png',
+  },
+  {
+    name: 'Mad Dog Car Club',
+    url: 'https://mdtoken.io',
+    logoUrl: '/media/logo/other/maddogcarclub.png',
   },
   {
     name: 'Mutant Labs',
@@ -37,19 +57,9 @@ const partnerships = [
     logoUrl: '/media/logo/other/nftouchable.png',
   },
   {
-    name: 'CSWAP DEX',
-    url: 'https://www.cswap.fi',
-    logoUrl: '/media/tokens/cswap/token.png',
-  },
-  {
-    name: 'Bad Fox MC',
-    url: 'https://badfoxmc.com',
-    logoUrl: '/media/logo/other/badfoxmc.png',
-  },
-  {
-    name: 'Cardano Lands',
-    url: 'https://cardanolands.com',
-    logoUrl: '/media/logo/other/cardanolands.png',
+    name: 'Unbothered Wolves',
+    url: 'https://www.unbotheredwolves.com',
+    logoUrl: '/media/logo/other/unbotheredwolves.png',
   },
   {
     name: 'Ron Coin',
@@ -57,27 +67,17 @@ const partnerships = [
     logoUrl: '/media/tokens/ron/token.png',
   },
   {
-    name: 'Unbothered Wolves',
-    url: 'https://www.unbotheredwolves.com',
-    logoUrl: '/media/logo/other/unbotheredwolves.png',
-  },
-  {
-    name: 'Mad Dog Car Club',
-    url: 'https://mdtoken.io',
-    logoUrl: '/media/logo/other/maddogcarclub.png',
-  },
-  {
-    name: 'IDO Pass DAO',
-    url: 'https://idopass.finance',
-    logoUrl: '/media/logo/other/idopassdao.png',
+    name: 'Yepple',
+    url: 'https://yepple.io',
+    logoUrl: '/media/logo/other/yepple.png',
   },
 ]
 
 const featuredBy = [
   {
-    name: 'CNFT Tools',
-    url: 'https://www.youtube.com/@cnfttools',
-    logoUrl: '/media/logo/other/cnfttools.png',
+    name: 'Atlanick',
+    url: 'https://www.youtube.com/@Atlanick',
+    logoUrl: '/media/logo/other/atlanick.png',
   },
   {
     name: 'Block Is Hot',
@@ -85,14 +85,14 @@ const featuredBy = [
     logoUrl: '/media/logo/other/block.png',
   },
   {
-    name: 'Atlanick',
-    url: 'https://www.youtube.com/@Atlanick',
-    logoUrl: '/media/logo/other/atlanick.png',
+    name: 'CNFT DOODLES',
+    url: 'https://www.youtube.com/@cnftdoodles4549',
+    logoUrl: '/media/logo/other/cnftdoodles.png',
   },
   {
-    name: 'Freedom 35ers',
-    url: 'https://www.youtube.com/@Freedom35ers',
-    logoUrl: '/media/logo/other/freedom35ers.png',
+    name: 'CNFT Tools',
+    url: 'https://www.youtube.com/@cnfttools',
+    logoUrl: '/media/logo/other/cnfttools.png',
   },
   {
     name: 'Florida Man Investing',
@@ -100,14 +100,14 @@ const featuredBy = [
     logoUrl: '/media/logo/other/floridamaninvesting.png',
   },
   {
+    name: 'Freedom 35ers',
+    url: 'https://www.youtube.com/@Freedom35ers',
+    logoUrl: '/media/logo/other/freedom35ers.png',
+  },
+  {
     name: 'J Speak',
     url: 'https://www.youtube.com/@j_speak',
     logoUrl: '/media/logo/other/jspeak.png',
-  },
-  {
-    name: 'CNFT DOODLES',
-    url: 'https://www.youtube.com/@cnftdoodles4549',
-    logoUrl: '/media/logo/other/cnftdoodles.png',
   },
   {
     name: 'Krypto Labs',
@@ -160,7 +160,8 @@ const teamMembers = [
   {
     name: 'JimmyRubberBoots',
     title: 'Community Manager',
-    description: 'Engineering Professional serving in the Fluid Power Industry for 23+ years. Husband / Father / CNFT Degen. Dedicated Team member committed to the growth and support of the Ape Nation Community.',
+    description:
+      'Engineering Professional serving in the Fluid Power Industry for 23+ years. Husband / Father / CNFT Degen. Dedicated Team member committed to the growth and support of the Ape Nation Community.',
     profilePicture: '/media/team/jimmy.jpg',
     socials: ['https://x.com/Jimmy_Rbr_Boots', 'https://discord.com/users/934872168095965295'],
   },
