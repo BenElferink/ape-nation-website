@@ -14,6 +14,7 @@ import {
   OG_CLUB_CARD_POLICY_ID,
   ORDINAL_TOKENS_POLICY_ID,
 } from '@/constants'
+import { useRouter } from 'next/router'
 
 const data: {
   checked: boolean
@@ -22,6 +23,7 @@ const data: {
   events: {
     checked: boolean
     title: string
+    redirect?: string
   }[]
   renderMedia?: (isLeft: any) => JSX.Element
 }[] = [
@@ -40,6 +42,7 @@ const data: {
       {
         checked: false,
         title: '$NATION + 8 Partner Staking Rewards',
+        redirect: '/tokens',
       },
     ],
     renderMedia: (isLeft) => (
@@ -65,7 +68,8 @@ const data: {
       },
       {
         checked: false,
-        title: '1 Partner Staking Reward',
+        title: '$NATION + 1 Partner Staking Reward',
+        redirect: '/tokens',
       },
     ],
     renderMedia: (isLeft) => (
@@ -92,6 +96,7 @@ const data: {
       {
         checked: false,
         title: '$NATION + 3 Partner Staking Rewards',
+        redirect: '/tokens',
       },
       {
         checked: false,
@@ -122,6 +127,7 @@ const data: {
       {
         checked: false,
         title: '$NATION Staking Rewards',
+        redirect: '/tokens',
       },
       {
         checked: false,
@@ -153,6 +159,7 @@ const data: {
       {
         checked: false,
         title: '$NATION Staking Rewards',
+        redirect: '/tokens',
       },
       {
         checked: false,
@@ -183,6 +190,7 @@ const data: {
       {
         checked: false,
         title: '$NATION Staking Rewards (Not Subject Halvings)',
+        redirect: '/tokens',
       },
       {
         checked: false,
@@ -221,6 +229,7 @@ const data: {
       {
         checked: false,
         title: '$NATION Staking Rewards',
+        redirect: '/tokens',
       },
       {
         checked: false,
@@ -254,15 +263,16 @@ const data: {
       },
       {
         checked: false,
-        title: 'Portal & Policy to Trade Sets of 3',
-      },
-      {
-        checked: false,
         title: '$NATION Staking Rewards',
+        redirect: '/tokens',
       },
       {
         checked: false,
         title: '*Quarterly Royalty Raffle',
+      },
+      {
+        checked: false,
+        title: 'Portal & Policy to Trade Sets of 3',
       },
     ],
     renderMedia: (isLeft) => (
@@ -317,6 +327,7 @@ const data: {
 
 const Utilities = () => {
   const { isMobile } = useScreenSize()
+  const router = useRouter()
 
   return (
     <div className='w-full my-12'>
@@ -339,9 +350,18 @@ const Utilities = () => {
             {phase.events.map((event) => (
               <div
                 key={event.title}
-                className={`rounded-xl bg-zinc-950/70 ${styles.event} ${
+                className={`rounded-xl border border-zinc-950 bg-zinc-950/70 ${event.redirect ? 'hover:bg-zinc-700/70 cursor-pointer' : ''} ${styles.event} ${
                   !isMobile ? (isLeft ? styles.leftEvent : styles.rightEvent) : styles.mobileEvent
                 }`}
+                onClick={() => {
+                  if (event.redirect) {
+                    if (event.redirect.indexOf('http') === 0) {
+                      window.open(event.redirect, '_blank', 'noopener noreferrer')
+                    } else {
+                      router.push(event.redirect)
+                    }
+                  }
+                }}
               >
                 <h3 className='text-sm'>
                   {event.checked ? <CheckCircleIcon className='w-6 h-6' /> : <MinusCircleIcon className='w-6 h-6' />}
