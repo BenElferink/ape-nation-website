@@ -1,6 +1,6 @@
 {
   "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
-  "count": 23,
+  "count": 30,
   "assets": [
     {
       "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1624379636c6f7073",
@@ -415,33 +415,166 @@
       "attributes": { "Codename": "Shinobi" },
       "isBurned": false,
       "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162446961626c6f",
+      "fingerprint": "asset1hvun6plx2f9jk43th2zd8lkv4uru2zrf6g9w42",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Diablo", "ticker": "", "display": "Diablo" },
+      "image": {
+        "ipfs": "ipfs://bafybeiazb2vjp5ln37fg2zjzmqq27mik7wxyus6ceqqtizkck64ih7idhq",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeiazb2vjp5ln37fg2zjzmqq27mik7wxyus6ceqqtizkck64ih7idhq"
+      },
+      "files": [],
+      "attributes": { "Codename": "Diablo" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162456c656d656e74616c",
+      "fingerprint": "asset10enp9vhxr5rqrpnhc80cw0gkmke4vlcfv57nau",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Elemental", "ticker": "", "display": "Elemental" },
+      "image": {
+        "ipfs": "ipfs://bafybeialpv2by37rl5zrucqohnc26abq7qzivlasnec7o7yburjlkeqobq",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeialpv2by37rl5zrucqohnc26abq7qzivlasnec7o7yburjlkeqobq"
+      },
+      "files": [],
+      "attributes": { "Codename": "Elemental" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c16248656d6c6f636b",
+      "fingerprint": "asset12g0wytculxg9uyrt2afjfzr490hwu9y9hjy7fk",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Hemlock", "ticker": "", "display": "Hemlock" },
+      "image": {
+        "ipfs": "ipfs://bafybeifaothzq27hlhh4t4pzmflihznwhtuusomimzlmd6hqg43a3cvkry",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeifaothzq27hlhh4t4pzmflihznwhtuusomimzlmd6hqg43a3cvkry"
+      },
+      "files": [],
+      "attributes": { "Codename": "Hemlock" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1624c756369616e",
+      "fingerprint": "asset1yxtu2jjculs406ql5gny87vxud882qlr7hcjeg",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Lucian", "ticker": "", "display": "Lucian" },
+      "image": {
+        "ipfs": "ipfs://bafybeiee35vidx667amivrhtpvbatq75vb3qindl36cu2sdhkkree7ykhu",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeiee35vidx667amivrhtpvbatq75vb3qindl36cu2sdhkkree7ykhu"
+      },
+      "files": [],
+      "attributes": { "Codename": "Lucian" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1625079726f",
+      "fingerprint": "asset1jwqswyprtddhvwp6faq3875xj2vu08ma4062jp",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Pyro", "ticker": "", "display": "Pyro" },
+      "image": {
+        "ipfs": "ipfs://bafybeiex3x6wxm4bt5o43gpvbp36mawdwfej4advypl4bhgymcvq45meey",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeiex3x6wxm4bt5o43gpvbp36mawdwfej4advypl4bhgymcvq45meey"
+      },
+      "files": [],
+      "attributes": { "Codename": "Pyro" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1625261676e6172",
+      "fingerprint": "asset1fthe5xa6dqusv27zdrddy64weq98zpgcgxtjw8",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Ragnar", "ticker": "", "display": "Ragnar" },
+      "image": {
+        "ipfs": "ipfs://bafybeierlj2zy5olnw2td6xuxy4rmcgt655o4ezg4jhkqlmxfr5aexezsa",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeierlj2zy5olnw2td6xuxy4rmcgt655o4ezg4jhkqlmxfr5aexezsa"
+      },
+      "files": [],
+      "attributes": { "Codename": "Ragnar" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162537472696b6572",
+      "fingerprint": "asset1d8tzlgm3kl6ywf38wr4ddl2vdetsrfu0matm2p",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Striker", "ticker": "", "display": "Striker" },
+      "image": {
+        "ipfs": "ipfs://bafybeihxvbnby66qtulgipstxfafcptx4pcyt6oxyvkkfczgj6sifoan5i",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeihxvbnby66qtulgipstxfafcptx4pcyt6oxyvkkfczgj6sifoan5i"
+      },
+      "files": [],
+      "attributes": { "Codename": "Striker" },
+      "isBurned": false,
+      "rarityRank": 0
     }
   ],
   "traits": {
     "Codename": [
-      { "label": "Cyclops", "count": 1, "percent": "4.35%" },
-      { "label": "Leo", "count": 1, "percent": "4.35%" },
-      { "label": "Mastermind", "count": 1, "percent": "4.35%" },
-      { "label": "Vlad", "count": 1, "percent": "4.35%" },
-      { "label": "Yeti", "count": 1, "percent": "4.35%" },
-      { "label": "Chief", "count": 1, "percent": "4.35%" },
-      { "label": "Fun Guy", "count": 1, "percent": "4.35%" },
-      { "label": "Robo", "count": 1, "percent": "4.35%" },
-      { "label": "Trench", "count": 1, "percent": "4.35%" },
-      { "label": "Apex", "count": 1, "percent": "4.35%" },
-      { "label": "Bandit", "count": 1, "percent": "4.35%" },
-      { "label": "Barry", "count": 1, "percent": "4.35%" },
-      { "label": "Splatter", "count": 1, "percent": "4.35%" },
-      { "label": "Gabriel", "count": 1, "percent": "4.35%" },
-      { "label": "Necro", "count": 1, "percent": "4.35%" },
-      { "label": "Prime", "count": 1, "percent": "4.35%" },
-      { "label": "Reef", "count": 1, "percent": "4.35%" },
-      { "label": "Volt", "count": 1, "percent": "4.35%" },
-      { "label": "Arctic", "count": 1, "percent": "4.35%" },
-      { "label": "Blackheart", "count": 1, "percent": "4.35%" },
-      { "label": "Merlin", "count": 1, "percent": "4.35%" },
-      { "label": "Octonoid", "count": 1, "percent": "4.35%" },
-      { "label": "Shinobi", "count": 1, "percent": "4.35%" }
+      { "label": "Cyclops", "count": 1, "percent": "3.33%" },
+      { "label": "Leo", "count": 1, "percent": "3.33%" },
+      { "label": "Mastermind", "count": 1, "percent": "3.33%" },
+      { "label": "Vlad", "count": 1, "percent": "3.33%" },
+      { "label": "Yeti", "count": 1, "percent": "3.33%" },
+      { "label": "Chief", "count": 1, "percent": "3.33%" },
+      { "label": "Fun Guy", "count": 1, "percent": "3.33%" },
+      { "label": "Robo", "count": 1, "percent": "3.33%" },
+      { "label": "Trench", "count": 1, "percent": "3.33%" },
+      { "label": "Apex", "count": 1, "percent": "3.33%" },
+      { "label": "Bandit", "count": 1, "percent": "3.33%" },
+      { "label": "Barry", "count": 1, "percent": "3.33%" },
+      { "label": "Splatter", "count": 1, "percent": "3.33%" },
+      { "label": "Gabriel", "count": 1, "percent": "3.33%" },
+      { "label": "Necro", "count": 1, "percent": "3.33%" },
+      { "label": "Prime", "count": 1, "percent": "3.33%" },
+      { "label": "Reef", "count": 1, "percent": "3.33%" },
+      { "label": "Volt", "count": 1, "percent": "3.33%" },
+      { "label": "Arctic", "count": 1, "percent": "3.33%" },
+      { "label": "Blackheart", "count": 1, "percent": "3.33%" },
+      { "label": "Merlin", "count": 1, "percent": "3.33%" },
+      { "label": "Octonoid", "count": 1, "percent": "3.33%" },
+      { "label": "Shinobi", "count": 1, "percent": "3.33%" },
+      { "label": "Diablo", "count": 1, "percent": "3.33%" },
+      { "label": "Elemental", "count": 1, "percent": "3.33%" },
+      { "label": "Hemlock", "count": 1, "percent": "3.33%" },
+      { "label": "Lucian", "count": 1, "percent": "3.33%" },
+      { "label": "Pyro", "count": 1, "percent": "3.33%" },
+      { "label": "Ragnar", "count": 1, "percent": "3.33%" },
+      { "label": "Striker", "count": 1, "percent": "3.33%" }
     ]
   }
 }
