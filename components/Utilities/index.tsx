@@ -277,7 +277,14 @@ const data: {
     ],
     renderMedia: (isLeft) => (
       <MediaWrapper isLeft={isLeft} size={128} posTop='100px'>
-        <QuestionMarkCircleIcon style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black' }} />
+        <ImageLoader
+          src='/media/collections/bloodline.png'
+          alt=''
+          width={128}
+          height={128}
+          loaderSize={50}
+          style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black', objectFit: 'contain' }}
+        />
       </MediaWrapper>
     ),
   },
@@ -296,7 +303,14 @@ const data: {
     ],
     renderMedia: (isLeft) => (
       <MediaWrapper isLeft={isLeft} size={128} posTop='20px'>
-        <QuestionMarkCircleIcon style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black' }} />
+        <ImageLoader
+          src='/media/collections/bank_of_nation.png'
+          alt=''
+          width={128}
+          height={128}
+          loaderSize={50}
+          style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black', objectFit: 'cover' }}
+        />
       </MediaWrapper>
     ),
   },
@@ -319,7 +333,14 @@ const data: {
     ],
     renderMedia: (isLeft) => (
       <MediaWrapper isLeft={isLeft} size={128} posTop='50px'>
-        <QuestionMarkCircleIcon style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black' }} />
+        <ImageLoader
+          src='/media/logo/ape_nation.png'
+          alt=''
+          width={128}
+          height={128}
+          loaderSize={50}
+          style={{ width: 128, height: 128, borderRadius: '100%', backgroundColor: 'black', boxShadow: '0 0 3px 0 black', objectFit: 'contain' }}
+        />
       </MediaWrapper>
     ),
   },
@@ -350,9 +371,9 @@ const Utilities = () => {
             {phase.events.map((event) => (
               <div
                 key={event.title}
-                className={`rounded-xl border border-zinc-950 bg-zinc-950/70 ${event.redirect ? 'hover:bg-zinc-700/70 cursor-pointer' : ''} ${styles.event} ${
-                  !isMobile ? (isLeft ? styles.leftEvent : styles.rightEvent) : styles.mobileEvent
-                }`}
+                className={`rounded-xl border border-zinc-950 bg-zinc-950/70 ${event.redirect ? 'hover:bg-zinc-700/70 cursor-pointer' : ''} ${
+                  styles.event
+                } ${!isMobile ? (isLeft ? styles.leftEvent : styles.rightEvent) : styles.mobileEvent}`}
                 onClick={() => {
                   if (event.redirect) {
                     if (event.redirect.indexOf('http') === 0) {
