@@ -3,6 +3,7 @@ import Image from 'next/image'
 import MusicPlayer from '../MusicPlayer'
 import Navigation from '../Navigation'
 import SocialIcon from '../SocialIcon'
+import { LINKS } from '@/constants'
 
 const Header = () => {
   return (
@@ -24,19 +25,19 @@ const Header = () => {
 
           <SocialIcon
             network='x'
-            url='https://x.com/Ape_NationNFT'
+            url={LINKS['X']}
             color='#ffffff'
             className='p-1 rounded-lg text-sm hover:bg-zinc-600 focus:outline-none focus:ring-zinc-500 focus:ring-2'
           />
           <SocialIcon
             network='discord'
-            url='https://discord.gg/mUQKg2NQtP'
+            url={LINKS['DISCORD']}
             color='#ffffff'
             className='mx-0.5 p-1 rounded-lg text-sm hover:bg-zinc-600 focus:outline-none focus:ring-zinc-500 focus:ring-2'
           />
           <SocialIcon
             network='instagram'
-            url='https://www.instagram.com/apenationcnft'
+            url={LINKS['INSTAGRAM']}
             color='#ffffff'
             className='p-1 rounded-lg text-sm hover:bg-zinc-600 focus:outline-none focus:ring-zinc-500 focus:ring-2'
           />

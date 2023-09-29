@@ -3,12 +3,12 @@ export const ONE_MILLION = 1000000
 
 export const BLOCKFROST_API_KEY = process.env.BLOCKFROST_API_KEY || ''
 
-export const FIREBASE_API_KEY = process.env.NEXT_PUBLIC_FIREBASE_API_KEY
-export const FIREBASE_APP_ID = process.env.NEXT_PUBLIC_FIREBASE_APP_ID
-export const FIREBASE_AUTH_DOMAIN = process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-export const FIREBASE_MESSAGING_SENDER_ID = process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-export const FIREBASE_PROJECT_ID = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID
-export const FIREBASE_STORAGE_BUCKET = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+export const FIREBASE_API_KEY = process.env.FIREBASE_API_KEY
+export const FIREBASE_APP_ID = process.env.FIREBASE_APP_ID
+export const FIREBASE_AUTH_DOMAIN = process.env.FIREBASE_AUTH_DOMAIN
+export const FIREBASE_MESSAGING_SENDER_ID = process.env.FIREBASE_MESSAGING_SENDER_ID
+export const FIREBASE_PROJECT_ID = process.env.FIREBASE_PROJECT_ID
+export const FIREBASE_STORAGE_BUCKET = process.env.FIREBASE_STORAGE_BUCKET
 
 export const APE_NATION_POLICY_ID = '58b9f55e6ea9828dea7a8d9f49420171c6360f99b5e6e86de5fdb644'
 export const JUNGLE_JUICE_POLICY_ID = 'a5c0b233312ff05cdd6271d5749992f77a8e568a0533855b250dc7a0'
@@ -21,16 +21,17 @@ export const BLING_POLICY_ID = 'b0fd2efcb7e8b5d0dd6fce7403e31afc7919efe4e68a6657
 export const IHOLD_MUSIC_POLICY_ID = 'a2e5d9747e27d18cbc03eb2c24222f79675f8c3adae33cf4de9ac2bc'
 
 export const LINKS = {
+  X: 'https://x.com/Ape_NationNFT',
+  DISCORD: 'https://discord.gg/mUQKg2NQtP',
+  INSTAGRAM: 'https://www.instagram.com/apenationcnft',
   MERCH: 'https://nftouchable.com/collections/ape-nation',
 
   MUTATION_CHECKER: 'https://mutationchecker.yepple.io/apenation',
-
   MUTANTS_RAFFLES: 'https://labs.mutant-nft.com/projects/apenation?tab=raffles',
   MUTANTS_STAKING: 'https://labs.mutant-nft.com/projects/apenation?tab=staking',
 
   MAGIC_EDEN_ORDINALS: 'https://magiceden.io/ordinals/marketplace/ordinals-by-ape-nation',
-
+  NATION_TOKENOMICS: 'https://usdnation-token-by-ape-nation.gitbook.io/usdnation-token-by-ape-nation',
   NATION_TAPTOOLS:
     'https://www.taptools.io/charts/token?pairID=0be55d262b29f564998ff81efe21bdc0022621c12f15af08d0f2ddb1.a7ecc694852dba715767f6be7e30c6ac1aab68baa9794815532e0da28b2fd80d',
-  NATION_TOKENOMICS: 'https://usdnation-token-by-ape-nation.gitbook.io/usdnation-token-by-ape-nation',
 }
