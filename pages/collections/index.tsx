@@ -7,7 +7,7 @@ const Page = () => {
   return (
     <div>
       <div className='pt-10'>
-        <CollectionSelector onSelected={(_pId) => router.push(`/collections/${_pId}`)} />
+        <CollectionSelector limitWidth onSelected={(_pId) => router.push(`/collections/${_pId}`)} />
       </div>
     </div>
   )

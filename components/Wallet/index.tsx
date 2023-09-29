@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import WalletHero from './WalletHero'
 import CollectionSelector from './CollectionSelector'
-// import CollectionCharts from './CollectionCharts'
-// import CollectionAssets from '../dashboards/CollectionAssets'
+import CollectionCharts from './CollectionCharts'
+import CollectionAssets from '../dashboards/CollectionAssets'
 import type { PolicyId } from '../../@types'
 
 const Wallet = () => {
@@ -25,11 +25,11 @@ const Wallet = () => {
             }}
           />
 
-          {/* {selectedPolicyId ? <CollectionCharts policyId={selectedPolicyId} /> : null} */}
+          {selectedPolicyId ? <CollectionCharts policyId={selectedPolicyId} /> : null}
         </div>
       </div>
 
-      {/* <div>{selectedPolicyId ? <CollectionAssets policyId={selectedPolicyId} withWallet /> : null}</div> */}
+      <div>{selectedPolicyId ? <CollectionAssets policyId={selectedPolicyId} withWallet /> : null}</div>
     </div>
   )
 }
