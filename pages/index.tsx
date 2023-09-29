@@ -27,6 +27,11 @@ const partnerships = [
     logoUrl: '/media/logo/other/cardanolands.png',
   },
   {
+    name: 'CNFT Tools',
+    url: 'https://cnft.tools',
+    logoUrl: '/media/logo/other/cnfttools.png',
+  },
+  {
     name: 'CSWAP DEX',
     url: 'https://www.cswap.fi',
     logoUrl: '/media/tokens/cswap/token.png',
