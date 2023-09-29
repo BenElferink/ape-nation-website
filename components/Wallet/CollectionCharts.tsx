@@ -265,7 +265,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
   const charts = useMemo(() => getAndRenderCharts(), [getAndRenderCharts])
 
   return (
-    <div className='flex flex-wrap items-center justify-center'>
+    <div className='w-full mt-20 xl:mt-40 flex flex-wrap items-center justify-center'>
       <div className='relative flex flex-col justify-between items-end text-end h-56 w-64 m-1 mx-2 py-1 px-2 bg-zinc-900 bg-opacity-50 rounded-xl border border-zinc-700 [text-shadow:_0px_0px_2px_rgb(0_0_0_/_100%)]'>
         <button
           onClick={() => getPortfolioInvestments()}
