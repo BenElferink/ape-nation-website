@@ -197,7 +197,7 @@ const Page = () => {
               href={url}
               target='_blank'
               rel='noopener noreferrer'
-              className='group w-32 m-2 p-4 bg-zinc-200/20 hover:bg-zinc-200/30 rounded-xl shadow-[-1px_-1px_0.3rem_0_rgba(255,255,255,0.5)] flex flex-col items-center justify-center'
+              className='group w-32 m-2 p-4 rounded-xl bg-zinc-200/20 hover:bg-zinc-200/30 backdrop-blur shadow-[-1px_-1px_0.3rem_0_rgba(255,255,255,0.5)] flex flex-col items-center justify-center'
             >
               <div className='w-20 h-10 relative'>
                 <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain' />
@@ -217,7 +217,7 @@ const Page = () => {
               href={url}
               target='_blank'
               rel='noopener noreferrer'
-              className='group w-32 m-2 p-4 bg-zinc-200/20 hover:bg-zinc-200/30 rounded-xl shadow-[-1px_-1px_0.3rem_0_rgba(255,255,255,0.5)] flex flex-col items-center justify-center'
+              className='group w-32 m-2 p-4 rounded-xl bg-zinc-200/20 hover:bg-zinc-200/30 backdrop-blur shadow-[-1px_-1px_0.3rem_0_rgba(255,255,255,0.5)] flex flex-col items-center justify-center'
             >
               <div className='w-20 h-10 relative'>
                 <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain' />

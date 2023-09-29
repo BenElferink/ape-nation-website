@@ -60,7 +60,7 @@ const Navigation = () => {
       </button>
 
       <div className={(isNavOpen ? 'block' : 'hidden') + ' xl:block'}>
-        <ul className='flex flex-col xl:flex-row absolute right-0 xl:static overflow-auto xl:overflow-visible max-h-[80vh] xl:max-h-auto w-80 xl:w-auto mt-8 xl:mt-0 p-4 bg-zinc-700/70 border xl:border-0 rounded-lg border-zinc-500 xl:space-x-8'>
+        <ul className='flex flex-col xl:flex-row absolute right-0 xl:static overflow-auto xl:overflow-visible max-h-[80vh] xl:max-h-auto w-80 xl:w-auto mt-8 xl:mt-0 p-4 rounded-lg border xl:border-0 border-zinc-500 bg-zinc-700/70 backdrop-blur xl:backdrop-blur-[unset] xl:space-x-8'>
           <li
             onClick={() => {
               if (router.pathname === '/') window.scrollTo({ top: 0, left: 0 })
