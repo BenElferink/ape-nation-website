@@ -23,6 +23,7 @@ const Landing = () => {
             src='/media/logo/ape_nation.png'
             alt='logo'
             priority
+            unoptimized
             width={logoSize}
             height={logoSize}
             className='drop-shadow-[0_0_0.5rem_rgb(255_255_255)]'
@@ -53,6 +54,7 @@ const Landing = () => {
               src='/media/logo/ape_nation.png'
               alt='logo'
               priority
+              unoptimized
               width={logoSize}
               height={logoSize}
               className='drop-shadow-[0_0_0.5rem_rgb(255_255_255)]'

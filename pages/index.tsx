@@ -205,7 +205,7 @@ const Page = () => {
               className='group w-32 m-2 p-4 rounded-xl bg-zinc-200/20 hover:bg-zinc-200/30 backdrop-blur shadow-[-1px_-1px_0.3rem_0_rgba(255,255,255,0.5)] flex flex-col items-center justify-center'
             >
               <div className='w-20 h-10 relative'>
-                <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain' />
+                <Image src={logoUrl} alt='logo' fill sizes='5rem' unoptimized className='object-contain' />
               </div>
               <span className='mt-2 group-hover:text-white text-xs whitespace-nowrap'>{name}</span>
             </Link>
@@ -225,7 +225,7 @@ const Page = () => {
               className='group w-32 m-2 p-4 rounded-xl bg-zinc-200/20 hover:bg-zinc-200/30 backdrop-blur shadow-[-1px_-1px_0.3rem_0_rgba(255,255,255,0.5)] flex flex-col items-center justify-center'
             >
               <div className='w-20 h-10 relative'>
-                <Image src={logoUrl} alt='logo' fill sizes='5rem' className='object-contain' />
+                <Image src={logoUrl} alt='logo' fill sizes='5rem' unoptimized className='object-contain' />
               </div>
               <span className='mt-2 group-hover:text-white text-xs whitespace-nowrap'>{name}</span>
             </Link>
