@@ -60,7 +60,7 @@ const Navigation = () => {
       </button>
 
       <div className={(isNavOpen ? 'block' : 'hidden') + ' lg:block'}>
-        <ul className='lg:px-6 xl:px-12 flex flex-col lg:flex-row lg:items-center absolute right-0 lg:static overflow-auto lg:overflow-visible max-h-[80vh] lg:max-h-auto w-80 lg:w-auto mt-8 lg:mt-0 p-4 rounded-lg border lg:border-0 border-zinc-500 bg-gradient-to-r from-cyan-900/50 to-red-900/50 backdrop-blur lg:backdrop-blur-[unset] lg:space-x-8'>
+        <ul className='lg:px-6 xl:px-12 flex flex-col lg:flex-row lg:items-center absolute right-0 lg:static overflow-auto lg:overflow-visible max-h-[80vh] lg:max-h-auto w-80 lg:w-auto mt-8 lg:mt-0 p-4 rounded-lg border lg:border-0 border-zinc-500 bg-gradient-to-r from-cyan-900/30 to-red-900/30 backdrop-blur lg:backdrop-blur-[unset] lg:space-x-8'>
           <li
             onClick={() => {
               if (router.pathname === '/') window.scrollTo({ top: 0, left: 0 })
