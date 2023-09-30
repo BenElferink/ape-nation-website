@@ -262,4 +262,3 @@ class BadLabsApi {
 const badLabsApi = new BadLabsApi()
 
 export default badLabsApi
-

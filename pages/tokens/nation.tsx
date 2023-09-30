@@ -38,7 +38,7 @@ const Page = () => {
             </Link>
             .
           </li>
-          <li className='text-sm'>Click &quot;activate&quot; and sign the TX.</li>
+          <li className='text-sm'>Click &quot;activate off-chain staking&quot; and sign the TX.</li>
           <li className='text-sm'>That&apos;s it, you&apos;re accumulating.</li>
         </ol>
       </div>

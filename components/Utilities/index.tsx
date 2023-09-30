@@ -1,4 +1,5 @@
-import { CheckCircleIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/solid'
+import { useRouter } from 'next/router'
+import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import { MinusCircleIcon } from '@heroicons/react/24/outline'
 import useScreenSize from '@/hooks/useScreenSize'
 import MediaWrapper from './MediaWrapper'
@@ -14,7 +15,6 @@ import {
   OG_CLUB_CARD_POLICY_ID,
   ORDINAL_TOKENS_POLICY_ID,
 } from '@/constants'
-import { useRouter } from 'next/router'
 
 const data: {
   checked: boolean
@@ -34,15 +34,16 @@ const data: {
       {
         checked: false,
         title: '9999 Supply',
-      },
-      {
-        checked: false,
-        title: 'Canopy Club Monthly Royalty Raffle',
+        redirect: `/collections/${APE_NATION_POLICY_ID}`,
       },
       {
         checked: false,
         title: '$NATION + 8 Partner Staking Rewards',
         redirect: '/tokens',
+      },
+      {
+        checked: false,
+        title: 'Canopy Club Monthly Royalty Raffle',
       },
     ],
     renderMedia: (isLeft) => (
@@ -65,6 +66,7 @@ const data: {
       {
         checked: false,
         title: '9999 Supply (Free Airdrop)',
+        redirect: `/collections/${JUNGLE_JUICE_POLICY_ID}`,
       },
       {
         checked: false,
@@ -92,6 +94,7 @@ const data: {
       {
         checked: false,
         title: '5500 Supply',
+        redirect: `/collections/${MUTATION_NATION_POLICY_ID}`,
       },
       {
         checked: false,
@@ -123,6 +126,7 @@ const data: {
       {
         checked: false,
         title: '38 1:1 Supply (V3 Vials Free Airdrop)',
+        redirect: `/collections/${MUTATION_NATION_MEGA_MUTANTS_POLICY_ID}`,
       },
       {
         checked: false,
@@ -155,6 +159,7 @@ const data: {
       {
         checked: false,
         title: '100 Supply / Sub 1 Million Inscriptions',
+        redirect: `/collections/${ORDINAL_TOKENS_POLICY_ID}`,
       },
       {
         checked: false,
@@ -186,6 +191,7 @@ const data: {
       {
         checked: false,
         title: '200 Supply (Free Airdrop)',
+        redirect: `/collections/${OG_CLUB_CARD_POLICY_ID}`,
       },
       {
         checked: false,
@@ -225,6 +231,7 @@ const data: {
       {
         checked: false,
         title: 'TBD Supply (Phase 1 Free Airdrop, Phase 4 Free Claim)',
+        redirect: `/collections/${BLING_POLICY_ID}`,
       },
       {
         checked: false,

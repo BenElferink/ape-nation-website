@@ -26,20 +26,20 @@ const MultipleLinks = (props: MultipleLinksProps) => {
           })
         }
         className={
-          'py-2 px-3 xl:p-0 w-full xl:w-auto flex items-center text-start xl:text-center text-sm truncate rounded xl:border-0 hover:bg-zinc-500/70 xl:hover:bg-transparent hover:text-white'
+          'py-2 px-3 lg:p-0 w-full lg:w-auto flex items-center text-start lg:text-center text-sm truncate rounded lg:border-0 hover:bg-zinc-500/70 lg:hover:bg-transparent hover:text-white'
         }
       >
         {title}
         <ChevronDownIcon className={(open ? 'rotate-180' : 'rotate-0') + ' ml-1 w-4 h-4'} />
       </button>
 
-      <div className={open ? 'block xl:absolute xl:top-12 xl:-left-4' : 'hidden'}>
+      <div className={open ? 'block lg:absolute lg:top-12 lg:-left-4' : 'hidden'}>
         <ul
           onClick={() => dropdownState.setValue('')}
-          className='xl:flex xl:flex-col xl:items-start xl:overflow-auto xl:w-fit xl:p-4 xl:rounded-xl xl:bg-zinc-700/70 xl:backdrop-blur'
+          className='lg:flex lg:flex-col lg:items-start lg:overflow-auto lg:w-fit lg:p-4 lg:rounded-xl lg:bg-gradient-to-r lg:from-cyan-900/50 lg:to-red-900/50 lg:backdrop-blur'
         >
           {links.map((obj) => (
-            <li key={`link-group-${title}-item-${obj.label}`} className='xl:py-1 bg-zinc-500/50 xl:bg-transparent rounded'>
+            <li key={`link-group-${title}-item-${obj.label}`} className='lg:py-1 bg-zinc-500/50 lg:bg-transparent rounded'>
               <SingleLink {...obj} />
             </li>
           ))}

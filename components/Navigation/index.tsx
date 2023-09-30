@@ -54,13 +54,13 @@ const Navigation = () => {
       <button
         type='button'
         onClick={() => setIsNavOpen((prev) => !prev)}
-        className='xl:hidden flex items-center p-1 mx-1 rounded-lg text-sm hover:bg-zinc-700/70 focus:outline-none focus:ring-zinc-600 focus:ring-2'
+        className='lg:hidden flex items-center p-1 mx-1 rounded-lg text-sm hover:bg-zinc-700/70 focus:outline-none focus:ring-zinc-600 focus:ring-2'
       >
         <Bars3Icon className='w-7 h-7' />
       </button>
 
-      <div className={(isNavOpen ? 'block' : 'hidden') + ' xl:block'}>
-        <ul className='flex flex-col xl:flex-row absolute right-0 xl:static overflow-auto xl:overflow-visible max-h-[80vh] xl:max-h-auto w-80 xl:w-auto mt-8 xl:mt-0 p-4 rounded-lg border xl:border-0 border-zinc-500 bg-zinc-700/70 backdrop-blur xl:backdrop-blur-[unset] xl:space-x-8'>
+      <div className={(isNavOpen ? 'block' : 'hidden') + ' lg:block'}>
+        <ul className='lg:px-6 xl:px-12 flex flex-col lg:flex-row lg:items-center absolute right-0 lg:static overflow-auto lg:overflow-visible max-h-[80vh] lg:max-h-auto w-80 lg:w-auto mt-8 lg:mt-0 p-4 rounded-lg border lg:border-0 border-zinc-500 bg-gradient-to-r from-cyan-900/50 to-red-900/50 backdrop-blur lg:backdrop-blur-[unset] lg:space-x-8'>
           <li
             onClick={() => {
               if (router.pathname === '/') window.scrollTo({ top: 0, left: 0 })
@@ -120,14 +120,6 @@ const Navigation = () => {
               {/* Wallets will be injected here */}
             </div>
           </li>
-          <li
-            onClick={() => {
-              window.scroll({ top: 0, left: 0 })
-              setIsNavOpen(false)
-            }}
-          >
-            <SingleLink label='Wallet' path='/wallet' />
-          </li>
           <li>
             <MultipleLinks
               title='Other'
@@ -139,6 +131,14 @@ const Navigation = () => {
               ]}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
+          </li>
+          <li
+            onClick={() => {
+              window.scroll({ top: 0, left: 0 })
+              setIsNavOpen(false)
+            }}
+          >
+            <SingleLink iconSrc='/media/wallet.png' path='/wallet' />
           </li>
         </ul>
       </div>
