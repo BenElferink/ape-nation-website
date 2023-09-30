@@ -29,7 +29,7 @@ const partnerships = [
   {
     name: 'CNFT Tools',
     url: 'https://cnft.tools',
-    logoUrl: '/media/logo/other/cnfttools.png',
+    logoUrl: '/media/logo/other/cnfttools.svg',
   },
   {
     name: 'CSWAP DEX',
@@ -54,7 +54,7 @@ const partnerships = [
   {
     name: 'Mutant Labs',
     url: 'https://labs.mutant-nft.com',
-    logoUrl: '/media/logo/other/mutantlabs.png',
+    logoUrl: '/media/logo/other/mutantlabs.svg',
   },
   {
     name: 'NFTouchable',
@@ -86,7 +86,8 @@ const featuredBy = [
   },
   {
     name: 'Block Is Hot',
-    url: 'https://www.youtube.com/@blockishot971',
+    // url: 'https://www.youtube.com/@blockishot971',
+    url: 'https://www.youtube.com/watch?v=2c49DNwI9OI&t=2150s',
     logoUrl: '/media/logo/other/block.png',
   },
   {
@@ -97,21 +98,29 @@ const featuredBy = [
   {
     name: 'CNFT Tools',
     url: 'https://www.youtube.com/@cnfttools',
-    logoUrl: '/media/logo/other/cnfttools.png',
+    logoUrl: '/media/logo/other/cnfttools.svg',
+  },
+  {
+    name: 'DailyCoin',
+    url: 'https://dailycoin.com/cardano-dex-cswap-partners-with-ape-nation-in-long-term-cnft-projects/',
+    logoUrl: '/media/logo/other/dailycoin.svg',
   },
   {
     name: 'Florida Man Investing',
-    url: 'https://www.youtube.com/@floridamaninvesting',
+    // url: 'https://www.youtube.com/@floridamaninvesting',
+    url: 'https://www.youtube.com/watch?v=4L2Zn8OzSfs&t=223s',
     logoUrl: '/media/logo/other/floridamaninvesting.png',
   },
   {
     name: 'Freedom 35ers',
-    url: 'https://www.youtube.com/@Freedom35ers',
+    // url: 'https://www.youtube.com/@Freedom35ers',
+    url: 'https://www.youtube.com/watch?v=vWtL8aelRgg',
     logoUrl: '/media/logo/other/freedom35ers.png',
   },
   {
     name: 'J Speak',
-    url: 'https://www.youtube.com/@j_speak',
+    // url: 'https://www.youtube.com/@j_speak',
+    url: 'https://www.youtube.com/watch?v=N8EzvSkVrGs&t=309s',
     logoUrl: '/media/logo/other/jspeak.png',
   },
   {
