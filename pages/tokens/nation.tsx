@@ -9,16 +9,7 @@ const TOKEN_IMAGE_SRC = '/media/tokens/nation/token.png'
 const TOKEN_POLICY_ID = NATION_COIN_POLICY_ID
 const TOKEN_NAME = 'NATION'
 const PROJECT_NAME = 'Ape Nation'
-const WHO_CAN_EARN: WhoCanEarn = [
-  'Ape Nation',
-  'Jungle Juice',
-  'Mutation Nation',
-  'Mega Mutants',
-  'OG Club Card',
-  'Ordinal Tokens',
-  'BLING',
-  'iHold Music',
-]
+const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation', 'Mutation Nation', 'Mega Mutants', 'OG Club Card', 'Ordinal Tokens', 'BLING', 'iHold Music']
 
 const Page = () => {
   return (

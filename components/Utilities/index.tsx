@@ -70,7 +70,7 @@ const data: {
       },
       {
         checked: false,
-        title: '$NATION + 1 Partner Staking Reward',
+        title: '1 Partner Staking Reward',
         redirect: '/tokens',
       },
     ],
