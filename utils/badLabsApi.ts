@@ -3,6 +3,7 @@ import axios from 'axios'
 type PolicyId = string
 type TokenId = string
 type PoolId = string
+type TransactionId = string
 type StakeKey = string
 type Address = {
   address: string
@@ -78,6 +79,26 @@ export interface BadLabsApiWallet {
   addresses: Address[]
   poolId?: PoolId
   tokens?: BadLabsApiBaseToken[]
+}
+
+export interface BadLabsApiUtxo {
+  address: {
+    from: string
+    to: string
+  }
+  tokens: {
+    tokenId: string
+    tokenAmount: {
+      onChain: number
+    }
+  }[]
+}
+
+export interface BadLabsApiTransaction {
+  transactionId: TransactionId
+  block: string
+  blockHeight: number
+  utxos?: BadLabsApiUtxo[]
 }
 
 class BadLabsApi {
@@ -255,6 +276,31 @@ class BadLabsApi {
           }
         })
       },
+    },
+  }
+
+  transaction = {
+    getData: (
+      transactionId: string,
+      queryOptions?: {
+        withUtxos?: boolean
+      }
+    ): Promise<BadLabsApiTransaction> => {
+      const uri = `${this.baseUrl}/transaction/${transactionId}` + this.getQueryStringFromQueryOptions(queryOptions)
+
+      return new Promise(async (resolve, reject) => {
+        try {
+          console.log('Fetching transaction:', transactionId)
+
+          const { data } = await axios.get<BadLabsApiTransaction>(uri)
+
+          console.log('Fetched transaction:', data.block)
+
+          return resolve(data)
+        } catch (error: any) {
+          return await this.handleError(error, reject, async () => await this.transaction.getData(transactionId))
+        }
+      })
     },
   }
 }

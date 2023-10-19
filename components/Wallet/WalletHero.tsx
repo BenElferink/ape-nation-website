@@ -4,7 +4,7 @@ const WalletHero = () => {
   const { populatedWallet, connectedName, disconnectWallet } = useWallet()
 
   return (
-    <section className='w-full p-2 bg-zinc-900 bg-opacity-50 text-center rounded-xl border border-zinc-700'>
+    <section className='w-full p-2 text-center rounded-xl border border-zinc-700 bg-zinc-900/50 backdrop-blur'>
       <h3 className='text-xl'>My Wallet ({connectedName})</h3>
       <p className='text-xs my-1 truncate text-zinc-200'>{populatedWallet?.stakeKey}</p>
 
