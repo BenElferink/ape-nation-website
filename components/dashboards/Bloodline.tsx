@@ -10,7 +10,7 @@ import ImageLoader from '../Loader/ImageLoader'
 import type { PopulatedAsset } from '@/@types'
 import { APE_NATION_POLICY_ID, BLOODLINE_POLICY_ID, MUTATION_NATION_POLICY_ID, ONE_MILLION, TEMP_WALLET } from '@/constants'
 
-const BURN_OPEN = true
+const BURN_OPEN = false
 
 const Bloodline = () => {
   const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
@@ -35,7 +35,7 @@ const Bloodline = () => {
         }
       })
 
-      setSets(payload.sort((a, b) => (a.v0.serialNumber || 0) - (b.v1.serialNumber || 0)))
+      setSets(payload.sort((a, b) => (a.v0.serialNumber || 0) - (b.v0.serialNumber || 0)))
     }
   }, [populatedWallet])
 
