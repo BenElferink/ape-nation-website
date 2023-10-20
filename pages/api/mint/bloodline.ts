@@ -1,13 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import fs from 'fs'
 import axios from 'axios'
 import { AppWallet, BlockfrostProvider, ForgeScript, Mint, Transaction } from '@meshsdk/core'
+import { ipfs } from '@/utils/blockfrost'
+import { storage } from '@/utils/firebase'
 import badLabsApi from '@/utils/badLabsApi'
 import formatHex from '@/functions/formatters/formatHex'
 import getFileForPolicyId from '@/functions/getFileForPolicyId'
+import type { PopulatedAsset } from '@/@types'
 import { API_KEYS, APE_NATION_POLICY_ID, BLOODLINE_POLICY_ID, MUTATION_NATION_POLICY_ID, TEMP_WALLET } from '@/constants'
-import { PopulatedAsset } from '@/@types'
-import { ipfs } from '@/utils/blockfrost'
 
 export const config = {
   maxDuration: 300,
@@ -77,54 +77,80 @@ const getTokensFromTx = async (txHash: string) => {
   return { addressOfSender, v0: thisV0, v1: thisV1, v2: thisV2 }
 }
 
-const getImageFromTokens = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: PopulatedAsset) => {
-  const getBase64FromUrl = async (url: string, body?: Record<string, any>) => {
-    try {
-      console.log('Fetching image from URL:', url)
+const getBufferFromUrl = async (url: string, body?: Record<string, any>) => {
+  try {
+    console.log('Fetching image from URL:', url)
 
-      let bin = ''
+    let bin = ''
 
-      if (!!body) {
-        const res = await axios.post(url, body, { responseType: 'arraybuffer' })
-        bin = res.data
-      } else {
-        const res = await axios.get(url, { responseType: 'arraybuffer' })
-        bin = res.data
-      }
-
-      console.log('Successfully fetched image')
-
-      const buffer = Buffer.from(bin, 'binary')
-      const base64String = buffer.toString('base64')
-
-      return base64String
-    } catch (error: any) {
-      console.error('Error fetching image:', error.message)
-      throw error
+    if (!!body) {
+      const res = await axios.post(url, body, { responseType: 'arraybuffer' })
+      bin = res.data
+    } else {
+      const res = await axios.get(url, { responseType: 'arraybuffer' })
+      bin = res.data
     }
+
+    console.log('Successfully fetched image')
+
+    return Buffer.from(bin, 'binary')
+  } catch (error: any) {
+    console.error('Error fetching image:', error.message)
+    throw error
+  }
+}
+
+const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: PopulatedAsset) => {
+  const fileName = `${v0.tokenName?.display.split('#')[1]}.png`
+  let fileUrl = ''
+
+  for await (const item of (await storage.ref('/bloodline').listAll()).items) {
+    if (item.name === fileName) fileUrl = await item.getDownloadURL()
   }
 
-  const v0_b64 = await getBase64FromUrl(v0.image.ipfs.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/'))
-  const v1_b64 = await getBase64FromUrl(v1.image.ipfs.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/'))
-  const v2_b64 = await getBase64FromUrl(v2.image.ipfs.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/'))
+  if (!fileUrl) {
+    const v0_b64 = (await getBufferFromUrl(v0.image.ipfs.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/'))).toString('base64')
+    const v1_b64 = (await getBufferFromUrl(v1.image.ipfs.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/'))).toString('base64')
+    const v2_b64 = (await getBufferFromUrl(v2.image.ipfs.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/'))).toString('base64')
 
-  const b64 = await getBase64FromUrl(`https://labdev.bangr.io/api/v1/custom/collage3?apiKey=${API_KEYS['BANGR_API_KEY']}`, { v0_b64, v1_b64, v2_b64 })
-  // NOTE : comes without "data:image/png;base64,"
+    const buff = await getBufferFromUrl(`https://labdev.bangr.io/api/v1/custom/collage3?apiKey=${API_KEYS['BANGR_API_KEY']}`, {
+      v0_b64,
+      v1_b64,
+      v2_b64,
+    })
 
-  // const b64 = TEMP_IMAGE.split(',')[1]
-  const buff = Buffer.from(b64, 'base64')
-  const uint8Array = new Uint8Array(buff)
+    const snapshot = await storage.ref(`/bloodline/${fileName}`).put(new Uint8Array(buff), {
+      contentType: 'image/png',
+    })
 
-  const filePath = `${v0.tokenName?.display.split('#')[1]}.png`
+    fileUrl = await snapshot.ref.getDownloadURL()
+  }
 
-  fs.appendFileSync(filePath, uint8Array)
+  const buff = await getBufferFromUrl(fileUrl)
+  const blob = new Blob([buff], { type: 'image/png' })
+  const formData = new FormData()
+  formData.append('file', blob)
 
-  const { ipfs_hash: hash } = await ipfs.add(filePath)
-  // await ipfs.pin(hash)
+  console.log('Uploading to IPFS')
 
-  fs.unlinkSync(filePath)
+  const {
+    data: { ipfs_hash: ipfsHash, name },
+  } = await axios.post<{ ipfs_hash: string; name: string; size: string }>(`https://ipfs.blockfrost.io/api/v0/ipfs/add`, formData, {
+    headers: {
+      project_id: API_KEYS['IPFS_API_KEY'],
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
+    },
+  })
 
-  return `ipfs://${hash}`
+  console.log('Successfully uploaded to IPFS:', name)
+  console.log('Pinning in IPFS:', ipfsHash)
+
+  const pinRes = await ipfs.pin(ipfsHash)
+
+  console.log('Pin status in IPFS:', pinRes.state)
+
+  return `ipfs://${ipfsHash}`
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -136,13 +162,25 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const { txHash } = body
 
         const { addressOfSender, v0, v1, v2 } = await getTokensFromTx(txHash)
-        const ipfsRef = await getImageFromTokens(v0, v1, v2)
 
         const serialCode = v0.tokenName?.display.split('#')[1]
+        const assetName = `Bloodline${serialCode}`
+
+        try {
+          const tokenId = `${BLOODLINE_POLICY_ID}${formatHex.toHex(assetName)}`
+          const foundToken = await badLabsApi.token.getData(tokenId)
+
+          if (!!foundToken) throw new Error('Already minted this!')
+        } catch (error) {
+          // Token not found: THIS IS OK!
+        }
+
+        const ipfsRef = await generateImage(v0, v1, v2)
+
         const mintPayload: Mint = {
           recipient: addressOfSender,
           label: '721',
-          assetName: `Bloodline${serialCode}`,
+          assetName,
           assetQuantity: '1',
           metadata: {
             project: 'Ape Nation',
@@ -180,18 +218,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             },
           },
         }
-
-        // try {
-        //   const tokenId = `${BLOODLINE_POLICY_ID}${formatHex.toHex(mintPayload.assetName)}`
-        //   const foundToken = await badLabsApi.token.getData(tokenId)
-
-        //   if (!!foundToken) {
-        //     throw new Error('Already minted this!')
-        //   }
-        // } catch (error) {
-        //   // Token not found:
-        //   // THIS IS OK!
-        // }
 
         // const blockchainProvider = new BlockfrostProvider(API_KEYS['BLOCKFROST_API_KEY'])
 

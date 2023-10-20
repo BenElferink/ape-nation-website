@@ -1,5 +1,6 @@
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
+import 'firebase/compat/storage'
 import { API_KEYS } from '../constants'
 
 if (!firebase.apps.length) {
@@ -14,5 +15,6 @@ if (!firebase.apps.length) {
 }
 
 const firestore = firebase.firestore()
+const storage = firebase.storage()
 
-export { firebase, firestore }
+export { firebase, firestore, storage }
