@@ -76,6 +76,11 @@ const partnerships = [
     url: 'https://yepple.io',
     logoUrl: '/media/logo/other/yepple.png',
   },
+  {
+    name: 'Bangr',
+    url: 'https://bangr.io',
+    logoUrl: '/media/logo/other/bangr.png',
+  },
 ]
 
 const featuredBy = [
