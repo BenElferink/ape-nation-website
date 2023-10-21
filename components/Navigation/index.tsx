@@ -93,7 +93,7 @@ const Navigation = () => {
           <li>
             <MultipleLinks
               title='Events'
-              links={[{ label: 'Bloodline', path: '' }]}
+              links={[{ label: 'BLING', url: 'https://mint.yepple.io/apenationchains' }, { label: 'Bloodline' }, { label: 'Bank of Nation' }]}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
           </li>
