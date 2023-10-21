@@ -212,9 +212,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
               },
             ],
             attributes: {
-              // 'Fox (F)': thisFemale?.tokenName?.display,
-              // 'Fox (M)': thisMale?.tokenName?.display,
-              // Motorcycle: thisBike?.tokenName?.display,
+              Club: v0.rarityRank ? (v0.rarityRank <= 1000 ? 'Canopy' : v0.rarityRank >= 1001 && v0.rarityRank <= 5000 ? 'Jungle' : 'TBA') : 'ERROR',
             },
           },
         }
