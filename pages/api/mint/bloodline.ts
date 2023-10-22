@@ -247,8 +247,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         //   fetcher: blockchainProvider,
         //   submitter: blockchainProvider,
         //   key: {
-        //     type: 'cli',
-        //     payment: BLOODLINE_SIGNING_KEY,
+        //     type: 'mnemonic',
+        //     words: BLOODLINE_MINT_WALLET_MNEMONIC,
         //   },
         // })
 

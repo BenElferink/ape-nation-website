@@ -42,4 +42,9 @@ export const LINKS = {
     'https://www.taptools.io/charts/token?pairID=0be55d262b29f564998ff81efe21bdc0022621c12f15af08d0f2ddb1.a7ecc694852dba715767f6be7e30c6ac1aab68baa9794815532e0da28b2fd80d',
 }
 
+export const BLOODLINE_MINT_WALLET_MNEMONIC = Array.isArray(process.env.BLOODLINE_MINT_WALLET_MNEMONIC)
+  ? process.env.BLOODLINE_MINT_WALLET_MNEMONIC
+  : process.env.BLOODLINE_MINT_WALLET_MNEMONIC?.split(',') || []
+
+export const BLOODLINE_MINT_WALLET_ADDRESS = 'addr1v8yh4nz600fqa5yqyt7nusqlq4cw65h4mcgufruf6gnjgzglekulq'
 export const TEMP_WALLET = 'addr1q9p9yq4lz834729chxsdwa7utfp5wr754zkn6hltxz42m594guty04nldwlxnhw8xcgd5pndaaqzzu5qzyvnc8tlgdsqtazkyh'
