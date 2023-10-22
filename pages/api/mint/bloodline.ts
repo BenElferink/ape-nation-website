@@ -231,9 +231,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
             Bloodline: v0.rarityRank
               ? v0.rarityRank <= 1000
-                ? 'Canopy'
+                ? 'Canopy Club'
                 : v0.rarityRank >= 1001 && v0.rarityRank <= 5000
-                ? 'Jungle'
+                ? 'Jungle Club'
                 : 'TBA'
               : 'ERROR',
             ...attributes,
@@ -272,7 +272,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(200).json({
           // txHash: _txHash,
           mintPayload,
-          test: BLOODLINE_MINT_WALLET_MNEMONIC,
         })
       }
 
