@@ -140,7 +140,7 @@ const Bloodline = () => {
     try {
       const res = await badLabsApi.policy.getData(BLOODLINE_POLICY_ID, { allTokens: true })
 
-      const supply = 3000
+      const supply = 2169
       const count = res.tokens.length
 
       setMintCount({
