@@ -7,7 +7,14 @@ import badLabsApi from '@/utils/badLabsApi'
 import formatHex from '@/functions/formatters/formatHex'
 import getFileForPolicyId from '@/functions/getFileForPolicyId'
 import type { PopulatedAsset } from '@/@types'
-import { API_KEYS, APE_NATION_POLICY_ID, BLOODLINE_POLICY_ID, MUTATION_NATION_POLICY_ID, TEMP_WALLET } from '@/constants'
+import {
+  API_KEYS,
+  APE_NATION_POLICY_ID,
+  BLOODLINE_POLICY_ID,
+  MUTATION_NATION_POLICY_ID,
+  TEMP_WALLET,
+  BLOODLINE_MINT_WALLET_MNEMONIC,
+} from '@/constants'
 
 export const config = {
   maxDuration: 300,
@@ -177,6 +184,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         const ipfsRef = await generateImage(v0, v1, v2)
 
+        const attributes: Record<string, string> = {}
+
+        Object.entries(v0.attributes).forEach(([key, val]) => {
+          if (key === 'Normal Shades') {
+            attributes['Glasses'] = val
+          } else {
+            attributes[key] = val
+          }
+        })
+
         const mintPayload: Mint = {
           recipient: addressOfSender,
           label: '721',
@@ -211,9 +228,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 src: v2.image.ipfs,
               },
             ],
-            attributes: {
-              Club: v0.rarityRank ? (v0.rarityRank <= 1000 ? 'Canopy' : v0.rarityRank >= 1001 && v0.rarityRank <= 5000 ? 'Jungle' : 'TBA') : 'ERROR',
-            },
+
+            Bloodline: v0.rarityRank
+              ? v0.rarityRank <= 1000
+                ? 'Canopy'
+                : v0.rarityRank >= 1001 && v0.rarityRank <= 5000
+                ? 'Jungle'
+                : 'TBA'
+              : 'ERROR',
+            ...attributes,
           },
         }
 
