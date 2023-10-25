@@ -107,7 +107,7 @@ const getBufferFromUrl = async (url: string, body?: Record<string, any>) => {
   }
 }
 
-const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: PopulatedAsset) => {
+const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: PopulatedAsset, club: string) => {
   const fileName = `${v0.tokenName?.display.split('#')[1]}.png`
   let fileUrl = ''
 
@@ -121,9 +121,14 @@ const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: Populat
     const v2_b64 = (await getBufferFromUrl(v2.image.ipfs.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/'))).toString('base64')
 
     const buff = await getBufferFromUrl(`https://labdev.bangr.io/api/v1/custom/collage3?apiKey=${API_KEYS['BANGR_API_KEY']}`, {
-      v0_b64,
-      v1_b64,
-      v2_b64,
+      pfp_v0_b64: v0_b64,
+      pfp_v1_b64: v1_b64,
+      pfp_v2_b64: v2_b64,
+      pfp_v0_name: v0.tokenName?.display,
+      pfp_v1_name: v1.tokenName?.display,
+      pfp_v2_name: v2.tokenName?.display,
+      rank: v0.rarityRank?.toString(),
+      overlay: club.toLowerCase().replaceAll(' ', ''),
     })
 
     const snapshot = await storage.ref(`/bloodline/${fileName}`).put(new Uint8Array(buff), {
@@ -172,6 +177,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         const serialCode = v0.tokenName?.display.split('#')[1]
         const assetName = `Bloodline${serialCode}`
+        const club = v0.rarityRank
+          ? v0.rarityRank <= 1000
+            ? 'Canopy Club'
+            : v0.rarityRank >= 1001 && v0.rarityRank <= 5000
+            ? 'Jungle Club'
+            : 'Congo Club'
+          : 'ERROR'
+
+        if (club === 'ERROR') throw Error('no rank, no club, impossible')
 
         try {
           const tokenId = `${BLOODLINE_POLICY_ID}${formatHex.toHex(assetName)}`
@@ -182,8 +196,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           // Token not found: THIS IS OK!
         }
 
-        const ipfsRef = await generateImage(v0, v1, v2)
-
+        const ipfsRef = await generateImage(v0, v1, v2, club)
         const attributes: Record<string, string> = {}
 
         Object.entries(v0.attributes).forEach(([key, val]) => {
@@ -229,13 +242,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
               },
             ],
 
-            Bloodline: v0.rarityRank
-              ? v0.rarityRank <= 1000
-                ? 'Canopy Club'
-                : v0.rarityRank >= 1001 && v0.rarityRank <= 5000
-                ? 'Jungle Club'
-                : 'TBA'
-              : 'ERROR',
+            Rank: v0.rarityRank,
+            Bloodline: club,
             ...attributes,
           },
         }
