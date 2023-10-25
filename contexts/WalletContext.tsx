@@ -9,11 +9,14 @@ import {
   APE_NATION_POLICY_ID,
   BLING_POLICY_ID,
   IHOLD_MUSIC_POLICY_ID,
+  JUNGLE_JUICE_POLICY_ID,
   MUTATION_NATION_MEGA_MUTANTS_POLICY_ID,
   MUTATION_NATION_POLICY_ID,
+  NATION_COIN_POLICY_ID,
   OG_CLUB_CARD_POLICY_ID,
   ORDINAL_TOKENS_POLICY_ID,
 } from '@/constants'
+import formatTokenAmount from '@/functions/formatters/formatTokenAmount'
 
 interface LocalStorageConnectedWallet {
   walletProvider: string
@@ -31,7 +34,14 @@ interface ContextValue {
   connectedManually: boolean
   wallet: BrowserWallet | null
   populatedWallet: PopulatedWallet | null
-  removeAssetsFromWallet: (_assetIds: string[]) => Promise<void>
+  removeAssetsFromWallet: (
+    _assetIds: string[],
+    _controlledAmounts?: {
+      policyId: PolicyId
+      tokenId: string
+      amount: number
+    }[]
+  ) => Promise<void>
 }
 
 const WalletContext = createContext<ContextValue>({
@@ -90,7 +100,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
                 return await populateAsset({
                   assetId: tokenId,
                   policyId: policyId,
-                  withRanks: true,
+                  withRanks: false,
                 })
               }
 
@@ -103,12 +113,14 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
           walletAddress,
           assets: {
             [APE_NATION_POLICY_ID]: await getTokens(walletTokens, APE_NATION_POLICY_ID),
+            [JUNGLE_JUICE_POLICY_ID]: await getTokens(walletTokens, JUNGLE_JUICE_POLICY_ID),
             [MUTATION_NATION_POLICY_ID]: await getTokens(walletTokens, MUTATION_NATION_POLICY_ID),
             [MUTATION_NATION_MEGA_MUTANTS_POLICY_ID]: await getTokens(walletTokens, MUTATION_NATION_MEGA_MUTANTS_POLICY_ID),
             [ORDINAL_TOKENS_POLICY_ID]: await getTokens(walletTokens, ORDINAL_TOKENS_POLICY_ID),
             [OG_CLUB_CARD_POLICY_ID]: await getTokens(walletTokens, OG_CLUB_CARD_POLICY_ID),
             [BLING_POLICY_ID]: await getTokens(walletTokens, BLING_POLICY_ID),
             [IHOLD_MUSIC_POLICY_ID]: await getTokens(walletTokens, IHOLD_MUSIC_POLICY_ID),
+            [NATION_COIN_POLICY_ID]: await getTokens(walletTokens, NATION_COIN_POLICY_ID),
           },
         })
 
@@ -155,12 +167,14 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
           walletAddress: data.addresses[0].address,
           assets: {
             [APE_NATION_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], APE_NATION_POLICY_ID),
+            [JUNGLE_JUICE_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], JUNGLE_JUICE_POLICY_ID),
             [MUTATION_NATION_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], MUTATION_NATION_POLICY_ID),
             [MUTATION_NATION_MEGA_MUTANTS_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], MUTATION_NATION_MEGA_MUTANTS_POLICY_ID),
             [ORDINAL_TOKENS_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], ORDINAL_TOKENS_POLICY_ID),
             [OG_CLUB_CARD_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], OG_CLUB_CARD_POLICY_ID),
             [BLING_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], BLING_POLICY_ID),
             [IHOLD_MUSIC_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], IHOLD_MUSIC_POLICY_ID),
+            [NATION_COIN_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], NATION_COIN_POLICY_ID),
           },
         })
 
@@ -217,7 +231,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [])
 
-  const removeAssetsFromWallet = async (_assetIds: string[]) => {
+  const removeAssetsFromWallet = async (_assetIds: string[], _controlledAmounts?: { policyId: PolicyId; tokenId: string; amount: number }[]) => {
     if (connecting) return
     setConnecting(true)
 
@@ -230,6 +244,14 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
 
           Object.entries(payload).forEach(([policyId, assets]) => {
             payload[policyId as PolicyId] = assets.filter((asset) => !_assetIds.includes(asset.tokenId))
+          })
+
+          _controlledAmounts?.forEach(({ policyId, tokenId, amount }) => {
+            const idx = payload[policyId as PolicyId].findIndex((x) => x.tokenId === tokenId)
+            const { decimals, onChain, display } = payload[policyId as PolicyId][idx].tokenAmount
+
+            payload[policyId as PolicyId][idx].tokenAmount.onChain = onChain - amount
+            payload[policyId as PolicyId][idx].tokenAmount.display = display - formatTokenAmount.fromChain(amount, decimals)
           })
 
           return {

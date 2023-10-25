@@ -12,7 +12,7 @@ import {
   APE_NATION_POLICY_ID,
   BLOODLINE_POLICY_ID,
   MUTATION_NATION_POLICY_ID,
-  TEMP_WALLET,
+  BLOODLINE_VAULT_WALLET_ADDRESS,
   BLOODLINE_MINT_WALLET_MNEMONIC,
 } from '@/constants'
 
@@ -22,9 +22,6 @@ export const config = {
     responseLimit: false,
   },
 }
-
-const SLOT = ''
-const KEY_HASH = ''
 
 const getTokensFromTx = async (txHash: string) => {
   const txData = await badLabsApi.transaction.getData(txHash, { withUtxos: true })
@@ -46,12 +43,12 @@ const getTokensFromTx = async (txHash: string) => {
 
   for (const { address, tokens } of txData.utxos || []) {
     for (const { tokenId } of tokens) {
-      if (tokenId.indexOf(APE_NATION_POLICY_ID) == 0 && address.to === TEMP_WALLET) {
+      if (tokenId.indexOf(APE_NATION_POLICY_ID) == 0 && address.to === BLOODLINE_VAULT_WALLET_ADDRESS) {
         selectedV0 = tokenId
         addressOfSender = address.from
       }
 
-      if (tokenId.indexOf(MUTATION_NATION_POLICY_ID) == 0 && address.to === TEMP_WALLET) {
+      if (tokenId.indexOf(MUTATION_NATION_POLICY_ID) == 0 && address.to === BLOODLINE_VAULT_WALLET_ADDRESS) {
         const foundToken = mutation.assets.find((item) => item.tokenId === tokenId)
 
         if (foundToken) {
@@ -212,10 +209,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         })
 
         const mintPayload: Mint = {
-          recipient: addressOfSender,
           label: '721',
-          assetName,
           assetQuantity: '1',
+          recipient: addressOfSender,
+          assetName,
           metadata: {
             project: 'Ape Nation',
             collection: 'Bloodline',
@@ -252,38 +249,29 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           },
         }
 
-        // const blockchainProvider = new BlockfrostProvider(API_KEYS['BLOCKFROST_API_KEY'])
+        const _provider = new BlockfrostProvider(API_KEYS['BLOCKFROST_API_KEY'])
+        const _wallet = new AppWallet({
+          networkId: 1,
+          fetcher: _provider,
+          submitter: _provider,
+          key: {
+            type: 'mnemonic',
+            words: BLOODLINE_MINT_WALLET_MNEMONIC,
+          },
+        })
 
-        // const _wallet = new AppWallet({
-        //   networkId: 1,
-        //   fetcher: blockchainProvider,
-        //   submitter: blockchainProvider,
-        //   key: {
-        //     type: 'mnemonic',
-        //     words: BLOODLINE_MINT_WALLET_MNEMONIC,
-        //   },
-        // })
+        const _address = _wallet.getPaymentAddress()
+        const _script = ForgeScript.withOneSignature(_address)
 
-        // const _script = ForgeScript.fromNativeScript({
-        //   type: 'all',
-        //   scripts: [
-        //     { type: 'before', slot: SLOT },
-        //     { type: 'sig', keyHash: KEY_HASH },
-        //   ],
-        // })
+        const _tx = new Transaction({ initiator: _wallet })
+        _tx.mintAsset(_script, mintPayload)
 
-        // const _tx = new Transaction({ initiator: _wallet })
-
-        // _tx.setTimeToExpire(SLOT)
-        // _tx.mintAsset(_script, mintPayload)
-
-        // const _unsigTx = await _tx.build()
-        // const _sigTx = await _wallet.signTx(_unsigTx)
-        // const _txHash = await _wallet.submitTx(_sigTx)
+        const _unsigTx = await _tx.build()
+        const _sigTx = await _wallet.signTx(_unsigTx)
+        const _txHash = await _wallet.submitTx(_sigTx)
 
         return res.status(200).json({
-          // txHash: _txHash,
-          mintPayload,
+          txHash: _txHash,
         })
       }
 

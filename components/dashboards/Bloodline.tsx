@@ -8,17 +8,26 @@ import sleep from '@/functions/sleep'
 import WalletHero from '../Wallet/WalletHero'
 import ImageLoader from '../Loader/ImageLoader'
 import type { PopulatedAsset } from '@/@types'
-import { APE_NATION_POLICY_ID, BLOODLINE_POLICY_ID, MUTATION_NATION_POLICY_ID, ONE_MILLION, TEMP_WALLET } from '@/constants'
+import {
+  APE_NATION_POLICY_ID,
+  BLOODLINE_POLICY_ID,
+  MUTATION_NATION_POLICY_ID,
+  ONE_MILLION,
+  BLOODLINE_VAULT_WALLET_ADDRESS,
+  BLOODLINE_MINT_WALLET_ADDRESS,
+  NATION_COIN_POLICY_ID,
+} from '@/constants'
 
-const BURN_OPEN = false
+const EVENT_OPEN = true
 
 const Bloodline = () => {
   const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
 
   const [sets, setSets] = useState<{ v0: PopulatedAsset; v1: PopulatedAsset; v2: PopulatedAsset }[]>([])
   const [loadingTx, setLoadingTx] = useState<boolean>(false)
+  const [disable, setDisable] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>(
-    !BURN_OPEN ? 'The portal is closed at the moment, please check in with our community for further announcements.' : ''
+    !EVENT_OPEN ? 'The portal is closed at the moment, please check in with our community for further announcements.' : ''
   )
 
   useEffect(() => {
@@ -34,6 +43,13 @@ const Bloodline = () => {
           }
         }
       })
+
+      const nationCoin = populatedWallet.assets[NATION_COIN_POLICY_ID][0]
+
+      if (!nationCoin || nationCoin.tokenAmount.display < 80) {
+        setErrorMessage('Must have at least 80 $NATION')
+        setDisable(true)
+      }
 
       setSets(payload.sort((a, b) => (a.v0.serialNumber || 0) - (b.v0.serialNumber || 0)))
     }
@@ -67,24 +83,42 @@ const Bloodline = () => {
       setLoadingTx(true)
 
       try {
-        const tx = new Transaction({ initiator: wallet }).sendAssets({ address: TEMP_WALLET }, [
-          {
-            unit: v0.tokenId,
-            quantity: '1',
-          },
-          {
-            unit: v1.tokenId,
-            quantity: '1',
-          },
-          {
-            unit: v2.tokenId,
-            quantity: '1',
-          },
-        ])
-        // .sendLovelace(
-        //   { address: '' },
-        //   String(1 * ONE_MILLION)
-        // )
+        const tx = new Transaction({ initiator: wallet })
+          .sendAssets({ address: BLOODLINE_VAULT_WALLET_ADDRESS }, [
+            {
+              unit: v0.tokenId,
+              quantity: '1',
+            },
+            {
+              unit: v1.tokenId,
+              quantity: '1',
+            },
+            {
+              unit: v2.tokenId,
+              quantity: '1',
+            },
+          ])
+          .sendLovelace(
+            { address: BLOODLINE_MINT_WALLET_ADDRESS }, // mint
+            String(2 * ONE_MILLION)
+          )
+          .sendLovelace(
+            { address: 'addr1q9knw3lmvlpsvemjpgmkqkwtkzv8wueggf9aavvzyt2akpw7nsavexls6g59x007aucn2etqp2q4rd0929z2ukcn78fslm56p9' }, // developer
+            String(2 * ONE_MILLION)
+          )
+          .sendLovelace(
+            { address: 'addr1q8nkez46zqputstsvzfktkxqs7jpmpj4t0jkelz3rm3gykp22ytkt33qeser3vfg5lw0f4t2j6uc297xe8x50vqp0apsfmtfz7' }, // team
+            String(2 * ONE_MILLION)
+          )
+          .sendAssets(
+            { address: 'addr1q8nkez46zqputstsvzfktkxqs7jpmpj4t0jkelz3rm3gykp22ytkt33qeser3vfg5lw0f4t2j6uc297xe8x50vqp0apsfmtfz7' }, // team
+            [
+              {
+                unit: 'cf5d945ad03a11c46e70a85daa8598b2275f9442ceed1249754ad9a14e4154494f4e', // $nation
+                quantity: '80000000',
+              },
+            ]
+          )
 
         toast.loading('Building transaction')
         const unsignedTx = await tx.build()
@@ -108,7 +142,10 @@ const Bloodline = () => {
         toast.dismiss()
         toast.success('NFT minted!')
 
-        await removeAssetsFromWallet([v0.tokenId, v1.tokenId, v2.tokenId])
+        await removeAssetsFromWallet(
+          [v0.tokenId, v1.tokenId, v2.tokenId],
+          [{ policyId: NATION_COIN_POLICY_ID, tokenId: 'cf5d945ad03a11c46e70a85daa8598b2275f9442ceed1249754ad9a14e4154494f4e', amount: 80000000 }]
+        )
       } catch (error: any) {
         console.error(error)
         toast.remove()
@@ -193,7 +230,7 @@ const Bloodline = () => {
             key={v0.serialNumber}
             type='button'
             onClick={() => buildTx(v0, v1, v2)}
-            disabled={!BURN_OPEN || loadingTx}
+            disabled={!EVENT_OPEN || loadingTx || disable}
             className='group w-full my-4 p-2 flex items-center justify-evenly text-center rounded-xl border border-zinc-700 bg-zinc-900/50 transition-all backdrop-blur cursor-pointer disabled:cursor-not-allowed'
           >
             <div className='m-4 shadow-lg rounded-full opacity-50 group-hover:opacity-100 transition-all'>
