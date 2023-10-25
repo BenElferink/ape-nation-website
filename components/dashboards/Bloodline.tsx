@@ -18,7 +18,7 @@ import {
   NATION_COIN_POLICY_ID,
 } from '@/constants'
 
-const EVENT_OPEN = true
+const EVENT_OPEN = false
 
 const Bloodline = () => {
   const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
