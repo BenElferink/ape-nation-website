@@ -131,9 +131,13 @@ const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: Populat
       overlay: club.toLowerCase().replaceAll(' ', ''),
     })
 
+    console.log('Uploading to Firebase')
+
     const snapshot = await storage.ref(`/bloodline/${fileName}`).put(new Uint8Array(buff), {
       contentType: 'image/png',
     })
+
+    console.log('Successfully uploaded to Firebase')
 
     fileUrl = await snapshot.ref.getDownloadURL()
   }
