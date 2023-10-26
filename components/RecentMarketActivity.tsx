@@ -12,7 +12,7 @@ import Loader from './Loader'
 import ImageLoader from './Loader/ImageLoader'
 import type { BadLabsApiMarket } from '@/utils/badLabsApi'
 import type { PolicyId } from '@/@types'
-import { ADA_SYMBOL } from '@/constants'
+import { ADA_SYMBOL, BLOODLINE_POLICY_ID } from '@/constants'
 
 const RecentMarketActivity = (props: { policyId: PolicyId }) => {
   const { policyId } = props
@@ -78,7 +78,7 @@ const RecentMarketActivity = (props: { policyId: PolicyId }) => {
                     style={{ width: imageSize, height: imageSize }}
                   >
                     <ImageLoader
-                      src={formatIpfsUrl(thisAsset?.image.ipfs || '')}
+                      src={formatIpfsUrl(thisAsset?.image.ipfs || '', { forceNonJpg: policyId === BLOODLINE_POLICY_ID })}
                       alt={thisAsset?.tokenName?.display || ''}
                       width={imageSize}
                       height={imageSize}

@@ -14,7 +14,7 @@ import Modal from '../layout/Modal'
 import ImageLoader from '../Loader/ImageLoader'
 import MusicPlayerWaves from '../MusicPlayerWaves'
 import type { PolicyId, PopulatedAsset, PopulatedTrait } from '@/@types'
-import { ADA_SYMBOL, APE_NATION_POLICY_ID, IHOLD_MUSIC_POLICY_ID } from '@/constants'
+import { ADA_SYMBOL, APE_NATION_POLICY_ID, BLOODLINE_POLICY_ID, IHOLD_MUSIC_POLICY_ID } from '@/constants'
 
 interface AssetModalContentProps {
   policyId: string
@@ -59,9 +59,14 @@ const AssetModalContent = (props: AssetModalContentProps) => {
     <div className='flex flex-col lg:flex-row lg:justify-between md:px-6'>
       <div>
         {displayedFile.mediaType === 'image/png' || displayedFile.mediaType === 'image/jpeg' ? (
-          <button onClick={() => window.open(formatIpfsUrl(displayedFile.src), '_blank', 'noopener noreferrer')} className='w-[80vw] md:w-[555px]'>
+          <button
+            onClick={() =>
+              window.open(formatIpfsUrl(displayedFile.src, { forceNonJpg: policyId === BLOODLINE_POLICY_ID }), '_blank', 'noopener noreferrer')
+            }
+            className='w-[80vw] md:w-[555px]'
+          >
             <ImageLoader
-              src={formatIpfsUrl(displayedFile.src)}
+              src={formatIpfsUrl(displayedFile.src, { forceNonJpg: policyId === BLOODLINE_POLICY_ID })}
               alt={displayedFile.name}
               width={1000}
               height={1000}
@@ -72,7 +77,7 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         ) : displayedFile.mediaType === 'video/mp4' ? (
           <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
             <video
-              src={formatIpfsUrl(displayedFile.src)}
+              src={formatIpfsUrl(displayedFile.src, { forceNonJpg: policyId === BLOODLINE_POLICY_ID })}
               controls
               autoPlay
               loop
@@ -85,7 +90,11 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           </button>
         ) : displayedFile.mediaType === 'audio/mp3' ? (
           <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
-            <MusicPlayerWaves src={formatIpfsUrl(displayedFile.src)} w='w-[80vw] md:w-[555px]' h='h-[80vw] md:h-[555px]' />
+            <MusicPlayerWaves
+              src={formatIpfsUrl(displayedFile.src, { forceNonJpg: policyId === BLOODLINE_POLICY_ID })}
+              w='w-[80vw] md:w-[555px]'
+              h='h-[80vw] md:h-[555px]'
+            />
           </button>
         ) : (
           <button onClick={() => {}} className='w-[80vw] md:w-[555px]'>
@@ -110,9 +119,21 @@ const AssetModalContent = (props: AssetModalContentProps) => {
               className='w-32 h-32 m-1 flex items-center justify-center text-xs rounded-2xl border border-zinc-700 bg-zinc-900/50'
             >
               {file.mediaType === 'image/png' || file.mediaType === 'image/jpeg' ? (
-                <ImageLoader src={formatIpfsUrl(file.src)} alt={file.name} width={150} height={150} style={{ borderRadius: '1rem' }} />
+                <ImageLoader
+                  src={formatIpfsUrl(file.src, { forceNonJpg: policyId === BLOODLINE_POLICY_ID })}
+                  alt={file.name}
+                  width={150}
+                  height={150}
+                  style={{ borderRadius: '1rem' }}
+                />
               ) : file.mediaType === 'video/mp4' ? (
-                <video src={formatIpfsUrl(file.src)} playsInline width={150} height={150} style={{ borderRadius: '1rem' }} />
+                <video
+                  src={formatIpfsUrl(file.src, { forceNonJpg: policyId === BLOODLINE_POLICY_ID })}
+                  playsInline
+                  width={150}
+                  height={150}
+                  style={{ borderRadius: '1rem' }}
+                />
               ) : file.mediaType === 'audio/mp3' ? (
                 <MusicalNoteIcon className='w-24 h-24' />
               ) : (
@@ -355,14 +376,14 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
                   onClick={() => setSelectedAsset(asset)}
                   isBurned={asset.isBurned}
                   title={asset.tokenName?.display as string}
-                  imageSrc={formatIpfsUrl(asset.image.ipfs)}
+                  imageSrc={formatIpfsUrl(asset.image.ipfs, { forceNonJpg: policyId === BLOODLINE_POLICY_ID })}
                   tiedImageSrcs={
                     asset.policyId === 'BLOODLINE' && asset.files?.length
                       ? asset.files
                           .filter((file) => file.mediaType === 'image/png')
                           .map((file) => ({
                             name: file.name,
-                            src: formatIpfsUrl(file.src),
+                            src: formatIpfsUrl(file.src, { forceNonJpg: policyId === BLOODLINE_POLICY_ID }),
                           }))
                       : []
                   }

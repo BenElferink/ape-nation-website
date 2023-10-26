@@ -8,6 +8,7 @@ import type { PolicyId, PopulatedWallet } from '@/@types'
 import {
   APE_NATION_POLICY_ID,
   BLING_POLICY_ID,
+  BLOODLINE_POLICY_ID,
   IHOLD_MUSIC_POLICY_ID,
   JUNGLE_JUICE_POLICY_ID,
   MUTATION_NATION_MEGA_MUTANTS_POLICY_ID,
@@ -112,15 +113,16 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
           stakeKey,
           walletAddress,
           assets: {
+            [NATION_COIN_POLICY_ID]: await getTokens(walletTokens, NATION_COIN_POLICY_ID),
             [APE_NATION_POLICY_ID]: await getTokens(walletTokens, APE_NATION_POLICY_ID),
-            [JUNGLE_JUICE_POLICY_ID]: await getTokens(walletTokens, JUNGLE_JUICE_POLICY_ID),
             [MUTATION_NATION_POLICY_ID]: await getTokens(walletTokens, MUTATION_NATION_POLICY_ID),
             [MUTATION_NATION_MEGA_MUTANTS_POLICY_ID]: await getTokens(walletTokens, MUTATION_NATION_MEGA_MUTANTS_POLICY_ID),
-            [ORDINAL_TOKENS_POLICY_ID]: await getTokens(walletTokens, ORDINAL_TOKENS_POLICY_ID),
+            [BLOODLINE_POLICY_ID]: await getTokens(walletTokens, BLOODLINE_POLICY_ID),
             [OG_CLUB_CARD_POLICY_ID]: await getTokens(walletTokens, OG_CLUB_CARD_POLICY_ID),
+            [ORDINAL_TOKENS_POLICY_ID]: await getTokens(walletTokens, ORDINAL_TOKENS_POLICY_ID),
             [BLING_POLICY_ID]: await getTokens(walletTokens, BLING_POLICY_ID),
             [IHOLD_MUSIC_POLICY_ID]: await getTokens(walletTokens, IHOLD_MUSIC_POLICY_ID),
-            [NATION_COIN_POLICY_ID]: await getTokens(walletTokens, NATION_COIN_POLICY_ID),
+            [JUNGLE_JUICE_POLICY_ID]: await getTokens(walletTokens, JUNGLE_JUICE_POLICY_ID),
           },
         })
 
@@ -166,15 +168,16 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
           stakeKey: data.stakeKey,
           walletAddress: data.addresses[0].address,
           assets: {
+            [NATION_COIN_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], NATION_COIN_POLICY_ID),
             [APE_NATION_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], APE_NATION_POLICY_ID),
-            [JUNGLE_JUICE_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], JUNGLE_JUICE_POLICY_ID),
             [MUTATION_NATION_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], MUTATION_NATION_POLICY_ID),
             [MUTATION_NATION_MEGA_MUTANTS_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], MUTATION_NATION_MEGA_MUTANTS_POLICY_ID),
-            [ORDINAL_TOKENS_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], ORDINAL_TOKENS_POLICY_ID),
+            [BLOODLINE_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], BLOODLINE_POLICY_ID),
             [OG_CLUB_CARD_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], OG_CLUB_CARD_POLICY_ID),
+            [ORDINAL_TOKENS_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], ORDINAL_TOKENS_POLICY_ID),
             [BLING_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], BLING_POLICY_ID),
             [IHOLD_MUSIC_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], IHOLD_MUSIC_POLICY_ID),
-            [NATION_COIN_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], NATION_COIN_POLICY_ID),
+            [JUNGLE_JUICE_POLICY_ID]: await getTokens(data.tokens as BadLabsApiBaseToken[], JUNGLE_JUICE_POLICY_ID),
           },
         })
 

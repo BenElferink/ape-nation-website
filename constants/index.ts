@@ -24,7 +24,7 @@ export const OG_CLUB_CARD_POLICY_ID = '21a44e25de32d0c2cba0413cb417fa61ed65cd9e2
 export const ORDINAL_TOKENS_POLICY_ID = 'c9fa37158ded418a5bb18159e4e7d7c1aeadd202ef7eaa84fbf23350'
 export const BLING_POLICY_ID = 'b0fd2efcb7e8b5d0dd6fce7403e31afc7919efe4e68a66570a5ee055'
 export const IHOLD_MUSIC_POLICY_ID = 'a2e5d9747e27d18cbc03eb2c24222f79675f8c3adae33cf4de9ac2bc'
-export const BLOODLINE_POLICY_ID = ''
+export const BLOODLINE_POLICY_ID = '563a59cf3372d66003022c87af460148d6d1cd87e5b177dbaa5863e0'
 
 export const LINKS = {
   X: 'https://x.com/Ape_NationNFT',

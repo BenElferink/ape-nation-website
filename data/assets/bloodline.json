@@ -1,0 +1,51 @@
+{
+  "policyId": "563a59cf3372d66003022c87af460148d6d1cd87e5b177dbaa5863e0",
+  "count": 1,
+  "assets": [
+    {
+      "tokenId": "563a59cf3372d66003022c87af460148d6d1cd87e5b177dbaa5863e0426c6f6f646c696e6532303331",
+      "fingerprint": "asset1ydregpa426ajr5wqdwlt0qnuxck8zuyxx55lj3",
+      "isFungible": false,
+      "policyId": "563a59cf3372d66003022c87af460148d6d1cd87e5b177dbaa5863e0",
+      "serialNumber": 2031,
+      "mintTransactionId": "a872d0a72a088aaeb4cd8c7b10fd6f502ea3eee2131efa811d3eb01c19bce74a",
+      "mintBlockHeight": 9462394,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Bloodline2031", "ticker": "", "display": "Bloodline #2031" },
+      "image": {
+        "ipfs": "ipfs://QmVTygZqxCuhNQiTPgHu5PYtPaULsjCKkfD84ovPvRfQoD",
+        "url": "https://ipfs.blockfrost.dev/ipfs/QmVTygZqxCuhNQiTPgHu5PYtPaULsjCKkfD84ovPvRfQoD"
+      },
+      "files": [
+        { "src": "ipfs://QmVTygZqxCuhNQiTPgHu5PYtPaULsjCKkfD84ovPvRfQoD", "name": "Bloodline #2031", "mediaType": "image/png" },
+        { "src": "ipfs://QmXRzFHycVEgznT4mvLnnTXCaRh2TUp1iCAYMxGgtQsTq2", "name": "Ape Nation #2031", "mediaType": "image/png" },
+        { "src": "ipfs://Qme5cDCjB8VArCZX45WiBz53YySwMs7michTzjGEwsZSnA", "name": "Mutation Nation #2031_V1", "mediaType": "image/png" },
+        { "src": "ipfs://QmYh8VimsJzjthsGeMrtxgkZDpj1A4y5HMpLtXqADVE67h", "name": "Mutation Nation #2031_V2", "mediaType": "image/png" }
+      ],
+      "attributes": {
+        "Fur": "Brown",
+        "Hat": "Halo",
+        "Eyes": "Bored Eyes",
+        "Rank": "1901",
+        "Mouth": "Cigarette",
+        "Clothes": "Toga",
+        "Glasses": "Normal Shades",
+        "Bloodline": "Jungle Club",
+        "Background": "Grey"
+      },
+      "isBurned": false,
+      "rarityRank": 0
+    }
+  ],
+  "traits": {
+    "Background": [{ "label": "Grey", "count": 1, "percent": "100.00%" }],
+    "Bloodline": [{ "label": "Jungle Club", "count": 1, "percent": "100.00%" }],
+    "Clothes": [{ "label": "Toga", "count": 1, "percent": "100.00%" }],
+    "Eyes": [{ "label": "Bored Eyes", "count": 1, "percent": "100.00%" }],
+    "Fur": [{ "label": "Brown", "count": 1, "percent": "100.00%" }],
+    "Glasses": [{ "label": "Normal Shades", "count": 1, "percent": "100.00%" }],
+    "Hat": [{ "label": "Halo", "count": 1, "percent": "100.00%" }],
+    "Mouth": [{ "label": "Cigarette", "count": 1, "percent": "100.00%" }],
+    "Rank": [{ "label": "1901", "count": 1, "percent": "100.00%" }]
+  }
+}

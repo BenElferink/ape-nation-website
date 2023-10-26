@@ -13,6 +13,7 @@ import {
   IHOLD_MUSIC_POLICY_ID,
   JUNGLE_JUICE_POLICY_ID,
   LINKS,
+  BLOODLINE_POLICY_ID,
 } from '@/constants'
 import Script from 'next/script'
 
@@ -73,16 +74,17 @@ const Navigation = () => {
             <MultipleLinks
               title='Collections'
               links={[
+                { label: '$NATION', iconSrc: '/media/logo/other/taptools.webp', url: LINKS['NATION_TAPTOOLS'] },
                 { label: 'Ape Nation', path: `/collections/${APE_NATION_POLICY_ID}` },
-                { label: 'Jungle Juice', path: `/collections/${JUNGLE_JUICE_POLICY_ID}` },
                 { label: 'Mutation Nation', path: `/collections/${MUTATION_NATION_POLICY_ID}` },
                 { label: 'Mutation Nation - Mega Mutants', path: `/collections/${MUTATION_NATION_MEGA_MUTANTS_POLICY_ID}` },
+                { label: 'Bloodline', path: `/collections/${BLOODLINE_POLICY_ID}` },
+                { label: 'OG Club Card', path: `/collections/${OG_CLUB_CARD_POLICY_ID}` },
                 { label: 'Ordinal Tokens', path: `/collections/${ORDINAL_TOKENS_POLICY_ID}` },
                 { label: 'Ordinals', iconSrc: '/media/tokens/bitcoin.svg', path: LINKS['MAGIC_EDEN_ORDINALS'] },
-                { label: 'OG Club Card', path: `/collections/${OG_CLUB_CARD_POLICY_ID}` },
                 { label: 'BLING', path: `/collections/${BLING_POLICY_ID}` },
                 { label: 'iHold Music', path: `/collections/${IHOLD_MUSIC_POLICY_ID}` },
-                { label: '$NATION', iconSrc: '/media/logo/other/taptools.webp', url: LINKS['NATION_TAPTOOLS'] },
+                { label: 'Jungle Juice', path: `/collections/${JUNGLE_JUICE_POLICY_ID}` },
               ]}
               dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
             />
