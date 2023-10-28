@@ -34,7 +34,7 @@ const partnerships = [
   {
     name: 'CSWAP DEX',
     url: 'https://www.cswap.fi',
-    logoUrl: '/media/tokens/cswap/token.png',
+    logoUrl: '/media/logo/other/cswap.png',
   },
   {
     name: 'IDO Pass DAO',
