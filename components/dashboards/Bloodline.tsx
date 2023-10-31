@@ -183,7 +183,7 @@ const Bloodline = () => {
       setMintCount({
         supply,
         minted: count,
-        percent: `${((100 / supply) * count).toFixed(1)}%`,
+        percent: `${((100 / supply) * count).toFixed(2)}%`,
       })
     } catch (error) {
       console.error(error)
@@ -191,7 +191,7 @@ const Bloodline = () => {
   }
 
   useEffect(() => {
-    // getAndSetCounts()
+    getAndSetCounts()
   }, [])
 
   if (connectedManually) {
@@ -219,7 +219,7 @@ const Bloodline = () => {
 
       <div className='w-full my-4 text-center'>
         <p className='text-lg text-green-200'>
-          {mintCount.percent} burned ({mintCount.minted}/{mintCount.supply})
+          {mintCount.percent} combined ({mintCount.minted} / {mintCount.supply})
         </p>
         {errorMessage ? <p className='text-red-200'>{errorMessage}</p> : null}
       </div>
