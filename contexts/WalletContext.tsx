@@ -77,6 +77,31 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
   const [connectedName, setConnectedName] = useState<string>('')
   const [connectedManually, setConnectedManually] = useState<boolean>(false)
 
+  const getTokens = async (tokens: BadLabsApiBaseToken[], policyId: PolicyId) =>
+    (await Promise.all(
+      (tokens?.filter(({ tokenId }) => tokenId.indexOf(policyId) == 0) || []).map(async ({ tokenId, tokenAmount }) => {
+        const foundAsset = getFileForPolicyId(policyId).assets.find((x) => x.tokenId === tokenId)
+
+        if (!foundAsset) {
+          const populatedAsset = await populateAsset({
+            assetId: tokenId,
+            policyId: policyId,
+            withRanks: false,
+          })
+
+          return {
+            ...populatedAsset,
+            tokenAmount,
+          }
+        }
+
+        return {
+          ...foundAsset,
+          tokenAmount,
+        }
+      })
+    )) || []
+
   const connectWallet = async (_walletName: string) => {
     if (connecting) return
     setConnecting(true)
@@ -91,23 +116,6 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
         const walletAddress = await _wallet.getChangeAddress()
         const walletResponse = await badLabsApi.wallet.getData(stakeKey, { withTokens: true })
         const walletTokens = walletResponse.tokens as BadLabsApiBaseToken[]
-
-        const getTokens = async (tokens: BadLabsApiBaseToken[], policyId: PolicyId) =>
-          (await Promise.all(
-            (tokens?.filter(({ tokenId }) => tokenId.indexOf(policyId) == 0) || []).map(async ({ tokenId }) => {
-              const foundAsset = getFileForPolicyId(policyId).assets.find((x) => x.tokenId === tokenId)
-
-              if (!foundAsset) {
-                return await populateAsset({
-                  assetId: tokenId,
-                  policyId: policyId,
-                  withRanks: false,
-                })
-              }
-
-              return foundAsset
-            })
-          )) || []
 
         setPopulatedWallet({
           stakeKey,
@@ -146,23 +154,6 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       if (_walletIdentifier) {
         const data = await badLabsApi.wallet.getData(_walletIdentifier, { withTokens: true })
-
-        const getTokens = async (tokens: BadLabsApiBaseToken[], policyId: PolicyId) =>
-          (await Promise.all(
-            (tokens?.filter(({ tokenId }) => tokenId.indexOf(policyId) == 0) || []).map(async ({ tokenId }) => {
-              const foundAsset = getFileForPolicyId(policyId).assets.find((x) => x.tokenId === tokenId)
-
-              if (!foundAsset) {
-                return await populateAsset({
-                  assetId: tokenId,
-                  policyId: policyId,
-                  withRanks: false,
-                })
-              }
-
-              return foundAsset
-            })
-          )) || []
 
         setPopulatedWallet({
           stakeKey: data.stakeKey,
