@@ -156,7 +156,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
                 return await populateAsset({
                   assetId: tokenId,
                   policyId: policyId,
-                  withRanks: true,
+                  withRanks: false,
                 })
               }
 

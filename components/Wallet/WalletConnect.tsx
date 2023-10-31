@@ -70,7 +70,7 @@ const WalletConnect = (props: { allowManual?: boolean; introText?: string }) => 
                     }}
                   >
                     <Image unoptimized src={wallet.icon} alt={wallet.name} width={35} height={35} className='mr-2' />
-                    {wallet.name}
+                    {wallet.name.toUpperCase()}
                   </button>
                 ))}
 
