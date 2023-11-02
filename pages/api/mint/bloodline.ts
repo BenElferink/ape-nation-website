@@ -218,28 +218,28 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             collection: 'Bloodline',
             name: `Bloodline #${serialCode}`,
             website: 'https://apenation.io',
-            image: ipfsRef,
+            image: ipfsRef.length > 64 ? [ipfsRef.substring(0, 64), ipfsRef.substring(64)] : ipfsRef,
             mediaType: 'image/png',
             files: [
               {
                 mediaType: 'image/png',
                 name: `Bloodline #${serialCode}`,
-                src: ipfsRef,
+                src: ipfsRef.length > 64 ? [ipfsRef.substring(0, 64), ipfsRef.substring(64)] : ipfsRef,
               },
               {
                 mediaType: 'image/png',
                 name: v0.tokenName?.display,
-                src: v0.image.ipfs,
+                src: v0.image.ipfs.length > 64 ? [v0.image.ipfs.substring(0, 64), v0.image.ipfs.substring(64)] : v0.image.ipfs,
               },
               {
                 mediaType: 'image/png',
                 name: v1.tokenName?.display,
-                src: v1.image.ipfs,
+                src: v1.image.ipfs.length > 64 ? [v1.image.ipfs.substring(0, 64), v1.image.ipfs.substring(64)] : v1.image.ipfs,
               },
               {
                 mediaType: 'image/png',
                 name: v2.tokenName?.display,
-                src: v2.image.ipfs,
+                src: v2.image.ipfs.length > 64 ? [v2.image.ipfs.substring(0, 64), v2.image.ipfs.substring(64)] : v2.image.ipfs,
               },
             ],
 
