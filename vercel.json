@@ -31,6 +31,10 @@
     {
       "path": "/api/floor/a2e5d9747e27d18cbc03eb2c24222f79675f8c3adae33cf4de9ac2bc/cron",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/mint/bloodline-sync",
+      "schedule": "0 */2 * * *"
     }
   ]
 }
