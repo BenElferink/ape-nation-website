@@ -20,6 +20,7 @@ import Script from 'next/script'
 export const navTokens = [
   { label: 'AWOO', path: '/tokens/awoo' },
   { label: 'C4', path: '/tokens/c4' },
+  { label: 'CHANGE', path: '/tokens/change' },
   { label: 'CSWAP', path: '/tokens/cswap' },
   { label: 'HEXO', path: '/tokens/hexo' },
   { label: 'IDP', path: '/tokens/idp' },
