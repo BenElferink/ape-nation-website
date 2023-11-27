@@ -9,6 +9,7 @@ export type WhoCanEarn = (
   | 'Ordinal Tokens'
   | 'BLING'
   | 'iHold Music'
+  | 'Bloodline'
 )[]
 
 const WHO_CAN_EARN: WhoCanEarn = [
@@ -20,6 +21,7 @@ const WHO_CAN_EARN: WhoCanEarn = [
   'Ordinal Tokens',
   'BLING',
   'iHold Music',
+  'Bloodline',
 ]
 
 const TokenWhoEarns = (props: { whoCanEarn: WhoCanEarn }) => {

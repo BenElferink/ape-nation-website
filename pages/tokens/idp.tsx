@@ -8,7 +8,7 @@ const TOKEN_IMAGE_SRC = '/media/tokens/idp/token.png'
 const TOKEN_POLICY_ID = 'b9168f05e657b6946fede254e383586cf7e7a2573d5a0fa12b3ef6ac'
 const TOKEN_NAME = 'IDP'
 const PROJECT_NAME = 'IDO Pass DAO'
-const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation']
+const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation', 'Bloodline']
 
 const Page = () => {
   return (
