@@ -117,7 +117,7 @@ const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: Populat
     const v1_b64 = (await getBufferFromUrl(v1.image.ipfs.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/'))).toString('base64')
     const v2_b64 = (await getBufferFromUrl(v2.image.ipfs.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/'))).toString('base64')
 
-    const buff = await getBufferFromUrl(`https://labdev.bangr.io/api/v1/custom/collage3?apiKey=${API_KEYS['BANGR_API_KEY']}`, {
+    const buff = await getBufferFromUrl(`https://lab.bangr.io/api/v1/custom/collage3?apiKey=${API_KEYS['BANGR_API_KEY']}`, {
       pfp_v0_b64: v0_b64,
       pfp_v1_b64: v1_b64,
       pfp_v2_b64: v2_b64,
