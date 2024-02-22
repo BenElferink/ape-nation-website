@@ -18,7 +18,7 @@ import {
   NATION_COIN_POLICY_ID,
 } from '@/constants'
 
-const EVENT_OPEN = true
+const EVENT_OPEN = false
 
 const Bloodline = () => {
   const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
@@ -31,7 +31,7 @@ const Bloodline = () => {
   )
 
   useEffect(() => {
-    if (populatedWallet?.stakeKey) {
+    if (EVENT_OPEN && populatedWallet?.stakeKey) {
       const payload: typeof sets = []
 
       populatedWallet.assets[APE_NATION_POLICY_ID].forEach((v0) => {
