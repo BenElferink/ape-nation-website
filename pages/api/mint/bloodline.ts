@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 import { AppWallet, BlockfrostProvider, ForgeScript, Mint, Transaction } from '@meshsdk/core'
-import { ipfs } from '@/utils/blockfrost'
 import { storage } from '@/utils/firebase'
 import badLabsApi from '@/utils/badLabsApi'
 import formatHex from '@/functions/formatters/formatHex'
@@ -142,26 +141,31 @@ const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: Populat
   const buff = await getBufferFromUrl(fileUrl)
   const blob = new Blob([buff], { type: 'image/png' })
   const formData = new FormData()
+  const pinataMetadata = JSON.stringify({
+    name: fileName,
+  })
+
   formData.append('file', blob)
+  formData.append('pinataMetadata', pinataMetadata)
 
   console.log('Uploading to IPFS')
 
   const {
-    data: { ipfs_hash: ipfsHash, name },
-  } = await axios.post<{ ipfs_hash: string; name: string; size: string }>(`https://ipfs.blockfrost.io/api/v0/ipfs/add`, formData, {
+    data: { IpfsHash: ipfsHash },
+  } = await axios.post<{
+    IpfsHash: string
+    PinSize: number
+    Timestamp: string // ISO date
+    isDuplicate: boolean
+  }>('https://api.pinata.cloud/pinning/pinFileToIPFS', formData, {
     headers: {
-      project_id: API_KEYS['IPFS_API_KEY'],
+      Authorization: `Bearer ${API_KEYS['PINATA_API_KEY']}`,
       Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
     },
   })
 
-  console.log('Successfully uploaded to IPFS:', name)
-  console.log('Pinning in IPFS:', ipfsHash)
-
-  const pinRes = await ipfs.pin(ipfsHash)
-
-  console.log('Pin status in IPFS:', pinRes.state)
+  console.log('Successfully uploaded to IPFS:', ipfsHash)
 
   return `ipfs://${ipfsHash}`
 }

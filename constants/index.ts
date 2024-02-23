@@ -2,6 +2,7 @@ export const ADA_SYMBOL = '₳'
 export const ONE_MILLION = 1000000
 
 export const API_KEYS = {
+  PINATA_API_KEY: process.env.PINATA_API_KEY || '',
   BLOCKFROST_API_KEY: process.env.BLOCKFROST_API_KEY || '',
   IPFS_API_KEY: process.env.IPFS_API_KEY || '',
 
@@ -27,6 +28,8 @@ export const IHOLD_MUSIC_POLICY_ID = 'a2e5d9747e27d18cbc03eb2c24222f79675f8c3ada
 export const BLOODLINE_POLICY_ID = '563a59cf3372d66003022c87af460148d6d1cd87e5b177dbaa5863e0'
 
 export const LINKS = {
+  PINATA_GATEWAY: process.env.PINATA_GATEWAY || '',
+
   X: 'https://x.com/Ape_NationNFT',
   DISCORD: 'https://discord.gg/mUQKg2NQtP',
   INSTAGRAM: 'https://www.instagram.com/apenationcnft',
@@ -47,4 +50,6 @@ export const BLOODLINE_MINT_WALLET_MNEMONIC = Array.isArray(process.env.BLOODLIN
   : process.env.BLOODLINE_MINT_WALLET_MNEMONIC?.split(',') || []
 
 export const BLOODLINE_MINT_WALLET_ADDRESS = 'addr1v8yh4nz600fqa5yqyt7nusqlq4cw65h4mcgufruf6gnjgzglekulq'
-export const BLOODLINE_VAULT_WALLET_ADDRESS = 'addr1qy5c0dgtm7az6687htgxygncdghz45l8vhqc0g020npcqytuxyd8tg06vx4qllvn5zuxygehtxxmacprswfcxehetx9qap7d5g'
+export const BLOODLINE_VAULT_WALLET_ADDRESS =
+  'addr1q8yclmvcyg5u3kfn9jaxlx7kldunlwmh8sf2kg0myxuznwtsqdak7kjtxqmcqhcj43fdayhwwqjj9xn2az5r8qhhajsq0vmqax'
+export const TEAM_TREASURY_WALLET_ADDRESS = 'addr1qxygpl5awytuzdxrkqx8llq8htmaswhnpqd70u50d7phuzn6lymra9mz23tpxmg3r6v00xfh7qve5we4qx694vdg62gskv3eya'

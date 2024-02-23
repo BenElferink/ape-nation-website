@@ -16,6 +16,7 @@ import {
   BLOODLINE_VAULT_WALLET_ADDRESS,
   BLOODLINE_MINT_WALLET_ADDRESS,
   NATION_COIN_POLICY_ID,
+  TEAM_TREASURY_WALLET_ADDRESS,
 } from '@/constants'
 
 const EVENT_OPEN = false
@@ -107,14 +108,14 @@ const Bloodline = () => {
             String(2 * ONE_MILLION)
           )
           .sendLovelace(
-            { address: 'addr1q8nkez46zqputstsvzfktkxqs7jpmpj4t0jkelz3rm3gykp22ytkt33qeser3vfg5lw0f4t2j6uc297xe8x50vqp0apsfmtfz7' }, // team
+            { address: TEAM_TREASURY_WALLET_ADDRESS }, // team
             String(2 * ONE_MILLION)
           )
           .sendAssets(
-            { address: 'addr1q8nkez46zqputstsvzfktkxqs7jpmpj4t0jkelz3rm3gykp22ytkt33qeser3vfg5lw0f4t2j6uc297xe8x50vqp0apsfmtfz7' }, // team
+            { address: TEAM_TREASURY_WALLET_ADDRESS }, // team
             [
               {
-                unit: 'cf5d945ad03a11c46e70a85daa8598b2275f9442ceed1249754ad9a14e4154494f4e', // $nation
+                unit: `${NATION_COIN_POLICY_ID}4e4154494f4e`, // $nation
                 quantity: '80000000',
               },
             ]
