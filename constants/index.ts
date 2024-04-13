@@ -2,7 +2,6 @@ export const ADA_SYMBOL = '₳'
 export const ONE_MILLION = 1000000
 
 export const API_KEYS = {
-  PINATA_API_KEY: process.env.PINATA_API_KEY || '',
   BLOCKFROST_API_KEY: process.env.BLOCKFROST_API_KEY || '',
   IPFS_API_KEY: process.env.IPFS_API_KEY || '',
 
@@ -28,8 +27,6 @@ export const IHOLD_MUSIC_POLICY_ID = 'a2e5d9747e27d18cbc03eb2c24222f79675f8c3ada
 export const BLOODLINE_POLICY_ID = '563a59cf3372d66003022c87af460148d6d1cd87e5b177dbaa5863e0'
 
 export const LINKS = {
-  PINATA_GATEWAY: process.env.PINATA_GATEWAY || '',
-
   X: 'https://x.com/Ape_NationNFT',
   DISCORD: 'https://discord.gg/mUQKg2NQtP',
   INSTAGRAM: 'https://www.instagram.com/apenationcnft',

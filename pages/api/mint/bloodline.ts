@@ -3,6 +3,7 @@ import axios from 'axios'
 import { AppWallet, BlockfrostProvider, ForgeScript, Mint, Transaction } from '@meshsdk/core'
 import { storage } from '@/utils/firebase'
 import badLabsApi from '@/utils/badLabsApi'
+import getEnv from '@/functions/storage/getEnv'
 import formatHex from '@/functions/formatters/formatHex'
 import getFileForPolicyId from '@/functions/getFileForPolicyId'
 import type { PopulatedAsset } from '@/@types'
@@ -21,6 +22,8 @@ export const config = {
     responseLimit: false,
   },
 }
+
+let PINATA_API_KEY = ''
 
 const getTokensFromTx = async (txHash: string) => {
   const txData = await badLabsApi.transaction.getData(txHash, { withUtxos: true })
@@ -104,6 +107,8 @@ const getBufferFromUrl = async (url: string, body?: Record<string, any>) => {
 }
 
 const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: PopulatedAsset, club: string) => {
+  if (!PINATA_API_KEY) PINATA_API_KEY = (await getEnv('PINATA_API_KEY'))?.value || ''
+
   const fileName = `${v0.tokenName?.display.split('#')[1]}.png`
   let fileUrl = ''
 
@@ -138,15 +143,11 @@ const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: Populat
     fileUrl = await snapshot.ref.getDownloadURL()
   }
 
-  const buff = await getBufferFromUrl(fileUrl)
-  const blob = new Blob([buff], { type: 'image/png' })
   const formData = new FormData()
-  const pinataMetadata = JSON.stringify({
-    name: fileName,
-  })
+  const buff = await getBufferFromUrl(fileUrl)
 
-  formData.append('file', blob)
-  formData.append('pinataMetadata', pinataMetadata)
+  formData.append('file', new Blob([buff], { type: 'image/png' }))
+  formData.append('pinataMetadata', JSON.stringify({ name: fileName }))
 
   console.log('Uploading to IPFS')
 
@@ -159,7 +160,7 @@ const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: Populat
     isDuplicate: boolean
   }>('https://api.pinata.cloud/pinning/pinFileToIPFS', formData, {
     headers: {
-      Authorization: `Bearer ${API_KEYS['PINATA_API_KEY']}`,
+      Authorization: `Bearer ${PINATA_API_KEY}`,
       Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
     },
