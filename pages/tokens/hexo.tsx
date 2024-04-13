@@ -8,7 +8,17 @@ const TOKEN_IMAGE_SRC = '/media/tokens/hexo/token.png'
 const TOKEN_POLICY_ID = '27eee19588c997ca54d3137f64afe55a18dfcf9062fa83a724bf2357'
 const TOKEN_NAME = 'HEXO'
 const PROJECT_NAME = 'Cardano Lands'
-const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation', 'Jungle Juice', 'Mutation Nation']
+const WHO_CAN_EARN: WhoCanEarn = [
+  'Ape Nation',
+  'Jungle Juice',
+  'Mutation Nation',
+  'Mega Mutants',
+  'OG Club Card',
+  'Ordinal Tokens',
+  'BLING',
+  'iHold Music',
+  'Bloodline',
+]
 
 const Page = () => {
   return (
