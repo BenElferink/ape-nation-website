@@ -34,7 +34,7 @@
     },
     {
       "path": "/api/mint/bloodline-sync",
-      "schedule": "0 */2 * * *"
+      "schedule": "*/5 * * * *"
     }
   ]
 }
