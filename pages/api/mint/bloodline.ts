@@ -106,6 +106,28 @@ const getBufferFromUrl = async (url: string, body?: Record<string, any>) => {
   }
 }
 
+const getBase64FromIpfs = async (ipfsRef: string) => {
+  const url = ipfsRef.replace('ipfs://', 'https://ipfs.blockfrost.io/api/v0/ipfs/gateway/')
+
+  try {
+    console.log('Fetching image from URL:', url)
+
+    const res = await axios.get(url, {
+      responseType: 'arraybuffer',
+      headers: {
+        project_id: API_KEYS['IPFS_API_KEY'],
+      },
+    })
+
+    console.log('Successfully fetched image')
+
+    return Buffer.from(res.data).toString('base64')
+  } catch (error: any) {
+    console.error('Error fetching image:', error.message)
+    throw error
+  }
+}
+
 const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: PopulatedAsset, club: string) => {
   if (!PINATA_API_KEY) PINATA_API_KEY = (await getEnv('PINATA_API_KEY'))?.value || ''
 
@@ -117,9 +139,9 @@ const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: Populat
   }
 
   if (!fileUrl) {
-    const v0_b64 = (await getBufferFromUrl(v0.image.ipfs.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/'))).toString('base64')
-    const v1_b64 = (await getBufferFromUrl(v1.image.ipfs.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/'))).toString('base64')
-    const v2_b64 = (await getBufferFromUrl(v2.image.ipfs.replace('ipfs://', 'https://ipfs.blockfrost.dev/ipfs/'))).toString('base64')
+    const v0_b64 = await getBase64FromIpfs(v0.image.ipfs)
+    const v1_b64 = await getBase64FromIpfs(v1.image.ipfs)
+    const v2_b64 = await getBase64FromIpfs(v2.image.ipfs)
 
     const buff = await getBufferFromUrl(`https://lab.bangr.io/api/v1/custom/collage3?apiKey=${API_KEYS['BANGR_API_KEY']}`, {
       pfp_v0_b64: v0_b64,
