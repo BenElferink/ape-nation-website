@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
-import { Transaction } from '@meshsdk/core'
+import { keepRelevant, Transaction } from '@meshsdk/core'
 import useWallet from '@/contexts/WalletContext'
 import badLabsApi, { BadLabsApiTransaction } from '@/utils/badLabsApi'
 import sleep from '@/functions/sleep'
@@ -83,22 +83,58 @@ const Bloodline = () => {
       if (!wallet) return
       setLoadingTx(true)
 
+      const assetsToSend = [
+        {
+          unit: v0.tokenId,
+          quantity: '1',
+        },
+        {
+          unit: v1.tokenId,
+          quantity: '1',
+        },
+        {
+          unit: v2.tokenId,
+          quantity: '1',
+        },
+      ]
+
+      const fungibleToken = {
+        unit: `${NATION_COIN_POLICY_ID}4e4154494f4e`, // $nation
+        quantity: '80000000',
+      }
+
       try {
         const tx = new Transaction({ initiator: wallet })
-          .sendAssets({ address: BLOODLINE_VAULT_WALLET_ADDRESS }, [
-            {
-              unit: v0.tokenId,
-              quantity: '1',
-            },
-            {
-              unit: v1.tokenId,
-              quantity: '1',
-            },
-            {
-              unit: v2.tokenId,
-              quantity: '1',
-            },
-          ])
+          .setTxInputs(
+            keepRelevant(
+              new Map(
+                [
+                  {
+                    unit: 'lovelace',
+                    quantity: String(10 * ONE_MILLION),
+                  },
+                  fungibleToken,
+                ]
+                  .concat(assetsToSend)
+                  .map((x) => [x.unit, x.quantity])
+              ),
+              await wallet.getUtxos()
+            )
+          )
+          .sendAssets({ address: BLOODLINE_VAULT_WALLET_ADDRESS }, assetsToSend)
+          .sendAssets(
+            { address: TEAM_TREASURY_WALLET_ADDRESS }, // team
+            [
+              {
+                unit: 'lovelace',
+                quantity: String(2 * ONE_MILLION),
+              },
+              {
+                unit: `${NATION_COIN_POLICY_ID}4e4154494f4e`, // $nation
+                quantity: '80000000',
+              },
+            ]
+          )
           .sendLovelace(
             { address: BLOODLINE_MINT_WALLET_ADDRESS }, // mint
             String(2 * ONE_MILLION)
@@ -106,19 +142,6 @@ const Bloodline = () => {
           .sendLovelace(
             { address: 'addr1q9knw3lmvlpsvemjpgmkqkwtkzv8wueggf9aavvzyt2akpw7nsavexls6g59x007aucn2etqp2q4rd0929z2ukcn78fslm56p9' }, // developer
             String(2 * ONE_MILLION)
-          )
-          .sendLovelace(
-            { address: TEAM_TREASURY_WALLET_ADDRESS }, // team
-            String(2 * ONE_MILLION)
-          )
-          .sendAssets(
-            { address: TEAM_TREASURY_WALLET_ADDRESS }, // team
-            [
-              {
-                unit: `${NATION_COIN_POLICY_ID}4e4154494f4e`, // $nation
-                quantity: '80000000',
-              },
-            ]
           )
 
         toast.loading('Building transaction')
