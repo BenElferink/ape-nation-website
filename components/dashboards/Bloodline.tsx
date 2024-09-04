@@ -19,7 +19,7 @@ import {
   TEAM_TREASURY_WALLET_ADDRESS,
 } from '@/constants'
 
-const EVENT_OPEN = true
+const EVENT_OPEN = false
 
 const Bloodline = () => {
   const { connectedManually, wallet, populatedWallet, disconnectWallet, removeAssetsFromWallet } = useWallet()
