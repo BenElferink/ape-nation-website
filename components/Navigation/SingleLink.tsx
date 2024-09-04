@@ -3,14 +3,14 @@ import { useRouter } from 'next/router'
 
 export interface SingleLinkProps {
   label?: string
-  iconSrc?: string
+  logoSrc?: string
   path?: string
   url?: string
   onClick?: () => void
 }
 
 const SingleLink = (props: SingleLinkProps) => {
-  const { label, iconSrc, path, url, onClick } = props
+  const { label, logoSrc, path, url, onClick } = props
   const router = useRouter()
   const selected = router.asPath === path // || router.pathname === path
   const isNothing = !url && !path && !onClick
@@ -32,8 +32,13 @@ const SingleLink = (props: SingleLinkProps) => {
       }
     >
       <span className='flex items-center'>
+        {logoSrc ? (
+          <div className='w-6 h-6 flex items-center'>
+            <img src={logoSrc} alt='' className='w-4 object-cover rounded-full' />
+          </div>
+        ) : null}
+
         {label}
-        {iconSrc ? <img src={iconSrc} alt='' className={label ? 'w-4 h-4 ml-2' : 'w-6 h-6'} /> : null}
       </span>
     </Link>
   )

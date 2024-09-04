@@ -3,31 +3,44 @@ import { useEffect, useRef, useState } from 'react'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 import MultipleLinks from './MultipleLinks'
 import SingleLink from './SingleLink'
-import {
-  APE_NATION_POLICY_ID,
-  MUTATION_NATION_POLICY_ID,
-  MUTATION_NATION_MEGA_MUTANTS_POLICY_ID,
-  ORDINAL_TOKENS_POLICY_ID,
-  OG_CLUB_CARD_POLICY_ID,
-  BLING_POLICY_ID,
-  IHOLD_MUSIC_POLICY_ID,
-  JUNGLE_JUICE_POLICY_ID,
-  LINKS,
-  BLOODLINE_POLICY_ID,
-} from '@/constants'
-import Script from 'next/script'
+import { LINKS } from '@/constants'
+import collectionsData from '@/data/collections.json'
+
+const navCollections = [
+  { label: '$NATION', url: LINKS['NATION_TAPTOOLS'], logoSrc: '/media/logo/other/taptools.webp' },
+  { label: 'Ordinals', path: LINKS['MAGIC_EDEN_ORDINALS'], logoSrc: '/media/tokens/bitcoin.svg' },
+].concat(
+  collectionsData.map((x) => ({
+    label: x.name,
+    path: `/collections/${x.policyId}`,
+    logoSrc: x.image,
+  }))
+)
 
 export const navTokens = [
-  { label: 'AWOO', path: '/tokens/awoo' },
-  { label: 'C4', path: '/tokens/c4' },
-  { label: 'CHANGE', path: '/tokens/change' },
-  { label: 'CSWAP', path: '/tokens/cswap' },
-  { label: 'HEXO', path: '/tokens/hexo' },
-  { label: 'IDP', path: '/tokens/idp' },
-  { label: 'MD', path: '/tokens/md' },
-  { label: 'NATION', path: '/tokens/nation' },
-  { label: 'RON', path: '/tokens/ron' },
-  { label: 'SOC', path: '/tokens/soc' },
+  { label: 'AWOO', path: '/tokens/awoo', logoSrc: '/media/tokens/awoo/token.png' },
+  { label: 'C4', path: '/tokens/c4', logoSrc: '/media/tokens/c4/token.png' },
+  { label: 'CHANGE', path: '/tokens/change', logoSrc: '/media/tokens/change/token.png' },
+  { label: 'CSWAP', path: '/tokens/cswap', logoSrc: '/media/tokens/cswap/token.png' },
+  { label: 'HEXO', path: '/tokens/hexo', logoSrc: '/media/tokens/hexo/token.png' },
+  { label: 'IDP', path: '/tokens/idp', logoSrc: '/media/tokens/idp/token.png' },
+  { label: 'MD', path: '/tokens/md', logoSrc: '/media/tokens/md/token.png' },
+  { label: 'NATION', path: '/tokens/nation', logoSrc: '/media/tokens/nation/token.png' },
+  { label: 'RON', path: '/tokens/ron', logoSrc: '/media/tokens/ron/token.png' },
+  { label: 'SOC', path: '/tokens/soc', logoSrc: '/media/tokens/soc/token.png' },
+]
+
+const navEvents = [
+  { label: 'BLING', url: 'https://mint.yepple.io/apenationchains' },
+  { label: 'Bloodline', path: '/bloodline' },
+  { label: 'Bank of Nation' },
+]
+
+const navOther = [
+  { label: 'Merch', url: LINKS['MERCH'] },
+  { label: 'Raffles', url: LINKS['MUTANTS_RAFFLES'] },
+  { label: 'Tokenomics', url: LINKS['NATION_TOKENOMICS'] },
+  { label: 'Mutation Checker', url: LINKS['MUTATION_CHECKER'] },
 ]
 
 const Navigation = () => {
@@ -44,15 +57,6 @@ const Navigation = () => {
 
   return (
     <nav className='flex items-center'>
-      <Script
-        src='https://labs.badfoxmc.com/sdk.min.js'
-        onReady={() => {
-          // @ts-ignore
-          const pollsSdk = new BadLabsSDK({ product: 'polls', creatorStakeKey: 'stake1u9z9h0sy9s5mddue9634vkgmnnnpdrruwmppwnx7ups29uqv68tvp' })
-          pollsSdkRef.current = pollsSdk
-        }}
-      />
-
       <button
         type='button'
         onClick={() => setIsNavOpen((prev) => !prev)}
@@ -72,72 +76,16 @@ const Navigation = () => {
             <SingleLink label='Home' path='/' />
           </li>
           <li>
-            <MultipleLinks
-              title='Collections'
-              links={[
-                { label: '$NATION', iconSrc: '/media/logo/other/taptools.webp', url: LINKS['NATION_TAPTOOLS'] },
-                { label: 'Ape Nation', path: `/collections/${APE_NATION_POLICY_ID}` },
-                { label: 'Mutation Nation', path: `/collections/${MUTATION_NATION_POLICY_ID}` },
-                { label: 'Mutation Nation - Mega Mutants', path: `/collections/${MUTATION_NATION_MEGA_MUTANTS_POLICY_ID}` },
-                { label: 'Bloodline', path: `/collections/${BLOODLINE_POLICY_ID}` },
-                { label: 'OG Club Card', path: `/collections/${OG_CLUB_CARD_POLICY_ID}` },
-                { label: 'Ordinal Tokens', path: `/collections/${ORDINAL_TOKENS_POLICY_ID}` },
-                { label: 'Ordinals', iconSrc: '/media/tokens/bitcoin.svg', path: LINKS['MAGIC_EDEN_ORDINALS'] },
-                { label: 'BLING', path: `/collections/${BLING_POLICY_ID}` },
-                { label: 'iHold Music', path: `/collections/${IHOLD_MUSIC_POLICY_ID}` },
-                { label: 'Jungle Juice', path: `/collections/${JUNGLE_JUICE_POLICY_ID}` },
-              ]}
-              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
-            />
+            <MultipleLinks title='Collections' links={navCollections} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
           <li>
             <MultipleLinks title='Staking' links={navTokens} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
           <li>
-            <MultipleLinks
-              title='Events'
-              links={[
-                { label: 'BLING', url: 'https://mint.yepple.io/apenationchains' },
-                { label: 'Bloodline', path: '/bloodline' },
-                { label: 'Bank of Nation' },
-              ]}
-              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
-            />
-          </li>
-          <li className='relative'>
-            <SingleLink
-              label='Governance'
-              onClick={() => {
-                const injectEl = document.getElementById('polls-inject-wallets')
-
-                if (injectEl?.children.length) {
-                  injectEl.innerText = ''
-                } else if (pollsSdkRef.current) {
-                  // @ts-ignore
-                  pollsSdkRef.current.loadWallets({
-                    injectId: 'polls-inject-wallets',
-                    buttonBackgroundColor: 'rgb(63,63,70)',
-                    buttonTextColor: 'rgb(228,228,231)',
-                  })
-                }
-              }}
-            />
-
-            <div id='polls-inject-wallets' className='sm:absolute sm:top-12 sm:-right-1/2 flex flex-col'>
-              {/* Wallets will be injected here */}
-            </div>
+            <MultipleLinks title='Events' links={navEvents} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
           <li>
-            <MultipleLinks
-              title='Other'
-              links={[
-                { label: 'Merch', url: LINKS['MERCH'] },
-                { label: 'Raffles', url: LINKS['MUTANTS_RAFFLES'] },
-                { label: 'Tokenomics', url: LINKS['NATION_TOKENOMICS'] },
-                { label: 'Mutation Checker', url: LINKS['MUTATION_CHECKER'] },
-              ]}
-              dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }}
-            />
+            <MultipleLinks title='Other' links={navOther} dropdownState={{ value: openDropdownName, setValue: setOpenDropdownName }} />
           </li>
           <li
             onClick={() => {
@@ -145,7 +93,7 @@ const Navigation = () => {
               setIsNavOpen(false)
             }}
           >
-            <SingleLink iconSrc='/media/wallet.png' path='/wallet' />
+            <SingleLink logoSrc='/media/wallet.png' path='/wallet' />
           </li>
         </ul>
       </div>
