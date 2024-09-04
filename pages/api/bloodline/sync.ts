@@ -56,7 +56,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         if (txHashes.length) {
           console.log(`found ${txHashes.length} faulty TXs, retrying now`)
 
-          for await (const txHash of txHashes) await axios.post('https://apenation.io/api/mint/bloodline', { txHash })
+          for await (const txHash of txHashes) await axios.post('https://apenation.io/api/bloodline/mint', { txHash })
         }
 
         console.log('done')

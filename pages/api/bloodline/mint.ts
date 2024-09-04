@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
-import { AppWallet, BlockfrostProvider, ForgeScript, Mint, Transaction } from '@meshsdk/core'
+import { AppWallet, BlockfrostProvider, ForgeScript, MeshWallet, Mint, Transaction } from '@meshsdk/core'
 import { storage } from '@/utils/firebase'
 import badLabsApi from '@/utils/badLabsApi'
 import getEnv from '@/functions/storage/getEnv'
@@ -277,7 +277,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         const _provider = new BlockfrostProvider(API_KEYS['BLOCKFROST_API_KEY'])
-        const _wallet = new AppWallet({
+        const _wallet = new MeshWallet({
           networkId: 1,
           fetcher: _provider,
           submitter: _provider,
@@ -287,10 +287,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           },
         })
 
-        const _address = _wallet.getPaymentAddress()
+        const _address = _wallet.addresses.enterpriseAddressBech32 as string
         const _script = ForgeScript.withOneSignature(_address)
-
         const _tx = new Transaction({ initiator: _wallet })
+
         _tx.mintAsset(_script, mintPayload)
 
         const _unsigTx = await _tx.build()

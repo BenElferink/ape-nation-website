@@ -54,8 +54,8 @@ const WalletConnect = (props: { allowManual?: boolean; introText?: string }) => 
               <div className='flex flex-col min-w-[280px] w-[85%] md:w-[75%] '>
                 {availableWallets.map((wallet, idx) => (
                   <button
-                    key={`connect-wallet-${wallet.name}`}
-                    onClick={() => connectWallet(wallet.name)}
+                    key={`connect-wallet-${wallet.id}`}
+                    onClick={() => connectWallet(wallet.id)}
                     disabled={connecting || connected}
                     className='w-full mt-1 mx-auto py-2 px-4 flex items-center justify-start bg-zinc-700 border border-zinc-600 hover:text-white hover:bg-zinc-600 hover:border hover:border-zinc-500'
                     style={{
@@ -70,7 +70,7 @@ const WalletConnect = (props: { allowManual?: boolean; introText?: string }) => 
                     }}
                   >
                     <Image unoptimized src={wallet.icon} alt={wallet.name} width={35} height={35} className='mr-2' />
-                    {wallet.name.toUpperCase()}
+                    {wallet.name.toUpperCase().replace('WALLET', '').trim()}
                   </button>
                 ))}
 

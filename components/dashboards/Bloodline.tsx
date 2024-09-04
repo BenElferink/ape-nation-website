@@ -162,7 +162,7 @@ const Bloodline = () => {
         toast.success('Transaction submitted!')
 
         toast.loading('Minting NFT...')
-        await axios.post('/api/mint/bloodline', { txHash })
+        await axios.post('/api/bloodline/mint', { txHash })
         toast.dismiss()
         toast.success('NFT minted!')
 

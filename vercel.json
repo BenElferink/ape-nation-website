@@ -33,7 +33,7 @@
       "schedule": "0 0 * * *"
     },
     {
-      "path": "/api/mint/bloodline-sync",
+      "path": "/api/bloodline/sync",
       "schedule": "*/5 * * * *"
     }
   ]
