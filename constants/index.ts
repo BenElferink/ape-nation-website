@@ -46,6 +46,6 @@ export const BLOODLINE_MINT_WALLET_MNEMONIC = Array.isArray(process.env.BLOODLIN
   ? process.env.BLOODLINE_MINT_WALLET_MNEMONIC
   : process.env.BLOODLINE_MINT_WALLET_MNEMONIC?.split(',') || []
 
-export const BLOODLINE_MINT_WALLET_ADDRESS = 'addr1q8yh4nz600fqa5yqyt7nusqlq4cw65h4mcgufruf6gnjgzf34cqsunpd2hzxrz8glhlcwlce3rtxq4x7lvf3jcjmqgrqzynw52'
+export const BLOODLINE_MINT_WALLET_ADDRESS = 'addr1v8yh4nz600fqa5yqyt7nusqlq4cw65h4mcgufruf6gnjgzglekulq'
 export const BLOODLINE_VAULT_WALLET_ADDRESS = 'addr1q8yclmvcyg5u3kfn9jaxlx7kldunlwmh8sf2kg0myxuznwtsqdak7kjtxqmcqhcj43fdayhwwqjj9xn2az5r8qhhajsq0vmqax'
 export const TEAM_TREASURY_WALLET_ADDRESS = 'addr1qxygpl5awytuzdxrkqx8llq8htmaswhnpqd70u50d7phuzn6lymra9mz23tpxmg3r6v00xfh7qve5we4qx694vdg62gskv3eya'
