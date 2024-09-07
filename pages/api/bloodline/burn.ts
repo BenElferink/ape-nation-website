@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { BlockfrostProvider, ForgeScript, MeshWallet, Transaction } from '@meshsdk/core'
+import { BlockfrostProvider, deserializeAddress, ForgeScript, MeshWallet, NativeScript, Transaction } from '@meshsdk/core'
 import { API_KEYS, BLOODLINE_MINT_WALLET_MNEMONIC } from '@/constants'
 
 export const config = {
@@ -28,8 +28,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           },
         })
 
-        const _address = _wallet.addresses.enterpriseAddressBech32 as string
-        const _script = ForgeScript.withOneSignature(_address)
+        const _address = await _wallet.getUsedAddresses()[0]
+        const { pubKeyHash: keyHash } = deserializeAddress(_address)
+
+        const _nativeScript: NativeScript = {
+          type: 'all',
+          scripts: [
+            {
+              type: 'sig',
+              keyHash: keyHash,
+            },
+          ],
+        }
+
+        const _script = ForgeScript.fromNativeScript(_nativeScript)
 
         const _tx = new Transaction({ initiator: _wallet })
         _tx.burnAsset(_script, {

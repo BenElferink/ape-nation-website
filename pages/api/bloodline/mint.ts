@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
-import { AppWallet, BlockfrostProvider, ForgeScript, MeshWallet, Mint, Transaction } from '@meshsdk/core'
+import { BlockfrostProvider, deserializeAddress, ForgeScript, MeshWallet, Mint, NativeScript, Transaction } from '@meshsdk/core'
 import { storage } from '@/utils/firebase'
 import badLabsApi from '@/utils/badLabsApi'
 import getEnv from '@/functions/storage/getEnv'
@@ -287,8 +287,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           },
         })
 
-        const _address = _wallet.addresses.enterpriseAddressBech32 as string
-        const _script = ForgeScript.withOneSignature(_address)
+        const _address = await _wallet.getUsedAddresses()[0]
+        const { pubKeyHash: keyHash } = deserializeAddress(_address)
+
+        const _nativeScript: NativeScript = {
+          type: 'all',
+          scripts: [
+            {
+              type: 'sig',
+              keyHash: keyHash,
+            },
+          ],
+        }
+
+        const _script = ForgeScript.fromNativeScript(_nativeScript)
         const _tx = new Transaction({ initiator: _wallet })
 
         _tx.mintAsset(_script, mintPayload)
