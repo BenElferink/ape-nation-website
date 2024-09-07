@@ -28,20 +28,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           },
         })
 
-        const _address = await _wallet.getUsedAddresses()[0]
-        const { pubKeyHash: keyHash } = deserializeAddress(_address)
-
-        const _nativeScript: NativeScript = {
-          type: 'all',
-          scripts: [
-            {
-              type: 'sig',
-              keyHash: keyHash,
-            },
-          ],
-        }
-
-        const _script = ForgeScript.fromNativeScript(_nativeScript)
+        const _script = ForgeScript.withOneSignature(_wallet.addresses.enterpriseAddressBech32 as string)
 
         const _tx = new Transaction({ initiator: _wallet })
         _tx.burnAsset(_script, {
