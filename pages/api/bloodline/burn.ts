@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { BlockfrostProvider, deserializeAddress, ForgeScript, MeshWallet, NativeScript, Transaction } from '@meshsdk/core'
-import { API_KEYS, BLOODLINE_MINT_WALLET_MNEMONIC } from '@/constants'
+import { API_KEYS, BLOODLINE_APP_WALLET_MNEMONIC } from '@/constants'
 
 export const config = {
   maxDuration: 300,
@@ -24,7 +24,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           submitter: _provider,
           key: {
             type: 'mnemonic',
-            words: BLOODLINE_MINT_WALLET_MNEMONIC,
+            words: BLOODLINE_APP_WALLET_MNEMONIC,
           },
         })
 

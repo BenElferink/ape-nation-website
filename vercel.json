@@ -34,7 +34,11 @@
     },
     {
       "path": "/api/bloodline/sync",
-      "schedule": "*/5 * * * *"
+      "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/bling/sync",
+      "schedule": "*/15 * * * *"
     }
   ]
 }

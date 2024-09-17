@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 import { blockfrost } from '@/utils/blockfrost'
 import formatHex from '@/functions/formatters/formatHex'
-import { APE_NATION_POLICY_ID, BLOODLINE_POLICY_ID, BLOODLINE_VAULT_WALLET_ADDRESS } from '@/constants'
+import { APE_NATION_POLICY_ID, BLOODLINE_POLICY_ID, TEAM_VAULT_WALLET_ADDRESS } from '@/constants'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req
@@ -10,7 +10,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     switch (method) {
       case 'GET': {
-        const utxos = await blockfrost.addressesUtxosAll(BLOODLINE_VAULT_WALLET_ADDRESS)
+        const utxos = await blockfrost.addressesUtxosAll(TEAM_VAULT_WALLET_ADDRESS)
 
         const toCheck: {
           txHash: string
@@ -65,7 +65,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
 
       default: {
-        res.setHeader('Allow', 'POST')
+        res.setHeader('Allow', 'GET')
         return res.status(405).end()
       }
     }

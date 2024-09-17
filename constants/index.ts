@@ -42,10 +42,14 @@ export const LINKS = {
     'https://www.taptools.io/charts/token?pairID=0be55d262b29f564998ff81efe21bdc0022621c12f15af08d0f2ddb1.a7ecc694852dba715767f6be7e30c6ac1aab68baa9794815532e0da28b2fd80d',
 }
 
-export const BLOODLINE_MINT_WALLET_MNEMONIC = Array.isArray(process.env.BLOODLINE_MINT_WALLET_MNEMONIC)
+export const BLOODLINE_APP_WALLET_ADDRESS = 'addr1v8yh4nz600fqa5yqyt7nusqlq4cw65h4mcgufruf6gnjgzglekulq'
+export const BLOODLINE_APP_WALLET_MNEMONIC = Array.isArray(process.env.BLOODLINE_MINT_WALLET_MNEMONIC)
   ? process.env.BLOODLINE_MINT_WALLET_MNEMONIC
   : process.env.BLOODLINE_MINT_WALLET_MNEMONIC?.split(',') || []
 
-export const BLOODLINE_MINT_WALLET_ADDRESS = 'addr1v8yh4nz600fqa5yqyt7nusqlq4cw65h4mcgufruf6gnjgzglekulq'
-export const BLOODLINE_VAULT_WALLET_ADDRESS = 'addr1q8yclmvcyg5u3kfn9jaxlx7kldunlwmh8sf2kg0myxuznwtsqdak7kjtxqmcqhcj43fdayhwwqjj9xn2az5r8qhhajsq0vmqax'
+export const BLING_APP_WALLET_ADDRESS = 'addr1q8fnxq39gjpuxry3csfvme6g2y6m42f8ltpq9zxvhtdqrt8zwmaxtaukn3kzqhxp7dww66h2nyhjngju8yellheg59gs45fap3'
+// BLING_APP_WALLET_MNEMONIC is fetched from DB (we lost access to Vercel)
+
+export const TEAM_VAULT_WALLET_ADDRESS = 'addr1q8yclmvcyg5u3kfn9jaxlx7kldunlwmh8sf2kg0myxuznwtsqdak7kjtxqmcqhcj43fdayhwwqjj9xn2az5r8qhhajsq0vmqax'
 export const TEAM_TREASURY_WALLET_ADDRESS = 'addr1qxygpl5awytuzdxrkqx8llq8htmaswhnpqd70u50d7phuzn6lymra9mz23tpxmg3r6v00xfh7qve5we4qx694vdg62gskv3eya'
+export const DEV_WALLET_ADDRESS = 'addr1q9knw3lmvlpsvemjpgmkqkwtkzv8wueggf9aavvzyt2akpw7nsavexls6g59x007aucn2etqp2q4rd0929z2ukcn78fslm56p9'

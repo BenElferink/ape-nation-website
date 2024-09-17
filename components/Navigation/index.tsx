@@ -31,8 +31,8 @@ export const navTokens = [
 ]
 
 const navEvents = [
-  { label: 'BLING', url: 'https://mint.yepple.io/apenationchains' },
   { label: 'Bloodline', path: '/bloodline' },
+  { label: 'BLING', url: '/bling' },
   { label: 'Bank of Nation' },
 ]
 

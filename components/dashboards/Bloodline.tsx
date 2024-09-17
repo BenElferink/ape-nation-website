@@ -3,8 +3,8 @@ import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import { keepRelevant, Transaction } from '@meshsdk/core'
 import useWallet from '@/contexts/WalletContext'
-import badLabsApi, { BadLabsApiTransaction } from '@/utils/badLabsApi'
-import sleep from '@/functions/sleep'
+import badLabsApi from '@/utils/badLabsApi'
+import txConfirmation from '@/functions/txConfirmation'
 import WalletHero from '../Wallet/WalletHero'
 import ImageLoader from '../Loader/ImageLoader'
 import type { PopulatedAsset } from '@/@types'
@@ -13,10 +13,11 @@ import {
   BLOODLINE_POLICY_ID,
   MUTATION_NATION_POLICY_ID,
   ONE_MILLION,
-  BLOODLINE_VAULT_WALLET_ADDRESS,
-  BLOODLINE_MINT_WALLET_ADDRESS,
+  TEAM_VAULT_WALLET_ADDRESS,
+  BLOODLINE_APP_WALLET_ADDRESS,
   NATION_COIN_POLICY_ID,
   TEAM_TREASURY_WALLET_ADDRESS,
+  DEV_WALLET_ADDRESS,
 } from '@/constants'
 
 const EVENT_OPEN = true
@@ -55,28 +56,6 @@ const Bloodline = () => {
       setSets(payload.sort((a, b) => (a.v0.serialNumber || 0) - (b.v0.serialNumber || 0)))
     }
   }, [populatedWallet])
-
-  const txConfirmation = useCallback(async (_txHash: string): Promise<BadLabsApiTransaction> => {
-    try {
-      const data = await badLabsApi.transaction.getData(_txHash)
-
-      if (data.block) {
-        return data
-      } else {
-        await sleep(1000)
-        return await txConfirmation(_txHash)
-      }
-    } catch (error: any) {
-      const errMsg = error?.response?.data || error?.message || error?.toString() || 'UNKNOWN ERROR'
-
-      if (errMsg === `The requested component has not been found. ${_txHash}`) {
-        await sleep(1000)
-        return await txConfirmation(_txHash)
-      } else {
-        throw new Error(errMsg)
-      }
-    }
-  }, [])
 
   const buildTx = useCallback(
     async (v0: PopulatedAsset, v1: PopulatedAsset, v2: PopulatedAsset) => {
@@ -121,7 +100,7 @@ const Bloodline = () => {
               await wallet.getUtxos()
             )
           )
-          .sendAssets({ address: BLOODLINE_VAULT_WALLET_ADDRESS }, assetsToSend)
+          .sendAssets({ address: TEAM_VAULT_WALLET_ADDRESS }, assetsToSend)
           .sendAssets(
             { address: TEAM_TREASURY_WALLET_ADDRESS }, // team
             [
@@ -136,11 +115,11 @@ const Bloodline = () => {
             ]
           )
           .sendLovelace(
-            { address: BLOODLINE_MINT_WALLET_ADDRESS }, // mint
+            { address: BLOODLINE_APP_WALLET_ADDRESS }, // mint
             String(2 * ONE_MILLION)
           )
           .sendLovelace(
-            { address: 'addr1q9knw3lmvlpsvemjpgmkqkwtkzv8wueggf9aavvzyt2akpw7nsavexls6g59x007aucn2etqp2q4rd0929z2ukcn78fslm56p9' }, // developer
+            { address: DEV_WALLET_ADDRESS }, // developer
             String(2 * ONE_MILLION)
           )
 
@@ -192,7 +171,7 @@ const Bloodline = () => {
       setLoadingTx(false)
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },
-    [txConfirmation, loadingTx, wallet]
+    [loadingTx, wallet]
   )
 
   const [mintCount, setMintCount] = useState({ supply: 0, minted: 0, percent: '0%' })

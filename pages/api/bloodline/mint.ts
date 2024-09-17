@@ -12,8 +12,8 @@ import {
   APE_NATION_POLICY_ID,
   BLOODLINE_POLICY_ID,
   MUTATION_NATION_POLICY_ID,
-  BLOODLINE_VAULT_WALLET_ADDRESS,
-  BLOODLINE_MINT_WALLET_MNEMONIC,
+  TEAM_VAULT_WALLET_ADDRESS,
+  BLOODLINE_APP_WALLET_MNEMONIC,
 } from '@/constants'
 
 export const config = {
@@ -45,12 +45,12 @@ const getTokensFromTx = async (txHash: string) => {
 
   for (const { address, tokens } of txData.utxos || []) {
     for (const { tokenId } of tokens) {
-      if (tokenId.indexOf(APE_NATION_POLICY_ID) == 0 && address.to === BLOODLINE_VAULT_WALLET_ADDRESS) {
+      if (tokenId.indexOf(APE_NATION_POLICY_ID) == 0 && address.to === TEAM_VAULT_WALLET_ADDRESS) {
         selectedV0 = tokenId
         addressOfSender = address.from
       }
 
-      if (tokenId.indexOf(MUTATION_NATION_POLICY_ID) == 0 && address.to === BLOODLINE_VAULT_WALLET_ADDRESS) {
+      if (tokenId.indexOf(MUTATION_NATION_POLICY_ID) == 0 && address.to === TEAM_VAULT_WALLET_ADDRESS) {
         const foundToken = mutation.assets.find((item) => item.tokenId === tokenId)
 
         if (foundToken) {
@@ -283,7 +283,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           submitter: _provider,
           key: {
             type: 'mnemonic',
-            words: BLOODLINE_MINT_WALLET_MNEMONIC,
+            words: BLOODLINE_APP_WALLET_MNEMONIC,
           },
         })
 
