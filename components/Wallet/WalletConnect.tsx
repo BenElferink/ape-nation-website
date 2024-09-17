@@ -52,27 +52,32 @@ const WalletConnect = (props: { allowManual?: boolean; introText?: string }) => 
               <p className='my-2 text-red-400'>No wallets installed</p>
             ) : (
               <div className='flex flex-col min-w-[280px] w-[85%] md:w-[75%] '>
-                {availableWallets.map((wallet, idx) => (
-                  <button
-                    key={`connect-wallet-${wallet.id}`}
-                    onClick={() => connectWallet(wallet.id)}
-                    disabled={connecting || connected}
-                    className='w-full mt-1 mx-auto py-2 px-4 flex items-center justify-start bg-zinc-700 border border-zinc-600 hover:text-white hover:bg-zinc-600 hover:border hover:border-zinc-500'
-                    style={{
-                      borderRadius:
-                        idx === 0 && idx === availableWallets.length - 1
-                          ? '1rem'
-                          : idx === 0
-                          ? '1rem 1rem 0 0'
-                          : idx === availableWallets.length - 1
-                          ? '0 0 1rem 1rem'
-                          : '0',
-                    }}
-                  >
-                    <Image unoptimized src={wallet.icon} alt={wallet.name} width={35} height={35} className='mr-2' />
-                    {wallet.name.toUpperCase().replace('WALLET', '').trim()}
-                  </button>
-                ))}
+                {availableWallets.map((wallet, idx) => {
+                  let trimmedName = wallet.name.toLowerCase().replace('wallet', '')
+                  trimmedName = `${trimmedName.charAt(0).toUpperCase()}${trimmedName.slice(1)}`
+
+                  return (
+                    <button
+                      key={`connect-wallet-${wallet.id}`}
+                      onClick={() => connectWallet(wallet.id)}
+                      disabled={connecting || connected}
+                      className='w-full mt-1 mx-auto p-4 flex items-center justify-start bg-gray-700 border border-gray-600 hover:text-white hover:bg-gray-600 hover:border hover:border-gray-500'
+                      style={{
+                        borderRadius:
+                          idx === 0 && idx === availableWallets.length - 1
+                            ? '1rem'
+                            : idx === 0
+                            ? '1rem 1rem 0 0'
+                            : idx === availableWallets.length - 1
+                            ? '0 0 1rem 1rem'
+                            : '0',
+                      }}
+                    >
+                      <Image unoptimized src={wallet.icon} alt={wallet.name} width={35} height={35} className='mr-4' />
+                      {trimmedName}&nbsp;<span className='text-xs'>({wallet.version})</span>
+                    </button>
+                  )
+                })}
 
                 <p className='w-full my-2 px-1 text-xs text-start'>
                   <u>Disclaimer</u>: Connecting your wallet does not require a password. It&apos;s a read-only process.

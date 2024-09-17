@@ -32,7 +32,7 @@ export const navTokens = [
 
 const navEvents = [
   { label: 'Bloodline', path: '/bloodline' },
-  { label: 'BLING', url: '/bling' },
+  { label: 'BLING', path: '/bling' },
   { label: 'Bank of Nation' },
 ]
 

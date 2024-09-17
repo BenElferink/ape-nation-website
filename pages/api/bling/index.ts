@@ -103,7 +103,27 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req
 
   try {
+    const mnemStr = (await getEnv('BLING_APP_WALLET_MNEMONIC'))?.value
+    const mnemArr = Array.isArray(mnemStr) ? mnemStr : mnemStr?.split(',') || []
+
+    const provider = new BlockfrostProvider(API_KEYS['BLOCKFROST_API_KEY'])
+    const wallet = new MeshWallet({
+      networkId: 1,
+      fetcher: provider,
+      submitter: provider,
+      key: {
+        type: 'mnemonic',
+        words: mnemArr,
+      },
+    })
+
     switch (method) {
+      case 'GET': {
+        const assets = await getWalletAssets(wallet)
+
+        return res.status(200).json(assets)
+      }
+
       case 'POST': {
         const { txHash: txHashFromBody } = body
 
@@ -114,20 +134,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const { empty } = await collection.where('txHash', '==', txHashFromBody).get()
 
         if (!empty) throw new Error('already processed this TX')
-
-        const mnemStr = (await getEnv('BLING_APP_WALLET_MNEMONIC'))?.value
-        const mnemArr = Array.isArray(mnemStr) ? mnemStr : mnemStr?.split(',') || []
-
-        const provider = new BlockfrostProvider(API_KEYS['BLOCKFROST_API_KEY'])
-        const wallet = new MeshWallet({
-          networkId: 1,
-          fetcher: provider,
-          submitter: provider,
-          key: {
-            type: 'mnemonic',
-            words: mnemArr,
-          },
-        })
 
         const assets = await getWalletAssets(wallet)
         const assetsToSend: Asset[] = []
@@ -192,6 +198,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
 
       default: {
+        res.setHeader('Allow', 'GET')
         res.setHeader('Allow', 'POST')
         return res.status(405).end()
       }
