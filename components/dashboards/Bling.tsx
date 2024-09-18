@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
@@ -133,9 +134,13 @@ const Bling = () => {
       <WalletHero />
 
       <div className='w-full my-4 text-center flex flex-col items-center'>
-        {errorMessage ? <p className='text-red-200'>{errorMessage}</p> : null}
+        <h2 className='text-7xl font-montserrat font-bold'>
+          UNLEASH THE
+          <br />
+          POWER OF BLING
+        </h2>
 
-        <div className='w-full mt-4 flex items-center justify-evenly'>
+        <div className='w-full max-w-[555px] mt-4 flex items-center justify-evenly'>
           <button
             type='button'
             onClick={() => buildTx(1)}
@@ -156,6 +161,12 @@ const Bling = () => {
             <br />
             {remainingCount.sets || Math.floor(remainingCount.single / 5)} remain
           </button>
+        </div>
+
+        {errorMessage ? <p className='text-red-200'>{errorMessage}</p> : null}
+
+        <div className='w-[764px] h-[490px] mt-4 p-4 rounded-xl border border-zinc-600 bg-zinc-950/50 backdrop-blur'>
+          <Image src='/media/bling.png' alt='' fill className='object-cover' />
         </div>
       </div>
     </div>

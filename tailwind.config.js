@@ -10,6 +10,7 @@ const config = {
     extend: {
       fontFamily: {
         roboto: ['Roboto', ...defaultTheme.fontFamily.sans],
+        montserrat: ['Montserrat', ...defaultTheme.fontFamily.sans],
       },
     },
   },
