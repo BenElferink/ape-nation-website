@@ -8,7 +8,7 @@ import txConfirmation from '@/functions/txConfirmation'
 import WalletHero from '../Wallet/WalletHero'
 import { BLING_APP_WALLET_ADDRESS, DEV_WALLET_ADDRESS, ONE_MILLION, TEAM_TREASURY_WALLET_ADDRESS } from '@/constants'
 
-const EVENT_OPEN = false
+const EVENT_OPEN = true
 
 const Bling = () => {
   const { connectedManually, wallet, disconnectWallet } = useWallet()
