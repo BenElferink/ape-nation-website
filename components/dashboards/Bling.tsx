@@ -22,6 +22,7 @@ const Bling = () => {
     async (count: 1 | 5) => {
       if (!wallet) return
       setLoadingTx(true)
+      setErrorMessage('')
 
       const fullPrice = 49
       const appFee = 2
