@@ -35,10 +35,6 @@
     {
       "path": "/api/bloodline/sync",
       "schedule": "*/15 * * * *"
-    },
-    {
-      "path": "/api/bling/sync",
-      "schedule": "*/15 * * * *"
     }
   ]
 }
