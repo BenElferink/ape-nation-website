@@ -190,7 +190,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const sigTx = await wallet.signTx(unsigTx)
         const txHash = await wallet.submitTx(sigTx)
 
-        await collection.add({ txHash, complete: true })
+        await collection.add({ txHash: txHashFromBody, complete: true })
 
         return res.status(200).json({
           txHash,
