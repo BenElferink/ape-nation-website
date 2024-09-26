@@ -28,7 +28,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
               const collection = firestore.collection('bling-txs')
               const { empty } = await collection.where('txHash', '==', txHash).get()
 
-              if (empty) {
+              if (empty && txHash !== '89e924e2437e05b5480a6d23c6657600ea657b143435abc80e1c49cd4ccc69b6') {
                 console.log('found faulty TX, retrying now', txHash)
 
                 await axios.post('https://apenation.io/api/bling', { txHash })
