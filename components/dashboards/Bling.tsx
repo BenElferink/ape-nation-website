@@ -6,7 +6,7 @@ import { keepRelevant, Transaction } from '@meshsdk/core'
 import useWallet from '@/contexts/WalletContext'
 import txConfirmation from '@/functions/txConfirmation'
 import WalletHero from '../Wallet/WalletHero'
-import { BLING_APP_WALLET_ADDRESS, DEV_WALLET_ADDRESS, ONE_MILLION, TEAM_TREASURY_WALLET_ADDRESS } from '@/constants'
+import { ADA_SYMBOL, BLING_APP_WALLET_ADDRESS, DEV_WALLET_ADDRESS, ONE_MILLION, TEAM_TREASURY_WALLET_ADDRESS } from '@/constants'
 
 const EVENT_OPEN = true
 
@@ -148,9 +148,9 @@ const Bling = () => {
             disabled={!EVENT_OPEN || !remainingCount.single || loadingTx}
             className='w-full m-1 p-4 rounded-xl disabled:bg-gray-900/50 bg-blue-900/50 hover:bg-blue-700/50 disabled:text-gray-400 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-blue-700 hover:border-blue-700 disabled:cursor-not-allowed hover:cursor-pointer'
           >
-            Mint 1 (random)
+            Mint 1 ({ADA_SYMBOL}49)
             <br />
-            {remainingCount.single} remain
+            {remainingCount.single} remain (random)
           </button>
           <button
             type='button'
@@ -158,9 +158,9 @@ const Bling = () => {
             disabled={!EVENT_OPEN || remainingCount.single < 5 || loadingTx}
             className='w-full m-1 p-4 rounded-xl disabled:bg-gray-900/50 bg-blue-900/50 hover:bg-blue-700/50 disabled:text-gray-400 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-blue-700 hover:border-blue-700 disabled:cursor-not-allowed hover:cursor-pointer'
           >
-            Mint 5 {remainingCount.sets ? '(set)' : '(random)'}
+            Mint 5 ({ADA_SYMBOL}245)
             <br />
-            {remainingCount.sets || Math.floor(remainingCount.single / 5)} remain
+            {remainingCount.sets || Math.floor(remainingCount.single / 5)} remain {remainingCount.sets ? '(set)' : '(random)'}
           </button>
         </div>
 
