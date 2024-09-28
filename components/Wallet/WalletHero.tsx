@@ -40,7 +40,7 @@ const WalletHero = () => {
         </button>
       )}
 
-      {openModal ? <WalletConnect /> : null}
+      {openModal ? <WalletConnect onClickClose={() => setOpenModal(false)} /> : null}
     </section>
   )
 }

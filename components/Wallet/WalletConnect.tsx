@@ -1,24 +1,24 @@
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import { FormEventHandler, Fragment, useState } from 'react'
 import useWallet from '@/contexts/WalletContext'
 import Modal from '../layout/Modal'
 import GlobalLoader from '../Loader/GlobalLoader'
 
-const WalletConnect = (props: { allowManual?: boolean; introText?: string }) => {
-  const { allowManual = false, introText = '' } = props
+const WalletConnect = (props: { allowManual?: boolean; introText?: string; onClickClose?: () => void }) => {
+  const { allowManual = false, introText = '', onClickClose } = props
 
   const { availableWallets, connectWallet, connectWalletManually, connecting, connected, connectedName, populatedWallet } = useWallet()
-  const router = useRouter()
+  // const router = useRouter()
 
   const [openModal, setOpenModal] = useState(true)
   const [input, setInput] = useState('')
 
   const onClose = () => {
-    setOpenModal(false)
-    if (!connected) {
-      router.push('/')
-    }
+    if (onClickClose) onClickClose()
+    else setOpenModal(false)
+
+    // if (!connected) router.push('/')
   }
 
   const submitManualWallet: FormEventHandler<HTMLFormElement> = async (e) => {
