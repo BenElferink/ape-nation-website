@@ -11,7 +11,7 @@ import { ADA_SYMBOL, BLING_APP_WALLET_ADDRESS, DEV_WALLET_ADDRESS, ONE_MILLION, 
 const EVENT_OPEN = true
 
 const Bling = () => {
-  const { connectedManually, wallet, disconnectWallet } = useWallet()
+  const { connected, connectedManually, wallet, disconnectWallet } = useWallet()
 
   const [loadingTx, setLoadingTx] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>(
@@ -111,7 +111,7 @@ const Bling = () => {
     getAndSetCounts()
   }, [])
 
-  if (connectedManually) {
+  if (connected && connectedManually) {
     return (
       <div className='flex flex-col items-center'>
         <p className='pt-[5vh] text-center text-lg text-[var(--pink)]'>
@@ -135,7 +135,7 @@ const Bling = () => {
       <WalletHero />
 
       <div className='w-full my-4 text-center flex flex-col items-center'>
-        <h2 className='text-7xl font-montserrat font-bold'>
+        <h2 className='text-4xl sm:text-7xl font-montserrat font-bold'>
           UNLEASH THE
           <br />
           POWER OF BLING
@@ -145,28 +145,28 @@ const Bling = () => {
           <button
             type='button'
             onClick={() => buildTx(1)}
-            disabled={!EVENT_OPEN || !remainingCount.single || loadingTx}
-            className='w-full m-1 p-4 rounded-xl disabled:bg-gray-900/50 bg-blue-900/50 hover:bg-blue-700/50 disabled:text-gray-400 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-blue-700 hover:border-blue-700 disabled:cursor-not-allowed hover:cursor-pointer'
+            disabled={!EVENT_OPEN || !remainingCount.single || loadingTx || !connected || connectedManually}
+            className='w-full m-1 p-4 rounded-xl text-xs disabled:bg-gray-900/50 bg-blue-900/50 hover:bg-blue-700/50 disabled:text-gray-400 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-blue-700 hover:border-blue-700 disabled:cursor-not-allowed hover:cursor-pointer'
           >
-            Mint 1 ({ADA_SYMBOL}49)
-            <br />
-            {remainingCount.single} remain (random)
+            <p className='text-nowrap'>Mint 1 ({ADA_SYMBOL}49)</p>
+            <p className='text-nowrap'>{remainingCount.single} remain (random)</p>
           </button>
           <button
             type='button'
             onClick={() => buildTx(5)}
-            disabled={!EVENT_OPEN || remainingCount.single < 5 || loadingTx}
-            className='w-full m-1 p-4 rounded-xl disabled:bg-gray-900/50 bg-blue-900/50 hover:bg-blue-700/50 disabled:text-gray-400 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-blue-700 hover:border-blue-700 disabled:cursor-not-allowed hover:cursor-pointer'
+            disabled={!EVENT_OPEN || remainingCount.single < 5 || loadingTx || !connected || connectedManually}
+            className='w-full m-1 p-4 rounded-xl text-xs disabled:bg-gray-900/50 bg-blue-900/50 hover:bg-blue-700/50 disabled:text-gray-400 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-blue-700 hover:border-blue-700 disabled:cursor-not-allowed hover:cursor-pointer'
           >
-            Mint 5 ({ADA_SYMBOL}245)
-            <br />
-            {remainingCount.sets || Math.floor(remainingCount.single / 5)} remain {remainingCount.sets ? '(set)' : '(random)'}
+            <p className='text-nowrap'>Mint 5 ({ADA_SYMBOL}245)</p>
+            <p className='text-nowrap'>
+              {remainingCount.sets || Math.floor(remainingCount.single / 5)} remain {remainingCount.sets ? '(set)' : '(random)'}
+            </p>
           </button>
         </div>
 
         {errorMessage ? <p className='text-red-200'>{errorMessage}</p> : null}
 
-        <div className='w-[764px] h-[490px] mt-4 p-4 rounded-xl border border-zinc-600 bg-zinc-950/50 backdrop-blur'>
+        <div className='w-[90vw] h-[calc(90vw_*_0.641)] max-w-[764px] max-h-[490px] mt-4 p-4 rounded-xl border border-zinc-600 bg-zinc-950/50 backdrop-blur'>
           <Image src='/media/bling.png' alt='' fill className='object-cover' />
         </div>
       </div>
