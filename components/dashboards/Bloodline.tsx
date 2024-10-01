@@ -104,7 +104,7 @@ const Bloodline = () => {
           .sendAssets({ address: TEAM_TREASURY_WALLET_ADDRESS }, [
             {
               unit: 'lovelace',
-              quantity: String(2 * ONE_MILLION),
+              quantity: String(3.5 * ONE_MILLION),
             },
             {
               unit: `${NATION_COIN_POLICY_ID}4e4154494f4e`, // $nation
@@ -124,7 +124,7 @@ const Bloodline = () => {
           .sendLovelace(
             // developer
             { address: DEV_WALLET_ADDRESS },
-            String(1.5 * ONE_MILLION)
+            String(2 * ONE_MILLION)
           )
 
         toast.loading('Building transaction')
