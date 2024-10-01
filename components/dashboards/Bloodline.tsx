@@ -101,25 +101,29 @@ const Bloodline = () => {
             )
           )
           .sendAssets({ address: TEAM_VAULT_WALLET_ADDRESS }, assetsToSend)
-          .sendAssets(
-            { address: TEAM_TREASURY_WALLET_ADDRESS }, // team
-            [
-              {
-                unit: 'lovelace',
-                quantity: String(2 * ONE_MILLION),
-              },
-              {
-                unit: `${NATION_COIN_POLICY_ID}4e4154494f4e`, // $nation
-                quantity: '80000000',
-              },
-            ]
-          )
+          .sendAssets({ address: TEAM_TREASURY_WALLET_ADDRESS }, [
+            {
+              unit: 'lovelace',
+              quantity: String(2 * ONE_MILLION),
+            },
+            {
+              unit: `${NATION_COIN_POLICY_ID}4e4154494f4e`, // $nation
+              quantity: '80000000',
+            },
+          ])
           .sendLovelace(
-            { address: BLOODLINE_APP_WALLET_ADDRESS }, // mint
+            // mint app
+            { address: BLOODLINE_APP_WALLET_ADDRESS },
             String(2 * ONE_MILLION)
           )
           .sendLovelace(
-            { address: DEV_WALLET_ADDRESS }, // developer
+            // mint collateral
+            { address: 'addr1q8yh4nz600fqa5yqyt7nusqlq4cw65h4mcgufruf6gnjgzf34cqsunpd2hzxrz8glhlcwlce3rtxq4x7lvf3jcjmqgrqzynw52' },
+            String(2 * ONE_MILLION)
+          )
+          .sendLovelace(
+            // developer
+            { address: DEV_WALLET_ADDRESS },
             String(2 * ONE_MILLION)
           )
 
