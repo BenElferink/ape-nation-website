@@ -4,7 +4,13 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['ipfs.jpgstoreapis.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'jpgstoreapis.com',
+        pathname: '**',
+      },
+    ],
   },
   webpack: (config, options) => {
     config.experiments = {

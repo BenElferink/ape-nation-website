@@ -22,7 +22,7 @@ const ImageLoader = (props: {
         </div>
       ) : null}
 
-      <Image src={src} alt={alt} unoptimized={!optimized} onLoadingComplete={() => setLoading(false)} width={width} height={height} style={style} />
+      <Image src={src} alt={alt} unoptimized={!optimized} onLoad={() => setLoading(false)} width={width} height={height} style={style} />
     </div>
   )
 }
