@@ -55,10 +55,15 @@ const Bling = () => {
         toast.dismiss()
         toast.success('Transaction submitted!')
 
-        toast.loading('Minting NFT...')
-        await axios.post('/api/bling', { txHash })
-        toast.dismiss()
-        toast.success('NFT minted!')
+        try {
+          toast.loading('Minting NFT...')
+          await axios.post('/api/bling', { txHash })
+          toast.dismiss()
+          toast.success('Minted!')
+        } catch (error) {
+          toast.dismiss()
+          toast.success('Soon to be minted!')
+        }
       } catch (error: any) {
         console.error(error)
         console.error(error?.message)

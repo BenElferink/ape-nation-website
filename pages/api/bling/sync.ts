@@ -5,12 +5,15 @@ import { BLING_APP_WALLET_ADDRESS } from '@/constants'
 import { getSenderFromBlingTx } from '.'
 import { firestore } from '@/utils/firebase'
 
+const IS_DEV = process.env.NODE_ENV === 'development'
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req
 
   try {
     switch (method) {
       case 'GET': {
+        const collection = firestore.collection('bling-txs')
         const txs = await blockfrost.addressesTransactionsAll(BLING_APP_WALLET_ADDRESS)
         const now = Date.now()
 
@@ -20,14 +23,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           timestamp = Number(timestamp)
 
           if (now - timestamp < 2 * 60 * 60 * 1000) {
+            const txHash = tx.tx_hash
+            const { empty } = await collection.where('txHash', '==', txHash).get()
+
             try {
-              const txHash = tx.tx_hash
-
-              await getSenderFromBlingTx(txHash)
-
-              const collection = firestore.collection('bling-txs')
-              const { empty } = await collection.where('txHash', '==', txHash).get()
-
               if (
                 empty &&
                 ![
@@ -35,15 +34,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                   '29810d5f4e62d73786c6881063b2deda5d93c42eaa686d4bc04bb87b5fe799c6',
                 ].includes(txHash)
               ) {
+                await getSenderFromBlingTx(txHash)
+
                 console.log('found faulty TX, retrying now', txHash)
 
-                // await axios.post('https://apenation.io/api/bling', { txHash })
+                await axios.post(`${IS_DEV ? 'http://localhost:3000' : 'https://apenation.io'}/api/bling`, { txHash })
               }
-            } catch (error) {}
+            } catch (error: any) {
+              if (IS_DEV) console.error(error?.message || error)
+            }
           }
         }
-
-        console.log('done')
 
         return res.status(204).end()
       }

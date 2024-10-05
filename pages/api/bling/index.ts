@@ -51,9 +51,9 @@ export const getSenderFromBlingTx = async (txHash: string) => {
   })
 
   if (!matched.length) {
-    throw new Error('no matches found in TX')
+    throw new Error(`no matches found in TX ${txHash}`)
   } else if (matched.length > 1) {
-    throw new Error('too many matches found in TX')
+    throw new Error(`too many matches found in TX ${txHash}`)
   }
 
   const match = matched[0]
