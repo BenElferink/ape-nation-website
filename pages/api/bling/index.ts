@@ -74,7 +74,7 @@ export const getSenderFromBlingTx = async (txHash: string) => {
   let lovelaces = 0
 
   allowedTargets.forEach((addr) => {
-    Object.entries(received[addr]).forEach(([unit, num]) => {
+    Object.entries(received[addr] || {}).forEach(([unit, num]) => {
       if (unit === allowedUnits[0]) lovelaces += num
     })
   })
