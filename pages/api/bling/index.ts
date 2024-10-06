@@ -13,29 +13,69 @@ export const config = {
   },
 }
 
+type InputIutput = {
+  [address: string]: {
+    [unit: string]: number
+  }
+}
+
 export const getSenderFromBlingTx = async (txHash: string) => {
+  const allowedUnits = ['lovelace']
+  const allowedTargets = [BLING_APP_WALLET_ADDRESS, TEAM_TREASURY_WALLET_ADDRESS, DEV_WALLET_ADDRESS]
+
   const { inputs, outputs } = await blockfrost.txsUtxos(txHash)
 
-  const received: Record<string, number> = {}
+  const sent: InputIutput = {}
+  const received: InputIutput = {}
 
   inputs.forEach((inp) => {
     const from = inp.address
+    if (!sent[from]) sent[from] = {}
 
-    outputs.forEach((outp) => {
-      const to = outp.address
+    inp.amount.forEach(({ unit, quantity }) => {
+      if (allowedUnits.includes(unit) || !allowedUnits.length) {
+        const num = Number(quantity)
 
-      // TODO: remove test value
-      if (to !== from && [BLING_APP_WALLET_ADDRESS, TEAM_TREASURY_WALLET_ADDRESS, DEV_WALLET_ADDRESS].includes(to)) {
-        outp.amount.forEach(({ unit, quantity }) => {
-          if (unit === 'lovelace') {
-            if (received[from]) {
-              received[from] += +quantity
-            } else {
-              received[from] = +quantity
-            }
-          }
-        })
+        if (!sent[from][unit]) {
+          sent[from][unit] = num
+        } else {
+          sent[from][unit] += num
+        }
       }
+    })
+  })
+
+  const sentEntries = Object.entries(sent)
+
+  if (!sentEntries.length) throw new Error('?? no inputs')
+  if (sentEntries.length > 1) throw new Error('?? too many senders')
+
+  outputs.forEach((outp) => {
+    const to = outp.address
+
+    if (allowedTargets.includes(to) || !allowedTargets.length) {
+      if (!received[to]) received[to] = {}
+
+      outp.amount.forEach(({ unit, quantity }) => {
+        if (allowedUnits.includes(unit) || !allowedUnits.length) {
+          const num = Number(quantity)
+
+          if (!received[to][unit]) {
+            received[to][unit] = num
+          } else {
+            received[to][unit] += num
+          }
+        }
+      })
+    }
+  })
+
+  const sentFrom = sentEntries[0][0]
+  let lovelaces = 0
+
+  allowedTargets.forEach((addr) => {
+    Object.entries(received[addr]).forEach(([unit, num]) => {
+      if (unit === allowedUnits[0]) lovelaces += num
     })
   })
 
@@ -44,11 +84,12 @@ export const getSenderFromBlingTx = async (txHash: string) => {
     lovelaces: number
   }[] = []
 
-  Object.entries(received).forEach(([addr, num]) => {
-    if ([49 * ONE_MILLION, 245 * ONE_MILLION].includes(num)) {
-      matched.push({ address: addr, lovelaces: num })
-    }
-  })
+  if ([49 * ONE_MILLION, 245 * ONE_MILLION].includes(lovelaces)) {
+    matched.push({
+      address: sentFrom,
+      lovelaces,
+    })
+  }
 
   if (!matched.length) {
     throw new Error(`no matches found in TX ${txHash}`)

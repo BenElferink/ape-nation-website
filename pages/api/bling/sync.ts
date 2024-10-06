@@ -22,7 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           while (timestamp.length < 13) timestamp = `${timestamp}0`
           timestamp = Number(timestamp)
 
-          if (now - timestamp < 2 * 60 * 60 * 1000) {
+          if (now - timestamp < 3 * 60 * 60 * 1000) {
             const txHash = tx.tx_hash
             const { empty } = await collection.where('txHash', '==', txHash).get()
 
