@@ -119,7 +119,7 @@ const Bloodline = () => {
           .sendLovelace(
             // mint collateral
             { address: 'addr1q8yh4nz600fqa5yqyt7nusqlq4cw65h4mcgufruf6gnjgzf34cqsunpd2hzxrz8glhlcwlce3rtxq4x7lvf3jcjmqgrqzynw52' },
-            String(1 * ONE_MILLION)
+            String(2 * ONE_MILLION)
           )
           .sendLovelace(
             // developer
