@@ -37,15 +37,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         for await (const { keyId, txHash } of toCheck) {
           try {
-            const token = await blockfrost.assetsById(keyId)
-
-            console.log('asset already minted', token.fingerprint)
+            await blockfrost.assetsById(keyId)
           } catch (error) {
             console.log('asset not minted', keyId)
 
             const badTxs = [
               'b2d57f2c135af6b8fd3e968372c8c83bfce19ebf851c87636230b55b24175e85',
-              '7bd11309b39d2715038737f469bf7a519c731d3b7a58a401e46ec081958a99c7',
               '7bd11309b39d2715038737f469bf7a519c731d3b7a58a401e46ec081958a99c7',
             ]
 
@@ -54,9 +51,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         if (txHashes.length) {
-          console.log(`found ${txHashes.length} faulty TXs, retrying now`)
+          console.log(`found ${txHashes.length} faulty TXs, retrying now`, txHashes)
 
-          for await (const txHash of txHashes) await axios.post('https://apenation.io/api/bloodline/mint', { txHash })
+          const url = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://apenation.io'}/api/bloodline/mint`
+
+          for await (const txHash of txHashes) await axios.post(url, { txHash })
         }
 
         console.log('done')
