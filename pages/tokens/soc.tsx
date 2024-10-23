@@ -1,14 +1,14 @@
-import Link from 'next/link'
-import TokenHeader from '../../components/tokens/TokenHeader'
-import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
-import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
-import PageContainer from '../../components/layout/PageContainer'
+import Link from 'next/link';
+import TokenHeader from '../../components/tokens/TokenHeader';
+import TokenPrerequisites from '../../components/tokens/TokenPrerequisites';
+import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns';
+import PageContainer from '../../components/layout/PageContainer';
 
-const TOKEN_IMAGE_SRC = '/media/tokens/soc/token.png'
-const TOKEN_POLICY_ID = '25f0fc240e91bd95dcdaebd2ba7713fc5168ac77234a3d79449fc20c'
-const TOKEN_NAME = 'SOC'
-const PROJECT_NAME = 'The Ape Society'
-const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation']
+const TOKEN_IMAGE_SRC = '/media/tokens/soc/token.png';
+const TOKEN_POLICY_ID = '25f0fc240e91bd95dcdaebd2ba7713fc5168ac77234a3d79449fc20c';
+const TOKEN_NAME = 'SOC';
+const PROJECT_NAME = 'The Ape Society';
+const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation'];
 
 const Page = () => {
   return (
@@ -51,7 +51,7 @@ const Page = () => {
         </ol>
       </div>
     </PageContainer>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

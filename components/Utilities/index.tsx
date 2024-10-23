@@ -1,11 +1,11 @@
-import { useRouter } from 'next/router'
-import { CheckCircleIcon } from '@heroicons/react/24/solid'
-import { MinusCircleIcon } from '@heroicons/react/24/outline'
-import useScreenSize from '@/hooks/useScreenSize'
-import MediaWrapper from './MediaWrapper'
-import ImageLoader from '../Loader/ImageLoader'
-import styles from './Utilities.module.css'
-import collections from '@/data/collections.json'
+import { useRouter } from 'next/router';
+import { CheckCircleIcon } from '@heroicons/react/24/solid';
+import { MinusCircleIcon } from '@heroicons/react/24/outline';
+import useScreenSize from '@/hooks/useScreenSize';
+import MediaWrapper from './MediaWrapper';
+import ImageLoader from '../Loader/ImageLoader';
+import styles from './Utilities.module.css';
+import collections from '@/data/collections.json';
 import {
   APE_NATION_POLICY_ID,
   BLING_POLICY_ID,
@@ -14,7 +14,7 @@ import {
   MUTATION_NATION_POLICY_ID,
   OG_CLUB_CARD_POLICY_ID,
   ORDINAL_TOKENS_POLICY_ID,
-} from '@/constants'
+} from '@/constants';
 
 const data: {
   checked: boolean
@@ -351,18 +351,18 @@ const data: {
       </MediaWrapper>
     ),
   },
-]
+];
 
 const Utilities = () => {
-  const { isMobile } = useScreenSize()
-  const router = useRouter()
+  const { isMobile } = useScreenSize();
+  const router = useRouter();
 
   return (
     <div className='w-full my-12'>
       <h2 className='mb-8 text-3xl text-center'>Collections & Utilities</h2>
 
       {data.map((phase, idx) => {
-        const isLeft = idx % 2 !== 0
+        const isLeft = idx % 2 !== 0;
 
         return (
           <div
@@ -384,9 +384,9 @@ const Utilities = () => {
                 onClick={() => {
                   if (event.redirect) {
                     if (event.redirect.indexOf('http') === 0) {
-                      window.open(event.redirect, '_blank', 'noopener noreferrer')
+                      window.open(event.redirect, '_blank', 'noopener noreferrer');
                     } else {
-                      router.push(event.redirect)
+                      router.push(event.redirect);
                     }
                   }
                 }}
@@ -401,10 +401,10 @@ const Utilities = () => {
             {phase.renderMedia ? phase.renderMedia(isLeft) : null}
             {isMobile ? <br /> : null}
           </div>
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
-export default Utilities
+export default Utilities;

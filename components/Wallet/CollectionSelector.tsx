@@ -1,19 +1,19 @@
-import { LockClosedIcon } from '@heroicons/react/24/outline'
-import useWallet from '@/contexts/WalletContext'
-import ImageLoader from '../Loader/ImageLoader'
-import type { PolicyId } from '@/@types'
-import collectionsFile from '@/data/collections.json'
+import { LockClosedIcon } from '@heroicons/react/24/outline';
+import useWallet from '@/contexts/WalletContext';
+import ImageLoader from '../Loader/ImageLoader';
+import type { PolicyId } from '@/@types';
+import collectionsFile from '@/data/collections.json';
 
 const CollectionSelector = (props: { onSelected: (_policyId: PolicyId) => void; withWallet?: boolean; limitWidth?: boolean }) => {
-  const { onSelected, withWallet = false, limitWidth = false } = props
-  const { populatedWallet } = useWallet()
+  const { onSelected, withWallet = false, limitWidth = false } = props;
+  const { populatedWallet } = useWallet();
 
   return (
     <div className={(limitWidth ? 'max-w-[690px]' : 'w-full') + ' mx-auto flex flex-wrap items-center justify-center'}>
       {collectionsFile.map((coll) => {
         const ownsThisCollection = !!withWallet
           ? Object.entries(populatedWallet?.assets || {}).find(([policyId, assets]) => coll.policyId === policyId && !!assets.length)
-          : true
+          : true;
 
         return (
           <button
@@ -21,7 +21,7 @@ const CollectionSelector = (props: { onSelected: (_policyId: PolicyId) => void; 
             type='button'
             onClick={() => {
               if (ownsThisCollection) {
-                onSelected(coll.policyId as PolicyId)
+                onSelected(coll.policyId as PolicyId);
               }
             }}
             className={
@@ -55,10 +55,10 @@ const CollectionSelector = (props: { onSelected: (_policyId: PolicyId) => void; 
               <LockClosedIcon className='w-3/4 h-3/4' />
             </div>
           </button>
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
-export default CollectionSelector
+export default CollectionSelector;

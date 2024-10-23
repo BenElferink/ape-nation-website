@@ -1,10 +1,10 @@
-import { Fragment } from 'react'
-import useWallet from '../contexts/WalletContext'
-import WalletConnect from '../components/Wallet/WalletConnect'
-import Bloodline from '@/components/dashboards/Bloodline'
+import { Fragment } from 'react';
+import useWallet from '../contexts/WalletContext';
+import WalletConnect from '../components/Wallet/WalletConnect';
+import Bloodline from '@/components/dashboards/Bloodline';
 
 const Page = () => {
-  const { connected } = useWallet()
+  const { connected } = useWallet();
 
   return (
     <div className='flex flex-col items-center'>
@@ -17,7 +17,7 @@ const Page = () => {
         <Bloodline />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

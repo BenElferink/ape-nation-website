@@ -1,18 +1,17 @@
-import Image from 'next/image'
-
-import useScreenSize from '@/hooks/useScreenSize'
-import Loader from './Loader'
+import Image from 'next/image';
+import useScreenSize from '@/hooks/useScreenSize';
+import Loader from './Loader';
 
 const Landing = () => {
-  const { isMobile, screenWidth } = useScreenSize()
-  const logoSize = 250
+  const { isMobile, screenWidth } = useScreenSize();
+  const logoSize = 250;
 
   if (!screenWidth) {
     return (
       <div id='home' className='w-screen min-h-[90vh] mt-60 lg:mt-20 flex flex-col items-center'>
         <Loader />
       </div>
-    )
+    );
   }
 
   if (isMobile) {
@@ -23,7 +22,6 @@ const Landing = () => {
             src='/media/logo/ape_nation.png'
             alt='logo'
             priority
-            unoptimized
             width={logoSize}
             height={logoSize}
             className='drop-shadow-[0_0_0.5rem_rgb(255_255_255)]'
@@ -42,7 +40,7 @@ const Landing = () => {
           </p>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -54,7 +52,6 @@ const Landing = () => {
               src='/media/logo/ape_nation.png'
               alt='logo'
               priority
-              unoptimized
               width={logoSize}
               height={logoSize}
               className='drop-shadow-[0_0_0.5rem_rgb(255_255_255)]'
@@ -73,7 +70,7 @@ const Landing = () => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Landing
+export default Landing;

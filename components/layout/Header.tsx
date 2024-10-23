@@ -1,9 +1,9 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import MusicPlayer from '../MusicPlayer'
-import Navigation from '../Navigation'
-import SocialIcon from '../SocialIcon'
-import { LINKS } from '@/constants'
+import Link from 'next/link';
+import Image from 'next/image';
+import MusicPlayer from '../MusicPlayer';
+import Navigation from '../Navigation';
+import SocialIcon from '../SocialIcon';
+import { LINKS } from '@/constants';
 
 const Header = () => {
   return (
@@ -43,7 +43,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

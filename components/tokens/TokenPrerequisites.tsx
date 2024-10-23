@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import { Fragment } from 'react'
-import ImageLoader from '../Loader/ImageLoader'
+import Link from 'next/link';
+import { Fragment } from 'react';
+import ImageLoader from '../Loader/ImageLoader';
 
 const TokenPrerequisites = (props: {
   items: {
@@ -10,7 +10,7 @@ const TokenPrerequisites = (props: {
   }[]
   multiItemType?: 'AND' | 'OR'
 }) => {
-  const { items, multiItemType } = props
+  const { items, multiItemType } = props;
 
   return (
     <div className='w-full my-2 p-4 px-6 flex flex-col bg-zinc-950/70 rounded-xl'>
@@ -37,7 +37,7 @@ const TokenPrerequisites = (props: {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TokenPrerequisites
+export default TokenPrerequisites;

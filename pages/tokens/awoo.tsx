@@ -1,15 +1,15 @@
-import Link from 'next/link'
-import TokenHeader from '../../components/tokens/TokenHeader'
-import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
-import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
-import PageContainer from '../../components/layout/PageContainer'
-import { LINKS } from '@/constants'
+import Link from 'next/link';
+import TokenHeader from '../../components/tokens/TokenHeader';
+import TokenPrerequisites from '../../components/tokens/TokenPrerequisites';
+import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns';
+import PageContainer from '../../components/layout/PageContainer';
+import { LINKS } from '@/constants';
 
-const TOKEN_IMAGE_SRC = '/media/tokens/awoo/token.png'
-const TOKEN_POLICY_ID = '09f5f55fcad17503e6b7acc81de7c80f84b76e76d17085f0e32f1ce2'
-const TOKEN_NAME = 'AWOO'
-const PROJECT_NAME = 'Unbothered Wolves'
-const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation']
+const TOKEN_IMAGE_SRC = '/media/tokens/awoo/token.png';
+const TOKEN_POLICY_ID = '09f5f55fcad17503e6b7acc81de7c80f84b76e76d17085f0e32f1ce2';
+const TOKEN_NAME = 'AWOO';
+const PROJECT_NAME = 'Unbothered Wolves';
+const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation'];
 
 const Page = () => {
   return (
@@ -34,7 +34,7 @@ const Page = () => {
         </ol>
       </div>
     </PageContainer>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

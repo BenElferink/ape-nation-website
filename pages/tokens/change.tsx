@@ -1,15 +1,15 @@
-import Link from 'next/link'
-import TokenHeader from '../../components/tokens/TokenHeader'
-import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
-import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
-import PageContainer from '../../components/layout/PageContainer'
-import { LINKS } from '@/constants'
+import Link from 'next/link';
+import TokenHeader from '../../components/tokens/TokenHeader';
+import TokenPrerequisites from '../../components/tokens/TokenPrerequisites';
+import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns';
+import PageContainer from '../../components/layout/PageContainer';
+import { LINKS } from '@/constants';
 
-const TOKEN_IMAGE_SRC = '/media/tokens/change/token.png'
-const TOKEN_POLICY_ID = 'd55bf9d2ad12cc55e4ed29d97c64dba0e4905d3c80f800449f3d51f0'
-const TOKEN_NAME = 'CHANGE'
-const PROJECT_NAME = 'Steve3p_0'
-const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation', 'Bloodline']
+const TOKEN_IMAGE_SRC = '/media/tokens/change/token.png';
+const TOKEN_POLICY_ID = 'd55bf9d2ad12cc55e4ed29d97c64dba0e4905d3c80f800449f3d51f0';
+const TOKEN_NAME = 'CHANGE';
+const PROJECT_NAME = 'Steve3p_0';
+const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation', 'Bloodline'];
 
 const Page = () => {
   return (
@@ -34,7 +34,7 @@ const Page = () => {
         </ol>
       </div>
     </PageContainer>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

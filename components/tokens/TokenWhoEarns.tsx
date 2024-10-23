@@ -1,4 +1,4 @@
-import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline'
+import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
 
 export type WhoCanEarn = (
   | 'Ape Nation'
@@ -22,10 +22,10 @@ const WHO_CAN_EARN: WhoCanEarn = [
   'BLING',
   'iHold Music',
   'Bloodline',
-]
+];
 
 const TokenWhoEarns = (props: { whoCanEarn: WhoCanEarn }) => {
-  const { whoCanEarn } = props
+  const { whoCanEarn } = props;
 
   return (
     <div className='w-full my-2 p-4 px-6 flex flex-col bg-zinc-950/70 rounded-xl'>
@@ -33,7 +33,7 @@ const TokenWhoEarns = (props: { whoCanEarn: WhoCanEarn }) => {
 
       <ul className='mx-auto flex flex-col md:flex-row md:flex-wrap md:items-center md:justify-center'>
         {WHO_CAN_EARN.map((str) => {
-          const canEarn = whoCanEarn.includes(str)
+          const canEarn = whoCanEarn.includes(str);
 
           // if (!canEarn) return null
 
@@ -42,11 +42,11 @@ const TokenWhoEarns = (props: { whoCanEarn: WhoCanEarn }) => {
               {canEarn ? <CheckCircleIcon className='w-6 h-6 mr-1' /> : <XCircleIcon className='w-6 h-6 mr-1' />}
               {str}
             </li>
-          )
+          );
         })}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default TokenWhoEarns
+export default TokenWhoEarns;

@@ -1,46 +1,46 @@
-import { Fragment, useCallback, useEffect, useState } from 'react'
-import { AdjustmentsVerticalIcon, ChevronDownIcon } from '@heroicons/react/24/solid'
-import type { PolicyId, PopulatedAsset, PopulatedTrait } from '@/@types'
-import { APE_NATION_POLICY_ID, BLING_POLICY_ID } from '@/constants'
+import { Fragment, useCallback, useEffect, useState } from 'react';
+import { AdjustmentsVerticalIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
+import type { PolicyId, PopulatedAsset, PopulatedTrait } from '@/@types';
+import { APE_NATION_POLICY_ID, BLING_POLICY_ID } from '@/constants';
 
-export interface AssetFiltersProps {
-  policyId: PolicyId
-  assetsData: PopulatedAsset[]
+interface AssetFiltersProps {
+  policyId: PolicyId;
+  assetsData: PopulatedAsset[];
   traitsData: {
-    [category: string]: PopulatedTrait[]
-  }
-  withListed?: boolean
-  withWallet?: boolean
-  callbackRendered: (assets: PopulatedAsset[]) => void
+    [category: string]: PopulatedTrait[];
+  };
+  withListed?: boolean;
+  withWallet?: boolean;
+  callbackRendered: (assets: PopulatedAsset[]) => void;
 }
 
 const AssetFilters = (props: AssetFiltersProps) => {
-  const { policyId, assetsData = [], traitsData = {}, withListed = false, withWallet = false, callbackRendered = () => {} } = props
+  const { policyId, assetsData = [], traitsData = {}, withListed = false, withWallet = false, callbackRendered = () => {} } = props;
 
-  const [openOnMobile, setOpenOnMobile] = useState(false)
-  const [sortBy, setSortBy] = useState<'PRICE' | 'RANK' | 'ID' | 'BURN'>(withListed ? 'PRICE' : policyId === APE_NATION_POLICY_ID ? 'RANK' : 'ID')
-  const [ascending, setAscending] = useState(true)
-  const [filterComponents, setFilterComponents] = useState<Record<string, boolean>>({})
-  const [filters, setFilters] = useState<Record<string, string[]>>({})
-  const [search, setSearch] = useState('')
+  const [openOnMobile, setOpenOnMobile] = useState(false);
+  const [sortBy, setSortBy] = useState<'PRICE' | 'RANK' | 'ID' | 'BURN'>(withListed ? 'PRICE' : policyId === APE_NATION_POLICY_ID ? 'RANK' : 'ID');
+  const [ascending, setAscending] = useState(true);
+  const [filterComponents, setFilterComponents] = useState<Record<string, boolean>>({});
+  const [filters, setFilters] = useState<Record<string, string[]>>({});
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
-    setAscending(true)
-    setSortBy(withListed ? 'PRICE' : policyId === APE_NATION_POLICY_ID ? 'RANK' : 'ID')
-    setFilterComponents({})
-    setFilters({})
-    setSearch('')
-  }, [policyId, withListed])
+    setAscending(true);
+    setSortBy(withListed ? 'PRICE' : policyId === APE_NATION_POLICY_ID ? 'RANK' : 'ID');
+    setFilterComponents({});
+    setFilters({});
+    setSearch('');
+  }, [policyId, withListed]);
 
   const filterAssets = useCallback(
     (assets: PopulatedAsset[]): PopulatedAsset[] => {
-      const objWithSelected: Record<string, string[]> = {}
+      const objWithSelected: Record<string, string[]> = {};
 
       Object.entries(filters).forEach(([cat, selections]) => {
         if (selections.length) {
-          objWithSelected[cat] = selections
+          objWithSelected[cat] = selections;
         }
-      })
+      });
 
       return assets.filter((asset) => {
         if (
@@ -51,63 +51,63 @@ const AssetFilters = (props: AssetFiltersProps) => {
               asset.tokenId.indexOf(search) !== -1 ||
               asset.fingerprint.indexOf(search) !== -1))
         ) {
-          const matchingCategories = []
-          const arrWithSelected = Object.entries(objWithSelected)
+          const matchingCategories = [];
+          const arrWithSelected = Object.entries(objWithSelected);
 
           arrWithSelected.forEach(([cat, selections]) => {
-            let categoryMatch = false
-            if (selections.includes(asset.attributes[cat])) categoryMatch = true
-            if (categoryMatch) matchingCategories.push(cat)
-          })
+            let categoryMatch = false;
+            if (selections.includes(asset.attributes[cat])) categoryMatch = true;
+            if (categoryMatch) matchingCategories.push(cat);
+          });
 
-          return matchingCategories.length === arrWithSelected.length
+          return matchingCategories.length === arrWithSelected.length;
         }
 
-        return false
-      })
+        return false;
+      });
     },
     [search, filters]
-  )
+  );
 
   const sortAssets = useCallback(
     (items: PopulatedAsset[]): PopulatedAsset[] => {
       switch (sortBy) {
         case 'PRICE': {
-          const sorted = items.sort((a, b) => ((ascending ? a : b)?.price || 0) - ((ascending ? b : a)?.price || 0))
+          const sorted = items.sort((a, b) => ((ascending ? a : b)?.price || 0) - ((ascending ? b : a)?.price || 0));
 
           if (ascending) {
-            return sorted.sort((a, b) => (a.price && b.price ? 1 : -1))
+            return sorted.sort((a, b) => (a.price && b.price ? 1 : -1));
           }
 
-          return sorted
+          return sorted;
         }
 
         case 'RANK': {
-          const sorted = items.sort((a, b) => ((ascending ? a : b).rarityRank || 0) - ((ascending ? b : a).rarityRank || 0))
+          const sorted = items.sort((a, b) => ((ascending ? a : b).rarityRank || 0) - ((ascending ? b : a).rarityRank || 0));
 
           if (ascending) {
-            return sorted.sort((a, b) => (!!a.isBurned ? 1 : -1) - (!!b.isBurned ? 1 : -1))
+            return sorted.sort((a, b) => (!!a.isBurned ? 1 : -1) - (!!b.isBurned ? 1 : -1));
           }
 
-          return sorted
+          return sorted;
         }
 
         case 'BURN': {
-          return items.sort((a, b) => (!!(ascending ? a : b).isBurned ? -1 : 1) - (!!(ascending ? b : a).isBurned ? -1 : 1))
+          return items.sort((a, b) => (!!(ascending ? a : b).isBurned ? -1 : 1) - (!!(ascending ? b : a).isBurned ? -1 : 1));
         }
 
         case 'ID':
         default:
-          return items.sort((a, b) => ((ascending ? a : b).serialNumber || 0) - ((ascending ? b : a).serialNumber || 0))
+          return items.sort((a, b) => ((ascending ? a : b).serialNumber || 0) - ((ascending ? b : a).serialNumber || 0));
       }
     },
     [ascending, sortBy]
-  )
+  );
 
   useEffect(() => {
-    callbackRendered(sortAssets(filterAssets(assetsData)))
+    callbackRendered(sortAssets(filterAssets(assetsData)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filterAssets, sortAssets, assetsData])
+  }, [filterAssets, sortAssets, assetsData]);
 
   return (
     <Fragment>
@@ -212,7 +212,7 @@ const AssetFilters = (props: AssetFiltersProps) => {
                   setFilterComponents((prev) => ({
                     ...prev,
                     [category]: typeof prev[category] === 'boolean' ? !prev[category] : true,
-                  }))
+                  }));
                 }}
                 className='w-full my-2 p-3 flex items-center justify-between rounded-lg bg-zinc-900 border border-zinc-700 text-sm hover:bg-zinc-700 hover:border-zinc-500 hover:text-white'
               >
@@ -227,20 +227,20 @@ const AssetFilters = (props: AssetFiltersProps) => {
                     type='button'
                     onClick={() => {
                       setFilters((prev) => {
-                        const prevCategory = prev[category] || []
+                        const prevCategory = prev[category] || [];
 
-                        const foundIdx = prevCategory.findIndex((str) => str === label)
+                        const foundIdx = prevCategory.findIndex((str) => str === label);
                         if (foundIdx !== -1) {
-                          prevCategory.splice(foundIdx, 1)
+                          prevCategory.splice(foundIdx, 1);
                         } else {
-                          prevCategory.push(label)
+                          prevCategory.push(label);
                         }
 
                         return {
                           ...prev,
                           [category]: prevCategory,
-                        }
-                      })
+                        };
+                      });
                     }}
                     className={
                       'w-[30%] my-1 p-1 text-xs rounded-lg border ' +
@@ -260,11 +260,11 @@ const AssetFilters = (props: AssetFiltersProps) => {
         <button
           type='button'
           onClick={() => {
-            setSortBy(withListed ? 'PRICE' : 'RANK')
-            setAscending(true)
-            setFilterComponents({})
-            setFilters({})
-            setSearch('')
+            setSortBy(withListed ? 'PRICE' : 'RANK');
+            setAscending(true);
+            setFilterComponents({});
+            setFilters({});
+            setSearch('');
           }}
           className='w-full mt-4 p-2 px-4 text-xs rounded-lg border border-red-700 bg-red-950 hover:border-red-500 hover:bg-red-900'
         >
@@ -272,7 +272,7 @@ const AssetFilters = (props: AssetFiltersProps) => {
         </button>
       </div>
     </Fragment>
-  )
-}
+  );
+};
 
-export default AssetFilters
+export default AssetFilters;

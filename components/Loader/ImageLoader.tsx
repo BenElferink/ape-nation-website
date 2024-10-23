@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import { CSSProperties, useState } from 'react'
-import Loader from '.'
+import Image from 'next/image';
+import { CSSProperties, useState } from 'react';
+import Loader from '.';
 
 const ImageLoader = (props: {
   src: string
@@ -11,8 +11,8 @@ const ImageLoader = (props: {
   loaderSize?: number
   style?: CSSProperties
 }) => {
-  const { src = '', alt = '', optimized = false, width = 100, height = 100, loaderSize = 0, style = {} } = props
-  const [loading, setLoading] = useState(true)
+  const { src = '', alt = '', optimized = false, width = 100, height = 100, loaderSize = 0, style = {} } = props;
+  const [loading, setLoading] = useState(true);
 
   return (
     <div className='relative z-10' style={style}>
@@ -24,7 +24,7 @@ const ImageLoader = (props: {
 
       <Image src={src} alt={alt} unoptimized={!optimized} onLoad={() => setLoading(false)} width={width} height={height} style={style} />
     </div>
-  )
-}
+  );
+};
 
-export default ImageLoader
+export default ImageLoader;

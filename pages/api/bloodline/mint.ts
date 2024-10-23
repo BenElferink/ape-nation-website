@@ -1,12 +1,12 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import axios from 'axios'
-import { BlockfrostProvider, deserializeAddress, ForgeScript, MeshWallet, Mint, NativeScript, Transaction } from '@meshsdk/core'
-import { storage } from '@/utils/firebase'
-import badLabsApi from '@/utils/badLabsApi'
-import getEnv from '@/functions/storage/getEnv'
-import formatHex from '@/functions/formatters/formatHex'
-import getFileForPolicyId from '@/functions/getFileForPolicyId'
-import type { PopulatedAsset } from '@/@types'
+import type { NextApiRequest, NextApiResponse } from 'next';
+import axios from 'axios';
+import { BlockfrostProvider, deserializeAddress, ForgeScript, MeshWallet, Mint, NativeScript, Transaction } from '@meshsdk/core';
+import { storage } from '@/utils/firebase';
+import badLabsApi from '@/utils/badLabsApi';
+import getEnv from '@/functions/storage/getEnv';
+import formatHex from '@/functions/formatters/formatHex';
+import getFileForPolicyId from '@/functions/getFileForPolicyId';
+import type { PopulatedAsset } from '@/@types';
 import {
   API_KEYS,
   APE_NATION_POLICY_ID,
@@ -14,134 +14,134 @@ import {
   MUTATION_NATION_POLICY_ID,
   TEAM_VAULT_WALLET_ADDRESS,
   BLOODLINE_APP_WALLET_MNEMONIC,
-} from '@/constants'
+} from '@/constants';
 
 export const config = {
   maxDuration: 300,
   api: {
     responseLimit: false,
   },
-}
+};
 
-let PINATA_API_KEY = ''
+let PINATA_API_KEY = '';
 
-const getTokensFromTx = async (txHash: string) => {
-  const txData = await badLabsApi.transaction.getData(txHash, { withUtxos: true })
+export const getTokensFromTx = async (txHash: string) => {
+  const txData = await badLabsApi.transaction.getData(txHash, { withUtxos: true });
 
   if (!txData) {
-    throw new Error('TX not submitted yet')
+    throw new Error('TX not submitted yet');
   }
 
-  let selectedV0 = ''
-  let selectedV1 = ''
-  let selectedV2 = ''
-  let addressOfSender = ''
+  let selectedV0 = '';
+  let selectedV1 = '';
+  let selectedV2 = '';
+  let addressOfSender = '';
 
-  const ape = getFileForPolicyId(APE_NATION_POLICY_ID)
-  const mutation = getFileForPolicyId(MUTATION_NATION_POLICY_ID)
+  const ape = getFileForPolicyId(APE_NATION_POLICY_ID);
+  const mutation = getFileForPolicyId(MUTATION_NATION_POLICY_ID);
 
-  let thisV1 = undefined
-  let thisV2 = undefined
+  let thisV1 = undefined;
+  let thisV2 = undefined;
 
   for (const { address, tokens } of txData.utxos || []) {
     for (const { tokenId } of tokens) {
       if (tokenId.indexOf(APE_NATION_POLICY_ID) == 0 && address.to === TEAM_VAULT_WALLET_ADDRESS) {
-        selectedV0 = tokenId
-        addressOfSender = address.from
+        selectedV0 = tokenId;
+        addressOfSender = address.from;
       }
 
       if (tokenId.indexOf(MUTATION_NATION_POLICY_ID) == 0 && address.to === TEAM_VAULT_WALLET_ADDRESS) {
-        const foundToken = mutation.assets.find((item) => item.tokenId === tokenId)
+        const foundToken = mutation.assets.find((item) => item.tokenId === tokenId);
 
         if (foundToken) {
           if (foundToken.serialNumber?.toString().endsWith('1')) {
-            selectedV1 = tokenId
-            thisV1 = foundToken
+            selectedV1 = tokenId;
+            thisV1 = foundToken;
           } else {
-            selectedV2 = tokenId
-            thisV2 = foundToken
+            selectedV2 = tokenId;
+            thisV2 = foundToken;
           }
         }
       }
     }
   }
 
-  const thisV0 = ape.assets.find((item) => item.tokenId === selectedV0)
-  thisV1 = mutation.assets.find((item) => item.tokenId === selectedV1)
-  thisV2 = mutation.assets.find((item) => item.tokenId === selectedV2)
+  const thisV0 = ape.assets.find((item) => item.tokenId === selectedV0);
+  thisV1 = mutation.assets.find((item) => item.tokenId === selectedV1);
+  thisV2 = mutation.assets.find((item) => item.tokenId === selectedV2);
 
   if (!thisV0 || !thisV1 || !thisV2) {
-    throw new Error('Missing required asset(s) from TX')
+    throw new Error('Missing required asset(s) from TX');
   }
 
-  const isTrio = thisV1.serialNumber === Number(`${thisV0.serialNumber}1`) && thisV2.serialNumber === Number(`${thisV0.serialNumber}2`)
+  const isTrio = thisV1.serialNumber === Number(`${thisV0.serialNumber}1`) && thisV2.serialNumber === Number(`${thisV0.serialNumber}2`);
 
   if (!isTrio) {
-    throw new Error("Asset(s) from TX don't match")
+    throw new Error("Asset(s) from TX don't match");
   }
 
-  return { addressOfSender, v0: thisV0, v1: thisV1, v2: thisV2 }
-}
+  return { addressOfSender, v0: thisV0, v1: thisV1, v2: thisV2 };
+};
 
 const getBufferFromUrl = async (url: string, body?: Record<string, any>) => {
   try {
-    console.log('Fetching image from URL:', url)
+    console.log('Fetching image from URL:', url);
 
-    let bin = ''
+    let bin = '';
 
     if (!!body) {
-      const res = await axios.post(url, body, { responseType: 'arraybuffer' })
-      bin = res.data
+      const res = await axios.post(url, body, { responseType: 'arraybuffer' });
+      bin = res.data;
     } else {
-      const res = await axios.get(url, { responseType: 'arraybuffer' })
-      bin = res.data
+      const res = await axios.get(url, { responseType: 'arraybuffer' });
+      bin = res.data;
     }
 
-    console.log('Successfully fetched image')
+    console.log('Successfully fetched image');
 
-    return Buffer.from(bin, 'binary')
+    return Buffer.from(bin, 'binary');
   } catch (error: any) {
-    console.error('Error fetching image:', error.message)
-    throw error
+    console.error('Error fetching image:', error.message);
+    throw error;
   }
-}
+};
 
 const getBase64FromIpfs = async (ipfsRef: string) => {
-  const url = ipfsRef.replace('ipfs://', 'https://ipfs.blockfrost.io/api/v0/ipfs/gateway/')
+  const url = ipfsRef.replace('ipfs://', 'https://ipfs.blockfrost.io/api/v0/ipfs/gateway/');
 
   try {
-    console.log('Fetching image from URL:', url)
+    console.log('Fetching image from URL:', url);
 
     const res = await axios.get(url, {
       responseType: 'arraybuffer',
       headers: {
         project_id: API_KEYS['IPFS_API_KEY'],
       },
-    })
+    });
 
-    console.log('Successfully fetched image')
+    console.log('Successfully fetched image');
 
-    return Buffer.from(res.data).toString('base64')
+    return Buffer.from(res.data).toString('base64');
   } catch (error: any) {
-    console.error('Error fetching image:', error.message)
-    throw error
+    console.error('Error fetching image:', error.message);
+    throw error;
   }
-}
+};
 
 const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: PopulatedAsset, club: string) => {
-  if (!PINATA_API_KEY) PINATA_API_KEY = (await getEnv('PINATA_API_KEY'))?.value || ''
+  if (!PINATA_API_KEY) PINATA_API_KEY = (await getEnv('PINATA_API_KEY'))?.value || '';
 
-  const fileName = `${v0.tokenName?.display.split('#')[1]}.png`
-  let fileUrl = ''
+  const fileName = `${v0.tokenName?.display.split('#')[1]}.png`;
+  let fileUrl = '';
 
   for await (const item of (await storage.ref('/bloodline').listAll()).items) {
-    if (item.name === fileName) fileUrl = await item.getDownloadURL()
+    if (item.name === fileName) fileUrl = await item.getDownloadURL();
   }
 
   if (!fileUrl) {
-    const v0_b64 = await getBase64FromIpfs(v0.image.ipfs)
-    const v1_b64 = await getBase64FromIpfs(v1.image.ipfs)
-    const v2_b64 = await getBase64FromIpfs(v2.image.ipfs)
+    const v0_b64 = await getBase64FromIpfs(v0.image.ipfs);
+    const v1_b64 = await getBase64FromIpfs(v1.image.ipfs);
+    const v2_b64 = await getBase64FromIpfs(v2.image.ipfs);
 
     const buff = await getBufferFromUrl(`https://lab.bangr.io/api/v1/custom/collage3?apiKey=${API_KEYS['BANGR_API_KEY']}`, {
       pfp_v0_b64: v0_b64,
@@ -152,26 +152,26 @@ const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: Populat
       pfp_v2_name: v2.tokenName?.display,
       rank: v0.rarityRank?.toString(),
       overlay: club.toLowerCase().replaceAll(' ', ''),
-    })
+    });
 
-    console.log('Uploading to Firebase')
+    console.log('Uploading to Firebase');
 
     const snapshot = await storage.ref(`/bloodline/${fileName}`).put(new Uint8Array(buff), {
       contentType: 'image/png',
-    })
+    });
 
-    console.log('Successfully uploaded to Firebase')
+    console.log('Successfully uploaded to Firebase');
 
-    fileUrl = await snapshot.ref.getDownloadURL()
+    fileUrl = await snapshot.ref.getDownloadURL();
   }
 
-  const formData = new FormData()
-  const buff = await getBufferFromUrl(fileUrl)
+  const formData = new FormData();
+  const buff = await getBufferFromUrl(fileUrl);
 
-  formData.append('file', new Blob([buff], { type: 'image/png' }))
-  formData.append('pinataMetadata', JSON.stringify({ name: fileName }))
+  formData.append('file', new Blob([buff], { type: 'image/png' }));
+  formData.append('pinataMetadata', JSON.stringify({ name: fileName }));
 
-  console.log('Uploading to IPFS')
+  console.log('Uploading to IPFS');
 
   const {
     data: { IpfsHash: ipfsHash },
@@ -186,54 +186,54 @@ const generateImage = async (v0: PopulatedAsset, v1: PopulatedAsset, v2: Populat
       Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
     },
-  })
+  });
 
-  console.log('Successfully uploaded to IPFS:', ipfsHash)
+  console.log('Successfully uploaded to IPFS:', ipfsHash);
 
-  return `ipfs://${ipfsHash}`
-}
+  return `ipfs://${ipfsHash}`;
+};
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { method, body } = req
+  const { method, body } = req;
 
   try {
     switch (method) {
       case 'POST': {
-        const { txHash } = body
+        const { txHash } = body;
 
-        const { addressOfSender, v0, v1, v2 } = await getTokensFromTx(txHash)
+        const { addressOfSender, v0, v1, v2 } = await getTokensFromTx(txHash);
 
-        const serialCode = v0.tokenName?.display.split('#')[1]
-        const assetName = `Bloodline${serialCode}`
+        const serialCode = v0.tokenName?.display.split('#')[1];
+        const assetName = `Bloodline${serialCode}`;
         const club = v0.rarityRank
           ? v0.rarityRank <= 1000
             ? 'Canopy Club'
             : v0.rarityRank >= 1001 && v0.rarityRank <= 5000
             ? 'Jungle Club'
             : 'Congo Club'
-          : 'ERROR'
+          : 'ERROR';
 
-        if (club === 'ERROR') throw Error('no rank, no club, impossible')
+        if (club === 'ERROR') throw Error('no rank, no club, impossible');
 
         try {
-          const tokenId = `${BLOODLINE_POLICY_ID}${formatHex.toHex(assetName)}`
-          const foundToken = await badLabsApi.token.getData(tokenId)
+          const tokenId = `${BLOODLINE_POLICY_ID}${formatHex.toHex(assetName)}`;
+          const foundToken = await badLabsApi.token.getData(tokenId);
 
-          if (!!foundToken) throw new Error('Already minted this!')
+          if (!!foundToken) throw new Error('Already minted this!');
         } catch (error) {
           // Token not found: THIS IS OK!
         }
 
-        const ipfsRef = await generateImage(v0, v1, v2, club)
-        const attributes: Record<string, string> = {}
+        const ipfsRef = await generateImage(v0, v1, v2, club);
+        const attributes: Record<string, string> = {};
 
         Object.entries(v0.attributes).forEach(([key, val]) => {
           if (key === 'Normal Shades') {
-            attributes['Glasses'] = val
+            attributes['Glasses'] = val;
           } else {
-            attributes[key] = val
+            attributes[key] = val;
           }
-        })
+        });
 
         const mintPayload: Mint = {
           label: '721',
@@ -274,9 +274,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             Bloodline: club,
             ...attributes,
           },
-        }
+        };
 
-        const _provider = new BlockfrostProvider(API_KEYS['BLOCKFROST_API_KEY'])
+        const _provider = new BlockfrostProvider(API_KEYS['BLOCKFROST_API_KEY']);
         const _wallet = new MeshWallet({
           networkId: 1,
           fetcher: _provider,
@@ -285,31 +285,31 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             type: 'mnemonic',
             words: BLOODLINE_APP_WALLET_MNEMONIC,
           },
-        })
+        });
 
-        const _script = ForgeScript.withOneSignature(_wallet.addresses.enterpriseAddressBech32 as string)
-        const _tx = new Transaction({ initiator: _wallet })
+        const _script = ForgeScript.withOneSignature(_wallet.addresses.enterpriseAddressBech32 as string);
+        const _tx = new Transaction({ initiator: _wallet });
 
-        _tx.mintAsset(_script, mintPayload)
+        _tx.mintAsset(_script, mintPayload);
 
-        const _unsigTx = await _tx.build()
-        const _sigTx = await _wallet.signTx(_unsigTx)
-        const _txHash = await _wallet.submitTx(_sigTx)
+        const _unsigTx = await _tx.build();
+        const _sigTx = await _wallet.signTx(_unsigTx);
+        const _txHash = await _wallet.submitTx(_sigTx);
 
         return res.status(200).json({
           txHash: _txHash,
-        })
+        });
       }
 
       default: {
-        res.setHeader('Allow', 'POST')
-        return res.status(405).end()
+        res.setHeader('Allow', 'POST');
+        return res.status(405).end();
       }
     }
   } catch (error) {
-    console.error(error)
-    return res.status(500).end()
+    console.error(error);
+    return res.status(500).end();
   }
-}
+};
 
-export default handler
+export default handler;

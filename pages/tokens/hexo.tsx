@@ -1,13 +1,13 @@
-import Link from 'next/link'
-import TokenHeader from '../../components/tokens/TokenHeader'
-import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
-import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
-import PageContainer from '../../components/layout/PageContainer'
+import Link from 'next/link';
+import TokenHeader from '../../components/tokens/TokenHeader';
+import TokenPrerequisites from '../../components/tokens/TokenPrerequisites';
+import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns';
+import PageContainer from '../../components/layout/PageContainer';
 
-const TOKEN_IMAGE_SRC = '/media/tokens/hexo/token.png'
-const TOKEN_POLICY_ID = '27eee19588c997ca54d3137f64afe55a18dfcf9062fa83a724bf2357'
-const TOKEN_NAME = 'HEXO'
-const PROJECT_NAME = 'Cardano Lands'
+const TOKEN_IMAGE_SRC = '/media/tokens/hexo/token.png';
+const TOKEN_POLICY_ID = '27eee19588c997ca54d3137f64afe55a18dfcf9062fa83a724bf2357';
+const TOKEN_NAME = 'HEXO';
+const PROJECT_NAME = 'Cardano Lands';
 const WHO_CAN_EARN: WhoCanEarn = [
   'Ape Nation',
   'Jungle Juice',
@@ -18,7 +18,7 @@ const WHO_CAN_EARN: WhoCanEarn = [
   'BLING',
   'iHold Music',
   'Bloodline',
-]
+];
 
 const Page = () => {
   return (
@@ -50,7 +50,7 @@ const Page = () => {
         </ol>
       </div>
     </PageContainer>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

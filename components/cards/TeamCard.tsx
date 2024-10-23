@@ -1,16 +1,16 @@
-import Image from 'next/image'
-import SocialIcon from '../SocialIcon'
+import Image from 'next/image';
+import SocialIcon from '../SocialIcon';
 
-export interface TeamCardProps {
-  profilePicture: string
-  name: string
-  title: string
-  description: string
-  socials: string[]
+interface TeamCardProps {
+  profilePicture: string;
+  name: string;
+  title: string;
+  description: string;
+  socials: string[];
 }
 
 const TeamCard = (props: TeamCardProps) => {
-  const { profilePicture, name, title, description, socials } = props
+  const { profilePicture, name, title, description, socials } = props;
 
   return (
     <article className='flex flex-col items-center justify-center w-72 m-4 p-5 bg-zinc-950/70 rounded-xl shadow-[-1px_-1px_0.3rem_0_rgba(255,255,255,0.5)]'>
@@ -30,7 +30,7 @@ const TeamCard = (props: TeamCardProps) => {
         ))}
       </div>
     </article>
-  )
-}
+  );
+};
 
-export default TeamCard
+export default TeamCard;

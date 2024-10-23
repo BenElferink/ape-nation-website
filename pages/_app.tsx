@@ -1,17 +1,17 @@
-import Head from 'next/head'
-import { AppProps } from 'next/app'
-import { Fragment } from 'react'
-import { Toaster } from 'react-hot-toast'
-import { WalletProvider } from '@/contexts/WalletContext'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
-import 'animate.css'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import '@/styles/swiper-overrides.css'
-import '@/styles/globals.css'
-import { RenderProvider } from '@/contexts/RenderContext'
+import Head from 'next/head';
+import { AppProps } from 'next/app';
+import { Fragment } from 'react';
+import { Toaster } from 'react-hot-toast';
+import { WalletProvider } from '@/contexts/WalletContext';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import 'animate.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import '@/styles/swiper-overrides.css';
+import '@/styles/globals.css';
+import { RenderProvider } from '@/contexts/RenderContext';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -46,7 +46,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <Footer />
       </RenderProvider>
     </Fragment>
-  )
-}
+  );
+};
 
-export default App
+export default App;

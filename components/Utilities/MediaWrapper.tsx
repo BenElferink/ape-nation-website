@@ -1,9 +1,9 @@
-import { PropsWithChildren } from 'react'
-import useScreenSize from '../../hooks/useScreenSize'
+import { PropsWithChildren } from 'react';
+import useScreenSize from '../../hooks/useScreenSize';
 
 const MediaWrapper = (props: PropsWithChildren<{ size?: number; isLeft?: boolean; posTop?: string; posSide?: string }>) => {
-  const { children, size = 100, isLeft = false, posTop = '0px', posSide } = props
-  const { isMobile, screenWidth } = useScreenSize()
+  const { children, size = 100, isLeft = false, posTop = '0px', posSide } = props;
+  const { isMobile, screenWidth } = useScreenSize();
 
   return (
     <div
@@ -23,7 +23,7 @@ const MediaWrapper = (props: PropsWithChildren<{ size?: number; isLeft?: boolean
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default MediaWrapper
+export default MediaWrapper;

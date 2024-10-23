@@ -1,14 +1,14 @@
-import Link from 'next/link'
-import TokenHeader from '../../components/tokens/TokenHeader'
-import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
-import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
-import PageContainer from '../../components/layout/PageContainer'
+import Link from 'next/link';
+import TokenHeader from '../../components/tokens/TokenHeader';
+import TokenPrerequisites from '../../components/tokens/TokenPrerequisites';
+import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns';
+import PageContainer from '../../components/layout/PageContainer';
 
-const TOKEN_IMAGE_SRC = '/media/tokens/md/token.png'
-const TOKEN_POLICY_ID = '772791eb3f4b92874a49d487375a90db631988291c1a643b817668ca'
-const TOKEN_NAME = 'MD'
-const PROJECT_NAME = 'Mad Dog Car Club'
-const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation', 'Mutation Nation']
+const TOKEN_IMAGE_SRC = '/media/tokens/md/token.png';
+const TOKEN_POLICY_ID = '772791eb3f4b92874a49d487375a90db631988291c1a643b817668ca';
+const TOKEN_NAME = 'MD';
+const PROJECT_NAME = 'Mad Dog Car Club';
+const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation', 'Mutation Nation'];
 
 const Page = () => {
   return (
@@ -43,7 +43,7 @@ const Page = () => {
         </ol>
       </div>
     </PageContainer>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

@@ -1,14 +1,14 @@
-import { useRouter } from 'next/router'
-import { Fragment } from 'react'
-import RecentMarketActivity from '@/components/RecentMarketActivity'
-import CollectionAssets from '@/components/dashboards/CollectionAssets'
-import isPolicyIdAllowed from '@/functions/isPolicyIdAllowed'
-import type { PolicyId } from '@/@types'
+import { useRouter } from 'next/router';
+import { Fragment } from 'react';
+import RecentMarketActivity from '@/components/RecentMarketActivity';
+import CollectionAssets from '@/components/dashboards/CollectionAssets';
+import isPolicyIdAllowed from '@/functions/isPolicyIdAllowed';
+import type { PolicyId } from '@/@types';
 
 const Page = () => {
-  const router = useRouter()
-  const policyId = router.query.policy_id as PolicyId
-  const policyOk = isPolicyIdAllowed(policyId)
+  const router = useRouter();
+  const policyId = router.query.policy_id as PolicyId;
+  const policyOk = isPolicyIdAllowed(policyId);
 
   return (
     <div className='flex flex-col items-center'>
@@ -21,7 +21,7 @@ const Page = () => {
         </Fragment>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

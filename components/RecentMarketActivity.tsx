@@ -1,50 +1,50 @@
-import Link from 'next/link'
-import { useEffect, useMemo, useState } from 'react'
-import { format } from 'timeago.js'
-import { Navigation } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import badLabsApi from '@/utils/badLabsApi'
-import useScreenSize from '@/hooks/useScreenSize'
-import getFileForPolicyId from '@/functions/getFileForPolicyId'
-import formatIpfsUrl from '@/functions/formatters/formatIpfsUrl'
-import formatBigNumber from '@/functions/formatters/formatBigNumber'
-import Loader from './Loader'
-import ImageLoader from './Loader/ImageLoader'
-import type { BadLabsApiMarket } from '@/utils/badLabsApi'
-import type { PolicyId } from '@/@types'
-import { ADA_SYMBOL, BLOODLINE_POLICY_ID } from '@/constants'
+import Link from 'next/link';
+import { useEffect, useMemo, useState } from 'react';
+import { format } from 'timeago.js';
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import badLabsApi from '@/utils/badLabsApi';
+import useScreenSize from '@/hooks/useScreenSize';
+import getFileForPolicyId from '@/functions/getFileForPolicyId';
+import formatIpfsUrl from '@/functions/formatters/formatIpfsUrl';
+import formatBigNumber from '@/functions/formatters/formatBigNumber';
+import Loader from './Loader';
+import ImageLoader from './Loader/ImageLoader';
+import type { BadLabsApiMarket } from '@/utils/badLabsApi';
+import type { PolicyId } from '@/@types';
+import { ADA_SYMBOL, BLOODLINE_POLICY_ID } from '@/constants';
 
 const RecentMarketActivity = (props: { policyId: PolicyId }) => {
-  const { policyId } = props
-  const { screenWidth } = useScreenSize()
+  const { policyId } = props;
+  const { screenWidth } = useScreenSize();
 
-  const imageSize = 170
-  const [slidesPerView, setSlidesPerView] = useState(0)
-  const [renderItems, setRenderItems] = useState<BadLabsApiMarket['items']>([])
-  const [fetching, setFetching] = useState(false)
+  const imageSize = 170;
+  const [slidesPerView, setSlidesPerView] = useState(0);
+  const [renderItems, setRenderItems] = useState<BadLabsApiMarket['items']>([]);
+  const [fetching, setFetching] = useState(false);
 
-  const assetsFile = useMemo(() => getFileForPolicyId(policyId), [policyId])
+  const assetsFile = useMemo(() => getFileForPolicyId(policyId), [policyId]);
 
   useEffect(() => {
-    const _l = renderItems.length
+    const _l = renderItems.length;
     if (!!_l) {
-      const _v = Math.floor((screenWidth * 0.9) / imageSize)
-      setSlidesPerView(_v < _l ? _v : _l)
+      const _v = Math.floor((screenWidth * 0.9) / imageSize);
+      setSlidesPerView(_v < _l ? _v : _l);
     } else {
-      setSlidesPerView(0)
+      setSlidesPerView(0);
     }
-  }, [screenWidth, renderItems])
+  }, [screenWidth, renderItems]);
 
   useEffect(() => {
-    setRenderItems([])
-    setFetching(true)
+    setRenderItems([]);
+    setFetching(true);
 
     badLabsApi.policy.market
       .getActivity(policyId)
       .then((payload) => setRenderItems(payload.items))
       .catch((error) => console.error(error))
-      .finally(() => setFetching(false))
-  }, [policyId])
+      .finally(() => setFetching(false));
+  }, [policyId]);
 
   return (
     <section className='w-full my-4 mx-auto'>
@@ -65,8 +65,8 @@ const RecentMarketActivity = (props: { policyId: PolicyId }) => {
           // loop
         >
           {renderItems.map((item, idx) => {
-            const thisAsset = assetsFile.assets.find((obj) => obj.tokenId === item.tokenId)
-            if (!thisAsset) return null
+            const thisAsset = assetsFile.assets.find((obj) => obj.tokenId === item.tokenId);
+            if (!thisAsset) return null;
 
             return (
               <SwiperSlide key={`recently-sold-${item.tokenId}-${idx}`}>
@@ -97,12 +97,12 @@ const RecentMarketActivity = (props: { policyId: PolicyId }) => {
                   </Link>
                 </div>
               </SwiperSlide>
-            )
+            );
           })}
         </Swiper>
       ) : null}
     </section>
-  )
-}
+  );
+};
 
-export default RecentMarketActivity
+export default RecentMarketActivity;
