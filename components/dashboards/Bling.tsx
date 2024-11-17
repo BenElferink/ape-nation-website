@@ -9,6 +9,9 @@ import WalletHero from '../Wallet/WalletHero';
 import { ADA_SYMBOL, BLING_APP_WALLET_ADDRESS, DEV_WALLET_ADDRESS, ONE_MILLION, TEAM_TREASURY_WALLET_ADDRESS } from '@/constants';
 
 const EVENT_OPEN = true;
+const BASE_PRICE = 49;
+const DISCOUNT = 0.5;
+const PRICE = BASE_PRICE * DISCOUNT;
 
 const Bling = () => {
   const { connected, connectedManually, wallet, disconnectWallet } = useWallet();
@@ -24,12 +27,10 @@ const Bling = () => {
       setLoadingTx(true);
       setErrorMessage('');
 
-      const fullPrice = 49;
       const appFee = 2;
-
-      const inputLovelaces = String(count * fullPrice * ONE_MILLION);
+      const inputLovelaces = String(count * PRICE * ONE_MILLION);
       const appLovelaces = String(count * appFee * ONE_MILLION);
-      const devLovelaces = String(count * ((fullPrice - appFee) / 2) * ONE_MILLION);
+      const devLovelaces = String(count * ((PRICE - appFee) / 2) * ONE_MILLION);
 
       try {
         const tx = new Transaction({ initiator: wallet })
@@ -145,6 +146,7 @@ const Bling = () => {
           <br />
           POWER OF BLING
         </h2>
+        {!!DISCOUNT && <h3 className='text-xl sm:text-3xl font-montserrat font-bold'>{DISCOUNT * 100}% OFF! (Limited Time Only)</h3>}
 
         <div className='w-full max-w-[555px] mt-4 flex items-center justify-evenly'>
           <button
@@ -153,7 +155,16 @@ const Bling = () => {
             disabled={!EVENT_OPEN || !remainingCount.single || loadingTx || !connected || connectedManually}
             className='w-full m-1 p-4 rounded-xl text-xs disabled:bg-gray-900/50 bg-blue-900/50 hover:bg-blue-700/50 disabled:text-gray-400 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-blue-700 hover:border-blue-700 disabled:cursor-not-allowed hover:cursor-pointer'
           >
-            <p className='text-nowrap'>Mint 1 ({ADA_SYMBOL}49)</p>
+            <p className='text-nowrap'>
+              Mint 1{' '}
+              {!!DISCOUNT ? (
+                <>
+                  ({ADA_SYMBOL} <span className='line-through'>{BASE_PRICE * 1}</span> {PRICE * 1})
+                </>
+              ) : (
+                `(${ADA_SYMBOL}${PRICE * 1})`
+              )}
+            </p>
             <p className='text-nowrap'>{remainingCount.single} remain (random)</p>
           </button>
           <button
@@ -162,7 +173,16 @@ const Bling = () => {
             disabled={!EVENT_OPEN || remainingCount.single < 5 || loadingTx || !connected || connectedManually}
             className='w-full m-1 p-4 rounded-xl text-xs disabled:bg-gray-900/50 bg-blue-900/50 hover:bg-blue-700/50 disabled:text-gray-400 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-blue-700 hover:border-blue-700 disabled:cursor-not-allowed hover:cursor-pointer'
           >
-            <p className='text-nowrap'>Mint 5 ({ADA_SYMBOL}245)</p>
+            <p className='text-nowrap'>
+              Mint 5{' '}
+              {!!DISCOUNT ? (
+                <>
+                  ({ADA_SYMBOL} <span className='line-through'>{BASE_PRICE * 5}</span> {PRICE * 5})
+                </>
+              ) : (
+                `(${ADA_SYMBOL}${PRICE * 5})`
+              )}
+            </p>
             <p className='text-nowrap'>
               {remainingCount.sets || Math.floor(remainingCount.single / 5)} remain {remainingCount.sets ? '(set)' : '(random)'}
             </p>
