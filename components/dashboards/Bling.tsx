@@ -10,8 +10,8 @@ import { ADA_SYMBOL, BLING_APP_WALLET_ADDRESS, DEV_WALLET_ADDRESS, ONE_MILLION, 
 
 const EVENT_OPEN = true;
 const BASE_PRICE = 49;
-const DISCOUNT = 0.5;
-const PRICE = BASE_PRICE * DISCOUNT;
+const DISCOUNT = 0;
+const PRICE = !!DISCOUNT ? BASE_PRICE * DISCOUNT : BASE_PRICE;
 
 const Bling = () => {
   const { connected, connectedManually, wallet, disconnectWallet } = useWallet();
