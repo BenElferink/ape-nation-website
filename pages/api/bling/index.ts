@@ -15,9 +15,13 @@ export const config = {
 
 type InputIutput = {
   [address: string]: {
-    [unit: string]: number
-  }
-}
+    [unit: string]: number;
+  };
+};
+
+const BASE_PRICE = 49;
+const DISCOUNT = 0.5;
+const PRICE = !!DISCOUNT ? BASE_PRICE * DISCOUNT : BASE_PRICE;
 
 export const getSenderFromBlingTx = async (txHash: string) => {
   const allowedUnits = ['lovelace'];
@@ -80,11 +84,11 @@ export const getSenderFromBlingTx = async (txHash: string) => {
   });
 
   const matched: {
-    address: string
-    lovelaces: number
+    address: string;
+    lovelaces: number;
   }[] = [];
 
-  if ([49 * ONE_MILLION, 245 * ONE_MILLION].includes(lovelaces)) {
+  if ([PRICE * ONE_MILLION, PRICE * 5 * ONE_MILLION].includes(lovelaces)) {
     matched.push({
       address: sentFrom,
       lovelaces,
@@ -108,12 +112,12 @@ const getWalletAssets = async (wallet: MeshWallet) => {
   const utxos = await wallet.getUtxos();
 
   const assets: {
-    RubyChain?: Asset[]
-    TopazChain?: Asset[]
-    EmeraldChain?: Asset[]
-    SapphireChain?: Asset[]
-    AmethystChain?: Asset[]
-    NationNote?: Asset[]
+    RubyChain?: Asset[];
+    TopazChain?: Asset[];
+    EmeraldChain?: Asset[];
+    SapphireChain?: Asset[];
+    AmethystChain?: Asset[];
+    NationNote?: Asset[];
   } = {};
 
   utxos.forEach(({ output }) => {
@@ -169,7 +173,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const { txHash: txHashFromBody } = body;
 
         const { address, lovelaces } = await getSenderFromBlingTx(txHashFromBody);
-        const amount = lovelaces / ONE_MILLION / 49;
+        const amount = lovelaces / ONE_MILLION / PRICE;
 
         const collection = firestore.collection('bling-txs');
         const { empty } = await collection.where('txHash', '==', txHashFromBody).get();
