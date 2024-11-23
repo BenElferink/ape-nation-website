@@ -1,43 +1,7 @@
 {
   "crons": [
     {
-      "path": "/api/floor/58b9f55e6ea9828dea7a8d9f49420171c6360f99b5e6e86de5fdb644/cron",
-      "schedule": "0 0 * * *"
-    },
-    {
-      "path": "/api/floor/a5c0b233312ff05cdd6271d5749992f77a8e568a0533855b250dc7a0/cron",
-      "schedule": "0 0 * * *"
-    },
-    {
-      "path": "/api/floor/929ab04657f37d1108beb720a73f55f83b65948e05ec3a5619fa7875/cron",
-      "schedule": "0 0 * * *"
-    },
-    {
-      "path": "/api/floor/f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162/cron",
-      "schedule": "0 0 * * *"
-    },
-    {
-      "path": "/api/floor/21a44e25de32d0c2cba0413cb417fa61ed65cd9e2f419cf5c714ca4f/cron",
-      "schedule": "0 0 * * *"
-    },
-    {
-      "path": "/api/floor/c9fa37158ded418a5bb18159e4e7d7c1aeadd202ef7eaa84fbf23350/cron",
-      "schedule": "0 0 * * *"
-    },
-    {
-      "path": "/api/floor/b0fd2efcb7e8b5d0dd6fce7403e31afc7919efe4e68a66570a5ee055/cron",
-      "schedule": "0 0 * * *"
-    },
-    {
-      "path": "/api/floor/a2e5d9747e27d18cbc03eb2c24222f79675f8c3adae33cf4de9ac2bc/cron",
-      "schedule": "0 0 * * *"
-    },
-    {
       "path": "/api/bloodline/sync",
-      "schedule": "*/15 * * * *"
-    },
-    {
-      "path": "/api/bling/sync",
       "schedule": "*/15 * * * *"
     }
   ]
