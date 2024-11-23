@@ -1,31 +1,31 @@
-'use client';
-import Image from 'next/image';
-import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
-import { MusicalNoteIcon } from '@heroicons/react/24/solid';
-import useWallet from '@/contexts/WalletContext';
-import badLabsApi from '@/utils/badLabsApi';
-import getFileForPolicyId from '@/functions/getFileForPolicyId';
-import formatIpfsUrl from '@/functions/formatters/formatIpfsUrl';
-import AssetFilters from '../filters/AssetFilters';
-import AssetCard from '../cards/AssetCard';
-import CopyChip from '../CopyChip';
-import Loader from '../Loader';
-import Modal from '../layout/Modal';
-import ImageLoader from '../Loader/ImageLoader';
-import MusicPlayerWaves from '../MusicPlayerWaves';
-import type { PolicyId, PopulatedAsset, PopulatedTrait } from '@/@types';
-import { ADA_SYMBOL, APE_NATION_POLICY_ID, BLOODLINE_POLICY_ID, IHOLD_MUSIC_POLICY_ID } from '@/constants';
+'use client'
+import Image from 'next/image'
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
+import { MusicalNoteIcon } from '@heroicons/react/24/solid'
+import useWallet from '@/contexts/WalletContext'
+import badLabsApi from '@/utils/badLabsApi'
+import getFileForPolicyId from '@/functions/getFileForPolicyId'
+import formatIpfsUrl from '@/functions/formatters/formatIpfsUrl'
+import AssetFilters from '../filters/AssetFilters'
+import AssetCard from '../cards/AssetCard'
+import CopyChip from '../CopyChip'
+import Loader from '../Loader'
+import Modal from '../layout/Modal'
+import ImageLoader from '../Loader/ImageLoader'
+import MusicPlayerWaves from '../MusicPlayerWaves'
+import type { PolicyId, PopulatedAsset, PopulatedTrait } from '@/@types'
+import { ADA_SYMBOL, APE_NATION_POLICY_ID, BLOODLINE_POLICY_ID, IHOLD_MUSIC_POLICY_ID } from '@/constants'
 
 interface AssetModalContentProps {
-  policyId: string;
-  asset: PopulatedAsset;
-  withWallet: boolean;
+  policyId: string
+  asset: PopulatedAsset
+  withWallet: boolean
 }
 
 const AssetModalContent = (props: AssetModalContentProps) => {
-  const { policyId, asset, withWallet } = props;
+  const { policyId, asset, withWallet } = props
 
-  const [boughtAtPrice, setBoughtAtPrice] = useState(0);
+  const [boughtAtPrice, setBoughtAtPrice] = useState(0)
   const [displayedFile, setDisplayedFile] = useState<PopulatedAsset['files'][0]>(
     asset.files.length
       ? asset.policyId === IHOLD_MUSIC_POLICY_ID
@@ -36,24 +36,24 @@ const AssetModalContent = (props: AssetModalContentProps) => {
           mediaType: 'image/png',
           src: asset.image.url,
         }
-  );
+  )
 
   useEffect(() => {
     if (withWallet) {
-      const stored = localStorage.getItem(`asset-price-${asset.tokenId}`);
-      const storedPrice = stored ? JSON.parse(stored) : 0;
-      const storedPriceNum = Number(storedPrice);
+      const stored = localStorage.getItem(`asset-price-${asset.tokenId}`)
+      const storedPrice = stored ? JSON.parse(stored) : 0
+      const storedPriceNum = Number(storedPrice)
 
       if (storedPrice && !isNaN(storedPriceNum)) {
-        setBoughtAtPrice(storedPriceNum);
+        setBoughtAtPrice(storedPriceNum)
       } else {
         badLabsApi.token.market.getActivity(asset.tokenId).then((data) => {
-          const price = data.items.filter(({ activityType }) => activityType === 'BUY')[0]?.price || 0;
-          setBoughtAtPrice(price);
-        });
+          const price = data.items.filter(({ activityType }) => activityType === 'BUY')[0]?.price || 0
+          setBoughtAtPrice(price)
+        })
       }
     }
-  }, [policyId, asset, withWallet]);
+  }, [policyId, asset, withWallet])
 
   return (
     <div className='flex flex-col lg:flex-row lg:justify-between md:px-6'>
@@ -162,11 +162,11 @@ const AssetModalContent = (props: AssetModalContentProps) => {
             <input
               value={boughtAtPrice}
               onChange={(e) => {
-                const val = Number(e.target.value);
+                const val = Number(e.target.value)
 
                 if (!isNaN(val)) {
-                  localStorage.setItem(`asset-price-${asset.tokenId}`, String(val));
-                  setBoughtAtPrice(val);
+                  localStorage.setItem(`asset-price-${asset.tokenId}`, String(val))
+                  setBoughtAtPrice(val)
                 }
               }}
               className='w-full p-3 rounded-lg bg-zinc-900 border border-zinc-700 text-sm hover:bg-zinc-700 hover:border-zinc-500 hover:text-white'
@@ -244,107 +244,107 @@ const AssetModalContent = (props: AssetModalContentProps) => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-const INITIAL_DISPLAY_AMOUNT = 20;
+const INITIAL_DISPLAY_AMOUNT = 20
 
 interface CollectionAssetsProps {
-  policyId: PolicyId;
-  withListed?: boolean;
-  withWallet?: boolean;
+  policyId: PolicyId
+  withListed?: boolean
+  withWallet?: boolean
 }
 
 const CollectionAssets = (props: CollectionAssetsProps) => {
-  const { policyId, withListed = false, withWallet = false } = props;
-  const { populatedWallet } = useWallet();
+  const { policyId, withListed = false, withWallet = false } = props
+  const { populatedWallet } = useWallet()
 
-  const [fetching, setFetching] = useState(false);
-  const [fetched, setFetched] = useState(false);
+  const [fetching, setFetching] = useState(false)
+  const [fetched, setFetched] = useState(false)
   const [traitsFile, setTraitsFile] = useState<{
-    [category: string]: PopulatedTrait[];
-  }>({});
-  const [assetsFile, setAssetsFile] = useState<PopulatedAsset[]>([]);
-  const [selectedAsset, setSelectedAsset] = useState<PopulatedAsset | null>(null);
+    [category: string]: PopulatedTrait[]
+  }>({})
+  const [assetsFile, setAssetsFile] = useState<PopulatedAsset[]>([])
+  const [selectedAsset, setSelectedAsset] = useState<PopulatedAsset | null>(null)
 
   const appendDefault = useCallback(() => {
-    const { assets, traits } = getFileForPolicyId(policyId);
-    setTraitsFile(traits);
-    setAssetsFile(assets);
-  }, [policyId]);
+    const { assets, traits } = getFileForPolicyId(policyId)
+    setTraitsFile(traits)
+    setAssetsFile(assets)
+  }, [policyId])
 
   const appendWallet = useCallback(() => {
-    const { traits } = getFileForPolicyId(policyId);
-    setTraitsFile(traits);
-    setAssetsFile(populatedWallet?.assets[policyId] as PopulatedAsset[]);
-  }, [policyId, populatedWallet?.assets]);
+    const { traits } = getFileForPolicyId(policyId)
+    setTraitsFile(traits)
+    setAssetsFile(populatedWallet?.assets[policyId] as PopulatedAsset[])
+  }, [policyId, populatedWallet?.assets])
 
   const fetchPricesAndAppendListed = useCallback(async () => {
-    setFetching(true);
+    setFetching(true)
 
     try {
-      const fetched = await badLabsApi.policy.market.getData(policyId);
+      const fetched = await badLabsApi.policy.market.getData(policyId)
 
-      const { assets, traits } = getFileForPolicyId(policyId);
+      const { assets, traits } = getFileForPolicyId(policyId)
       const mappedAssets = assets.map((asset) => {
-        const found = fetched.items.find((listed) => listed.tokenId === asset.tokenId);
+        const found = fetched.items.find((listed) => listed.tokenId === asset.tokenId)
 
         return {
           ...asset,
           price: !!found ? found.price : 0,
-        };
-      });
+        }
+      })
 
       for await (const listed of fetched.items) {
-        const found = mappedAssets.find((asset) => listed.tokenId === asset.tokenId);
+        const found = mappedAssets.find((asset) => listed.tokenId === asset.tokenId)
 
         if (!found) {
-          const data: Partial<PopulatedAsset> = await badLabsApi.token.getData(listed.tokenId);
-          data.price = listed.price;
-          mappedAssets.push(data as (typeof mappedAssets)[0]);
+          const data: Partial<PopulatedAsset> = await badLabsApi.token.getData(listed.tokenId)
+          data.price = listed.price
+          mappedAssets.push(data as (typeof mappedAssets)[0])
         }
       }
 
-      setTraitsFile(traits);
-      setAssetsFile(mappedAssets);
-      setFetched(true);
+      setTraitsFile(traits)
+      setAssetsFile(mappedAssets)
+      setFetched(true)
     } catch (error) {
-      console.error(error);
-      appendDefault();
+      console.error(error)
+      appendDefault()
     }
 
-    setFetching(false);
-  }, [policyId, appendDefault]);
+    setFetching(false)
+  }, [policyId, appendDefault])
 
   useEffect(() => {
     if (withListed) {
-      fetchPricesAndAppendListed();
+      fetchPricesAndAppendListed()
     } else if (withWallet) {
-      appendWallet();
+      appendWallet()
     } else {
-      appendDefault();
+      appendDefault()
     }
-  }, [withListed, withWallet, fetchPricesAndAppendListed, appendWallet, appendDefault]);
+  }, [withListed, withWallet, fetchPricesAndAppendListed, appendWallet, appendDefault])
 
-  const [rendered, setRendered] = useState<PopulatedAsset[]>([]);
+  const [rendered, setRendered] = useState<PopulatedAsset[]>([])
   // TODO : setDisplayNum using the window width and/or height
-  const [displayNum, setDisplayNum] = useState(INITIAL_DISPLAY_AMOUNT);
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const [displayNum, setDisplayNum] = useState(INITIAL_DISPLAY_AMOUNT)
+  const bottomRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = (e: Event) => {
       // @ts-ignore
-      const { pageYOffset, innerHeight } = e.composedPath()[1];
-      const isScrolledToBottom = (bottomRef.current?.offsetTop || 0) <= pageYOffset + innerHeight;
+      const { pageYOffset, innerHeight } = e.composedPath()[1]
+      const isScrolledToBottom = (bottomRef.current?.offsetTop || 0) <= pageYOffset + innerHeight
 
       if (isScrolledToBottom) {
-        setDisplayNum((prev) => prev + INITIAL_DISPLAY_AMOUNT);
+        setDisplayNum((prev) => prev + INITIAL_DISPLAY_AMOUNT)
       }
-    };
+    }
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  });
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
 
   return (
     <div className='w-screen flex flex-col md:flex-row items-center md:items-start'>
@@ -367,7 +367,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
           ) : (
             rendered.map((asset, idx) => {
               if (idx >= displayNum) {
-                return null;
+                return null
               }
 
               return (
@@ -396,7 +396,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
                         ]
                   }
                 />
-              );
+              )
             })
           )}
         </div>
@@ -410,7 +410,7 @@ const CollectionAssets = (props: CollectionAssetsProps) => {
         </Modal>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default CollectionAssets;
+export default CollectionAssets

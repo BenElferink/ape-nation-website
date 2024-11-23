@@ -1,102 +1,103 @@
-import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
-import { toast } from 'react-hot-toast';
-import axios from 'axios';
-import { keepRelevant, Transaction } from '@meshsdk/core';
-import useWallet from '@/contexts/WalletContext';
-import txConfirmation from '@/functions/txConfirmation';
-import WalletHero from '../Wallet/WalletHero';
-import { ADA_SYMBOL, BLING_APP_WALLET_ADDRESS, DEV_WALLET_ADDRESS, ONE_MILLION, TEAM_TREASURY_WALLET_ADDRESS } from '@/constants';
+import Image from 'next/image'
+import { useCallback, useEffect, useState } from 'react'
+import { toast } from 'react-hot-toast'
+import axios from 'axios'
+import { keepRelevant, Transaction } from '@meshsdk/core'
+import useWallet from '@/contexts/WalletContext'
+import txConfirmation from '@/functions/txConfirmation'
+import WalletHero from '../Wallet/WalletHero'
+import { ADA_SYMBOL, BLING_APP_WALLET_ADDRESS, DEV_WALLET_ADDRESS, ONE_MILLION, TEAM_TREASURY_WALLET_ADDRESS } from '@/constants'
 
-const EVENT_OPEN = true;
-const BASE_PRICE = 49;
-const DISCOUNT = 0.5;
-const PRICE = !!DISCOUNT ? BASE_PRICE * DISCOUNT : BASE_PRICE;
+const EVENT_OPEN = true
+const BASE_PRICE = 49
+const DISCOUNT = 0.5
+const PRICE = !!DISCOUNT ? BASE_PRICE * DISCOUNT : BASE_PRICE
 
 const Bling = () => {
-  const { connected, connectedManually, wallet, disconnectWallet } = useWallet();
+  const { connected, connectedManually, wallet, disconnectWallet } = useWallet()
 
-  const [loadingTx, setLoadingTx] = useState<boolean>(false);
+  const [loadingTx, setLoadingTx] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>(
     !EVENT_OPEN ? 'The portal is closed at the moment, please check in with our community for further announcements.' : ''
-  );
+  )
 
   const buildTx = useCallback(
     async (count: 1 | 5) => {
-      if (!wallet) return;
-      setLoadingTx(true);
-      setErrorMessage('');
+      if (!wallet) return
+      setLoadingTx(true)
+      setErrorMessage('')
 
-      const appFee = 2;
-      const inputLovelaces = String(count * PRICE * ONE_MILLION);
-      const appLovelaces = String(count * appFee * ONE_MILLION);
-      const devLovelaces = String(count * ((PRICE - appFee) / 2) * ONE_MILLION);
+      const appFee = 2
+      const inputLovelaces = String(count * PRICE * ONE_MILLION)
+      const appLovelaces = String(count * appFee * ONE_MILLION)
+      const devLovelaces = String(count * ((PRICE - appFee) / 2) * ONE_MILLION)
 
       try {
         const tx = new Transaction({ initiator: wallet })
           .setTxInputs(keepRelevant(new Map([['lovelace', inputLovelaces]]), await wallet.getUtxos()))
           .sendLovelace({ address: BLING_APP_WALLET_ADDRESS }, appLovelaces)
           .sendLovelace({ address: TEAM_TREASURY_WALLET_ADDRESS }, devLovelaces)
-          .sendLovelace({ address: DEV_WALLET_ADDRESS }, devLovelaces);
+          .sendLovelace({ address: DEV_WALLET_ADDRESS }, devLovelaces)
 
-        toast.loading('Building transaction');
-        const unsignedTx = await tx.build();
+        toast.loading('Building transaction')
+        const unsignedTx = await tx.build()
 
-        toast.dismiss();
-        toast.loading('Awaiting signature');
-        const signedTx = await wallet?.signTx(unsignedTx);
+        toast.dismiss()
+        toast.loading('Awaiting signature')
+        const signedTx = await wallet?.signTx(unsignedTx)
 
-        toast.dismiss();
-        toast.loading('Submitting transaction');
-        const txHash = await wallet?.submitTx(signedTx as string);
+        toast.dismiss()
+        toast.loading('Submitting transaction')
+        const txHash = await wallet?.submitTx(signedTx as string)
 
-        toast.dismiss();
-        toast.loading('Awaiting network confirmation');
-        await txConfirmation(txHash as string);
-        toast.dismiss();
-        toast.success('Transaction submitted!');
+        toast.dismiss()
+        toast.loading('Awaiting network confirmation')
+        await txConfirmation(txHash as string)
+        toast.dismiss()
+        toast.success('Transaction submitted!')
 
         try {
-          toast.loading('Minting NFT...');
-          await axios.post('/api/bling', { txHash });
-          toast.dismiss();
-          toast.success('Minted!');
+          toast.loading('Minting NFT...')
+          await axios.post('/api/bling', { txHash })
+          toast.dismiss()
+          toast.success('Minted!')
         } catch (error) {
-          toast.dismiss();
-          toast.success('Soon to be minted!');
+          toast.dismiss()
+          toast.success('Soon to be minted!')
         }
       } catch (error: any) {
-        console.error(error);
-        console.error(error?.message);
+        console.error(error)
+        console.error(error?.message)
 
-        toast.remove();
-        toast.error('Woopsies!');
+        toast.remove()
+        toast.error('Woopsies!')
 
         if (error?.message?.indexOf('User declined to sign the transaction.') !== -1) {
           // [BrowserWallet] An error occurred during signTx: {"code":2,"info":"User declined to sign the transaction."}
-          setErrorMessage('TX build failed: you declined the transaction.');
+          setErrorMessage('TX build failed: you declined the transaction.')
         } else if (error?.message?.indexOf('Not enough ADA leftover to include non-ADA assets') !== -1) {
           // [Transaction] An error occurred during build: Not enough ADA leftover to include non-ADA assets in a change address.
-          setErrorMessage('TX build failed: your UTXOs are locked, please unlock them using https://unfrack.it');
+          setErrorMessage('TX build failed: your UTXOs are locked, please unlock them using https://unfrack.it')
         } else if (error?.message?.indexOf('UTxO Balance Insufficient') !== -1) {
           // [Transaction] An error occurred during build: UTxO Balance Insufficient.
-          setErrorMessage('TX build failed: not enough ADA to process TX, please add ADA to your wallet, then try again.');
+          setErrorMessage('TX build failed: not enough ADA to process TX, please add ADA to your wallet, then try again.')
         } else {
-          setErrorMessage(error?.message || error?.toString());
+          setErrorMessage(error?.message || error?.toString())
         }
+      } finally {
+        setLoadingTx(false)
       }
 
-      setLoadingTx(false);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },
     [loadingTx, wallet]
-  );
+  )
 
-  const [remainingCount, setRemainingCount] = useState({ single: 0, sets: 0 });
+  const [remainingCount, setRemainingCount] = useState({ single: 0, sets: 0 })
 
   const getAndSetCounts = async () => {
     try {
-      const { data } = await axios.get('/api/bling');
+      const { data } = await axios.get('/api/bling')
 
       setRemainingCount({
         single: data['NationNote']?.length,
@@ -107,15 +108,15 @@ const Bling = () => {
           data['SapphireChain']?.length || 0,
           data['AmethystChain']?.length || 0
         ),
-      });
+      })
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
-  };
+  }
 
   useEffect(() => {
-    getAndSetCounts();
-  }, []);
+    getAndSetCounts()
+  }, [])
 
   if (connected && connectedManually) {
     return (
@@ -133,7 +134,7 @@ const Bling = () => {
           Disconnect Wallet
         </button>
       </div>
-    );
+    )
   }
 
   return (
@@ -196,7 +197,7 @@ const Bling = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Bling;
+export default Bling
