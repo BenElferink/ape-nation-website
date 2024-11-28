@@ -6,9 +6,10 @@ import { keepRelevant, Transaction } from '@meshsdk/core'
 import useWallet from '@/contexts/WalletContext'
 import txConfirmation from '@/functions/txConfirmation'
 import WalletHero from '../Wallet/WalletHero'
-import { ADA_SYMBOL, BLING_APP_WALLET_ADDRESS, DEV_WALLET_ADDRESS, ONE_MILLION, TEAM_TREASURY_WALLET_ADDRESS } from '@/constants'
+import { ADA_SYMBOL, BLING_APP_WALLET_ADDRESS, BLING_POLICY_ID, DEV_WALLET_ADDRESS, ONE_MILLION, TEAM_TREASURY_WALLET_ADDRESS } from '@/constants'
 
-const EVENT_OPEN = true
+const EVENT_OPEN = false
+const SOLD_OUT = true
 const BASE_PRICE = 49
 const DISCOUNT = 0.5
 const PRICE = !!DISCOUNT ? BASE_PRICE * DISCOUNT : BASE_PRICE
@@ -18,7 +19,7 @@ const Bling = () => {
 
   const [loadingTx, setLoadingTx] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>(
-    !EVENT_OPEN ? 'The portal is closed at the moment, please check in with our community for further announcements.' : ''
+    !EVENT_OPEN && !SOLD_OUT ? 'The portal is closed at the moment, please check in with our community for further announcements.' : ''
   )
 
   const buildTx = useCallback(
@@ -147,53 +148,76 @@ const Bling = () => {
           <br />
           POWER OF BLING
         </h2>
-        {!!DISCOUNT && <h3 className='text-xl sm:text-3xl font-montserrat font-bold'>{DISCOUNT * 100}% OFF! (Limited Time Only)</h3>}
 
-        <div className='w-full max-w-[555px] mt-4 flex items-center justify-evenly'>
-          <button
-            type='button'
-            onClick={() => buildTx(1)}
-            disabled={!EVENT_OPEN || !remainingCount.single || loadingTx || !connected || connectedManually}
-            className='w-full m-1 p-4 rounded-xl text-xs disabled:bg-gray-900/50 bg-blue-900/50 hover:bg-blue-700/50 disabled:text-gray-400 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-blue-700 hover:border-blue-700 disabled:cursor-not-allowed hover:cursor-pointer'
-          >
-            <p className='text-nowrap'>
-              Mint 1{' '}
-              {!!DISCOUNT ? (
-                <>
-                  ({ADA_SYMBOL} <span className='line-through'>{BASE_PRICE * 1}</span> {PRICE * 1})
-                </>
-              ) : (
-                `(${ADA_SYMBOL}${PRICE * 1})`
-              )}
-            </p>
-            <p className='text-nowrap'>{remainingCount.single} remain (random)</p>
-          </button>
-          <button
-            type='button'
-            onClick={() => buildTx(5)}
-            disabled={!EVENT_OPEN || remainingCount.single < 5 || loadingTx || !connected || connectedManually}
-            className='w-full m-1 p-4 rounded-xl text-xs disabled:bg-gray-900/50 bg-blue-900/50 hover:bg-blue-700/50 disabled:text-gray-400 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-blue-700 hover:border-blue-700 disabled:cursor-not-allowed hover:cursor-pointer'
-          >
-            <p className='text-nowrap'>
-              Mint 5{' '}
-              {!!DISCOUNT ? (
-                <>
-                  ({ADA_SYMBOL} <span className='line-through'>{BASE_PRICE * 5}</span> {PRICE * 5})
-                </>
-              ) : (
-                `(${ADA_SYMBOL}${PRICE * 5})`
-              )}
-            </p>
-            <p className='text-nowrap'>
-              {remainingCount.sets || Math.floor(remainingCount.single / 5)} remain {remainingCount.sets ? '(set)' : '(random)'}
-            </p>
-          </button>
-        </div>
+        {SOLD_OUT ? (
+          <h3 className='text-xl sm:text-3xl font-montserrat font-bold'>SOLD OUT!</h3>
+        ) : !!DISCOUNT ? (
+          <h3 className='text-xl sm:text-3xl font-montserrat font-bold'>{DISCOUNT * 100}% OFF! (Limited Time Only)</h3>
+        ) : null}
+
+        {SOLD_OUT ? (
+          <div className='w-full max-w-[555px] mt-4 flex items-center justify-evenly'>
+            <button
+              type='button'
+              onClick={() =>
+                window.open(
+                  'https://www.jpg.store/collection/blingbyapenation?tab=items&filters=eyJzdGFraW5nIHJld2FyZCI6WyIxNSAkTkFUSU9OIERhaWx5Il19', // `https://www.jpg.store/collection/${BLING_POLICY_ID}`
+                  '_blank',
+                  'noopener noreferrer'
+                )
+              }
+              className='w-full m-1 p-4 rounded-xl text-xs disabled:bg-gray-900/50 bg-blue-900/50 hover:bg-blue-700/50 disabled:text-gray-400 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-blue-700 hover:border-blue-700 disabled:cursor-not-allowed hover:cursor-pointer'
+            >
+              <p className='text-nowrap'>Buy on JPG Store</p>
+            </button>
+          </div>
+        ) : (
+          <div className='w-full max-w-[555px] mt-4 flex items-center justify-evenly'>
+            <button
+              type='button'
+              onClick={() => buildTx(1)}
+              disabled={!EVENT_OPEN || SOLD_OUT || !remainingCount.single || loadingTx || !connected || connectedManually}
+              className='w-full m-1 p-4 rounded-xl text-xs disabled:bg-gray-900/50 bg-blue-900/50 hover:bg-blue-700/50 disabled:text-gray-400 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-blue-700 hover:border-blue-700 disabled:cursor-not-allowed hover:cursor-pointer'
+            >
+              <p className='text-nowrap'>
+                Mint 1{' '}
+                {!!DISCOUNT ? (
+                  <>
+                    ({ADA_SYMBOL} <span className='line-through'>{BASE_PRICE * 1}</span> {PRICE * 1})
+                  </>
+                ) : (
+                  `(${ADA_SYMBOL}${PRICE * 1})`
+                )}
+              </p>
+              <p className='text-nowrap'>{remainingCount.single} remain (random)</p>
+            </button>
+            <button
+              type='button'
+              onClick={() => buildTx(5)}
+              disabled={!EVENT_OPEN || SOLD_OUT || remainingCount.single < 5 || loadingTx || !connected || connectedManually}
+              className='w-full m-1 p-4 rounded-xl text-xs disabled:bg-gray-900/50 bg-blue-900/50 hover:bg-blue-700/50 disabled:text-gray-400 hover:text-gray-200 disabled:border border hover:border disabled:border-gray-800 border-blue-700 hover:border-blue-700 disabled:cursor-not-allowed hover:cursor-pointer'
+            >
+              <p className='text-nowrap'>
+                Mint 5{' '}
+                {!!DISCOUNT ? (
+                  <>
+                    ({ADA_SYMBOL} <span className='line-through'>{BASE_PRICE * 5}</span> {PRICE * 5})
+                  </>
+                ) : (
+                  `(${ADA_SYMBOL}${PRICE * 5})`
+                )}
+              </p>
+              <p className='text-nowrap'>
+                {remainingCount.sets || Math.floor(remainingCount.single / 5)} remain {remainingCount.sets ? '(set)' : '(random)'}
+              </p>
+            </button>
+          </div>
+        )}
 
         {errorMessage ? <p className='text-red-200'>{errorMessage}</p> : null}
 
         <div className='w-[90vw] h-[calc(90vw_*_0.641)] max-w-[764px] max-h-[490px] mt-4 p-4 rounded-xl border border-zinc-600 bg-zinc-950/50 backdrop-blur'>
-          <Image src='/media/bling.png' alt='' fill className='object-cover' />
+          <Image src={`/media/bling_${SOLD_OUT ? 'final' : 'sale'}.png`} alt='' fill className='object-cover' />
         </div>
       </div>
     </div>
