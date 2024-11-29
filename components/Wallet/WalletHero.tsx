@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import useWallet from '@/contexts/WalletContext';
-import { NATION_COIN_POLICY_ID } from '@/constants';
-import WalletConnect from './WalletConnect';
+import { useEffect, useState } from 'react'
+import useWallet from '@/contexts/WalletContext'
+import { NATION_COIN_POLICY_ID } from '@/constants'
+import WalletConnect from './WalletConnect'
 
 const WalletHero = () => {
-  const { connected, populatedWallet, disconnectWallet } = useWallet();
-  const nationToken = populatedWallet?.assets[NATION_COIN_POLICY_ID][0];
+  const { connected, populatedWallet, disconnectWallet } = useWallet()
+  const nationToken = populatedWallet?.assets[NATION_COIN_POLICY_ID][0]
 
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false)
 
   useEffect(() => {
-    if (connected && openModal) setOpenModal(false);
-  }, [connected, openModal]);
+    if (connected && openModal) setOpenModal(false)
+  }, [connected, openModal])
 
   return (
     <section className='w-full text-center'>
@@ -42,7 +42,7 @@ const WalletHero = () => {
 
       {openModal ? <WalletConnect onClickClose={() => setOpenModal(false)} /> : null}
     </section>
-  );
-};
+  )
+}
 
-export default WalletHero;
+export default WalletHero

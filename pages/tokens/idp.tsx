@@ -1,14 +1,14 @@
-import Link from 'next/link';
-import TokenHeader from '../../components/tokens/TokenHeader';
-import TokenPrerequisites from '../../components/tokens/TokenPrerequisites';
-import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns';
-import PageContainer from '../../components/layout/PageContainer';
+import Link from 'next/link'
+import TokenHeader from '../../components/tokens/TokenHeader'
+import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
+import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
+import PageContainer from '../../components/layout/PageContainer'
 
-const TOKEN_IMAGE_SRC = '/media/tokens/idp/token.png';
-const TOKEN_POLICY_ID = 'b9168f05e657b6946fede254e383586cf7e7a2573d5a0fa12b3ef6ac';
-const TOKEN_NAME = 'IDP';
-const PROJECT_NAME = 'IDO Pass DAO';
-const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation', 'Bloodline'];
+const TOKEN_IMAGE_SRC = '/media/tokens/idp/token.png'
+const TOKEN_POLICY_ID = 'b9168f05e657b6946fede254e383586cf7e7a2573d5a0fa12b3ef6ac'
+const TOKEN_NAME = 'IDP'
+const PROJECT_NAME = 'IDO Pass DAO'
+const WHO_CAN_EARN: WhoCanEarn = ['Ape Nation', 'Bloodline']
 
 const Page = () => {
   return (
@@ -40,7 +40,7 @@ const Page = () => {
         </ol>
       </div>
     </PageContainer>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

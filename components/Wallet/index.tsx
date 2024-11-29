@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import WalletHero from './WalletHero';
-import CollectionSelector from './CollectionSelector';
-import CollectionCharts from './CollectionCharts';
-import CollectionAssets from '../dashboards/CollectionAssets';
-import type { PolicyId } from '../../@types';
+import { useState } from 'react'
+import WalletHero from './WalletHero'
+import CollectionSelector from './CollectionSelector'
+import CollectionCharts from './CollectionCharts'
+import CollectionAssets from '../dashboards/CollectionAssets'
+import type { PolicyId } from '../../@types'
 
 const Wallet = () => {
-  const [selectedPolicyId, setSelectedPolicyId] = useState<PolicyId | ''>('');
+  const [selectedPolicyId, setSelectedPolicyId] = useState<PolicyId | ''>('')
 
   return (
     <div className='w-full'>
@@ -20,7 +20,7 @@ const Wallet = () => {
             withWallet
             onSelected={(_policyId) => {
               if (_policyId !== selectedPolicyId) {
-                setSelectedPolicyId(_policyId);
+                setSelectedPolicyId(_policyId)
               }
             }}
           />
@@ -31,7 +31,7 @@ const Wallet = () => {
 
       <div>{selectedPolicyId ? <CollectionAssets policyId={selectedPolicyId} withWallet /> : null}</div>
     </div>
-  );
-};
+  )
+}
 
-export default Wallet;
+export default Wallet

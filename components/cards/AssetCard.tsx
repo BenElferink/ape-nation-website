@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import { CSSProperties, Fragment } from 'react';
-import useScreenSize from '@/hooks/useScreenSize';
-import ImageLoader from '../Loader/ImageLoader';
+import Image from 'next/image'
+import { CSSProperties, Fragment } from 'react'
+import useScreenSize from '@/hooks/useScreenSize'
+import ImageLoader from '../Loader/ImageLoader'
 
 interface AssetCardProps {
   isBurned?: boolean;
@@ -14,8 +14,8 @@ interface AssetCardProps {
 }
 
 const AssetCard = (props: AssetCardProps) => {
-  const { isBurned, title, imageSrc, tiedImageSrcs, subTitles, onClick, style = {} } = props;
-  const { isMobile } = useScreenSize();
+  const { isBurned, title, imageSrc, tiedImageSrcs, subTitles, onClick, style = {} } = props
+  const { isMobile } = useScreenSize()
 
   return (
     <div
@@ -86,7 +86,7 @@ const AssetCard = (props: AssetCardProps) => {
         </div>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default AssetCard;
+export default AssetCard

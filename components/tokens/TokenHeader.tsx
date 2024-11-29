@@ -1,7 +1,7 @@
-import ImageLoader from '../Loader/ImageLoader';
+import ImageLoader from '../Loader/ImageLoader'
 
 const TokenHeader = (props: { projectName: string; tokenName: string; tokenSrc: string; policyId?: string }) => {
-  const { projectName, tokenName, tokenSrc, policyId } = props;
+  const { projectName, tokenName, tokenSrc, policyId } = props
 
   return (
     <div className='w-full my-2 flex items-center justify-center md:items-stretch p-4 bg-zinc-950/70 rounded-xl'>
@@ -28,7 +28,7 @@ const TokenHeader = (props: { projectName: string; tokenName: string; tokenSrc: 
         ) : null}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TokenHeader;
+export default TokenHeader

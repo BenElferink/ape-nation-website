@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from 'next/image'
+import Link from 'next/link'
 
 const data = [
   {
@@ -12,7 +12,7 @@ const data = [
     url: 'https://meshjs.dev',
     logoUrl: '/media/logo/other/mesh.png',
   },
-];
+]
 
 const Footer = () => {
   return (
@@ -34,7 +34,7 @@ const Footer = () => {
         ))}
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

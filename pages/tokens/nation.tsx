@@ -1,14 +1,14 @@
-import Link from 'next/link';
-import TokenHeader from '../../components/tokens/TokenHeader';
-import TokenPrerequisites from '../../components/tokens/TokenPrerequisites';
-import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns';
-import PageContainer from '../../components/layout/PageContainer';
-import { LINKS, NATION_COIN_POLICY_ID } from '@/constants';
+import Link from 'next/link'
+import TokenHeader from '../../components/tokens/TokenHeader'
+import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
+import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
+import PageContainer from '../../components/layout/PageContainer'
+import { LINKS, NATION_COIN_POLICY_ID } from '@/constants'
 
-const TOKEN_IMAGE_SRC = '/media/tokens/nation/token.png';
-const TOKEN_POLICY_ID = NATION_COIN_POLICY_ID;
-const TOKEN_NAME = 'NATION';
-const PROJECT_NAME = 'Ape Nation';
+const TOKEN_IMAGE_SRC = '/media/tokens/nation/token.png'
+const TOKEN_POLICY_ID = NATION_COIN_POLICY_ID
+const TOKEN_NAME = 'NATION'
+const PROJECT_NAME = 'Ape Nation'
 const WHO_CAN_EARN: WhoCanEarn = [
   'Ape Nation',
   'Mutation Nation',
@@ -18,7 +18,7 @@ const WHO_CAN_EARN: WhoCanEarn = [
   'BLING',
   'iHold Music',
   'Bloodline',
-];
+]
 
 const Page = () => {
   return (
@@ -43,7 +43,7 @@ const Page = () => {
         </ol>
       </div>
     </PageContainer>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

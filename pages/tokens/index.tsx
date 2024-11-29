@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import ImageLoader from '../../components/Loader/ImageLoader';
-import { navTokens } from '../../components/Navigation';
+import Link from 'next/link'
+import ImageLoader from '../../components/Loader/ImageLoader'
+import { navTokens } from '../../components/Navigation'
 
 const Page = () => {
   return (
@@ -25,7 +25,7 @@ const Page = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

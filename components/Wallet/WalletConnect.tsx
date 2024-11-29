@@ -1,32 +1,32 @@
-import Image from 'next/image';
+import Image from 'next/image'
 // import { useRouter } from 'next/router'
-import { FormEventHandler, Fragment, useState } from 'react';
-import useWallet from '@/contexts/WalletContext';
-import Modal from '../layout/Modal';
-import GlobalLoader from '../Loader/GlobalLoader';
+import { FormEventHandler, Fragment, useState } from 'react'
+import useWallet from '@/contexts/WalletContext'
+import Modal from '../layout/Modal'
+import GlobalLoader from '../Loader/GlobalLoader'
 
 const WalletConnect = (props: { allowManual?: boolean; introText?: string; onClickClose?: () => void }) => {
-  const { allowManual = false, introText = '', onClickClose } = props;
+  const { allowManual = false, introText = '', onClickClose } = props
 
-  const { availableWallets, connectWallet, connectWalletManually, connecting, connected, connectedName, populatedWallet } = useWallet();
+  const { availableWallets, connectWallet, connectWalletManually, connecting, connected, connectedName, populatedWallet } = useWallet()
   // const router = useRouter()
 
-  const [openModal, setOpenModal] = useState(true);
-  const [input, setInput] = useState('');
+  const [openModal, setOpenModal] = useState(true)
+  const [input, setInput] = useState('')
 
   const onClose = () => {
-    if (onClickClose) onClickClose();
-    else setOpenModal(false);
+    if (onClickClose) onClickClose()
+    else setOpenModal(false)
 
     // if (!connected) router.push('/')
-  };
+  }
 
   const submitManualWallet: FormEventHandler<HTMLFormElement> = async (e) => {
-    e?.preventDefault();
+    e?.preventDefault()
 
-    connectWalletManually(input);
-    setInput('');
-  };
+    connectWalletManually(input)
+    setInput('')
+  }
 
   return (
     <Fragment>
@@ -53,8 +53,8 @@ const WalletConnect = (props: { allowManual?: boolean; introText?: string; onCli
             ) : (
               <div className='flex flex-col min-w-[280px] w-[85%] md:w-[75%] '>
                 {availableWallets.map((wallet, idx) => {
-                  let trimmedName = wallet.name.toLowerCase().replace('wallet', '');
-                  trimmedName = `${trimmedName.charAt(0).toUpperCase()}${trimmedName.slice(1)}`;
+                  let trimmedName = wallet.name.toLowerCase().replace('wallet', '')
+                  trimmedName = `${trimmedName.charAt(0).toUpperCase()}${trimmedName.slice(1)}`
 
                   return (
                     <button
@@ -76,7 +76,7 @@ const WalletConnect = (props: { allowManual?: boolean; introText?: string; onCli
                       <Image unoptimized src={wallet.icon} alt={wallet.name} width={35} height={35} className='mr-4' />
                       {trimmedName}&nbsp;<span className='text-xs'>({wallet.version})</span>
                     </button>
-                  );
+                  )
                 })}
 
                 <p className='w-full my-2 px-1 text-xs text-start'>
@@ -113,7 +113,7 @@ const WalletConnect = (props: { allowManual?: boolean; introText?: string; onCli
         )}
       </Modal>
     </Fragment>
-  );
-};
+  )
+}
 
-export default WalletConnect;
+export default WalletConnect

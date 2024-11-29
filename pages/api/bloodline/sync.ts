@@ -1,9 +1,9 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import axios from 'axios';
-import { blockfrost } from '@/utils/blockfrost';
-import formatHex from '@/functions/formatters/formatHex';
-import { APE_NATION_POLICY_ID, BLOODLINE_POLICY_ID, TEAM_VAULT_WALLET_ADDRESS } from '@/constants';
-import { getTokensFromTx } from './mint';
+import type { NextApiRequest, NextApiResponse } from 'next'
+import axios from 'axios'
+import { blockfrost } from '@/utils/blockfrost'
+import formatHex from '@/functions/formatters/formatHex'
+import { APE_NATION_POLICY_ID, BLOODLINE_POLICY_ID, TEAM_VAULT_WALLET_ADDRESS } from '@/constants'
+import { getTokensFromTx } from './mint'
 
 type InputIutput = {
   [address: string]: {
@@ -12,45 +12,45 @@ type InputIutput = {
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { method } = req;
+  const { method } = req
 
   try {
     switch (method) {
       case 'GET': {
-        const utxos = await blockfrost.addressesUtxosAll(TEAM_VAULT_WALLET_ADDRESS);
+        const utxos = await blockfrost.addressesUtxosAll(TEAM_VAULT_WALLET_ADDRESS)
 
         const toCheck: {
           ogTokenId: string
           newTokenId: string
-        }[] = [];
+        }[] = []
 
         utxos.forEach((utxo) => {
           utxo.amount.forEach(({ unit }) => {
             if (unit.indexOf(APE_NATION_POLICY_ID) === 0) {
-              let ogNum = formatHex.fromHex(unit.replace(APE_NATION_POLICY_ID, '')).replace('ApeNation', '');
-              while (ogNum.length < 4) ogNum = `0${ogNum}`;
+              let ogNum = formatHex.fromHex(unit.replace(APE_NATION_POLICY_ID, '')).replace('ApeNation', '')
+              while (ogNum.length < 4) ogNum = `0${ogNum}`
 
-              const assetName = `${formatHex.toHex(`Bloodline${ogNum}`)}`;
-              const newTokenId = `${BLOODLINE_POLICY_ID}${assetName}`;
+              const assetName = `${formatHex.toHex(`Bloodline${ogNum}`)}`
+              const newTokenId = `${BLOODLINE_POLICY_ID}${assetName}`
 
               toCheck.push({
                 ogTokenId: unit,
                 newTokenId,
-              });
+              })
             }
-          });
-        });
+          })
+        })
 
-        const needToMint: any[] = [];
-        const txHashes: string[] = [];
+        const needToMint: any[] = []
+        const txHashes: string[] = []
 
         for await (const { ogTokenId, newTokenId } of toCheck) {
           try {
-            await blockfrost.assetsById(newTokenId);
+            await blockfrost.assetsById(newTokenId)
           } catch (error) {
-            console.log('asset not minted', newTokenId);
+            console.log('asset not minted', newTokenId)
 
-            const txs = await blockfrost.assetsTransactions(ogTokenId);
+            const txs = await blockfrost.assetsTransactions(ogTokenId)
 
             for await (const { tx_hash: txHash } of txs) {
               // const allowedUnits = [ogTokenId]
@@ -116,8 +116,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
               // if (sentFrom) {
 
               try {
-                const { addressOfSender, v0, v1, v2 } = await getTokensFromTx(txHash);
-                const found = needToMint.find((x) => x.sentFrom === addressOfSender && x.ogTokenId === ogTokenId);
+                const { addressOfSender, v0, v1, v2 } = await getTokensFromTx(txHash)
+                const found = needToMint.find((x) => x.sentFrom === addressOfSender && x.ogTokenId === ogTokenId)
 
                 if (!found) {
                   needToMint.push({
@@ -125,7 +125,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                     newTokenId,
                     sentFrom: addressOfSender,
                     txHash,
-                  });
+                  })
                 }
               } catch (error) {}
               // }
@@ -134,37 +134,37 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             const badTxs = [
               'b2d57f2c135af6b8fd3e968372c8c83bfce19ebf851c87636230b55b24175e85',
               '7bd11309b39d2715038737f469bf7a519c731d3b7a58a401e46ec081958a99c7',
-            ];
+            ]
 
             // if (!badTxs.includes(txHash) && !txHashes.includes(txHash)) txHashes.push(txHash)
           }
         }
 
         if (txHashes.length) {
-          console.log(`found ${txHashes.length} faulty TXs, retrying now`, txHashes);
+          console.log(`found ${txHashes.length} faulty TXs, retrying now`, txHashes)
 
-          const url = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://apenation.io'}/api/bloodline/mint`;
+          const url = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://apenation.io'}/api/bloodline/mint`
 
           // for await (const txHash of txHashes) await axios.post(url, { txHash })
         }
 
-        console.log('done');
+        console.log('done')
 
-        return res.status(200).json({ needToMint });
+        return res.status(200).json({ needToMint })
       }
 
       default: {
-        res.setHeader('Allow', 'GET');
-        return res.status(405).end();
+        res.setHeader('Allow', 'GET')
+        return res.status(405).end()
       }
     }
   } catch (error) {
-    console.error(error);
-    return res.status(500).end();
+    console.error(error)
+    return res.status(500).end()
   }
-};
+}
 
-export default handler;
+export default handler
 
 const x = {
   p: [
@@ -1837,4 +1837,4 @@ const x = {
       txHash: '678d502db8da4782fe77b86c9f18415cbee48134c719380ebd2d373b60c2068e',
     },
   ],
-};
+}

@@ -1,14 +1,14 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import axios from 'axios';
-import { toast } from 'react-hot-toast';
-import { ArrowLongDownIcon, ArrowLongUpIcon, ArrowPathIcon } from '@heroicons/react/24/solid';
-import { Chart as ChartJS, LineElement, PointElement, LinearScale, CategoryScale, Legend, Filler } from 'chart.js';
-import { Line } from 'react-chartjs-2';
-import badLabsApi from '../../utils/badLabsApi';
-import useWallet from '../../contexts/WalletContext';
-import formatBigNumber from '../../functions/formatters/formatBigNumber';
-import { ADA_SYMBOL } from '../../constants';
-import type { FloorSnapshot, PolicyId } from '../../@types';
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import axios from 'axios'
+import { toast } from 'react-hot-toast'
+import { ArrowLongDownIcon, ArrowLongUpIcon, ArrowPathIcon } from '@heroicons/react/24/solid'
+import { Chart as ChartJS, LineElement, PointElement, LinearScale, CategoryScale, Legend, Filler } from 'chart.js'
+import { Line } from 'react-chartjs-2'
+import badLabsApi from '../../utils/badLabsApi'
+import useWallet from '../../contexts/WalletContext'
+import formatBigNumber from '../../functions/formatters/formatBigNumber'
+import { ADA_SYMBOL } from '../../constants'
+import type { FloorSnapshot, PolicyId } from '../../@types'
 
 interface CollectionChartsProps {
   policyId: PolicyId;
@@ -19,46 +19,46 @@ type FloorResponse = {
   items: FloorSnapshot[];
 };
 
-ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Legend, Filler);
+ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Legend, Filler)
 
 const CollectionCharts = (props: CollectionChartsProps) => {
-  const { policyId } = props;
-  const { populatedWallet } = useWallet();
-  const [myStats, setMyStats] = useState({ owned: 0, invested: 0, priceNotFound: 0 });
-  const [floorSnapshots, setFloorSnapshots] = useState<FloorSnapshot[]>([]);
+  const { policyId } = props
+  const { populatedWallet } = useWallet()
+  const [myStats, setMyStats] = useState({ owned: 0, invested: 0, priceNotFound: 0 })
+  const [floorSnapshots, setFloorSnapshots] = useState<FloorSnapshot[]>([])
 
-  const [loadingPortfolio, setLoadingPortfolio] = useState(false);
+  const [loadingPortfolio, setLoadingPortfolio] = useState(false)
 
   const getPortfolioInvestments = useCallback(async () => {
-    setLoadingPortfolio(true);
+    setLoadingPortfolio(true)
 
     try {
-      const myCollectionAssets = populatedWallet?.assets[policyId] || [];
-      let totalInvested = 0;
-      let totalNotFound = 0;
+      const myCollectionAssets = populatedWallet?.assets[policyId] || []
+      let totalInvested = 0
+      let totalNotFound = 0
 
       setMyStats({
         owned: myCollectionAssets.length,
         invested: 0,
         priceNotFound: 0,
-      });
+      })
 
       for await (const asset of myCollectionAssets) {
-        const stored = localStorage.getItem(`asset-price-${asset.tokenId}`);
-        const storedPrice = stored ? JSON.parse(stored) : 0;
-        const storedPriceNum = Number(storedPrice);
+        const stored = localStorage.getItem(`asset-price-${asset.tokenId}`)
+        const storedPrice = stored ? JSON.parse(stored) : 0
+        const storedPriceNum = Number(storedPrice)
 
         if (storedPrice && !isNaN(storedPriceNum)) {
-          totalInvested += storedPriceNum;
+          totalInvested += storedPriceNum
         } else {
-          const data = await badLabsApi.token.market.getActivity(asset.tokenId);
-          const price = data.items.filter(({ activityType }) => activityType === 'BUY')[0]?.price || 0;
+          const data = await badLabsApi.token.market.getActivity(asset.tokenId)
+          const price = data.items.filter(({ activityType }) => activityType === 'BUY')[0]?.price || 0
 
           if (!price) {
-            totalNotFound++;
+            totalNotFound++
           } else {
-            totalInvested += price;
-            localStorage.setItem(`asset-price-${asset.tokenId}`, String(price));
+            totalInvested += price
+            localStorage.setItem(`asset-price-${asset.tokenId}`, String(price))
           }
         }
       }
@@ -67,55 +67,55 @@ const CollectionCharts = (props: CollectionChartsProps) => {
         owned: myCollectionAssets.length,
         invested: totalInvested,
         priceNotFound: totalNotFound,
-      });
+      })
     } catch (error: any) {
-      console.error(error);
-      toast.error(`JPG Store error: ${error.message}`);
+      console.error(error)
+      toast.error(`JPG Store error: ${error.message}`)
     }
 
-    setLoadingPortfolio(false);
-  }, [populatedWallet, policyId]);
+    setLoadingPortfolio(false)
+  }, [populatedWallet, policyId])
 
   useEffect(() => {
-    getPortfolioInvestments();
-  }, [getPortfolioInvestments]);
+    getPortfolioInvestments()
+  }, [getPortfolioInvestments])
 
   const getFloorPrices = useCallback(async () => {
-    const uri = `/api/floor/${policyId}`;
-    let payload: FloorSnapshot[] = [];
+    const uri = `/api/floor/${policyId}`
+    let payload: FloorSnapshot[] = []
 
     try {
-      const { data } = await axios.get<FloorResponse>(uri);
-      payload = payload.concat(data.items);
+      const { data } = await axios.get<FloorResponse>(uri)
+      payload = payload.concat(data.items)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
 
     try {
-      const { data } = await axios.get<FloorResponse>(uri + '?live=true');
-      payload = payload.concat(data.items);
+      const { data } = await axios.get<FloorResponse>(uri + '?live=true')
+      payload = payload.concat(data.items)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
 
-    return payload;
-  }, [policyId]);
+    return payload
+  }, [policyId])
 
   useEffect(() => {
-    setFloorSnapshots([]);
-    getFloorPrices().then((data) => setFloorSnapshots(data));
-  }, [getFloorPrices]);
+    setFloorSnapshots([])
+    getFloorPrices().then((data) => setFloorSnapshots(data))
+  }, [getFloorPrices])
 
   const getAndRenderCharts = useCallback(() => {
-    const numOfDataPoints = 30;
-    const myCollectionAssets = populatedWallet?.assets[policyId] || [];
-    const mutableFloorSnapshots = [...floorSnapshots];
+    const numOfDataPoints = 30
+    const myCollectionAssets = populatedWallet?.assets[policyId] || []
+    const mutableFloorSnapshots = [...floorSnapshots]
 
     while (mutableFloorSnapshots.length < numOfDataPoints) {
-      mutableFloorSnapshots.unshift({ policyId, timestamp: 0, floor: 0, attributes: {} });
+      mutableFloorSnapshots.unshift({ policyId, timestamp: 0, floor: 0, attributes: {} })
     }
     while (mutableFloorSnapshots.length > numOfDataPoints) {
-      mutableFloorSnapshots.shift();
+      mutableFloorSnapshots.shift()
     }
 
     const floorPayload = {
@@ -127,7 +127,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
       totalBalance: 0,
       differencePercent: 0,
       daysAgo: 0,
-    };
+    }
     const highestTraitPayload = {
       name: 'Highest Trait',
       data: new Array(numOfDataPoints).fill(0),
@@ -137,7 +137,7 @@ const CollectionCharts = (props: CollectionChartsProps) => {
       totalBalance: 0,
       differencePercent: 0,
       daysAgo: 0,
-    };
+    }
 
     if (!!floorSnapshots.length) {
       const getFloorAndTraitValues = ({
@@ -150,119 +150,119 @@ const CollectionCharts = (props: CollectionChartsProps) => {
         floor: number;
         highestTrait: number;
       } => {
-        const idx = typeof floorPricesIndex === 'number' ? floorPricesIndex : mutableFloorSnapshots.length - 1;
-        const attributesOfIndex = mutableFloorSnapshots[idx]?.attributes || {};
-        const floorOfIndex = mutableFloorSnapshots[idx]?.floor || 0;
+        const idx = typeof floorPricesIndex === 'number' ? floorPricesIndex : mutableFloorSnapshots.length - 1
+        const attributesOfIndex = mutableFloorSnapshots[idx]?.attributes || {}
+        const floorOfIndex = mutableFloorSnapshots[idx]?.floor || 0
 
-        let totalFloorValue = 0;
-        let totalHighestTraitValue = 0;
+        let totalFloorValue = 0
+        let totalHighestTraitValue = 0
 
         myCollectionAssets.forEach((asset) => {
-          let assetFloorValue = 0;
-          let assetHighestTraitValue = 0;
+          let assetFloorValue = 0
+          let assetHighestTraitValue = 0
 
           if (!assetId || asset.tokenId === assetId) {
             Object.entries(attributesOfIndex).forEach(([floorPricesCategory, floorPricesTraits]) => {
-              const assetCategoryTraitName = asset.attributes[floorPricesCategory];
-              const traitFloorValue = floorPricesTraits[assetCategoryTraitName];
+              const assetCategoryTraitName = asset.attributes[floorPricesCategory]
+              const traitFloorValue = floorPricesTraits[assetCategoryTraitName]
 
               if (traitFloorValue) {
                 if (traitFloorValue > assetHighestTraitValue) {
-                  assetHighestTraitValue = traitFloorValue;
+                  assetHighestTraitValue = traitFloorValue
                 }
 
                 if (traitFloorValue < assetFloorValue || assetFloorValue === 0) {
-                  assetFloorValue = traitFloorValue;
+                  assetFloorValue = traitFloorValue
                 }
               }
-            });
+            })
 
             if (!assetFloorValue) {
               // this happens when there is no trait file, for example the Bad Key
-              totalFloorValue += floorOfIndex;
+              totalFloorValue += floorOfIndex
             } else {
-              totalFloorValue += assetFloorValue;
-              totalHighestTraitValue += assetHighestTraitValue;
+              totalFloorValue += assetFloorValue
+              totalHighestTraitValue += assetHighestTraitValue
             }
           }
-        });
+        })
 
         return {
           floor: totalFloorValue,
           highestTrait: totalHighestTraitValue,
-        };
-      };
+        }
+      }
 
       myCollectionAssets.forEach((asset) => {
         if (asset) {
           floorPayload.data = floorPayload.data.map((num, i) =>
             Math.round(num + getFloorAndTraitValues({ assetId: asset.tokenId, floorPricesIndex: i }).floor)
-          );
+          )
 
           highestTraitPayload.data = highestTraitPayload.data.map((num, i) =>
             Math.round(num + getFloorAndTraitValues({ assetId: asset.tokenId, floorPricesIndex: i }).highestTrait)
-          );
+          )
         }
-      });
+      })
 
       // finalize floor object
 
-      const floorFirstIndex = floorPayload.data.findIndex((num) => num !== 0);
+      const floorFirstIndex = floorPayload.data.findIndex((num) => num !== 0)
       if (floorFirstIndex !== 0) {
-        floorPayload.daysAgo = numOfDataPoints - floorFirstIndex;
+        floorPayload.daysAgo = numOfDataPoints - floorFirstIndex
       }
 
-      const floorFirst = floorPayload.data[floorFirstIndex];
-      const floorLast = floorPayload.data[floorPayload.data.length - 1];
+      const floorFirst = floorPayload.data[floorFirstIndex]
+      const floorLast = floorPayload.data[floorPayload.data.length - 1]
 
-      const floorDifference = floorLast - floorFirst;
-      floorPayload.differencePercent = Number(((100 / floorFirst) * floorDifference).toFixed(2));
+      const floorDifference = floorLast - floorFirst
+      floorPayload.differencePercent = Number(((100 / floorFirst) * floorDifference).toFixed(2))
 
       if (floorDifference >= 0) {
-        floorPayload.borderColor = 'rgba(68, 183, 0, 1)'; // green
-        floorPayload.backgroundColor = 'rgba(68, 183, 0, 0.4)'; // green
+        floorPayload.borderColor = 'rgba(68, 183, 0, 1)' // green
+        floorPayload.backgroundColor = 'rgba(68, 183, 0, 0.4)' // green
       }
 
       // finalize highest traits object
 
-      const highestTraitFirstIndex = highestTraitPayload.data.findIndex((num) => num !== 0);
+      const highestTraitFirstIndex = highestTraitPayload.data.findIndex((num) => num !== 0)
       if (highestTraitFirstIndex !== 0) {
-        highestTraitPayload.daysAgo = numOfDataPoints - highestTraitFirstIndex;
+        highestTraitPayload.daysAgo = numOfDataPoints - highestTraitFirstIndex
       }
 
-      const highestTraitFirst = highestTraitPayload.data[highestTraitFirstIndex];
-      const highestTraitLast = highestTraitPayload.data[highestTraitPayload.data.length - 1];
+      const highestTraitFirst = highestTraitPayload.data[highestTraitFirstIndex]
+      const highestTraitLast = highestTraitPayload.data[highestTraitPayload.data.length - 1]
 
-      const highestTraitDifference = highestTraitLast - highestTraitFirst;
-      highestTraitPayload.differencePercent = Number(((100 / highestTraitFirst) * highestTraitDifference).toFixed(2));
+      const highestTraitDifference = highestTraitLast - highestTraitFirst
+      highestTraitPayload.differencePercent = Number(((100 / highestTraitFirst) * highestTraitDifference).toFixed(2))
 
       if (highestTraitDifference >= 0) {
-        highestTraitPayload.borderColor = 'rgba(68, 183, 0, 1)'; // green
-        highestTraitPayload.backgroundColor = 'rgba(68, 183, 0, 0.4)'; // green
+        highestTraitPayload.borderColor = 'rgba(68, 183, 0, 1)' // green
+        highestTraitPayload.backgroundColor = 'rgba(68, 183, 0, 0.4)' // green
       }
 
       // fionalize general
 
       const labels = mutableFloorSnapshots.map(({ timestamp }) => {
-        const t = new Date(timestamp);
-        const day = t.getDate();
-        return day;
-      });
+        const t = new Date(timestamp)
+        const day = t.getDate()
+        return day
+      })
 
-      while (labels.length < numOfDataPoints) labels.unshift(0);
-      while (labels.length > numOfDataPoints) labels.shift();
-      floorPayload.labels = labels;
-      highestTraitPayload.labels = labels;
+      while (labels.length < numOfDataPoints) labels.unshift(0)
+      while (labels.length > numOfDataPoints) labels.shift()
+      floorPayload.labels = labels
+      highestTraitPayload.labels = labels
 
-      const { floor, highestTrait } = getFloorAndTraitValues({});
-      floorPayload.totalBalance = floor;
-      highestTraitPayload.totalBalance = highestTrait;
+      const { floor, highestTrait } = getFloorAndTraitValues({})
+      floorPayload.totalBalance = floor
+      highestTraitPayload.totalBalance = highestTrait
     }
 
-    return [floorPayload, highestTraitPayload];
-  }, [policyId, populatedWallet, floorSnapshots]);
+    return [floorPayload, highestTraitPayload]
+  }, [policyId, populatedWallet, floorSnapshots])
 
-  const charts = useMemo(() => getAndRenderCharts(), [getAndRenderCharts]);
+  const charts = useMemo(() => getAndRenderCharts(), [getAndRenderCharts])
 
   return (
     <div className='w-full mt-20 xl:mt-40 flex flex-wrap items-center justify-center'>
@@ -292,10 +292,10 @@ const CollectionCharts = (props: CollectionChartsProps) => {
       </div>
 
       {charts.map(({ name, data, labels, borderColor, backgroundColor, totalBalance, differencePercent, daysAgo }) => {
-        const isUp = differencePercent >= 0;
+        const isUp = differencePercent >= 0
 
         if (!totalBalance) {
-          return null;
+          return null
         }
 
         return (
@@ -350,10 +350,10 @@ const CollectionCharts = (props: CollectionChartsProps) => {
               />
             </div>
           </div>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}
 
-export default CollectionCharts;
+export default CollectionCharts

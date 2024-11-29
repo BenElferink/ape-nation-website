@@ -88,8 +88,6 @@ const Bling = () => {
       } finally {
         setLoadingTx(false)
       }
-
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     },
     [loadingTx, wallet]
   )

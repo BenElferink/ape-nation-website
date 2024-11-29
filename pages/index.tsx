@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import Landing from '@/components/Landing';
-import Utilities from '@/components/Utilities';
-import TeamCard from '@/components/cards/TeamCard';
-import { LINKS } from '@/constants';
+import Link from 'next/link'
+import Image from 'next/image'
+import Landing from '@/components/Landing'
+import Utilities from '@/components/Utilities'
+import TeamCard from '@/components/cards/TeamCard'
+import { LINKS } from '@/constants'
 
 const partnerships = [
   {
@@ -81,7 +81,7 @@ const partnerships = [
     url: 'https://bangr.io',
     logoUrl: '/media/logo/other/bangr.png',
   },
-];
+]
 
 const featuredBy = [
   {
@@ -133,7 +133,7 @@ const featuredBy = [
     url: 'https://www.youtube.com/@KryptoLabs',
     logoUrl: '/media/logo/other/kryptolabs.png',
   },
-];
+]
 
 const teamMembers = [
   {
@@ -199,7 +199,7 @@ const teamMembers = [
     profilePicture: '/media/team/ben.jpg',
     socials: ['https://x.com/BenElferink', 'https://discord.com/users/791763515554922507', 'https://github.com/BenElferink'],
   },
-];
+]
 
 const Page = () => {
   return (
@@ -253,7 +253,7 @@ const Page = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page
