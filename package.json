@@ -1,15 +1,15 @@
 {
-  "name": "ape-nation",
+  "name": "ape-nation-website",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://apenation.io",
   "author": "Ben Elferink <ben.elferink@icloud.com> (https://github.com/BenElferink)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/BenElferink/ape-nation.git"
+    "url": "https://github.com/BenElferink/ape-nation-website.git"
   },
   "bugs": {
-    "url": "https://github.com/BenElferink/ape-nation/issues",
+    "url": "https://github.com/BenElferink/ape-nation-website/issues",
     "email": "ben.elferink@icloud.com"
   },
   "scripts": {
