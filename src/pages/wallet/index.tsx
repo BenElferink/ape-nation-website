@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
-import useWallet from '@/src/contexts/WalletContext'
-import WalletConnect from '@/src/components/Wallet/WalletConnect'
-import Wallet from '@/src/components/Wallet'
+import useWallet from '@/contexts/WalletContext'
+import WalletConnect from '@/components/Wallet/WalletConnect'
+import Wallet from '@/components/Wallet'
 
 const Page = () => {
   const { connected } = useWallet()

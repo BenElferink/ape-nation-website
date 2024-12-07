@@ -1,4 +1,4 @@
-import Bloodline from '@/src/components/dashboards/Bloodline'
+import Bloodline from '@/components/dashboards/Bloodline'
 
 const Page = () => {
   return (

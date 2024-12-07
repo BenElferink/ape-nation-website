@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
-import { blockfrost } from '@/src/utils/blockfrost'
-import { BLING_APP_WALLET_ADDRESS } from '@/src/constants'
+import { blockfrost } from '@/utils/blockfrost'
+import { BLING_APP_WALLET_ADDRESS } from '@/constants'
 import { getSenderFromBlingTx } from '.'
-import { firestore } from '@/src/utils/firebase'
+import { firestore } from '@/utils/firebase'
 
 const IS_DEV = process.env.NODE_ENV === 'development'
 

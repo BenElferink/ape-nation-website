@@ -1,4 +1,4 @@
-import { useRender } from '@/src/contexts/RenderContext'
+import { useRender } from '@/contexts/RenderContext'
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, PauseIcon, PlayIcon } from '@heroicons/react/24/solid'
 import { useCallback, useEffect, useState } from 'react'
 

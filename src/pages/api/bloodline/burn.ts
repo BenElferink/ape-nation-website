@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { BlockfrostProvider, deserializeAddress, ForgeScript, MeshWallet, NativeScript, Transaction } from '@meshsdk/core'
-import { API_KEYS, BLOODLINE_APP_WALLET_MNEMONIC } from '@/src/constants'
+import { API_KEYS, BLOODLINE_APP_WALLET_MNEMONIC } from '@/constants'
 
 export const config = {
   maxDuration: 300,

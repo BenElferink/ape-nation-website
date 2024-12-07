@@ -1,4 +1,4 @@
-import { firestore } from '@/src/utils/firebase'
+import { firestore } from '@/utils/firebase'
 
 const getEnv = async (key: string) => {
   console.log(`Getting ${key} from Firebase`)

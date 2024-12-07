@@ -1,12 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 import { BlockfrostProvider, deserializeAddress, ForgeScript, MeshWallet, Mint, NativeScript, Transaction } from '@meshsdk/core'
-import { storage } from '@/src/utils/firebase'
-import badLabsApi from '@/src/utils/badLabsApi'
-import getEnv from '@/src/functions/storage/getEnv'
-import formatHex from '@/src/functions/formatters/formatHex'
-import getFileForPolicyId from '@/src/functions/getFileForPolicyId'
-import type { PopulatedAsset } from '@/src/@types'
+import { storage } from '@/utils/firebase'
+import badLabsApi from '@/utils/badLabsApi'
+import getEnv from '@/functions/storage/getEnv'
+import formatHex from '@/functions/formatters/formatHex'
+import getFileForPolicyId from '@/functions/getFileForPolicyId'
+import type { PopulatedAsset } from '@/@types'
 import {
   API_KEYS,
   APE_NATION_POLICY_ID,
@@ -14,7 +14,7 @@ import {
   MUTATION_NATION_POLICY_ID,
   TEAM_VAULT_WALLET_ADDRESS,
   BLOODLINE_APP_WALLET_MNEMONIC,
-} from '@/src/constants'
+} from '@/constants'
 
 export const config = {
   maxDuration: 300,

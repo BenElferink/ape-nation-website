@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router'
 import { Fragment } from 'react'
-import RecentMarketActivity from '@/src/components/RecentMarketActivity'
-import CollectionAssets from '@/src/components/dashboards/CollectionAssets'
-import isPolicyIdAllowed from '@/src/functions/isPolicyIdAllowed'
-import type { PolicyId } from '@/src/@types'
+import RecentMarketActivity from '@/components/RecentMarketActivity'
+import CollectionAssets from '@/components/dashboards/CollectionAssets'
+import isPolicyIdAllowed from '@/functions/isPolicyIdAllowed'
+import type { PolicyId } from '@/@types'
 
 const Page = () => {
   const router = useRouter()

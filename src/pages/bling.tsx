@@ -1,4 +1,4 @@
-import Bling from '@/src/components/dashboards/Bling'
+import Bling from '@/components/dashboards/Bling'
 
 const Page = () => {
   return (

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import MusicPlayer from '../MusicPlayer'
 import Navigation from '../Navigation'
 import SocialIcon from '../SocialIcon'
-import { LINKS } from '@/src/constants'
+import { LINKS } from '@/constants'
 
 const Header = () => {
   return (

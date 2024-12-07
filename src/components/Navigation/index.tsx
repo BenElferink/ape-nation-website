@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from 'react'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 import MultipleLinks from './MultipleLinks'
 import SingleLink from './SingleLink'
-import { LINKS } from '@/src/constants'
-import collectionsData from '@/src/data/collections.json'
+import { LINKS } from '@/constants'
+import collectionsData from '@/data/collections.json'
 
 const navCollections = [
   { label: '$NATION', url: LINKS['NATION_TAPTOOLS'], logoSrc: '/media/logo/other/taptools.webp' },

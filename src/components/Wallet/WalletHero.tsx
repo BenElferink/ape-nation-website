@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import useWallet from '@/src/contexts/WalletContext'
-import { NATION_COIN_POLICY_ID } from '@/src/constants'
+import useWallet from '@/contexts/WalletContext'
+import { NATION_COIN_POLICY_ID } from '@/constants'
 import WalletConnect from './WalletConnect'
 
 const WalletHero = () => {

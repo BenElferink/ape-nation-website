@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import useScreenSize from '@/src/hooks/useScreenSize'
+import useScreenSize from '@/hooks/useScreenSize'
 import Loader from './Loader'
 
 const Landing = () => {

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 // import { useRouter } from 'next/router'
 import { FormEventHandler, Fragment, useState } from 'react'
-import useWallet from '@/src/contexts/WalletContext'
+import useWallet from '@/contexts/WalletContext'
 import Modal from '../layout/Modal'
 import GlobalLoader from '../Loader/GlobalLoader'
 

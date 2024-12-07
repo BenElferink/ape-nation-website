@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { CSSProperties, Fragment } from 'react'
-import useScreenSize from '@/src/hooks/useScreenSize'
+import useScreenSize from '@/hooks/useScreenSize'
 import ImageLoader from '../Loader/ImageLoader'
 
 interface AssetCardProps {

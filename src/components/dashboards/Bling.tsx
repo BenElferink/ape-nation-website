@@ -3,10 +3,10 @@ import { useCallback, useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import { keepRelevant, Transaction } from '@meshsdk/core'
-import useWallet from '@/src/contexts/WalletContext'
-import txConfirmation from '@/src/functions/txConfirmation'
+import useWallet from '@/contexts/WalletContext'
+import txConfirmation from '@/functions/txConfirmation'
 import WalletHero from '../Wallet/WalletHero'
-import { ADA_SYMBOL, BLING_APP_WALLET_ADDRESS, BLING_POLICY_ID, DEV_WALLET_ADDRESS, ONE_MILLION, TEAM_TREASURY_WALLET_ADDRESS } from '@/src/constants'
+import { ADA_SYMBOL, BLING_APP_WALLET_ADDRESS, BLING_POLICY_ID, DEV_WALLET_ADDRESS, ONE_MILLION, TEAM_TREASURY_WALLET_ADDRESS } from '@/constants'
 
 const EVENT_OPEN = false
 const SOLD_OUT = true

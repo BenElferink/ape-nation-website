@@ -1,10 +1,10 @@
 import { createContext, useState, useContext, useMemo, useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 import { BrowserWallet, Wallet } from '@meshsdk/core'
-import badLabsApi, { BadLabsApiBaseToken } from '@/src/utils/badLabsApi'
-import getFileForPolicyId from '@/src/functions/getFileForPolicyId'
-import populateAsset from '@/src/functions/populateAsset'
-import type { PolicyId, PopulatedWallet } from '@/src/@types'
+import badLabsApi, { BadLabsApiBaseToken } from '@/utils/badLabsApi'
+import getFileForPolicyId from '@/functions/getFileForPolicyId'
+import populateAsset from '@/functions/populateAsset'
+import type { PolicyId, PopulatedWallet } from '@/@types'
 import {
   APE_NATION_POLICY_ID,
   BLING_POLICY_ID,
@@ -16,8 +16,8 @@ import {
   NATION_COIN_POLICY_ID,
   OG_CLUB_CARD_POLICY_ID,
   ORDINAL_TOKENS_POLICY_ID,
-} from '@/src/constants'
-import formatTokenAmount from '@/src/functions/formatters/formatTokenAmount'
+} from '@/constants'
+import formatTokenAmount from '@/functions/formatters/formatTokenAmount'
 
 interface LocalStorageConnectedWallet {
   walletProvider: string

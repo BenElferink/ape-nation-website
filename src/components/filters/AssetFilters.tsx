@@ -1,7 +1,7 @@
 import { Fragment, useCallback, useEffect, useState } from 'react'
 import { AdjustmentsVerticalIcon, ChevronDownIcon } from '@heroicons/react/24/solid'
-import type { PolicyId, PopulatedAsset, PopulatedTrait } from '@/src/@types'
-import { APE_NATION_POLICY_ID, BLING_POLICY_ID } from '@/src/constants'
+import type { PolicyId, PopulatedAsset, PopulatedTrait } from '@/@types'
+import { APE_NATION_POLICY_ID, BLING_POLICY_ID } from '@/constants'
 
 interface AssetFiltersProps {
   policyId: PolicyId;

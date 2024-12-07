@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import Landing from '@/src/components/Landing'
-import Utilities from '@/src/components/Utilities'
-import TeamCard from '@/src/components/cards/TeamCard'
-import { LINKS } from '@/src/constants'
+import Landing from '@/components/Landing'
+import Utilities from '@/components/Utilities'
+import TeamCard from '@/components/cards/TeamCard'
+import { LINKS } from '@/constants'
 
 const partnerships = [
   {

@@ -2,11 +2,11 @@ import { useCallback, useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import { keepRelevant, Transaction } from '@meshsdk/core'
-import useWallet from '@/src/contexts/WalletContext'
-import txConfirmation from '@/src/functions/txConfirmation'
+import useWallet from '@/contexts/WalletContext'
+import txConfirmation from '@/functions/txConfirmation'
 import WalletHero from '../Wallet/WalletHero'
 import ImageLoader from '../Loader/ImageLoader'
-import type { PopulatedAsset } from '@/src/@types'
+import type { PopulatedAsset } from '@/@types'
 import {
   APE_NATION_POLICY_ID,
   MUTATION_NATION_POLICY_ID,
@@ -17,8 +17,8 @@ import {
   TEAM_TREASURY_WALLET_ADDRESS,
   DEV_WALLET_ADDRESS,
   BLOODLINE_POLICY_ID,
-} from '@/src/constants'
-import badLabsApi from '@/src/utils/badLabsApi'
+} from '@/constants'
+import badLabsApi from '@/utils/badLabsApi'
 
 const EVENT_OPEN = true
 

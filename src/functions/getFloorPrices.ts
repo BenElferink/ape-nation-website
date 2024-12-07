@@ -1,4 +1,4 @@
-import badLabsApi from '@/src/utils/badLabsApi'
+import badLabsApi from '@/utils/badLabsApi'
 import getFileForPolicyId from './getFileForPolicyId'
 import type { FloorPrices, PolicyId } from '../@types'
 

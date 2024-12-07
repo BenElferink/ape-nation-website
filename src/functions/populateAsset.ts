@@ -1,6 +1,6 @@
-import badLabsApi from '@/src/utils/badLabsApi'
-import type { BadLabsApiRankedToken } from '@/src/utils/badLabsApi'
-import type { PolicyId, PopulatedAsset } from '@/src/@types'
+import badLabsApi from '@/utils/badLabsApi'
+import type { BadLabsApiRankedToken } from '@/utils/badLabsApi'
+import type { PolicyId, PopulatedAsset } from '@/@types'
 
 let cnftToolsAssets: Partial<Record<PolicyId, BadLabsApiRankedToken[]>> | null = null
 

@@ -1,4 +1,4 @@
-import { API_KEYS } from '@/src/constants';
+import { API_KEYS } from '@/constants';
 import { BlockFrostAPI, BlockFrostIPFS } from '@blockfrost/blockfrost-js';
 
 const blockfrost = new BlockFrostAPI({

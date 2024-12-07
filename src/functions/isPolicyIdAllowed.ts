@@ -1,5 +1,5 @@
-import type { PolicyId } from '@/src/@types'
-import collections from '@/src/data/collections.json'
+import type { PolicyId } from '@/@types'
+import collections from '@/data/collections.json'
 
 const isPolicyIdAllowed = (policyId: PolicyId | '') => {
   let isAllowed = false

@@ -3,7 +3,7 @@ import TokenHeader from '../../components/tokens/TokenHeader'
 import TokenPrerequisites from '../../components/tokens/TokenPrerequisites'
 import TokenWhoEarns, { WhoCanEarn } from '../../components/tokens/TokenWhoEarns'
 import PageContainer from '../../components/layout/PageContainer'
-import { LINKS } from '@/src/constants'
+import { LINKS } from '@/constants'
 
 const TOKEN_IMAGE_SRC = '/media/tokens/change/token.png'
 const TOKEN_POLICY_ID = 'd55bf9d2ad12cc55e4ed29d97c64dba0e4905d3c80f800449f3d51f0'

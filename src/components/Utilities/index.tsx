@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import { MinusCircleIcon } from '@heroicons/react/24/outline'
-import useScreenSize from '@/src/hooks/useScreenSize'
+import useScreenSize from '@/hooks/useScreenSize'
 import MediaWrapper from './MediaWrapper'
 import ImageLoader from '../Loader/ImageLoader'
 import styles from './Utilities.module.css'
-import collections from '@/src/data/collections.json'
+import collections from '@/data/collections.json'
 import {
   APE_NATION_POLICY_ID,
   BLING_POLICY_ID,
@@ -14,7 +14,7 @@ import {
   MUTATION_NATION_POLICY_ID,
   OG_CLUB_CARD_POLICY_ID,
   ORDINAL_TOKENS_POLICY_ID,
-} from '@/src/constants'
+} from '@/constants'
 
 const data: {
   checked: boolean

@@ -1,4 +1,4 @@
-import badLabsApi from '@/src/utils/badLabsApi'
+import badLabsApi from '@/utils/badLabsApi'
 import sleep from './sleep'
 
 const txConfirmation = async (_txHash: string): Promise<void> => {

@@ -1,8 +1,8 @@
 import { LockClosedIcon } from '@heroicons/react/24/outline'
-import useWallet from '@/src/contexts/WalletContext'
+import useWallet from '@/contexts/WalletContext'
 import ImageLoader from '../Loader/ImageLoader'
-import type { PolicyId } from '@/src/@types'
-import collectionsFile from '@/src/data/collections.json'
+import type { PolicyId } from '@/@types'
+import collectionsFile from '@/data/collections.json'
 
 const CollectionSelector = (props: { onSelected: (_policyId: PolicyId) => void; withWallet?: boolean; limitWidth?: boolean }) => {
   const { onSelected, withWallet = false, limitWidth = false } = props

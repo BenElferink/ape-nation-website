@@ -1,13 +1,13 @@
-import apeNationFile from '@/src/data/assets/ape_nation.json'
-import mutationNationFile from '@/src/data/assets/mutation_nation.json'
-import megaMutantsFile from '@/src/data/assets/mega_mutants.json'
-import bloodlineFile from '@/src/data/assets/bloodline.json'
-import ogClubCardsFile from '@/src/data/assets/og_club_cards.json'
-import ordinalsFile from '@/src/data/assets/ordinals.json'
-import blingFile from '@/src/data/assets/bling.json'
-import iholdFile from '@/src/data/assets/ihold.json'
-import jungleJuiceFile from '@/src/data/assets/jungle_juice.json'
-import type { PolicyId, PopulatedAsset, PopulatedTrait } from '@/src/@types'
+import apeNationFile from '@/data/assets/ape_nation.json'
+import mutationNationFile from '@/data/assets/mutation_nation.json'
+import megaMutantsFile from '@/data/assets/mega_mutants.json'
+import bloodlineFile from '@/data/assets/bloodline.json'
+import ogClubCardsFile from '@/data/assets/og_club_cards.json'
+import ordinalsFile from '@/data/assets/ordinals.json'
+import blingFile from '@/data/assets/bling.json'
+import iholdFile from '@/data/assets/ihold.json'
+import jungleJuiceFile from '@/data/assets/jungle_juice.json'
+import type { PolicyId, PopulatedAsset, PopulatedTrait } from '@/@types'
 import {
   APE_NATION_POLICY_ID,
   JUNGLE_JUICE_POLICY_ID,
@@ -18,7 +18,7 @@ import {
   BLING_POLICY_ID,
   IHOLD_MUSIC_POLICY_ID,
   BLOODLINE_POLICY_ID,
-} from '@/src/constants'
+} from '@/constants'
 
 interface File {
   policyId: PolicyId
