@@ -1,0 +1,580 @@
+{
+  "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+  "count": 30,
+  "assets": [
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1624379636c6f7073",
+      "fingerprint": "asset1g3jv7vxvkhc7henex8x0weg65nrurgg7fr69se",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "c4672b831fc63c90e5c71988023b490194ed14d906336f9764c55e112cc6f31e",
+      "mintBlockHeight": 9176050,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Cyclops", "ticker": "", "display": "Cyclops" },
+      "image": {
+        "ipfs": "ipfs://bafybeif67cme26sdokbm2hudvdjttxcedesrkrqhgadhusjx6hkj3jzf5u",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeif67cme26sdokbm2hudvdjttxcedesrkrqhgadhusjx6hkj3jzf5u"
+      },
+      "files": [],
+      "attributes": { "Codename": "Cyclops" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1624c656f",
+      "fingerprint": "asset1qze9m4xm8763hp0deh25r9updkvtpdvf07exsy",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "c4672b831fc63c90e5c71988023b490194ed14d906336f9764c55e112cc6f31e",
+      "mintBlockHeight": 9176050,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Leo", "ticker": "", "display": "Leo" },
+      "image": {
+        "ipfs": "ipfs://bafybeidlnwjhznivx4gn7flaehs74bmiuvaz5iw6o4eulsgkcsfhpe27eu",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeidlnwjhznivx4gn7flaehs74bmiuvaz5iw6o4eulsgkcsfhpe27eu"
+      },
+      "files": [],
+      "attributes": { "Codename": "Leo" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1624d61737465726d696e64",
+      "fingerprint": "asset1x7mu0kshtxre2760mmz66p9mrfjmea5t0c00hl",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "c4672b831fc63c90e5c71988023b490194ed14d906336f9764c55e112cc6f31e",
+      "mintBlockHeight": 9176050,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Mastermind", "ticker": "", "display": "Mastermind" },
+      "image": {
+        "ipfs": "ipfs://bafybeihe2hazq5vdeburso5sgt5jwsir5lmpx7by2xfcnecqfnsvowsoy4",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeihe2hazq5vdeburso5sgt5jwsir5lmpx7by2xfcnecqfnsvowsoy4"
+      },
+      "files": [],
+      "attributes": { "Codename": "Mastermind" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162566c6164",
+      "fingerprint": "asset1mcj9w5t6l875ejnxax38metf3079x6erftl499",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "c4672b831fc63c90e5c71988023b490194ed14d906336f9764c55e112cc6f31e",
+      "mintBlockHeight": 9176050,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Vlad", "ticker": "", "display": "Vlad" },
+      "image": {
+        "ipfs": "ipfs://bafybeicwpn2upb2vyg4jzh2zzdx42nsxsvjlufwcq6jxz43cjnwaizuyqu",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeicwpn2upb2vyg4jzh2zzdx42nsxsvjlufwcq6jxz43cjnwaizuyqu"
+      },
+      "files": [],
+      "attributes": { "Codename": "Vlad" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c16259657469",
+      "fingerprint": "asset1t9567vzt9cgtn0mzw82qrvcmx86utervduyefd",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "c4672b831fc63c90e5c71988023b490194ed14d906336f9764c55e112cc6f31e",
+      "mintBlockHeight": 9176050,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Yeti", "ticker": "", "display": "Yeti" },
+      "image": {
+        "ipfs": "ipfs://bafybeihitnby2sd4o2vg3mw2qsu54aibme2v6ngk2h4awmsqkkdp5iudd4",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeihitnby2sd4o2vg3mw2qsu54aibme2v6ngk2h4awmsqkkdp5iudd4"
+      },
+      "files": [],
+      "attributes": { "Codename": "Yeti" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1624368696566",
+      "fingerprint": "asset1jysqmsauyeldu42jp87d4pv2r0udzhcl4j95j9",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "8330ff30f68c783c9235be461e34bc6bf5e298f87a9c33d456923904384a34cb",
+      "mintBlockHeight": 9205336,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Chief", "ticker": "", "display": "Chief" },
+      "image": {
+        "ipfs": "ipfs://bafybeihurv2p2tpx63njihkgnqo32ud3pbsdhrs4lbxdj57z4z4emixfvm",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeihurv2p2tpx63njihkgnqo32ud3pbsdhrs4lbxdj57z4z4emixfvm"
+      },
+      "files": [],
+      "attributes": { "Codename": "Chief" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c16246756e477579",
+      "fingerprint": "asset1we0dtdc4pn3r7rdzhsmjmrfz2vdny5598tgzyv",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "8330ff30f68c783c9235be461e34bc6bf5e298f87a9c33d456923904384a34cb",
+      "mintBlockHeight": 9205336,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "FunGuy", "ticker": "", "display": "Fun Guy" },
+      "image": {
+        "ipfs": "ipfs://bafybeiak3madao2xg5tzd6im5yjlx7mjhnv6hpzdj2prq77euaxuml2pca",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeiak3madao2xg5tzd6im5yjlx7mjhnv6hpzdj2prq77euaxuml2pca"
+      },
+      "files": [],
+      "attributes": { "Codename": "Fun Guy" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162526f626f",
+      "fingerprint": "asset1ta3mqwtqd2xjzvc4zatuav90p95yvk03lcf8v4",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "8330ff30f68c783c9235be461e34bc6bf5e298f87a9c33d456923904384a34cb",
+      "mintBlockHeight": 9205336,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Robo", "ticker": "", "display": "Robo" },
+      "image": {
+        "ipfs": "ipfs://bafybeiagvtfaxcfdpistldfocdilv3tfmwfwbvup2ogm4hbvoz2nmp2zpi",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeiagvtfaxcfdpistldfocdilv3tfmwfwbvup2ogm4hbvoz2nmp2zpi"
+      },
+      "files": [],
+      "attributes": { "Codename": "Robo" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1625472656e6368",
+      "fingerprint": "asset1mpgzwpzf4neexnfehshrvssn2jfntyrurfu09c",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "8330ff30f68c783c9235be461e34bc6bf5e298f87a9c33d456923904384a34cb",
+      "mintBlockHeight": 9205336,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Trench", "ticker": "", "display": "Trench" },
+      "image": {
+        "ipfs": "ipfs://bafybeiaajc66cm2klr5xgjuzr4xghkset5pzkwbciko453jz6wx6iadjjy",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeiaajc66cm2klr5xgjuzr4xghkset5pzkwbciko453jz6wx6iadjjy"
+      },
+      "files": [],
+      "attributes": { "Codename": "Trench" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c16241706578",
+      "fingerprint": "asset1zjkd8uplkw4mr45vl99ktqv8m3684e5aa84v5t",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "578d8023fba0c660cd0635b3819bcaf6c5166163653eed06f0f70d920a1e8826",
+      "mintBlockHeight": 9234084,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Apex", "ticker": "", "display": "Apex" },
+      "image": {
+        "ipfs": "ipfs://bafybeiaaqd2fqljgyz3a5vuwplenrt5uda6goa4tduiy574xdjtrzecwei",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeiaaqd2fqljgyz3a5vuwplenrt5uda6goa4tduiy574xdjtrzecwei"
+      },
+      "files": [],
+      "attributes": { "Codename": "Apex" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c16242616e646974",
+      "fingerprint": "asset1ngpckskvh9k6u64ek2mes3st60ued4p0kjdzpd",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "578d8023fba0c660cd0635b3819bcaf6c5166163653eed06f0f70d920a1e8826",
+      "mintBlockHeight": 9234084,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Bandit", "ticker": "", "display": "Bandit" },
+      "image": {
+        "ipfs": "ipfs://bafybeiak2i5toawtxevs3slsixs64jlx75arvmrsqzcifqywtkrwfmhena",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeiak2i5toawtxevs3slsixs64jlx75arvmrsqzcifqywtkrwfmhena"
+      },
+      "files": [],
+      "attributes": { "Codename": "Bandit" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1624261727279",
+      "fingerprint": "asset1t535mj5tcpqx0l5xs90rvxvzzsa36cju46x53d",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "578d8023fba0c660cd0635b3819bcaf6c5166163653eed06f0f70d920a1e8826",
+      "mintBlockHeight": 9234084,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Barry", "ticker": "", "display": "Barry" },
+      "image": {
+        "ipfs": "ipfs://bafybeie5nfmg7vi2fiangqvp7fz62i4v44dcgcvvdwciuk2x2pvrkj3bsa",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeie5nfmg7vi2fiangqvp7fz62i4v44dcgcvvdwciuk2x2pvrkj3bsa"
+      },
+      "files": [],
+      "attributes": { "Codename": "Barry" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c16253706c6174746572",
+      "fingerprint": "asset1zd2ug32m7vpedk2edpzywn6tmdtarw5d9t472q",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "578d8023fba0c660cd0635b3819bcaf6c5166163653eed06f0f70d920a1e8826",
+      "mintBlockHeight": 9234084,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Splatter", "ticker": "", "display": "Splatter" },
+      "image": {
+        "ipfs": "ipfs://bafybeidq6f4qmxzz2btxtww7ze7borw7qf75k7av3q3gc67lsqe2xc7kse",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeidq6f4qmxzz2btxtww7ze7borw7qf75k7av3q3gc67lsqe2xc7kse"
+      },
+      "files": [],
+      "attributes": { "Codename": "Splatter" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1624761627269656c",
+      "fingerprint": "asset1kruva8f6y00vl57gar6y98fl9s5y2z25exqhhs",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "7d9a61b90c8524af871165bc1c8c5dafa03e3cecde131004bc287ea84efd7f52",
+      "mintBlockHeight": 9263319,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Gabriel", "ticker": "", "display": "Gabriel" },
+      "image": {
+        "ipfs": "ipfs://bafybeihwihw2hqlxjmix7atjafgwmvkz2iexbqaubqbyptqb3sm5r22tha",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeihwihw2hqlxjmix7atjafgwmvkz2iexbqaubqbyptqb3sm5r22tha"
+      },
+      "files": [],
+      "attributes": { "Codename": "Gabriel" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1624e6563726f",
+      "fingerprint": "asset18auu8uyjhuxru4njyl9trt53hka37traxgzcez",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "7d9a61b90c8524af871165bc1c8c5dafa03e3cecde131004bc287ea84efd7f52",
+      "mintBlockHeight": 9263319,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Necro", "ticker": "", "display": "Necro" },
+      "image": {
+        "ipfs": "ipfs://bafybeigxb2xie4mmiskqwxirkziy3pwuxx2vr7wl3qjmghwjvlauaxa2m4",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeigxb2xie4mmiskqwxirkziy3pwuxx2vr7wl3qjmghwjvlauaxa2m4"
+      },
+      "files": [],
+      "attributes": { "Codename": "Necro" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1625072696d65",
+      "fingerprint": "asset1d3tzjdhadcf5f6j53w67tey5r5fttcuptky9l6",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "7d9a61b90c8524af871165bc1c8c5dafa03e3cecde131004bc287ea84efd7f52",
+      "mintBlockHeight": 9263319,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Prime", "ticker": "", "display": "Prime" },
+      "image": {
+        "ipfs": "ipfs://bafybeievinmpy55mrddyl2tgkhbtkbybfvi2h2zrt6vbsa2tvewusr3gvq",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeievinmpy55mrddyl2tgkhbtkbybfvi2h2zrt6vbsa2tvewusr3gvq"
+      },
+      "files": [],
+      "attributes": { "Codename": "Prime" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c16252656566",
+      "fingerprint": "asset1nkg5pzg4gqycswlkfxudw542ymuhja09h4hgjr",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "7d9a61b90c8524af871165bc1c8c5dafa03e3cecde131004bc287ea84efd7f52",
+      "mintBlockHeight": 9263319,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Reef", "ticker": "", "display": "Reef" },
+      "image": {
+        "ipfs": "ipfs://bafybeidc6dxvuiob7xorm2mfqel7ukfvodfa2n5iyqfgwopwkwple4bevy",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeidc6dxvuiob7xorm2mfqel7ukfvodfa2n5iyqfgwopwkwple4bevy"
+      },
+      "files": [],
+      "attributes": { "Codename": "Reef" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162566f6c74",
+      "fingerprint": "asset1er9h07faf7h05wmjyj0k0mcntqnr46zd9z7ezz",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "7d9a61b90c8524af871165bc1c8c5dafa03e3cecde131004bc287ea84efd7f52",
+      "mintBlockHeight": 9263319,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Volt", "ticker": "", "display": "Volt" },
+      "image": {
+        "ipfs": "ipfs://bafybeianqrevjd5dg57z5jrkglazevyotph57zdleg7pwzd6shmwoicena",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeianqrevjd5dg57z5jrkglazevyotph57zdleg7pwzd6shmwoicena"
+      },
+      "files": [],
+      "attributes": { "Codename": "Volt" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162417263746963",
+      "fingerprint": "asset1gz2wu6lrtvv22hhle3srw6skh5hmvdktme4lcu",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f50360ef1a2029cd9a10db9bbf5b87d68b3e376a468c4fb846d5f835151d73f3",
+      "mintBlockHeight": 9293968,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Arctic", "ticker": "", "display": "Arctic" },
+      "image": {
+        "ipfs": "ipfs://bafybeiajy32nwaq2c5dkn6n5xwq7vmuyv2crkfduhpoakoj4hjontkzgte",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeiajy32nwaq2c5dkn6n5xwq7vmuyv2crkfduhpoakoj4hjontkzgte"
+      },
+      "files": [],
+      "attributes": { "Codename": "Arctic" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162426c61636b6865617274",
+      "fingerprint": "asset1hpx93y4tvyqlgrtrqfwuquu2nf0t0dcu22kwl0",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f50360ef1a2029cd9a10db9bbf5b87d68b3e376a468c4fb846d5f835151d73f3",
+      "mintBlockHeight": 9293968,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Blackheart", "ticker": "", "display": "Blackheart" },
+      "image": {
+        "ipfs": "ipfs://bafybeidkbnffhc4r5hryiraam7fsraxpok2k5wo7rfmabkjqbrawdpnhmm",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeidkbnffhc4r5hryiraam7fsraxpok2k5wo7rfmabkjqbrawdpnhmm"
+      },
+      "files": [],
+      "attributes": { "Codename": "Blackheart" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1624d65726c696e",
+      "fingerprint": "asset1fhvq2w3pvvvy8u9van98v3d8w049nec9yfgyrf",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f50360ef1a2029cd9a10db9bbf5b87d68b3e376a468c4fb846d5f835151d73f3",
+      "mintBlockHeight": 9293968,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Merlin", "ticker": "", "display": "Merlin" },
+      "image": {
+        "ipfs": "ipfs://bafybeih6hrhcvlpp534yvriug6kgvom4nno5spj26hctywcaykupgrraxy",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeih6hrhcvlpp534yvriug6kgvom4nno5spj26hctywcaykupgrraxy"
+      },
+      "files": [],
+      "attributes": { "Codename": "Merlin" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1624f63746f6e6f6964",
+      "fingerprint": "asset12w7uwme7ej4grhxxq9es8js6kl2vp3wee8dxmv",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f50360ef1a2029cd9a10db9bbf5b87d68b3e376a468c4fb846d5f835151d73f3",
+      "mintBlockHeight": 9293968,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Octonoid", "ticker": "", "display": "Octonoid" },
+      "image": {
+        "ipfs": "ipfs://bafybeigbnvn5l3ohtl5outokngeyqr2lddulnagwmodkvtr3toj477j56q",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeigbnvn5l3ohtl5outokngeyqr2lddulnagwmodkvtr3toj477j56q"
+      },
+      "files": [],
+      "attributes": { "Codename": "Octonoid" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1625368696e6f6269",
+      "fingerprint": "asset1sjfgfm7dua3v80ua9zmv06gdjupgg3kgjkx2k4",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f50360ef1a2029cd9a10db9bbf5b87d68b3e376a468c4fb846d5f835151d73f3",
+      "mintBlockHeight": 9293968,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Shinobi", "ticker": "", "display": "Shinobi" },
+      "image": {
+        "ipfs": "ipfs://bafybeiaktwue4qpbmvh6ullirc7yzmx3lstipepxr5yy76a56rksz7pa3y",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeiaktwue4qpbmvh6ullirc7yzmx3lstipepxr5yy76a56rksz7pa3y"
+      },
+      "files": [],
+      "attributes": { "Codename": "Shinobi" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162446961626c6f",
+      "fingerprint": "asset1hvun6plx2f9jk43th2zd8lkv4uru2zrf6g9w42",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Diablo", "ticker": "", "display": "Diablo" },
+      "image": {
+        "ipfs": "ipfs://bafybeiazb2vjp5ln37fg2zjzmqq27mik7wxyus6ceqqtizkck64ih7idhq",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeiazb2vjp5ln37fg2zjzmqq27mik7wxyus6ceqqtizkck64ih7idhq"
+      },
+      "files": [],
+      "attributes": { "Codename": "Diablo" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162456c656d656e74616c",
+      "fingerprint": "asset10enp9vhxr5rqrpnhc80cw0gkmke4vlcfv57nau",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Elemental", "ticker": "", "display": "Elemental" },
+      "image": {
+        "ipfs": "ipfs://bafybeialpv2by37rl5zrucqohnc26abq7qzivlasnec7o7yburjlkeqobq",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeialpv2by37rl5zrucqohnc26abq7qzivlasnec7o7yburjlkeqobq"
+      },
+      "files": [],
+      "attributes": { "Codename": "Elemental" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c16248656d6c6f636b",
+      "fingerprint": "asset12g0wytculxg9uyrt2afjfzr490hwu9y9hjy7fk",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Hemlock", "ticker": "", "display": "Hemlock" },
+      "image": {
+        "ipfs": "ipfs://bafybeifaothzq27hlhh4t4pzmflihznwhtuusomimzlmd6hqg43a3cvkry",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeifaothzq27hlhh4t4pzmflihznwhtuusomimzlmd6hqg43a3cvkry"
+      },
+      "files": [],
+      "attributes": { "Codename": "Hemlock" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1624c756369616e",
+      "fingerprint": "asset1yxtu2jjculs406ql5gny87vxud882qlr7hcjeg",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Lucian", "ticker": "", "display": "Lucian" },
+      "image": {
+        "ipfs": "ipfs://bafybeiee35vidx667amivrhtpvbatq75vb3qindl36cu2sdhkkree7ykhu",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeiee35vidx667amivrhtpvbatq75vb3qindl36cu2sdhkkree7ykhu"
+      },
+      "files": [],
+      "attributes": { "Codename": "Lucian" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1625079726f",
+      "fingerprint": "asset1jwqswyprtddhvwp6faq3875xj2vu08ma4062jp",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Pyro", "ticker": "", "display": "Pyro" },
+      "image": {
+        "ipfs": "ipfs://bafybeiex3x6wxm4bt5o43gpvbp36mawdwfej4advypl4bhgymcvq45meey",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeiex3x6wxm4bt5o43gpvbp36mawdwfej4advypl4bhgymcvq45meey"
+      },
+      "files": [],
+      "attributes": { "Codename": "Pyro" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c1625261676e6172",
+      "fingerprint": "asset1fthe5xa6dqusv27zdrddy64weq98zpgcgxtjw8",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Ragnar", "ticker": "", "display": "Ragnar" },
+      "image": {
+        "ipfs": "ipfs://bafybeierlj2zy5olnw2td6xuxy4rmcgt655o4ezg4jhkqlmxfr5aexezsa",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeierlj2zy5olnw2td6xuxy4rmcgt655o4ezg4jhkqlmxfr5aexezsa"
+      },
+      "files": [],
+      "attributes": { "Codename": "Ragnar" },
+      "isBurned": false,
+      "rarityRank": 0
+    },
+    {
+      "tokenId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162537472696b6572",
+      "fingerprint": "asset1d8tzlgm3kl6ywf38wr4ddl2vdetsrfu0matm2p",
+      "isFungible": false,
+      "policyId": "f8d619c4650033b4f3a4759805058c379ddc5d6b56102b948da5c162",
+      "mintTransactionId": "f0b098f2db4582750bc4f2d98072cb8b94979a9c88f006d18f3602d14ad3c386",
+      "mintBlockHeight": 9323289,
+      "tokenAmount": { "onChain": 1, "decimals": 0, "display": 1 },
+      "tokenName": { "onChain": "Striker", "ticker": "", "display": "Striker" },
+      "image": {
+        "ipfs": "ipfs://bafybeihxvbnby66qtulgipstxfafcptx4pcyt6oxyvkkfczgj6sifoan5i",
+        "url": "https://image-optimizer.jpgstoreapis.com/bafybeihxvbnby66qtulgipstxfafcptx4pcyt6oxyvkkfczgj6sifoan5i"
+      },
+      "files": [],
+      "attributes": { "Codename": "Striker" },
+      "isBurned": false,
+      "rarityRank": 0
+    }
+  ],
+  "traits": {
+    "Codename": [
+      { "label": "Cyclops", "count": 1, "percent": "3.33%" },
+      { "label": "Leo", "count": 1, "percent": "3.33%" },
+      { "label": "Mastermind", "count": 1, "percent": "3.33%" },
+      { "label": "Vlad", "count": 1, "percent": "3.33%" },
+      { "label": "Yeti", "count": 1, "percent": "3.33%" },
+      { "label": "Chief", "count": 1, "percent": "3.33%" },
+      { "label": "Fun Guy", "count": 1, "percent": "3.33%" },
+      { "label": "Robo", "count": 1, "percent": "3.33%" },
+      { "label": "Trench", "count": 1, "percent": "3.33%" },
+      { "label": "Apex", "count": 1, "percent": "3.33%" },
+      { "label": "Bandit", "count": 1, "percent": "3.33%" },
+      { "label": "Barry", "count": 1, "percent": "3.33%" },
+      { "label": "Splatter", "count": 1, "percent": "3.33%" },
+      { "label": "Gabriel", "count": 1, "percent": "3.33%" },
+      { "label": "Necro", "count": 1, "percent": "3.33%" },
+      { "label": "Prime", "count": 1, "percent": "3.33%" },
+      { "label": "Reef", "count": 1, "percent": "3.33%" },
+      { "label": "Volt", "count": 1, "percent": "3.33%" },
+      { "label": "Arctic", "count": 1, "percent": "3.33%" },
+      { "label": "Blackheart", "count": 1, "percent": "3.33%" },
+      { "label": "Merlin", "count": 1, "percent": "3.33%" },
+      { "label": "Octonoid", "count": 1, "percent": "3.33%" },
+      { "label": "Shinobi", "count": 1, "percent": "3.33%" },
+      { "label": "Diablo", "count": 1, "percent": "3.33%" },
+      { "label": "Elemental", "count": 1, "percent": "3.33%" },
+      { "label": "Hemlock", "count": 1, "percent": "3.33%" },
+      { "label": "Lucian", "count": 1, "percent": "3.33%" },
+      { "label": "Pyro", "count": 1, "percent": "3.33%" },
+      { "label": "Ragnar", "count": 1, "percent": "3.33%" },
+      { "label": "Striker", "count": 1, "percent": "3.33%" }
+    ]
+  }
+}

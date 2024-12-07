@@ -1,8 +1,3 @@
 {
-  "crons": [
-    {
-      "path": "/api/bloodline/sync",
-      "schedule": "*/15 * * * *"
-    }
-  ]
+  "crons": []
 }

@@ -1,0 +1,52 @@
+import Head from 'next/head'
+import { AppProps } from 'next/app'
+import { Fragment } from 'react'
+import { Toaster } from 'react-hot-toast'
+import { WalletProvider } from '@/src/contexts/WalletContext'
+import Header from '@/src/components/layout/Header'
+import Footer from '@/src/components/layout/Footer'
+import 'animate.css'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import '@/src/styles/swiper-overrides.css'
+import '@/src/styles/globals.css'
+import { RenderProvider } from '@/src/contexts/RenderContext'
+
+const App = ({ Component, pageProps }: AppProps) => {
+  return (
+    <Fragment>
+      <Head>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta name='author' content='Ben Elferink' />
+        <meta name='keywords' content='cardano, blockchain, ape nation, nft, coin, community' />
+        <meta
+          name='description'
+          content="We have built a solid foundation that enables us to maximize utility for our community. At our core, we are committed to continuously building our ecosystem, and aim to empower collectors in new and exciting ways. It's all about The Nation - community-focused project resulting in a vibrant and engaged community that drives our success. Our passion for the space has led to strategic partnerships we work alongside to innovate."
+        />
+
+        <link rel='icon' type='image/x-icon' href='/favicon.ico' />
+        <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
+        <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
+        <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+        <link rel='manifest' href='/manifest.json' />
+
+        <title>Ape Nation</title>
+      </Head>
+
+      <Toaster />
+
+      <RenderProvider>
+        <Header />
+        <main className='w-screen min-h-screen bg-black/30'>
+          <WalletProvider>
+            <Component {...pageProps} />
+          </WalletProvider>
+        </main>
+        <Footer />
+      </RenderProvider>
+    </Fragment>
+  )
+}
+
+export default App
