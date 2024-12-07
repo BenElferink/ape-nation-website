@@ -1,9 +1,10 @@
+import badLabsApi from '@/utils/badLabsApi'
 import sleep from './sleep'
 
 const txConfirmation = async (_txHash: string): Promise<void> => {
   try {
-    // TODO: replace old -> await badLabsApi.transaction.getData(_txHash)
-    const data = { block: 0 }
+    const data = await badLabsApi.transaction.getData(_txHash)
+    // const data = { block: 0 }
 
     if (data.block) {
       return
