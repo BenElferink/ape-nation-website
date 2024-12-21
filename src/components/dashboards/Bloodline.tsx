@@ -17,6 +17,7 @@ import {
   TEAM_TREASURY_WALLET_ADDRESS,
   DEV_WALLET_ADDRESS,
   BLOODLINE_POLICY_ID,
+  BLOODLINE_COLLATERAL_ADDRESS,
 } from '@/constants'
 import badLabsApi from '@/utils/badLabsApi'
 
@@ -111,21 +112,9 @@ const Bloodline = () => {
               quantity: '80000000',
             },
           ])
-          .sendLovelace(
-            // mint app
-            { address: BLOODLINE_APP_WALLET_ADDRESS },
-            String(2 * ONE_MILLION)
-          )
-          .sendLovelace(
-            // mint collateral
-            { address: 'addr1q8yh4nz600fqa5yqyt7nusqlq4cw65h4mcgufruf6gnjgzf34cqsunpd2hzxrz8glhlcwlce3rtxq4x7lvf3jcjmqgrqzynw52' },
-            String(2 * ONE_MILLION)
-          )
-          .sendLovelace(
-            // developer
-            { address: DEV_WALLET_ADDRESS },
-            String(2 * ONE_MILLION)
-          )
+          .sendLovelace({ address: BLOODLINE_COLLATERAL_ADDRESS }, String(2 * ONE_MILLION))
+          .sendLovelace({ address: BLOODLINE_APP_WALLET_ADDRESS }, String(2 * ONE_MILLION))
+          .sendLovelace({ address: DEV_WALLET_ADDRESS }, String(2 * ONE_MILLION))
 
         toast.loading('Building transaction')
         const unsignedTx = await tx.build()
