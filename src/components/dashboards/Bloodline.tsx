@@ -18,6 +18,7 @@ import {
   DEV_WALLET_ADDRESS,
   BLOODLINE_POLICY_ID,
   BLOODLINE_COLLATERAL_ADDRESS,
+  NATION_COIN_TOKEN_ID,
 } from '@/constants'
 import badLabsApi from '@/utils/badLabsApi'
 
@@ -79,7 +80,7 @@ const Bloodline = () => {
       ]
 
       const fungibleToken = {
-        unit: `${NATION_COIN_POLICY_ID}4e4154494f4e`, // $nation
+        unit: NATION_COIN_TOKEN_ID,
         quantity: '80000000',
       }
 
@@ -108,7 +109,7 @@ const Bloodline = () => {
               quantity: String(3.5 * ONE_MILLION),
             },
             {
-              unit: `${NATION_COIN_POLICY_ID}4e4154494f4e`, // $nation
+              unit: NATION_COIN_TOKEN_ID,
               quantity: '80000000',
             },
           ])
@@ -145,7 +146,7 @@ const Bloodline = () => {
 
         await removeAssetsFromWallet(
           [v0.tokenId, v1.tokenId, v2.tokenId],
-          [{ policyId: NATION_COIN_POLICY_ID, tokenId: 'cf5d945ad03a11c46e70a85daa8598b2275f9442ceed1249754ad9a14e4154494f4e', amount: 80000000 }]
+          [{ policyId: NATION_COIN_POLICY_ID, tokenId: NATION_COIN_TOKEN_ID, amount: 80000000 }]
         )
       } catch (error: any) {
         console.error(error)
