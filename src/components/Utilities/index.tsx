@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import React, { useRouter } from 'next/router'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import { MinusCircleIcon } from '@heroicons/react/24/outline'
 import useScreenSize from '@/hooks/useScreenSize'
@@ -19,13 +19,13 @@ import {
 const data: {
   checked: boolean
   chapter: string
-  Icon?: () => JSX.Element
+  Icon?: () => React.ReactNode
   events: {
     checked: boolean
     title: string
     redirect?: string
   }[]
-  renderMedia?: (isLeft: any) => JSX.Element
+  renderMedia?: (isLeft: any) => React.ReactNode
 }[] = [
   {
     checked: true,
