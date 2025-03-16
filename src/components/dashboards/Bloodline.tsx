@@ -146,7 +146,7 @@ const Bloodline = () => {
 
         await removeAssetsFromWallet(
           [v0.tokenId, v1.tokenId, v2.tokenId],
-          [{ policyId: NATION_COIN_POLICY_ID, tokenId: NATION_COIN_TOKEN_ID, amount: 80000000 }]
+          [{ policyId: NATION_COIN_POLICY_ID, tokenId: NATION_COIN_TOKEN_ID, amount: formatTokenAmount.toChain(80, NATION_COIN_DECIMALS) }]
         )
       } catch (error: any) {
         console.error(error)
