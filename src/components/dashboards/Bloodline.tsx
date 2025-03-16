@@ -110,7 +110,7 @@ const Bloodline = () => {
             },
             {
               unit: NATION_COIN_TOKEN_ID,
-              quantity: '80000000',
+              quantity: formatTokenAmount.toChain(80, NATION_COIN_DECIMALS).toString(),
             },
           ])
           .sendLovelace({ address: BLOODLINE_COLLATERAL_ADDRESS }, String(2 * ONE_MILLION))
