@@ -19,8 +19,10 @@ import {
   BLOODLINE_POLICY_ID,
   BLOODLINE_COLLATERAL_ADDRESS,
   NATION_COIN_TOKEN_ID,
+  NATION_COIN_DECIMALS,
 } from '@/constants'
 import badLabsApi from '@/utils/badLabsApi'
+import formatTokenAmount from '@/functions/formatters/formatTokenAmount'
 
 const EVENT_OPEN = true
 
@@ -79,11 +81,6 @@ const Bloodline = () => {
         },
       ]
 
-      const fungibleToken = {
-        unit: NATION_COIN_TOKEN_ID,
-        quantity: '80000000',
-      }
-
       try {
         const tx = new Transaction({ initiator: wallet })
           .setTxInputs(
@@ -94,7 +91,10 @@ const Bloodline = () => {
                     unit: 'lovelace',
                     quantity: String(10 * ONE_MILLION),
                   },
-                  fungibleToken,
+                  {
+                    unit: NATION_COIN_TOKEN_ID,
+                    quantity: formatTokenAmount.toChain(80, NATION_COIN_DECIMALS).toString(),
+                  },
                 ]
                   .concat(assetsToSend)
                   .map((x) => [x.unit, x.quantity])

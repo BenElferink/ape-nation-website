@@ -28,6 +28,7 @@ export const BLOODLINE_POLICY_ID = '563a59cf3372d66003022c87af460148d6d1cd87e5b1
 export const NATION_COIN_POLICY_ID = '38a2f68f5b009b1303b2e71ba3a374b7a2da11b5910423e2cf989948'
 export const NATION_COIN_NAME_HEX = '4e4154494f4e'
 export const NATION_COIN_TOKEN_ID = `${NATION_COIN_POLICY_ID}${NATION_COIN_NAME_HEX}`
+export const NATION_COIN_DECIMALS = 0
 
 export const LINKS = {
   X: 'https://x.com/Ape_NationNFT',
